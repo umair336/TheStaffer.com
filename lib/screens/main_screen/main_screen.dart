@@ -16,7 +16,6 @@ class _MainScreenState extends State<MainScreen> {
     Center(child: Text('Profile'),),
     Center(child: Text('Assignment'),),
     Center(child: Text('Clock'),),
-
   ];
   @override
   Widget build(BuildContext context) {
