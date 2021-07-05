@@ -3,6 +3,10 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:staffer/style/theme.dart' as Style;
+import 'package:staffer/screens/home/home_screen.dart';
+import 'package:staffer/screens/assignment/assignment_screen.dart';
+import 'package:staffer/screens/profile/profile_screen.dart';
+import 'package:staffer/screens/timesheet/timesheet_screen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -11,11 +15,11 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
-  final tabs = [
-    Center(child: Text('Home'),),
-    Center(child: Text('Profile'),),
-    Center(child: Text('Assignment'),),
-    Center(child: Text('Clock'),),
+  final List<Widget> tabs = [
+    HomeScreen(),
+    ProfileScreen(),
+    AssignmentScreen(),
+    TimesheetScreen()
   ];
   @override
   Widget build(BuildContext context) {
@@ -75,3 +79,5 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+
+
