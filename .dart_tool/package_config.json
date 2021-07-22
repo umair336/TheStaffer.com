@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "adobe_xd",
+      "rootUri": "file:///Users/wajahat/.pub-cache/hosted/pub.dartlang.org/adobe_xd-1.1.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "async",
       "rootUri": "file:///Users/wajahat/.pub-cache/hosted/pub.dartlang.org/async-2.6.1",
       "packageUri": "lib/",
@@ -242,7 +248,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-06-27T10:39:10.165199Z",
+  "generated": "2021-07-16T20:58:19.112289Z",
   "generator": "pub",
   "generatorVersion": "2.13.3"
 }

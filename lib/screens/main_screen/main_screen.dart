@@ -7,6 +7,7 @@ import 'package:staffer/screens/home/home_screen.dart';
 import 'package:staffer/screens/assignment/assignment_screen.dart';
 import 'package:staffer/screens/profile/profile_screen.dart';
 import 'package:staffer/screens/timesheet/timesheet_screen.dart';
+import 'package:adobe_xd/pinned.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -24,26 +25,28 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Style.Colors.mainColor,
-        leading: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(
-                "https://yt3.ggpht.com/yti/ANoDKi5R5eJSjZigdWmIcZKFAtqwG4svMcAAN0Iyvw4j=s108-c-k-c0x00ffffff-no-rj"),
-          ),
-        ),
-        title: Text("STAFFER"),
-        actions: [
-          IconButton(
-              icon: Icon(EvaIcons.logOutOutline),
-              onPressed: () {
-                BlocProvider.of<AuthenticationBloc>(context).add(
-                  LoggedOut(),
-                );
-              })
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Style.Colors.mainColor,
+      //   leading: Padding(
+      //     padding: const EdgeInsets.all(10.0),
+      //     child: CircleAvatar(
+      //       backgroundImage: NetworkImage(
+      //           "https://yt3.ggpht.com/yti/ANoDKi5R5eJSjZigdWmIcZKFAtqwG4svMcAAN0Iyvw4j=s108-c-k-c0x00ffffff-no-rj"),
+      //     ),
+      //   ),
+      //   title: Text("STAFFER"),
+      //   actions: [
+      //     IconButton(
+      //         icon: Icon(EvaIcons.logOutOutline),
+      //         onPressed: () {
+      //           BlocProvider.of<AuthenticationBloc>(context).add(
+      //             LoggedOut(),
+      //           );
+      //         })
+      //   ],
+      // ),
+      
+      
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -79,5 +82,4 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-
 
