@@ -43,8 +43,8 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
           body: TabBarView(
             children: <Widget>[
               Active(),
-              Past(),
               Upcoming(),
+              Past(),
             ],
           ),
         ),
