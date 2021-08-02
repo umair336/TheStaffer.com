@@ -3,7 +3,10 @@ import 'package:adobe_xd/pinned.dart';
 import './XDDashboardPreviousWeek.dart';
 import 'package:adobe_xd/page_link.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:staffer/bloc/auth_bloc/auth.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:staffer/style/theme.dart' as Style;
 class HomeScreen extends StatefulWidget {
   // const HomeScreen({ Key? key }) : super(key: key);
 
@@ -15,6 +18,20 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: AppBar(
+        backgroundColor: Style.Colors.mainColor,
+        title: Text("STAFFER"),
+        actions: [
+          IconButton(
+              icon: Icon(EvaIcons.logOutOutline),
+              onPressed: () {
+                BlocProvider.of<AuthenticationBloc>(context).add(
+                  LoggedOut(),
+                );
+              })
+        ],
+      ),
+      
       backgroundColor: const Color(0xfffafafa),
       body: Stack(
         children: <Widget>[

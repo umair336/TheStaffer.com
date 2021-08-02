@@ -45,7 +45,7 @@ class _UpcomingState extends State<Upcoming> {
                 Row(
                   children: <Widget>[
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Text("Job title come here",
                             style: TextStyle(
@@ -59,15 +59,16 @@ class _UpcomingState extends State<Upcoming> {
                 Row(
                   children: <Widget> [
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
+                        
                         Text("Start Date",
                           style: TextStyle(
                           color: Colors.black,
                           // fontWeight: FontWeight.bold,
-                          fontSize: 12.0)
+                          fontSize: 12.0,
+                          )
                         ),
-
                         Text("Jan: 00,2000",
                             style: TextStyle(
                             color: Colors.black,
@@ -78,7 +79,7 @@ class _UpcomingState extends State<Upcoming> {
                       ],
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      // mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Text("End Date",
                             style: TextStyle(

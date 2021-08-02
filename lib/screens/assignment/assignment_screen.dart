@@ -22,6 +22,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       title: 'Assignments',
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
