@@ -9,6 +9,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
+
   final UserRepository userRepository;
   final AuthenticationBloc authenticationBloc;
 
