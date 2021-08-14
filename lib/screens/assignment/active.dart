@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
-// import 'package:staffer/repositories/authentication.dart';
+// import 'package:staffer/bloc/assignment_bloc/assignment_bloc.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Active extends StatefulWidget {
-  // const Active({ Key? key }) : super(key: key);
-
   @override
   _ActiveState createState() => _ActiveState();
 }
 
 class _ActiveState extends State<Active> {
+  // AssignmentBloc assignmentBloc;
+  @override
+  void initState() {
+    // super.initState();
+    // assignmentBloc = BlocProvider.of<AssignmentBloc>(context);
+    // assignmentBloc.add(FetchAssignmentEvent());
+
+    print('-----------here-----------');
+  }
+
   bool _reverseSort = false;
   final List<String> _items = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').toList();
 
@@ -32,6 +41,13 @@ class _ActiveState extends State<Active> {
 
   @override
   Widget build(BuildContext context) {
+    // void initState() {
+    //   // BlocProvider.of<AssignmentBloc>(context).add(
+    //   //   FetchAssignmentEvent(),
+    //   // );
+    //   print('----------here');
+    // }
+
     final _appbar = AppBar(
       title: const Text('Reorderable list'),
       backgroundColor: Color(0xff5808e5),
@@ -59,15 +75,5 @@ class _ActiveState extends State<Active> {
         ],
       ),
     );
-  }
-
-  @override
-  void initState() {
-    // final auth = new Authentication();
-    // final url = 'admin/employees/assignments/list?employee_id=0&date_format=d%2Fm%2FY&employee=&branch=&job_position=';
-    // final _data = auth.getData(url);
-    // print('----------here-------------');
-    // print(_data);
-    // // print('----------here-------------');
   }
 }
