@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:staffer/bloc/assignment_bloc/assignment_bloc.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:staffer/bloc/assignment_bloc/assignment.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Active extends StatefulWidget {
   @override
@@ -8,14 +8,13 @@ class Active extends StatefulWidget {
 }
 
 class _ActiveState extends State<Active> {
-  // AssignmentBloc assignmentBloc;
+  AssignmentBloc assignmentBloc;
   @override
   void initState() {
-    // super.initState();
-    // assignmentBloc = BlocProvider.of<AssignmentBloc>(context);
+    super.initState();
+    print(context);
+    assignmentBloc = BlocProvider.of<AssignmentBloc>(context);
     // assignmentBloc.add(FetchAssignmentEvent());
-
-    print('-----------here-----------');
   }
 
   bool _reverseSort = false;

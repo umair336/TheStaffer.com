@@ -1,14 +1,10 @@
 import 'dart:async';
 import 'package:staffer/repositories/assignment_repository.dart';
 import 'package:meta/meta.dart';
-import 'package:equatable/equatable.dart';
-import 'package:staffer/models/models.dart';
 import 'package:bloc/bloc.dart';
-part 'assignment_event.dart';
-part 'assignment_state.dart';
+import 'assignment.dart';
 
 class AssignmentBloc extends Bloc<AssignmentEvent, AssignmentState> {
-
   AssignmentRepository repository;
 
   AssignmentBloc({@required this.repository});
@@ -18,15 +14,15 @@ class AssignmentBloc extends Bloc<AssignmentEvent, AssignmentState> {
 
   @override
   Stream<AssignmentState> mapEventToState(AssignmentEvent event) async* {
-    if (event is FetchAssignmentEvent) {
-      yield AssignmentLoadingState();
-      try {
-        List<Assignment> assignments = await repository.getAssignments();
-        yield AssignmentLoadedState(assignments: assignments);
-      } catch (e) {
-        yield AssignmentErrorState(message: e.toString());
-      }
-    }
+    print('hehehehe');
+    // if (event is FetchAssignmentEvent) {
+    //   yield AssignmentLoadingState();
+    //   try {
+    //     List<Assignment> assignments = await repository.getAssignments();
+    //     yield AssignmentLoadedState(assignments: assignments);
+    //   } catch (e) {
+    //     yield AssignmentErrorState(message: e.toString());
+    //   }
+    // }
   }
-
 }

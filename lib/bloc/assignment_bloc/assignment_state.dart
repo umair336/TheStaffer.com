@@ -1,4 +1,6 @@
-part of 'assignment_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:staffer/models/models.dart';
+import 'package:meta/meta.dart';
 
 abstract class AssignmentState extends Equatable {}
 

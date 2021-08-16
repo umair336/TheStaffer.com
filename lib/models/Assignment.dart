@@ -12,9 +12,9 @@ class Assignment extends Equatable {
 
   static Assignment fromJson(dynamic json) {
     return Assignment(
-      id: json['_id'],
-      assignmentText: json['assignmentText'],
-      assignmentAuthor: json['assignmentAuthor'],
+      id: 1,
+      // assignmentText: json['assignmentText'],
+      // assignmentAuthor: json['assignmentAuthor'],
     );
   }
   

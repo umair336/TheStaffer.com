@@ -1,4 +1,4 @@
-part of 'assignment_bloc.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class AssignmentEvent extends Equatable{}
 
