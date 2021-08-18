@@ -40,6 +40,8 @@ class Auth {
         },
       ),
     );
+    print(response);
+    print('----------here-------------2');
     String jsonsDataString = response.toString();
     var _data = jsonDecode(jsonsDataString);
     return _data;

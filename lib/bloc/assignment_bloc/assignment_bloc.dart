@@ -5,9 +5,9 @@ import 'package:bloc/bloc.dart';
 import 'assignment.dart';
 
 class AssignmentBloc extends Bloc<AssignmentEvent, AssignmentState> {
-  AssignmentRepository repository;
+  // AssignmentRepository repository;
 
-  AssignmentBloc({@required this.repository});
+  // AssignmentBloc({@required this.repository});
 
   @override
   AssignmentState get initialState => AssignmentInitialState();

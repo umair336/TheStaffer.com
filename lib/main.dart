@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/auth_bloc/auth.dart';
 import 'bloc/auth_bloc/auth_bloc.dart';
 import 'repositories/repositories.dart';
+import 'repositories/assignment_repository.dart';
 import 'screens/auth/intro_screen.dart';
 import 'package:staffer/style/theme.dart' as Style;
 
@@ -32,13 +33,16 @@ class SimpleBlocDelegate extends BlocDelegate {
 void main() {
   BlocSupervisor.delegate = SimpleBlocDelegate();
   final userRepository = UserRepository();
+
   runApp(
     BlocProvider<AuthenticationBloc>(
       create: (context) {
         return AuthenticationBloc(userRepository: userRepository)
           ..add(AppStarted());
       },
-      child: MyApp(userRepository: userRepository),
+      child: MyApp(
+        userRepository: userRepository,
+      ),
     ),
   );
 }

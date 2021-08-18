@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:staffer/bloc/assignment_bloc/assignment.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:staffer/bloc/auth_bloc/auth.dart';
 
 class Active extends StatefulWidget {
   @override
@@ -8,13 +8,20 @@ class Active extends StatefulWidget {
 }
 
 class _ActiveState extends State<Active> {
-  AssignmentBloc assignmentBloc;
   @override
   void initState() {
     super.initState();
-    print(context);
-    assignmentBloc = BlocProvider.of<AssignmentBloc>(context);
-    // assignmentBloc.add(FetchAssignmentEvent());
+    final String _url = '/admin/employees/assignments/list';
+    final Object _data = {
+      "employee_id": "0",
+      "date_format": "d%2Fm%2FY",
+      "employee": "",
+      "branch": "",
+      "job_position": "",
+    };
+    BlocProvider.of<AuthenticationBloc>(context).add(
+      FetchAssignmentEvent(url: _url,data: _data),
+    );
   }
 
   bool _reverseSort = false;
@@ -40,13 +47,6 @@ class _ActiveState extends State<Active> {
 
   @override
   Widget build(BuildContext context) {
-    // void initState() {
-    //   // BlocProvider.of<AssignmentBloc>(context).add(
-    //   //   FetchAssignmentEvent(),
-    //   // );
-    //   print('----------here');
-    // }
-
     final _appbar = AppBar(
       title: const Text('Reorderable list'),
       backgroundColor: Color(0xff5808e5),
@@ -55,7 +55,11 @@ class _ActiveState extends State<Active> {
         IconButton(
           icon: const Icon(Icons.sort_by_alpha),
           tooltip: 'Sort',
-          onPressed: _onSort,
+          onPressed: () {
+            // BlocProvider.of<AuthenticationBloc>(context).add(
+            //   FetchAssignmentEvent(),
+            // );
+          },
         ),
       ],
     );

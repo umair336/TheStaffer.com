@@ -16,7 +16,7 @@ class AssignmentLoadingState extends AssignmentState {
 
 class AssignmentLoadedState extends AssignmentState {
 
-  List<Assignment> assignments;
+  final List<Assignment> assignments;
 
   AssignmentLoadedState({@required this.assignments});
 
@@ -26,7 +26,7 @@ class AssignmentLoadedState extends AssignmentState {
 
 class AssignmentErrorState extends AssignmentState {
 
-  String message;
+  final String message;
 
   AssignmentErrorState({@required this.message});
 

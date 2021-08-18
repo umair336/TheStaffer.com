@@ -23,3 +23,15 @@ class LoggedIn extends AuthenticationEvent {
 }
 
 class LoggedOut extends AuthenticationEvent {}
+class FetchAssignmentEvent extends AuthenticationEvent {
+  final String url;
+  final Object data;
+
+  const FetchAssignmentEvent({@required this.url, @required this.data});
+
+  @override
+  List<Object> get props => [url];
+
+  @override
+  String toString() => 'FetchAssignmentEvent { url: $url, data: $data }';
+}

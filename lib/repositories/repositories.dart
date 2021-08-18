@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
+import 'package:staffer/models/models.dart';
+import 'package:staffer/constants/string.dart';
+import 'auth.dart';
 
 class UserRepository {
   static String mainUrl = "http://127.0.0.1:8000";
@@ -9,6 +12,36 @@ class UserRepository {
 
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final Dio _dio = Dio();
+  final Auth auth = Auth();
+
+  Future<String> getAssignments(String url, Object data) async {
+
+     final String token = await storage.read(key: 'token');
+     Response response = await _dio.post(
+      mainUrl + url,
+      data: {
+      "employee_id": "0",
+      "date_format": "d%2Fm%2FY",
+      "employee": "",
+      "branch": "",
+      "job_position": "",
+      },
+      options: Options(
+        headers: {
+          'Authorization': "Bearer ${token}",
+        },
+      ),
+    );
+
+
+    // var response =  await auth.postData(url, data);
+
+
+    print(response);
+
+    // List<Assignment> assignment = Assignment.fromJson(response) as List;
+    return 'package';
+  }
 
   Future<bool> hasToken() async {
     var value = await storage.read(key: 'token');
