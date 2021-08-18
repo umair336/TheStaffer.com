@@ -17,15 +17,11 @@ class UserRepository {
   Future<String> getAssignments(String url, Object data) async {
 
      final String token = await storage.read(key: 'token');
+
+     FormData formData = new FormData.fromMap(data);
      Response response = await _dio.post(
       mainUrl + url,
-      data: {
-      "employee_id": "0",
-      "date_format": "d%2Fm%2FY",
-      "employee": "",
-      "branch": "",
-      "job_position": "",
-      },
+      data: formData,
       options: Options(
         headers: {
           'Authorization': "Bearer ${token}",
