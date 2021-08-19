@@ -10,7 +10,7 @@ class Assignment extends Equatable {
   @override
   List<Object> get props => [id, assignmentText, assignmentAuthor];
 
-  static Assignment fromJson(dynamic json) {
+  static Assignment fromJson(json) {
     return Assignment(
       id: 1,
       // assignmentText: json['assignmentText'],

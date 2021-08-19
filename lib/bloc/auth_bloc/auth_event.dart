@@ -30,7 +30,7 @@ class FetchAssignmentEvent extends AuthenticationEvent {
   const FetchAssignmentEvent({@required this.url, @required this.data});
 
   @override
-  List<Object> get props => [url];
+  List<Object> get props => [url,data];
 
   @override
   String toString() => 'FetchAssignmentEvent { url: $url, data: $data }';

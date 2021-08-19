@@ -3,14 +3,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 class Auth {
-  static String mainUrl = "http://127.0.0.1:8000/api/";
-
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final Dio _dio = Dio();
 
   Future<String> getData(String url) async {
     Response response = await _dio.get(
-      mainUrl + url,
+      url,
       options: Options(
         headers: {
           'accept': '*/*',
@@ -27,23 +25,20 @@ class Auth {
     return _data;
   }
 
-  Future<String> postData(String url, Object data) async {
+  Future<Object> postData(String url, Object data) async {
+    final String token = await storage.read(key: 'token');
     Response response = await _dio.post(
-      mainUrl + url,
+      url,
       data: data,
       options: Options(
         headers: {
           'accept': '*/*',
           'Accept': 'application/json',
           'contentType': 'multipart/form-data',
-          'Authorization': "Bearer ${storage.read(key: 'token')}",
+          'Authorization': "Bearer ${token}",
         },
       ),
     );
-    print(response);
-    print('----------here-------------2');
-    String jsonsDataString = response.toString();
-    var _data = jsonDecode(jsonsDataString);
-    return _data;
+    return response;
   }
 }

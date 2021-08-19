@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:staffer/models/models.dart';
+// import 'package:staffer/models/models.dart';
 import 'package:meta/meta.dart';
 abstract class AuthenticationState extends Equatable {
   @override
@@ -16,7 +16,9 @@ class AuthenticationLoading extends AuthenticationState {}
 
 class AssignmentLoadedState extends AuthenticationState {
 
-  final List<Assignment> assignments;
+  // final List<Assignment> assignments;
+  final Object assignments;
+
 
   AssignmentLoadedState({@required this.assignments});
 

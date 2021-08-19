@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/auth_bloc/auth.dart';
 import 'bloc/auth_bloc/auth_bloc.dart';
 import 'repositories/repositories.dart';
-import 'repositories/assignment_repository.dart';
 import 'screens/auth/intro_screen.dart';
 import 'package:staffer/style/theme.dart' as Style;
 

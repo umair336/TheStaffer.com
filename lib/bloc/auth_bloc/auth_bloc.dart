@@ -3,19 +3,16 @@ import 'package:staffer/repositories/repositories.dart';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'auth.dart';
-import 'package:staffer/repositories/assignment_repository.dart';
 import 'package:staffer/repositories/auth.dart';
 
 import 'package:staffer/models/models.dart';
-
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final UserRepository userRepository;
   final Auth auth;
 
-
-  AuthenticationBloc({@required this.userRepository,@required this.auth})
+  AuthenticationBloc({@required this.userRepository, @required this.auth})
       : assert(userRepository != null);
 
   @override
@@ -46,24 +43,26 @@ class AuthenticationBloc
       yield AuthenticationUnauthenticated();
     }
 
-     if (event is FetchAssignmentEvent) {
-
-        //  print(event.data);
-
+    if (event is FetchAssignmentEvent) {
       // yield AuthenticationLoading();
       try {
-        final assignments = await userRepository.getAssignments(event.url,event.data);
-         print('here----here');
-        //  print(assignments);
-
-
+        final assignments = await userRepository.getAssignments(event.url, event.data);
+        print(assignments);
         // yield AssignmentLoadedState(assignments: assignments);
+        //  yield AuthenticationAuthenticated();
       } catch (e) {
-         print('error');
-         print(e);
-
         // yield AssignmentErrorState(message: e.toString());
       }
     }
+
+    // if (event is FetchAssignmentEvent) {
+    //   yield AssignmentLoadingState();
+    //   try {
+    //     List<Assignment> assignments = await repository.getAssignments();
+    //     yield AssignmentLoadedState(assignments: assignments);
+    //   } catch (e) {
+    //     yield AssignmentErrorState(message: e.toString());
+    //   }
+    // }
   }
 }
