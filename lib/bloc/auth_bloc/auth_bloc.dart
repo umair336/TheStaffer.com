@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:staffer/repositories/repositories.dart';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
@@ -44,14 +45,13 @@ class AuthenticationBloc
     }
 
     if (event is FetchAssignmentEvent) {
-      // yield AuthenticationLoading();
       try {
-        final assignments = await userRepository.getAssignments(event.url, event.data);
+        final assignments =
+            await userRepository.getAssignments(event.url, event.data);
         print(assignments);
-        // yield AssignmentLoadedState(assignments: assignments);
-        //  yield AuthenticationAuthenticated();
+        yield AssignmentLoadedState(assignments: assignments);
       } catch (e) {
-        // yield AssignmentErrorState(message: e.toString());
+        yield AssignmentErrorState(message: e.toString());
       }
     }
 
