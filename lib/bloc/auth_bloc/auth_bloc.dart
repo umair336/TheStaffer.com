@@ -46,7 +46,7 @@ class AuthenticationBloc
 
     if (event is FetchAssignmentEvent) {
       try {
-        final assignments =
+        List assignments =
             await userRepository.getAssignments(event.url, event.data);
         print(assignments);
         yield AssignmentLoadedState(assignments: assignments);

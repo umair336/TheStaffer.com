@@ -42,7 +42,7 @@ class _UpcomingState extends State<Upcoming> {
           return Scaffold(
               body: Container(
                   child: ListView.builder(
-            itemCount: dummyList.length,
+            itemCount: state.assignments.length,
             itemBuilder: (context, index) => Container(
               padding: EdgeInsets.all(20),
               width: 120,
@@ -84,7 +84,7 @@ class _UpcomingState extends State<Upcoming> {
                             // fontWeight: FontWeight.bold,
                             fontSize: 12.0,
                           )),
-                      Text("Jan: 00,2000",
+                      Text(state.assignments[index]['start_date'],
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w600,

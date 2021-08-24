@@ -17,13 +17,13 @@ class AuthenticationLoading extends AuthenticationState {}
 class AssignmentLoadedState extends AuthenticationState {
 
   // final Assignment assignments;
-  final Object assignments;
+  final List assignments;
 
 
   AssignmentLoadedState({@required this.assignments});
 
   @override
-  List<Object> get props => [assignments];
+  List<List> get props => [assignments];
 }
 
 class AssignmentErrorState extends AuthenticationState {
