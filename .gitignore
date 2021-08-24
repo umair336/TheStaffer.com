@@ -50,3 +50,6 @@ Thumbs.db
 
 .dart_tool
 Build
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
