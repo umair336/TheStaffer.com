@@ -15,6 +15,7 @@ class _PastState extends State<Past> {
     super.initState();
     final String _url = '/admin/employees/assignments/list';
     final Object _data = {
+      "status":"Completed",
       "employee_id": "0",
       "date_format": "d%2Fm%2FY",
       "employee": "",

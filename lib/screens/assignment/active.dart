@@ -14,6 +14,7 @@ class _ActiveState extends State<Active> {
     super.initState();
     final String _url = '/admin/employees/assignments/list';
     final Object _data = {
+      "status":"Active",
       "employee_id": "0",
       "date_format": "d%2Fm%2FY",
       "employee": "",

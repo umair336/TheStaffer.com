@@ -16,12 +16,14 @@ class _UpcomingState extends State<Upcoming> {
     super.initState();
     final String _url = '/admin/employees/assignments/list';
     final Object _data = {
+      "status":"Upcoming",
       "employee_id": "0",
       "date_format": "d%2Fm%2FY",
       "employee": "",
       "branch": "",
       "job_position": "",
     };
+
     BlocProvider.of<AuthenticationBloc>(context).add(
       FetchAssignmentEvent(url: _url, data: _data),
     );
