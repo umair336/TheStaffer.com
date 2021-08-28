@@ -48,7 +48,7 @@ class AuthenticationBloc
       try {
         List assignments =
             await userRepository.getAssignments(event.url, event.data);
-        print(assignments);
+        print(assignments[0]);
         yield AssignmentLoadedState(assignments: assignments);
       } catch (e) {
         yield AssignmentErrorState(message: e.toString());

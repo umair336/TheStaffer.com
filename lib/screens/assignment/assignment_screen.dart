@@ -3,7 +3,6 @@ import './active.dart';
 import './past.dart';
 import './upcoming.dart';
 
-
 class AssignmentScreen extends StatefulWidget {
   // const AssignmentScreen({ Key? key }) : super(key: key);
 
@@ -12,17 +11,15 @@ class AssignmentScreen extends StatefulWidget {
 }
 
 class _AssignmentScreenState extends State<AssignmentScreen> {
-
   //  final List<TabInfo> _tabs = [
   //   TabInfo("SAN CLEMENTE", Active()),
   //   TabInfo("HUNTINGTON BEACH", Past()),
   //   TabInfo("SHAKE SHACK", Upcoming()),
   // ];
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       title: 'Assignments',
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
@@ -31,7 +28,31 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
           appBar: AppBar(
             title: Text('Assignments'),
             automaticallyImplyLeading: false,
-            backgroundColor: Color(0xff5808e5),
+            //  backgroundColor: Color(0xff5808e5),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                stops: [
+                  0.1,
+                  0.5,
+                ],
+                colors: [
+                  Color.fromRGBO(0, 91, 196, 1),
+                  Color.fromRGBO(97, 29, 165, 1),
+                ],
+              )
+                  /*
+                  gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: <Color>[
+                    Color.fromRGBO(0, 91, 196, 1),
+                    Color.fromRGBO(97, 29, 165, 1),
+                  ])*/
+                  ),
+            ),
             bottom: TabBar(
               indicatorColor: Colors.white,
               tabs: [
@@ -53,4 +74,3 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
     );
   }
 }
-
