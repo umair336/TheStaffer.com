@@ -21,6 +21,7 @@ class _LoginFormState extends State<LoginForm> {
   _LoginFormState(this.userRepository);
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+   bool _showPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -46,155 +47,193 @@ class _LoginFormState extends State<LoginForm> {
       },
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.only(right: 20.0, left: 20.0, top: 80.0),
-            child: Form(
-              child: Column(
-                children: [
-                  Container(
-                      height: 200.0,
-                      padding: EdgeInsets.only(bottom: 20.0, top: 40.0),
+          var size = MediaQuery.of(context).size;
+         
+        
+          return Scaffold(
+            body: Container(
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/Group 12874.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, left: 20.0, top: 80.0),
+                    child: Form(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "STAFFER",
-                            style: TextStyle(
-                                color: Style.Colors.mainColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24.0),
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.14),
+                          Image.asset(
+                            "images/Group 12869.png",
+                            height: size.height * 0.10,
+                            fit: BoxFit.cover,
                           ),
                           SizedBox(
-                            height: 5.0,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.10),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: 'Nunito Sans',
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(255, 255, 255, 1)),
+                            ),
                           ),
-                          Text(
-                            "Industrial/Commercial laundry operations management software.",
+                          SizedBox(
+                              height:
+                                  MediaQuery.of(context).size.height * 0.05),
+                          TextFormField(
                             style: TextStyle(
-                                fontSize: 12.0, color: Colors.black38),
-                          )
-                        ],
-                      )),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  TextFormField(
-                    style: TextStyle(
-                        fontSize: 14.0,
-                        color: Style.Colors.titleColor,
-                        fontWeight: FontWeight.bold),
-                    controller: _usernameController,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      prefixIcon:
-                          Icon(EvaIcons.emailOutline, color: Colors.black26),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: new BorderSide(color: Colors.black12),
-                          borderRadius: BorderRadius.circular(30.0)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              new BorderSide(color: Style.Colors.mainColor),
-                          borderRadius: BorderRadius.circular(30.0)),
-                      contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
-                      labelText: "E-Mail",
-                      hintStyle: TextStyle(
-                          fontSize: 12.0,
-                          color: Style.Colors.grey,
-                          fontWeight: FontWeight.w500),
-                      labelStyle: TextStyle(
-                          fontSize: 12.0,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    autocorrect: false,
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  TextFormField(
-                    style: TextStyle(
-                        fontSize: 14.0,
-                        color: Style.Colors.titleColor,
-                        fontWeight: FontWeight.bold),
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      prefixIcon: Icon(
-                        EvaIcons.lockOutline,
-                        color: Colors.black26,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: new BorderSide(color: Colors.black12),
-                          borderRadius: BorderRadius.circular(30.0)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              new BorderSide(color: Style.Colors.mainColor),
-                          borderRadius: BorderRadius.circular(30.0)),
-                      contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
-                      labelText: "Password",
-                      hintStyle: TextStyle(
-                          fontSize: 12.0,
-                          color: Style.Colors.grey,
-                          fontWeight: FontWeight.w500),
-                      labelStyle: TextStyle(
-                          fontSize: 12.0,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    autocorrect: false,
-                    obscureText: true,
-                  ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 30.0, bottom: 20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        SizedBox(
-                            height: 45,
-                            child: state is LoginLoading
-                                ? Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Center(
-                                          child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            height: 25.0,
-                                            width: 25.0,
-                                            child: CupertinoActivityIndicator(),
+                              fontSize: 14.0,
+                              color: Colors.white,
+                              // fontWeight: FontWeight.bold
+                            ),
+                            cursorColor: Colors.white,
+                            controller: _usernameController,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      new BorderSide(color: Colors.white60),
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      new BorderSide(color: Colors.white60),
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              contentPadding:
+                                  EdgeInsets.only(left: 10.0, right: 10.0),
+                              labelText: "Email",
+                              hintStyle: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                              labelStyle: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            autocorrect: false,
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          TextFormField(
+                             obscureText: _showPassword,
+                            style: TextStyle(
+                                fontSize: 14.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                            cursorColor: Colors.white,
+                            controller: _passwordController,
+                            decoration: InputDecoration(
+                              
+                              fillColor: Colors.white,
+                              suffixIcon: GestureDetector(
+                          onTap: _togglePasswordVisibility,
+                          child: _showPassword
+                              ? Icon(Icons.visibility ,color: Colors.white60,)
+                              : Icon(Icons.visibility_off ,color: Colors.white60,),
+                        ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      new BorderSide(color: Colors.white60),
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      new BorderSide(color: Colors.white60),
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              contentPadding:
+                                  EdgeInsets.only(left: 10.0, right: 10.0),
+                              labelText: "Password",
+                              hintStyle: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                              labelStyle: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            autocorrect: false,
+                          
+                          ),
+                          SizedBox(
+                            height: 30.0,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 30.0, bottom: 20.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                SizedBox(
+                                    height: 45,
+                                    child: state is LoginLoading
+                                        ? Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Center(
+                                                  child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  SizedBox(
+                                                    height: 25.0,
+                                                    width: 25.0,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                          valueColor: new AlwaysStoppedAnimation<Color>(
+                                                              Style.Colors.mainColor),
+                                                          strokeWidth: 4.0,
+                                                        ),
+                                                  )
+                                                ],
+                                              ))
+                                            ],
                                           )
-                                        ],
-                                      ))
-                                    ],
-                                  )
-                                : RaisedButton(
-                                    color: Style.Colors.mainColor,
-                                    disabledColor: Style.Colors.mainColor,
-                                    disabledTextColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                    onPressed: _onLoginButtonPressed,
-                                    child: Text("LOG IN",
-                                        style: new TextStyle(
-                                            fontSize: 12.0,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white)))),
-                      ],
+                                        : RaisedButton(
+                                            color: Color.fromRGBO(39, 0, 64, 1),
+                                            disabledColor:
+                                                Style.Colors.mainColor,
+                                            disabledTextColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              side: BorderSide(
+                                                  color: Colors.white),
+                                            ),
+                                            onPressed: _onLoginButtonPressed,
+                                            child: Text("LOG IN",
+                                                style: new TextStyle(
+                                                    fontSize: 12.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white)))),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ],
-              ),
-            ),
+                )),
           );
         },
       ),
     );
+  }
+  void _togglePasswordVisibility() {
+    setState(() {
+      _showPassword = !_showPassword;
+    });
   }
 }

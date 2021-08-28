@@ -26,71 +26,43 @@ class _IntroPageState extends State<IntroPage> {
 
   final List<PageViewModel> pages = [
     PageViewModel(
+      // pageColor: const Color(0xFF607D8B),
       titleWidget: Column(
         children: <Widget>[
-          Text(
-            'FREE GIFT',
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Container(
-            height: 3,
-            width: 100,
-            decoration: BoxDecoration(
-                color: Style.Colors.mainColor,
-                borderRadius: BorderRadius.circular(10)),
-          )
-        ],
-      ),
-      body:
-          "Free gifts with purchase. Offer free gifts like a gift wrap, gift card, or any free product.",
-      image: Center(child: SvgPicture.asset("assets/icons/gift.svg")),
-      decoration: const PageDecoration(
-          pageColor: Colors.white,
-          bodyTextStyle: TextStyle(
-            color: Colors.black54,
-            fontSize: 16,
-          ),
-          descriptionPadding: EdgeInsets.only(left: 20, right: 20),
-          imagePadding: EdgeInsets.all(20)),
-    ),
-    PageViewModel(
-      titleWidget: Column(
-        children: <Widget>[
-          Text(
-            'PAYMENT INTEGRATION',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w600,
+           Padding(
+            padding: const EdgeInsets.only(top: 60.0, bottom: 15.0),
+            child: Image.asset(
+              "images/Group 12869.png",
             ),
           ),
-          SizedBox(
-            height: 8,
+          Padding(
+            padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+            child: Image.asset(
+              "images/Group 13122.png",
+            ),
           ),
-          Container(
-            height: 3,
-            width: 100,
-            decoration: BoxDecoration(
-                color: Style.Colors.mainColor,
-                borderRadius: BorderRadius.circular(10)),
-          )
+
+            Padding(
+            padding: const EdgeInsets.only(top: 25.0, bottom: 0.0),
+            child: Text(
+              'Get Your Schedule Anywher',
+              style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: Color.fromRGBO(255, 255, 255, 1)),
+            ),
+          ),
+         
         ],
       ),
-      body:
-          "A payment gateway as a merchant service that processes credit card payments for ecommerce sites and traditional brick and mortar stores.",
-      image: Center(
-          child: SizedBox(
-        width: 450.0,
-        child: SvgPicture.asset("assets/icons/payment.svg"),
-      )),
+
+      body: "Let your manager know when the best times are for you to work.",
+
       decoration: const PageDecoration(
-          pageColor: Colors.white,
+          pageColor: Color.fromRGBO(97, 29, 165, 1),
           bodyTextStyle: TextStyle(
-            color: Colors.black54,
             fontSize: 16,
+            color: Color.fromRGBO(255, 255, 255, 1),
           ),
           descriptionPadding: EdgeInsets.only(left: 20, right: 20),
           imagePadding: EdgeInsets.all(20)),
@@ -98,33 +70,84 @@ class _IntroPageState extends State<IntroPage> {
     PageViewModel(
       titleWidget: Column(
         children: <Widget>[
-          Text(
-            'CALL CENTER',
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
+           Padding(
+            padding: const EdgeInsets.only(top: 60.0, bottom: 15.0),
+            child: Image.asset(
+              "images/Group 12869.png",
+            ),
           ),
+              Padding(
+            padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+             child: Image.asset(
+                   "images/Group 13216.png",
+                 ),
+           ),
+           Padding(
+            padding: const EdgeInsets.only(top: 25.0, bottom: 0.0),
+            child: Text(
+              'Chat With Your Coworkers',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+                color: Color.fromRGBO(255, 255, 255, 1),
+              ),
+            ),
+          ),
+
+          /*
           SizedBox(
             height: 8,
           ),
-          Container(
-            height: 3,
-            width: 100,
-            decoration: BoxDecoration(
-                color: Style.Colors.mainColor,
-                borderRadius: BorderRadius.circular(10)),
-          )
+         */
         ],
       ),
-      body:
-          "Call center gives a small business a big business feel. 24-hour sales, order entry, payment processing, billing inquiries, and more.",
-      image: Center(
-          child: SizedBox(
-        width: 450.0,
-        child: SvgPicture.asset("assets/icons/call.svg"),
-      )),
+      body: "Let your manager know when the best times are for you to work.",
+     
       decoration: const PageDecoration(
-          pageColor: Colors.white,
+        pageColor: Color.fromRGBO(97, 29, 165, 1),
+        bodyTextStyle: TextStyle(
+          color: Color.fromRGBO(255, 255, 255, 1),
+          fontSize: 16,
+        ),
+        descriptionPadding: EdgeInsets.only(left: 20, right: 20),
+        imagePadding: EdgeInsets.all(20),
+      ),
+    ),
+    PageViewModel(
+      titleWidget: Column(
+        children: <Widget>[
+           Padding(
+            padding: const EdgeInsets.only(top: 60.0, bottom: 15.0),
+            child: Image.asset(
+              "images/Group 12869.png",
+            ),
+          ),
+           Padding(
+            padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+            child: Image.asset(
+                  "images/Group 13178.png",
+                ),
+          ),
+           Padding(
+            padding: const EdgeInsets.only(top: 25.0, bottom: 0.0),
+            child: Text(
+              'Set Your Availability',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+                color: Color.fromRGBO(255, 255, 255, 1),
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: "Let your manager know when the best times are for you to work.",
+      
+      decoration: const PageDecoration(
+          pageColor: Color.fromRGBO(97, 29, 165, 1),
           bodyTextStyle: TextStyle(
-            color: Colors.black54,
+            color: Color.fromRGBO(255, 255, 255, 1),
             fontSize: 16,
           ),
           descriptionPadding: EdgeInsets.only(left: 20, right: 20),
@@ -139,6 +162,7 @@ class _IntroPageState extends State<IntroPage> {
             userRepository: userRepository,
           )
         : IntroductionScreen(
+            //    globalBackgroundColor: Colors.amber,
             pages: pages,
             onDone: () {
               afterIntroComplete();
@@ -148,16 +172,25 @@ class _IntroPageState extends State<IntroPage> {
             },
             showSkipButton: true,
             skip: const Text('Skip',
-                style:
-                    TextStyle(fontWeight: FontWeight.w600, color: Colors.grey)),
-            next: const Icon(Icons.navigate_next),
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                )),
+
+            next: const Icon(
+              Icons.navigate_next,
+              color: Color.fromRGBO(255, 255, 255, 1),
+            ),
             done: const Text("DONE",
-                style: TextStyle(fontWeight: FontWeight.w600)),
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                )),
             dotsDecorator: DotsDecorator(
                 size: const Size.square(7.0),
                 activeSize: const Size(20.0, 5.0),
                 activeColor: Style.Colors.mainColor,
-                color: Colors.black12,
+                color: Color.fromRGBO(255, 255, 255, 1),
                 spacing: const EdgeInsets.symmetric(horizontal: 3.0),
                 activeShape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0))),
