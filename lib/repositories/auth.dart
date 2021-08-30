@@ -6,7 +6,8 @@ class Auth {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final Dio _dio = Dio();
 
-  Future<String> getData(String url) async {
+  Future<Object> getData(String url) async {
+    final String token = await storage.read(key: 'token');
     Response response = await _dio.get(
       url,
       options: Options(
@@ -14,15 +15,11 @@ class Auth {
           'accept': '*/*',
           'Accept': 'application/json',
           'contentType': 'multipart/form-data',
-          'Authorization': "Bearer ${storage.read(key: 'token')}",
+          'Authorization': "Bearer ${token}",
         },
       ),
     );
-    String jsonsDataString = response.toString();
-    print(jsonsDataString);
-    print('----------here-------------1');
-    var _data = jsonDecode(jsonsDataString);
-    return _data;
+    return response;
   }
 
   Future<Object> postData(String url, Object data) async {

@@ -7,7 +7,7 @@ import 'package:staffer/constants/string.dart';
 import 'auth.dart';
 
 class UserRepository {
-  static String mainUrl = "https://dev2.thestaffer.com/api";
+  static String mainUrl = "http://127.0.0.1:8000/api";
   var loginUrl = '$mainUrl/login';
 
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
@@ -16,16 +16,15 @@ class UserRepository {
 
   Future<List> getAssignments(String url, Object data) async {
     final String _url = mainUrl + url;
-    print('before request');
-    Response response =  await auth.postData(_url, data);
-    print(response.data['data'].length);
-    // try {
-    // List<Assignment> assignment = response.data['data'];
-    // print(assignment);
-    // } catch (error) {
-    //   print(error.toString());
-    // }
+    Response response = await auth.postData(_url, data);
     return response.data['data'];
+  }
+
+  Future<List> getHomeData(String url) async {
+    final String _url = mainUrl + url;
+    Response response = await auth.getData(_url);
+    print(response.data);
+    return response.data['tasks'];
   }
 
   Future<bool> hasToken() async {

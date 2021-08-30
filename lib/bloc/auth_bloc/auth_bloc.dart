@@ -48,21 +48,27 @@ class AuthenticationBloc
       try {
         List assignments =
             await userRepository.getAssignments(event.url, event.data);
-        print(assignments[0]);
         yield AssignmentLoadedState(assignments: assignments);
       } catch (e) {
         yield AssignmentErrorState(message: e.toString());
       }
     }
 
-    // if (event is FetchAssignmentEvent) {
-    //   yield AssignmentLoadingState();
-    //   try {
-    //     List<Assignment> assignments = await repository.getAssignments();
-    //     yield AssignmentLoadedState(assignments: assignments);
-    //   } catch (e) {
-    //     yield AssignmentErrorState(message: e.toString());
-    //   }
-    // }
+    if (event is FetchHomeEvent) {
+      try {
+        List data = await userRepository.getHomeData(event.url);
+       print('before request');
+       try {
+        print(data);
+       }catch (e){
+         print(e.message);
+       }
+       print('end request');
+
+        yield HomePageLoadedState(homeData: data);
+      } catch (e) {
+        yield AssignmentErrorState(message: e.toString());
+      }
+    }
   }
 }

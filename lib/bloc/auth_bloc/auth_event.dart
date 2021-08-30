@@ -35,3 +35,15 @@ class FetchAssignmentEvent extends AuthenticationEvent {
   @override
   String toString() => 'FetchAssignmentEvent { url: $url, data: $data }';
 }
+
+class FetchHomeEvent extends AuthenticationEvent {
+  final String url;
+
+  const FetchHomeEvent({@required this.url});
+
+  @override
+  List<Object> get props => [url];
+
+  @override
+  String toString() => 'FetchHomeEvent { url: $url}';
+}

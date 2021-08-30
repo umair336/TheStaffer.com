@@ -35,3 +35,11 @@ class AssignmentErrorState extends AuthenticationState {
   @override
   List<Object> get props => [message];
 }
+
+class HomePageLoadedState extends AuthenticationState {
+
+  final List homeData;
+  HomePageLoadedState({@required this.homeData});
+  @override
+  List<List> get props => [homeData];
+}
