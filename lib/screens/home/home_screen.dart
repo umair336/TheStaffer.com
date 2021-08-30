@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:adobe_xd/pinned.dart';
-import './XDDashboardPreviousWeek.dart';
-import 'package:adobe_xd/page_link.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:staffer/bloc/auth_bloc/auth.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,26 +13,26 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    super.initState();
+    final String _url = '/admin/employees/assignments/list';
+    final Object _data = {
+      "status": "Active",
+      "employee_id": "0",
+      "date_format": "d%2Fm%2FY",
+      "employee": "",
+      "branch": "",
+      "job_position": "",
+    };
+    BlocProvider.of<AuthenticationBloc>(context).add(
+      FetchAssignmentEvent(url: _url, data: _data),
+    );
+  }
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return new Scaffold(
-        /*
-        appBar: AppBar(
-          backgroundColor: Style.Colors.mainColor,
-          title: Text("STAFFER"),
-          actions: [
-            /*
-            IconButton(
-                icon: Icon(EvaIcons.logOutOutline),
-                onPressed: () {
-                  BlocProvider.of<AuthenticationBloc>(context).add(
-                    LoggedOut(),
-                  );
-                })
-                */
-          ],
-        ),
-        */
+    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+      builder: (context, state) { 
+      return new Scaffold(
         backgroundColor: const Color(0xfffafafa),
         body: SingleChildScrollView(
           child: Stack(
@@ -563,80 +559,105 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   )),
               Positioned(
-                top: 570,
-                left: 23,
-                right: 20,
-                child: new Container(
-                  height: 100.0,
-                  child: new ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return new Card(
-                          elevation: 1.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
-                            textBaseline: TextBaseline.alphabetic,
+                    top: 570,
+                    left: 23,
+                    right: 20,
+                    child: state is AssignmentLoadedState ? new Container(
+                      height: 100.0,
+                      child: new ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: state.assignments.length > 5 ? 5 : state.assignments.length,
+                        itemBuilder: (context, index) {
+                          return new Card(
+                              elevation: 1.0,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 20),
+                                          child: Text(state.assignments[index]
+                                                    ['job_position']        ,
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: 'Nunito Sans',
+                                                color:
+                                                    Color.fromRGBO(13, 91, 196, 1)),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Text(state.assignments[index]['customer'],
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontFamily: 'Nunito Sans',
+                                          color: Color.fromRGBO(83, 83, 83, 1)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Text(state.assignments[index]
+                                                      ['start_date'],
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Nunito Sans',
+                                          color: Color.fromRGBO(31, 33, 38, 1)),
+                                    ),
+                                  )
+                                ],
+                              ));
+                        },
+                      ),
+                    ) : Column(
+                        crossAxisAlignment:
+                            CrossAxisAlignment.center,
+                        mainAxisAlignment:
+                            MainAxisAlignment.center,
+                        children: <Widget>[
+                          Center(
+                              child: Column(
+                            mainAxisAlignment:
+                                MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                height: 15,
-                              ),
-                              Container(
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 20),
-                                      child: Text(
-                                        'Quality Assurance Engineer',
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontFamily: 'Nunito Sans',
-                                            color:
-                                                Color.fromRGBO(13, 91, 196, 1)),
-                                      ),
+                                height: 25.0,
+                                width: 25.0,
+                                child:
+                                    CircularProgressIndicator(
+                                      valueColor: new AlwaysStoppedAnimation<Color>(
+                                          Style.Colors.mainColor),
+                                      strokeWidth: 4.0,
                                     ),
-                                    SizedBox(
-                                      width: 20,
-                                    )
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(
-                                  'Chicago, IL',
-                                  style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: 'Nunito Sans',
-                                      color: Color.fromRGBO(83, 83, 83, 1)),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(
-                                  'NOV 22, 2022',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Nunito Sans',
-                                      color: Color.fromRGBO(31, 33, 38, 1)),
-                                ),
                               )
                             ],
-                          ));
-                    },
-                  ),
-                ),
-              )
+                          ))
+                        ],
+                      )
+                  )
             ],
           ),
         ));
+      },
+    );
   }
 }
