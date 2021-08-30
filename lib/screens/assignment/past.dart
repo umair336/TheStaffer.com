@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:staffer/bloc/auth_bloc/auth.dart';
 import 'package:staffer/style/theme.dart' as Style;
+
 class Past extends StatefulWidget {
   // const Past({ Key? key }) : super(key: key);
 
@@ -10,12 +11,12 @@ class Past extends StatefulWidget {
 }
 
 class _PastState extends State<Past> {
-    @override
-    void initState() {
+  @override
+  void initState() {
     super.initState();
     final String _url = '/admin/employees/assignments/list';
     final Object _data = {
-      "status":"Completed",
+      "status": "Completed",
       "employee_id": "0",
       "date_format": "d%2Fm%2FY",
       "employee": "",
@@ -26,6 +27,7 @@ class _PastState extends State<Past> {
       FetchAssignmentEvent(url: _url, data: _data),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -42,135 +44,129 @@ class _PastState extends State<Past> {
                 backgroundColor: Colors.grey.shade100,
                 elevation: 0.0,
                 actions: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: TextButton(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 60,
-                                  ),
-                                  Text(
-                                    'A',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: Color.fromRGBO(183, 14, 105, 1),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(10, 18, 0, 18),
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: TextButton(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'A',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Color.fromRGBO(183, 14, 105, 1),
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Image.asset(
-                                    "images/Sorting Arrow.png",
-                                    fit: BoxFit.cover,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    'Z',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: Color.fromRGBO(112, 112, 112, 1),
+                                    SizedBox(
+                                      width: 5,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 60,
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                                    Image.asset(
+                                      "images/Sorting Arrow.png",
+                                      fit: BoxFit.cover,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      'Z',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Color.fromRGBO(112, 112, 112, 1),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
 
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromRGBO(255, 255, 255, 1)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromRGBO(255, 255, 255, 1)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
                             ),
                           ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //   Navigator.push(context,
+                            //      MaterialPageRoute(builder: (context) => Profile()));
+                          },
                         ),
-                        //      color: Colors.black,
-                        //  textColor: Colors.white,
-                        //     shape: RoundedRectangleBorder(
-                        //borderRadius: BorderRadius.circular(30)),
-                        onPressed: () {
-                          //   Navigator.push(context,
-                          //      MaterialPageRoute(builder: (context) => Profile()));
-                        },
                       ),
                     ),
                   ),
                   SizedBox(
                     width: 16,
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: TextButton(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 60,
-                                  ),
-                                  Text(
-                                    'Date',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: Color.fromRGBO(112, 112, 112, 1),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: TextButton(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Date',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Color.fromRGBO(112, 112, 112, 1),
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Image.asset(
-                                    "images/Sorting Arroww.png",
-                                    fit: BoxFit.cover,
-                                  ),
-                                  SizedBox(
-                                    width: 60,
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Image.asset(
+                                      "images/Sorting Arroww.png",
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
 
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromRGBO(255, 255, 255, 1)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromRGBO(255, 255, 255, 1)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
                             ),
                           ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //   Navigator.push(context,
+                            //      MaterialPageRoute(builder: (context) => Profile()));
+                          },
                         ),
-                        //      color: Colors.black,
-                        //  textColor: Colors.white,
-                        //     shape: RoundedRectangleBorder(
-                        //borderRadius: BorderRadius.circular(30)),
-                        onPressed: () {
-                          //   Navigator.push(context,
-                          //      MaterialPageRoute(builder: (context) => Profile()));
-                        },
                       ),
                     ),
                   ),
@@ -213,7 +209,9 @@ class _PastState extends State<Past> {
                                               const EdgeInsets.only(left: 10),
                                           child: Container(
                                             alignment: Alignment.topLeft,
-                                            child: Text(state.assignments[index]['job_position'],
+                                            child: Text(
+                                                state.assignments[index]
+                                                    ['job_position'],
                                                 style: TextStyle(
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.w600,
@@ -231,7 +229,8 @@ class _PastState extends State<Past> {
                                     padding: const EdgeInsets.only(left: 20),
                                     child: Container(
                                       alignment: Alignment.topLeft,
-                                      child: Text(state.assignments[index]['customer'],
+                                      child: Text(
+                                          state.assignments[index]['customer'],
                                           style: TextStyle(
                                               color: Color.fromRGBO(
                                                   112, 112, 112, 1),
@@ -261,7 +260,9 @@ class _PastState extends State<Past> {
                                               SizedBox(
                                                 height: 2,
                                               ),
-                                              Text(state.assignments[index]['start_date'],
+                                              Text(
+                                                  state.assignments[index]
+                                                      ['start_date'],
                                                   style: TextStyle(
                                                       color: Color.fromRGBO(
                                                           0, 0, 0, 1),
@@ -288,7 +289,13 @@ class _PastState extends State<Past> {
                                               SizedBox(
                                                 height: 2,
                                               ),
-                                              Text(state.assignments[index]['end_date'] != null? state.assignments[index]['end_date']: '',
+                                              Text(
+                                                  state.assignments[index]
+                                                              ['end_date'] !=
+                                                          null
+                                                      ? state.assignments[index]
+                                                          ['end_date']
+                                                      : '',
                                                   style: TextStyle(
                                                       color: Color.fromRGBO(
                                                           0, 0, 0, 1),
@@ -308,8 +315,7 @@ class _PastState extends State<Past> {
                                 ],
                               ),
                             ),
-                          )
-                      )));
+                          ))));
         } else {
           return Scaffold(
             //loader
@@ -338,6 +344,3 @@ class _PastState extends State<Past> {
     );
   }
 }
-
-
-
