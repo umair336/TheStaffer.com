@@ -26,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
     };
     BlocProvider.of<AuthenticationBloc>(context).add(
       FetchAssignmentEvent(url: _url, data: _data),
-      
     );
     // final String homeUrl = '/home';
     // BlocProvider.of<AuthenticationBloc>(context).add(
@@ -597,8 +596,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               children: [
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.only(
-                                                          left: 20),
+                                                      const EdgeInsets.fromLTRB(
+                                                          20, 0, 120, 0),
                                                   child: Text(
                                                     state.assignments[index]
                                                         ['job_position'],
@@ -619,7 +618,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           SizedBox(
                                             height: 10,
                                           ),
-                                          Padding(
+                                          Container(
                                             padding:
                                                 const EdgeInsets.only(left: 20),
                                             child: Text(
@@ -633,7 +632,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: 10,
+                                            height: 12,
                                           ),
                                           Padding(
                                             padding:
