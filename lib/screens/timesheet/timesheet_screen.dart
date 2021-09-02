@@ -9,6 +9,11 @@ class TimesheetScreen extends StatefulWidget {
 }
 
 class _TimesheetScreenState extends State<TimesheetScreen> {
+  String date = "";
+  DateTime selectedDate = DateTime.now();
+  String dat = "";
+  DateTime selectedDat = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -94,22 +99,27 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.04,
+                        height: 40,
+                        //   height: MediaQuery.of(context).size.height * 0.04,
                         decoration: new BoxDecoration(
                           color: Colors.purple.shade700,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Center(
-                          child: Text(
-                            '  JUN 01,2021  ',
-                            style: TextStyle(
-                              //  fontWeight: FontWeight.bold,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Nunito Sans',
-                              color: Color.fromRGBO(255, 255, 255, 1),
-                            ),
-                          ),
+                          child: TextButton(
+                              onPressed: () {
+                                _selectDate(context);
+                              },
+                              child: Text(
+                                "${selectedDate.day}-${selectedDate.month}-${selectedDate.year}",
+                                style: TextStyle(
+                                  //  fontWeight: FontWeight.bold,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Nunito Sans',
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                ),
+                              )),
                         ),
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.03),
@@ -127,22 +137,26 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                       ),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.03),
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.04,
+                        height: 40,
                         decoration: new BoxDecoration(
                           color: Colors.purple.shade700,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Center(
-                          child: Text(
-                            '  JUN 01,2021  ',
-                            style: TextStyle(
-                              //  fontWeight: FontWeight.bold,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Nunito Sans',
-                              color: Color.fromRGBO(255, 255, 255, 1),
-                            ),
-                          ),
+                          child: TextButton(
+                              onPressed: () {
+                                _selectDae(context);
+                              },
+                              child: Text(
+                                "${selectedDat.day}-${selectedDat.month}-${selectedDat.year}",
+                                style: TextStyle(
+                                  //  fontWeight: FontWeight.bold,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Nunito Sans',
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                ),
+                              )),
                         ),
                       ),
                     ],
@@ -1077,5 +1091,51 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
         ],
       )),
     );
+  }
+
+  _selectDate(BuildContext context) async {
+    final selected = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2025),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+           primaryColor: Colors.red, //Head background
+            accentColor: Colors.red, //selection colo
+            dialogBackgroundColor: Colors.white, 
+          ),
+          child: child,
+        );
+      },
+    );
+    if (selected != null && selected != selectedDate)
+      setState(() {
+        selectedDate = selected;
+      });
+  }
+
+  _selectDae(BuildContext context) async {
+    final selected = await showDatePicker(
+      context: context,
+      initialDate: selectedDat,
+      firstDate: DateTime(2010),
+      lastDate: DateTime(2025),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Colors.red, //Head background
+            accentColor: Colors.red, //selection color
+            dialogBackgroundColor: Colors.white, //Background color
+          ),
+          child: child,
+        );
+      },
+    );
+    if (selected != null && selected != selectedDat)
+      setState(() {
+        selectedDat = selected;
+      });
   }
 }
