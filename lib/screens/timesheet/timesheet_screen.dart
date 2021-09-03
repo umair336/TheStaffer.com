@@ -48,13 +48,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                       Container(
                         child: Row(
                           children: [
-                            IconButton(
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                size: 20,
-                              ),
-                              onPressed: () {},
+                            SizedBox(
+                              width: 10,
                             ),
                             Text(
                               'Time Sheet',
@@ -111,7 +106,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                 _selectDate(context);
                               },
                               child: Text(
-                                "${selectedDate.day}-${selectedDate.month}-${selectedDate.year}",
+                                "  ${selectedDate.day}  -  ${selectedDate.month}  -  ${selectedDate.year}  ",
                                 style: TextStyle(
                                   //  fontWeight: FontWeight.bold,
                                   fontSize: 16.0,
@@ -148,7 +143,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                 _selectDae(context);
                               },
                               child: Text(
-                                "${selectedDat.day}-${selectedDat.month}-${selectedDat.year}",
+                                "  ${selectedDat.day}  -  ${selectedDat.month}  -  ${selectedDat.year}  ",
                                 style: TextStyle(
                                   //  fontWeight: FontWeight.bold,
                                   fontSize: 16.0,
@@ -1102,9 +1097,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       builder: (BuildContext context, Widget child) {
         return Theme(
           data: ThemeData.light().copyWith(
-           primaryColor: Colors.red, //Head background
+            primaryColor: Colors.red, //Head background
             accentColor: Colors.red, //selection colo
-            dialogBackgroundColor: Colors.white, 
+            dialogBackgroundColor: Colors.white,
           ),
           child: child,
         );

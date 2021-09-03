@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:staffer/bloc/auth_bloc/auth.dart';
 import 'package:staffer/style/theme.dart' as Style;
+import './assignmentdetail.dart';
 
 class Active extends StatefulWidget {
   @override
@@ -216,10 +217,20 @@ class _ActiveState extends State<Active> {
                                                     fontSize: 19.0)),
                                           ),
                                         ),
-                                        Image.asset(
+                                        Container(
+            child: InkWell(
+              onTap: () {
+               Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Assignmentdetail()));
+              },
+              child:Image.asset(
                                           "images/Path 58358.png",
                                           height: size.height * 0.05,
                                         ),
+            ),
+          ),
+
+                                        
                                       ],
                                     ),
                                   ),

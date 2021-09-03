@@ -23,7 +23,6 @@ class _MainScreenState extends State<MainScreen> {
     TimesheetScreen()
   ];
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +46,7 @@ class _MainScreenState extends State<MainScreen> {
       //         })
       //   ],
       // ),
-      
-      
+
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -57,6 +55,8 @@ class _MainScreenState extends State<MainScreen> {
         // iconSize: 30,
         // selectedFontSize: 10,
         // unselectedFontSize: 8,
+        unselectedItemColor: Color.fromRGBO(83, 83, 83, 1),
+        selectedItemColor: Color.fromRGBO(183, 14, 105, 1),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -84,4 +84,3 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-

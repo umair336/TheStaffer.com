@@ -39,33 +39,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 25,
+                    height: 30,
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(7, 0, 7, 0),
+                    padding: const EdgeInsets.fromLTRB(22, 0, 7, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  Icons.arrow_back,
-                                  color: Color.fromRGBO(255, 255, 255, 1),
-                                  size: 20,
-                                ),
-                                onPressed: () {},
-                              ),
-                              Text(
-                                'Profile',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18.0,
-                                  color: Color.fromRGBO(255, 255, 255, 1),
-                                ),
-                              ),
-                            ],
+                        Text(
+                          'Profile',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            color: Color.fromRGBO(255, 255, 255, 1),
                           ),
                         ),
                         IconButton(
@@ -85,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             SizedBox(
-              height: 25,
+              height: 35,
             ),
             Padding(
                 padding: const EdgeInsets.fromLTRB(23, 0, 23, 0),
@@ -95,12 +81,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
                       color: Colors.grey.shade300,
-                      width: 2,
+                      width: 1,
                     ),
                   ),
                   child: Column(
                     children: [
-                      SizedBox(height: 7),
+                      SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                         child: Row(
@@ -149,7 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 15),
+                      SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.only(left: 60),
                         child: Row(
@@ -172,7 +158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.only(left: 51),
                         child: Row(
@@ -195,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.only(left: 55),
                         child: Row(
@@ -218,7 +204,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.only(left: 52),
                         child: Row(
@@ -241,7 +227,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.only(left: 61),
                         child: Row(
@@ -281,7 +267,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 25),
+                      SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.only(left: 57),
                         child: Row(
@@ -310,28 +296,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     0.30,
                                                 child: Column(
                                                   children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets
-                                                              .fromLTRB(
-                                                          10, 10, 0, 0),
+                                                    Container(
+                                                      alignment:
+                                                          Alignment.topLeft,
                                                       child: Text(
                                                         'Reset Password',
                                                         style: TextStyle(
                                                           fontFamily:
                                                               'Nunito Sans',
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 12.0,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .underline,
+                                                          fontSize: 15.0,
                                                           color: Color.fromRGBO(
                                                               13, 91, 196, 1),
                                                         ),
                                                       ),
                                                     ),
                                                     SizedBox(
-                                                      height: 10,
+                                                      height: 20,
                                                     ),
                                                     TextFormField(
                                                       style: TextStyle(
@@ -344,6 +324,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                           Colors.grey.shade300,
                                                       decoration:
                                                           InputDecoration(
+                                                        suffixIcon: Icon(
+                                                          Icons
+                                                              .visibility_outlined,
+                                                          color: Color.fromRGBO(
+                                                              183, 14, 105, 1),
+                                                        ),
                                                         enabledBorder: OutlineInputBorder(
                                                             borderSide:
                                                                 new BorderSide(
@@ -420,9 +406,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                           child: _showPassword
                                                               ? Icon(
                                                                   Icons
-                                                                      .visibility,
-                                                                  color: Colors
-                                                                      .pink)
+                                                                      .visibility_off_outlined,
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          183,
+                                                                          14,
+                                                                          105,
+                                                                          1))
                                                               : Icon(
                                                                   Icons
                                                                       .visibility_off,
@@ -484,117 +474,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       height: 15,
                                                     ),
                                                     Container(
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Container(
-                                                            //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                                                            //   color: Color.fromRGBO(23, 197, 204, 1),
+                                                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                                      //   color: Color.fromRGBO(23, 197, 204, 1),
+                                                      width: 230,
+                                                      child: TextButton(
+                                                        child: Text(
+                                                          'Save',
+                                                          style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 14.0,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
 
-                                                            child: TextButton(
-                                                              child: Text(
-                                                                'Save',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  color: Colors
-                                                                      .white,
-                                                                ),
-                                                              ),
+                                                        style: ButtonStyle(
+                                                          backgroundColor:
+                                                              MaterialStateProperty
+                                                                  .all<Color>(Color
+                                                                      .fromRGBO(
+                                                                          13,
+                                                                          91,
+                                                                          196,
+                                                                          1)),
+                                                          shape: MaterialStateProperty
+                                                              .all<
+                                                                  RoundedRectangleBorder>(
+                                                            RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
 
-                                                              style:
-                                                                  ButtonStyle(
-                                                                backgroundColor:
-                                                                    MaterialStateProperty.all<
-                                                                            Color>(
-                                                                        Color.fromRGBO(
-                                                                            13,
-                                                                            91,
-                                                                            196,
-                                                                            1)),
-                                                                shape: MaterialStateProperty
-                                                                    .all<
-                                                                        RoundedRectangleBorder>(
-                                                                  RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            10.0),
-
-                                                                    //   side: BorderSide(color: Colors.red.shade900),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              //      color: Colors.black,
-                                                              //  textColor: Colors.white,
-                                                              //     shape: RoundedRectangleBorder(
-                                                              //borderRadius: BorderRadius.circular(30)),
-                                                              onPressed: () {
-                                                                //          Navigator.push(context,
-                                                                //            MaterialPageRoute(builder: (context) => Profile()));
-                                                              },
+                                                              //   side: BorderSide(color: Colors.red.shade900),
                                                             ),
                                                           ),
-                                                          SizedBox(
-                                                            width: 10,
-                                                          ),
-                                                          Container(
-                                                            //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                                                            //   color: Color.fromRGBO(23, 197, 204, 1),
-
-                                                            child: TextButton(
-                                                              child: Text(
-                                                                'Exist',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  color: Colors
-                                                                      .white,
-                                                                ),
-                                                              ),
-
-                                                              style:
-                                                                  ButtonStyle(
-                                                                backgroundColor:
-                                                                    MaterialStateProperty.all<
-                                                                            Color>(
-                                                                        Color.fromRGBO(
-                                                                            13,
-                                                                            91,
-                                                                            196,
-                                                                            1)),
-                                                                shape: MaterialStateProperty
-                                                                    .all<
-                                                                        RoundedRectangleBorder>(
-                                                                  RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            10.0),
-
-                                                                    //   side: BorderSide(color: Colors.red.shade900),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              //      color: Colors.black,
-                                                              //  textColor: Colors.white,
-                                                              //     shape: RoundedRectangleBorder(
-                                                              //borderRadius: BorderRadius.circular(30)),
-                                                              onPressed: () {
-                                                                //          Navigator.push(context,
-                                                                //            MaterialPageRoute(builder: (context) => Profile()));
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ],
+                                                        ),
+                                                        //      color: Colors.black,
+                                                        //  textColor: Colors.white,
+                                                        //     shape: RoundedRectangleBorder(
+                                                        //borderRadius: BorderRadius.circular(30)),
+                                                        onPressed: () {
+                                                          //          Navigator.push(context,
+                                                          //            MaterialPageRoute(builder: (context) => Profile()));
+                                                        },
                                                       ),
                                                     )
                                                   ],
@@ -620,7 +543,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 280),
+                      SizedBox(height: 175),
                     ],
                   ),
                 )),
