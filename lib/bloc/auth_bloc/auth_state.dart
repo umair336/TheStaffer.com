@@ -39,10 +39,13 @@ class ErrorState extends AuthenticationState {
 class HomePageLoadedState extends AuthenticationState {
 
   final List homeData;
-  HomePageLoadedState({@required this.homeData});
+  final List assignments;
+
+  HomePageLoadedState({@required this.homeData, @required this.assignments});
   @override
-  List<List> get props => [homeData];
+  List<List> get props => [homeData, assignments];
 }
+
 class TimesheetLoadedState extends AuthenticationState {
 
   final List timesheets;

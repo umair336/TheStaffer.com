@@ -30,8 +30,7 @@ class UserRepository {
   Future<List> getHomeData(String url) async {
     final String _url = mainUrl + url;
     Response response = await auth.getData(_url);
-    print(response.data);
-    return response.data['tasks'];
+    return response.data['data'];
   }
 
   Future<bool> hasToken() async {

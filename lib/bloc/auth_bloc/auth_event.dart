@@ -38,14 +38,18 @@ class FetchAssignmentEvent extends AuthenticationEvent {
 
 class FetchHomeEvent extends AuthenticationEvent {
   final String url;
+  final String assignmentUrl;
+  final Object data;
 
-  const FetchHomeEvent({@required this.url});
+
+
+  const FetchHomeEvent({@required this.url, @required this.assignmentUrl, @required this.data});
 
   @override
-  List<Object> get props => [url];
+  List<Object> get props => [url,assignmentUrl,data];
 
   @override
-  String toString() => 'FetchHomeEvent { url: $url}';
+  String toString() => 'FetchHomeEvent { url: $url, assignmentUrl: $assignmentUrl, data: $data}';
 }
 
 class FetchTimeSheetEvent extends AuthenticationEvent {

@@ -57,7 +57,9 @@ class AuthenticationBloc
     if (event is FetchHomeEvent) {
       try {
         List data = await userRepository.getHomeData(event.url);
-        yield HomePageLoadedState(homeData: data);
+        List assignments = await userRepository.getAssignments(
+            event.assignmentUrl, event.data);
+        yield HomePageLoadedState(homeData: data, assignments: assignments);
       } catch (e) {
         yield ErrorState(message: e.toString());
       }
@@ -65,9 +67,11 @@ class AuthenticationBloc
 
     if (event is FetchTimeSheetEvent) {
       try {
-        List timesheets = await userRepository.getTimesheets(event.url, event.data);
-        // print('----timesheets----');
-        // print(timesheets);
+        List timesheets =
+            await userRepository.getTimesheets(event.url, event.data);
+
+        print('---timesheet----');
+        print(timesheets);
         yield TimesheetLoadedState(timesheets: timesheets);
       } catch (e) {
         yield ErrorState(message: e.toString());
