@@ -26,11 +26,11 @@ class AssignmentLoadedState extends AuthenticationState {
   List<List> get props => [assignments];
 }
 
-class AssignmentErrorState extends AuthenticationState {
+class ErrorState extends AuthenticationState {
 
   final String message;
 
-  AssignmentErrorState({@required this.message});
+  ErrorState({@required this.message});
 
   @override
   List<Object> get props => [message];
@@ -42,4 +42,11 @@ class HomePageLoadedState extends AuthenticationState {
   HomePageLoadedState({@required this.homeData});
   @override
   List<List> get props => [homeData];
+}
+class TimesheetLoadedState extends AuthenticationState {
+
+  final List timesheets;
+  TimesheetLoadedState({@required this.timesheets});
+  @override
+  List<List> get props => [timesheets];
 }

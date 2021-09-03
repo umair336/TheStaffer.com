@@ -18,9 +18,9 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> tabs = [
     HomeScreen(),
-    ProfileScreen(),
+    TimesheetScreen(),
     AssignmentScreen(),
-    TimesheetScreen()
+    ProfileScreen()
   ];
 
   @override
@@ -62,18 +62,19 @@ class _MainScreenState extends State<MainScreen> {
               icon: Icon(Icons.home),
               label: 'Home',
               backgroundColor: Colors.white),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
+              BottomNavigationBarItem(
+              icon: Icon(Icons.lock_clock),
+              label: 'Time Sheet',
               backgroundColor: Style.Colors.mainColor),
-          BottomNavigationBarItem(
+              BottomNavigationBarItem(
               icon: Icon(Icons.business),
               label: 'Assignment',
               backgroundColor: Style.Colors.mainColor),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.lock_clock),
-              label: 'Time',
+                BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
               backgroundColor: Style.Colors.mainColor),
+          
         ],
         onTap: (index) {
           setState(() {

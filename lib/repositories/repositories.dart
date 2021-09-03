@@ -7,12 +7,19 @@ import 'package:staffer/constants/string.dart';
 import 'auth.dart';
 
 class UserRepository {
-static String mainUrl = "https://dev2.thestaffer.com/api";
+  static String mainUrl = "http://127.0.0.1:8000/api";
+  // static String mainUrl = "https://dev2.thestaffer.com/api";
   var loginUrl = '$mainUrl/login';
 
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final Dio _dio = Dio();
   final Auth auth = Auth();
+
+  Future<List> getTimesheets(String url, Object data) async {
+    final String _url = mainUrl + url;
+    Response response = await auth.postData(_url, data);
+    return response.data['data'];
+  }
 
   Future<List> getAssignments(String url, Object data) async {
     final String _url = mainUrl + url;
