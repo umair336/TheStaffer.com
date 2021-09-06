@@ -40,6 +40,7 @@ dependencies:
   adobe_xd: ^1.1.0+1
   intro_views_flutter: ^3.2.0
   rounded_expansion_tile: 0.0.13 
+  intl: ^0.17.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

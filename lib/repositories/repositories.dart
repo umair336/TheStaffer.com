@@ -7,8 +7,8 @@ import 'package:staffer/constants/string.dart';
 import 'auth.dart';
 
 class UserRepository {
-  static String mainUrl = "http://127.0.0.1:8000/api";
-  // static String mainUrl = "https://dev2.thestaffer.com/api";
+  //static String mainUrl = "http://127.0.0.1:8000/api";
+  static String mainUrl = "https://dev2.thestaffer.com/api";
   var loginUrl = '$mainUrl/login';
 
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();

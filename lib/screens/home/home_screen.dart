@@ -3,7 +3,6 @@ import 'package:staffer/bloc/auth_bloc/auth.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:staffer/style/theme.dart' as Style;
-import './Home.dart';
 
 class HomeScreen extends StatefulWidget {
   // const HomeScreen({ Key? key }) : super(key: key);
@@ -27,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     };
     final String homeUrl = '/home';
     BlocProvider.of<AuthenticationBloc>(context).add(
-      FetchHomeEvent(url:homeUrl,assignmentUrl: _url, data: _data),
+      FetchHomeEvent(url: homeUrl, assignmentUrl: _url, data: _data),
     );
   }
 
@@ -96,9 +95,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   Positioned(
                     top: 90,
                     left: 70,
-                    child: Text( state is HomePageLoadedState ? state.homeData[0]
-                                                        ['first_name'] +  ' ' + state.homeData[0]
-                                                        ['last_name']  : '',
+                    child: Text(
+                      state is HomePageLoadedState
+                          ? state.homeData[0]['first_name'] +
+                              ' ' +
+                              state.homeData[0]['last_name']
+                          : '',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
                         fontSize: 18.0,
@@ -124,125 +126,117 @@ class _HomeScreenState extends State<HomeScreen> {
                     left: 20,
                     right: 20,
                     child: Container(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Home()));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: Color.fromRGBO(79, 171, 247, 1),
-                              width: 2,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: Color.fromRGBO(79, 171, 247, 1),
+                            width: 2,
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                              child: Container(
+                                alignment: Alignment.topRight,
+                                child: Image.asset(
+                                  "images/Path 52375@2x.png",
+                                  height: size.height * 0.02,
+                                  // fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                          ),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                                child: Container(
-                                  alignment: Alignment.topRight,
-                                  child: Image.asset(
-                                    "images/Path 52375@2x.png",
-                                    height: size.height * 0.02,
-                                    // fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          SizedBox(
-                                            width: 20,
-                                          ),
-                                          Image.asset(
-                                            "images/002-schedule@2x.png",
-                                            height: size.height * 0.05,
+                            Container(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Image.asset(
+                                          "images/002-schedule@2x.png",
+                                          height: size.height * 0.05,
 
-                                            // fit: BoxFit.cover,
+                                          // fit: BoxFit.cover,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Total Hours',
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        112, 112, 112, 1)),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text(
+                                                '13 JUN to 19 JUN',
+                                                style: TextStyle(
+                                                    fontSize: 10,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        13, 91, 196, 1)),
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Total Hours',
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontFamily: 'Nunito Sans',
-                                                      color: Color.fromRGBO(
-                                                          112, 112, 112, 1)),
-                                                ),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  '13 JUN to 19 JUN',
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontFamily: 'Nunito Sans',
-                                                      color: Color.fromRGBO(
-                                                          13, 91, 196, 1)),
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
+                                        )
+                                      ],
                                     ),
-                                    Container(
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.baseline,
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: [
-                                          Text(
-                                            ' 38',
-                                            style: TextStyle(
-                                              fontSize: 30,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Nunito Sans',
-                                              //      color: Color.fromRGBO(255, 255, 255, 1)
-                                            ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.baseline,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Text(
+                                          ' 38',
+                                          style: TextStyle(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Nunito Sans',
+                                            //      color: Color.fromRGBO(255, 255, 255, 1)
                                           ),
-                                          Text(
-                                            '.50',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Nunito Sans',
-                                              //      color: Color.fromRGBO(255, 255, 255, 1)
-                                            ),
+                                        ),
+                                        Text(
+                                          '.50',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Nunito Sans',
+                                            //      color: Color.fromRGBO(255, 255, 255, 1)
                                           ),
-                                          SizedBox(
-                                            width: 18,
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                        ),
+                                        SizedBox(
+                                          width: 18,
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
                               ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                          ],
                         ),
                       ),
                     ),

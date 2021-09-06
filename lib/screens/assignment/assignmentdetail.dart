@@ -72,7 +72,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
               ),
             ),
             SizedBox(
-              height: 35,
+              height: 40,
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(23, 0, 23, 0),
@@ -87,7 +87,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: 10),
+                    SizedBox(height: 12),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: Row(
@@ -118,7 +118,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                   'Job Title will come here',
                                   style: TextStyle(
                                     fontSize: 16.0,
-                                    fontFamily: 'Nunito Sans',
+                                    fontWeight: FontWeight.bold,
                                     color: Color.fromRGBO(13, 91, 196, 1),
                                   ),
                                 ),
@@ -141,7 +141,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 25,
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -198,7 +198,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 25,
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 60, 0),
@@ -261,7 +261,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 25,
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 60, 0),
@@ -324,7 +324,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 25,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
@@ -344,7 +344,277 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                           ),
                         ],
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      height: 7,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5.0),
+                            child: Container(
+                              height: 30,
+                              width: 70,
+                              margin: const EdgeInsets.only(
+                                  left: 6.0), //Same as `blurRadius` i guess
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.0),
+                                color: Colors.white,
+                                border: Border.all(
+                                    color: Color.fromRGBO(27, 185, 31, 1)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromRGBO(27, 185, 31, 1),
+                                    offset: Offset(0.0, 0.9), //(x,y)
+                                    blurRadius: 12.0,
+                                    spreadRadius: 5,
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Active',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10.0,
+                                      color: Color.fromRGBO(27, 185, 31, 1)),
+                                ),
+                              ),
+                            ),
+                          ),
+                          /*
+                          Container(
+                            height: 30,
+                            //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                            //   color: Color.fromRGBO(23, 197, 204, 1),
+
+                            child: TextButton(
+                              child: Text(
+                                'Active',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10.0,
+                                    color: Color.fromRGBO(27, 185, 31, 1)),
+                              ),
+
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Color.fromRGBO(255, 255, 255, 1),),
+                                        shadowColor: MaterialStateProperty.all<Color>(Colors.green),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(7.0),
+                                    side: BorderSide(
+                                        color: Color.fromRGBO(27, 185, 31, 1)),
+                                        
+                                  ),
+                                ),
+                              ),
+                              //      color: Colors.black,
+                              //  textColor: Colors.white,
+                              //     shape: RoundedRectangleBorder(
+                              //borderRadius: BorderRadius.circular(30)),
+                              onPressed: () {
+                                //          Navigator.push(context,
+                                //            MaterialPageRoute(builder: (context) => Profile()));
+                              },
+                            ),
+                          )
+                          */
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Shift Details',
+                              style: TextStyle(
+                                fontFamily: 'Nunito Sans',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14.0,
+                                color: Color.fromRGBO(13, 91, 196, 1),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Expanded(
+                              child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                'Shift Name',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito Sans',
+                                  //  fontWeight: FontWeight.bold,
+                                  fontSize: 10.0,
+                                  color: Color.fromRGBO(112, 112, 112, 1),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                'Morning',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito Sans',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0,
+                                  color: Color.fromRGBO(0, 0, 0, 1),
+                                ),
+                              ),
+                            ],
+                          )),
+                          Expanded(
+                              child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                'Start',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito Sans',
+                                  //  fontWeight: FontWeight.bold,
+                                  fontSize: 10.0,
+                                  color: Color.fromRGBO(112, 112, 112, 1),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '00:00',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito Sans',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0,
+                                  color: Color.fromRGBO(0, 0, 0, 1),
+                                ),
+                              ),
+                            ],
+                          )),
+                          Expanded(
+                              child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                'End',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito Sans',
+                                  //  fontWeight: FontWeight.bold,
+                                  fontSize: 10.0,
+                                  color: Color.fromRGBO(112, 112, 112, 1),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '00:00',
+                                style: TextStyle(
+                                  fontFamily: 'Nunito Sans',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0,
+                                  color: Color.fromRGBO(0, 0, 0, 1),
+                                ),
+                              ),
+                            ],
+                          ))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Shift Notes',
+                              style: TextStyle(
+                                fontFamily: 'Nunito Sans',
+                                //  fontWeight: FontWeight.bold,
+                                fontSize: 10.0,
+                                color: Color.fromRGBO(112, 112, 112, 1),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.',
+                            style: TextStyle(
+                              fontFamily: 'Nunito Sans',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Color.fromRGBO(0, 0, 0, 1),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Dress Code',
+                              style: TextStyle(
+                                fontFamily: 'Nunito Sans',
+                                //  fontWeight: FontWeight.bold,
+                                fontSize: 10.0,
+                                color: Color.fromRGBO(112, 112, 112, 1),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            'Formal',
+                            style: TextStyle(
+                              fontFamily: 'Nunito Sans',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Color.fromRGBO(0, 0, 0, 1),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
                   ],
                 ),
               ),

@@ -3,6 +3,8 @@ import 'package:rounded_expansion_tile/rounded_expansion_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:staffer/bloc/auth_bloc/auth.dart';
 import 'package:staffer/style/theme.dart' as Style;
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class TimesheetScreen extends StatefulWidget {
   @override
@@ -12,12 +14,13 @@ class TimesheetScreen extends StatefulWidget {
 class _TimesheetScreenState extends State<TimesheetScreen> {
   String start = "";
   String end = "";
-  DateTime startDate = DateTime.now();
-  DateTime endDate = DateTime.now();
+  String startDate = "Mon 6, 2021";
+  String endDate = "Mon 6, 2021";
 
   @override
   void initState() {
     super.initState();
+    initializeDateFormatting();
     loadData(startDate, endDate);
   }
 
@@ -29,10 +32,10 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     final String _url = '/admin/reports/employee-timesheet/list';
     final Object _data = {
       "customer": "",
-      // "start_date": "Aug 22, 2021",
-      // "end_date": "Sep 04, 2021",
       "start_date": "Aug 22, 2021",
       "end_date": "Sep 04, 2021",
+      //"start_date": start,
+      //"end_date": end,
       "vendors": "",
       "week_ends": "",
       "branch": "",
@@ -140,7 +143,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                       _selectStart(context);
                                     },
                                     child: Text(
-                                      "  ${startDate.day}  -  ${startDate.month}  -  ${startDate.year}  ",
+                                      startDate,
                                       style: TextStyle(
                                         //  fontWeight: FontWeight.bold,
                                         fontSize: 16.0,
@@ -181,7 +184,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                       _selectEnd(context);
                                     },
                                     child: Text(
-                                      "  ${endDate.day}  -  ${endDate.month}  -  ${endDate.year}  ",
+                                      endDate,
                                       style: TextStyle(
                                         //  fontWeight: FontWeight.bold,
                                         fontSize: 16.0,
@@ -1113,7 +1116,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   _selectStart(BuildContext context) async {
     final selected = await showDatePicker(
       context: context,
-      initialDate: startDate,
+      initialDate: DateTime.now(),
       firstDate: DateTime(1970),
       lastDate: DateTime(2025),
       builder: (BuildContext context, Widget child) {
@@ -1127,16 +1130,16 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
         );
       },
     );
-    if (selected != null && selected != startDate)
+    if (selected != null)
       setState(() {
-        startDate = selected;
+        startDate = DateFormat('EEE d, y').format(selected);
       });
   }
 
   _selectEnd(BuildContext context) async {
     final selected = await showDatePicker(
       context: context,
-      initialDate: endDate,
+      initialDate: DateTime.now(),
       firstDate: DateTime(2010),
       lastDate: DateTime(2025),
       builder: (BuildContext context, Widget child) {
@@ -1150,10 +1153,12 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
         );
       },
     );
-    if (selected != null && selected != endDate)
+    if (selected != null)
       setState(() {
-        endDate = selected;
-        loadData(startDate, endDate);
+        endDate = DateFormat('EEE d, y').format(selected);
+        print(endDate);
+        // endDate = selected;
+        // loadData(startDate, endDate);
       });
   }
 }
