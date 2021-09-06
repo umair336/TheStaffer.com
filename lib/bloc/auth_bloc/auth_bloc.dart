@@ -50,24 +50,31 @@ class AuthenticationBloc
             await userRepository.getAssignments(event.url, event.data);
         yield AssignmentLoadedState(assignments: assignments);
       } catch (e) {
-        yield AssignmentErrorState(message: e.toString());
+        yield ErrorState(message: e.toString());
       }
     }
 
     if (event is FetchHomeEvent) {
       try {
         List data = await userRepository.getHomeData(event.url);
-       print('before request');
-       try {
-        print(data);
-       }catch (e){
-         print(e.message);
-       }
-       print('end request');
-
-        yield HomePageLoadedState(homeData: data);
+        List assignments = await userRepository.getAssignments(
+            event.assignmentUrl, event.data);
+        yield HomePageLoadedState(homeData: data, assignments: assignments);
       } catch (e) {
-        yield AssignmentErrorState(message: e.toString());
+        yield ErrorState(message: e.toString());
+      }
+    }
+
+    if (event is FetchTimeSheetEvent) {
+      try {
+        List timesheets =
+            await userRepository.getTimesheets(event.url, event.data);
+
+        print('---timesheet----');
+        print(timesheets);
+        yield TimesheetLoadedState(timesheets: timesheets);
+      } catch (e) {
+        yield ErrorState(message: e.toString());
       }
     }
   }

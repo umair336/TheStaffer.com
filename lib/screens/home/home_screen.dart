@@ -25,13 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
       "branch": "",
       "job_position": "",
     };
+    final String homeUrl = '/home';
     BlocProvider.of<AuthenticationBloc>(context).add(
-      FetchAssignmentEvent(url: _url, data: _data),
+      FetchHomeEvent(url:homeUrl,assignmentUrl: _url, data: _data),
     );
-    // final String homeUrl = '/home';
-    // BlocProvider.of<AuthenticationBloc>(context).add(
-    //   FetchHomeEvent(url: homeUrl),
-    // );
   }
 
   Widget build(BuildContext context) {
@@ -99,8 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   Positioned(
                     top: 90,
                     left: 70,
-                    child: Text(
-                      'Wayne Richardson',
+                    child: Text( state is HomePageLoadedState ? state.homeData[0]
+                                                        ['first_name'] +  ' ' + state.homeData[0]
+                                                        ['last_name']  : '',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
                         fontSize: 18.0,
@@ -583,7 +581,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       top: 570,
                       left: 23,
                       right: 20,
-                      child: state is AssignmentLoadedState
+                      child: state is HomePageLoadedState
                           ? new Container(
                               height: 100.0,
                               child: new ListView.builder(
