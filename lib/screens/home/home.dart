@@ -3,16 +3,17 @@ import 'package:staffer/bloc/auth_bloc/auth.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:staffer/style/theme.dart' as Style;
-import './Home.dart';
+import './home_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  // const HomeScreen({ Key? key }) : super(key: key);
+class Home extends StatefulWidget {
+  // const Home({ Key? key }) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeState createState() => _HomeState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeState extends State<Home> {
+  @override
   @override
   void initState() {
     super.initState();
@@ -128,8 +129,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Home()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()));
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -147,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Container(
                                   alignment: Alignment.topRight,
                                   child: Image.asset(
-                                    "images/Path 52375@2x.png",
+                                    "images/Path 54457@2x.png",
                                     height: size.height * 0.02,
                                     // fit: BoxFit.cover,
                                   ),
@@ -199,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           FontWeight.bold,
                                                       fontFamily: 'Nunito Sans',
                                                       color: Color.fromRGBO(
-                                                          13, 91, 196, 1)),
+                                                          31, 33, 38, 1)),
                                                 ),
                                               ],
                                             ),
