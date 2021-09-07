@@ -5,6 +5,7 @@ import 'package:staffer/bloc/auth_bloc/auth.dart';
 import 'package:staffer/style/theme.dart' as Style;
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import './addtimesheet.dart';
 
 class TimesheetScreen extends StatefulWidget {
   @override
@@ -110,7 +111,13 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                         color: Color.fromRGBO(255, 255, 255, 1),
                                         size: 20,
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Addtimesheet()));
+                                      },
                                     ),
                                     Image.asset(
                                       "images/notification@2x.png",
