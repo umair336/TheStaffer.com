@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:staffer/screens/main_screen/main_screen.dart';
 import './timesheet_screen.dart';
+import './main_screen.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class Addtimesheet extends StatefulWidget {
   @override
@@ -20,8 +24,35 @@ class _AddtimesheetState extends State<Addtimesheet> {
     ListItem(3, "Third Item"),
     ListItem(4, "Fourth Item")
   ];
-  String _seletedTime = ' Select Time';
-  String _seletTime = ' Select Time';
+  String _seletedTime = '0:00 Am';
+  String _seletTime = ' 0:00 Pm ';
+  String start = "";
+  String startDate = "Mon 6, 2021";
+
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting();
+    loadData(startDate);
+  }
+
+  void loadData(start) {
+    print('------date-----');
+    print(start);
+
+    final Object _data = {
+      "customer": "",
+      "start_date": "Aug 22, 2021",
+      "end_date": "Sep 04, 2021",
+      //"start_date": start,
+      //"end_date": end,
+      "vendors": "",
+      "week_ends": "",
+      "branch": "",
+      "date_format": "M",
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -88,10 +119,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             size: 20,
                           ),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => TimesheetScreen()));
+                            Navigator.pop(context);
                           },
                         ),
                         Text(
@@ -153,64 +181,77 @@ class _AddtimesheetState extends State<Addtimesheet> {
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.baseline,
-                                textBaseline: TextBaseline.alphabetic,
-                                children: [
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'Date',
-                                        style: TextStyle(
-                                            //    fontWeight: FontWeight.bold,
-                                            fontSize: 10.0,
-                                            color: Color.fromRGBO(
-                                                112, 112, 112, 1)),
+                        child: Container(
+                          child: InkWell(
+                            onTap: () {
+                              _selectStart(context);
+
+                              //      Navigator.push(context,
+                              //     MaterialPageRoute(builder: (context) => Loginorsignup()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.baseline,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      SizedBox(
+                                        height: 8,
                                       ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'JAN 00,2000',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14.0,
-                                            color: Color.fromRGBO(0, 0, 0, 1)),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            20, 5, 0, 0),
+                                        child: Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Date',
+                                            style: TextStyle(
+                                                //    fontWeight: FontWeight.bold,
+                                                fontSize: 10.0,
+                                                color: Color.fromRGBO(
+                                                    112, 112, 112, 1)),
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            20, 5, 0, 0),
+                                        child: Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            startDate,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14.0,
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1)),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      )
+                                    ],
                                   ),
-                                  SizedBox(
-                                    height: 8,
-                                  )
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Image.asset(
-                                  "images/Path 57123@2x.png",
-                                  height: size.height * 0.02,
-                                  // fit: BoxFit.cover,
                                 ),
-                              ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(20, 5, 20, 0),
+                                  child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Image.asset(
+                                      "images/Path 57123@2x.png",
+                                      height: size.height * 0.02,
+                                      // fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
@@ -782,7 +823,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                         child: Stack(
                           children: <Widget>[
                             Container(
-                              height: 80,
+                              height: 70,
                             ),
                             Positioned(
                               bottom: 0,
@@ -799,9 +840,6 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                     ),
                                     child: Column(
                                       children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 10),
@@ -831,6 +869,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                             iconEnabledColor:
                                                 Color.fromRGBO(183, 14, 105, 1),
                                             isExpanded: true,
+                                            underline: Container(
+                                                color: Colors.transparent),
                                           ),
                                         ),
                                       ],
@@ -839,7 +879,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             ),
                             Positioned(
                               left: 20,
-                              bottom: 51,
+                              top: 13,
                               child: Container(
                                   color: Colors.white,
                                   child: Text(
@@ -854,7 +894,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             ),
                             Positioned(
                               right: 20,
-                              bottom: 23,
+                              top: 35,
                               child: Container(
                                 color: Colors.white,
                                 child: Image.asset(
@@ -1039,5 +1079,30 @@ class _AddtimesheetState extends State<Addtimesheet> {
         ),
       ),
     );
+  }
+
+  _selectStart(BuildContext context) async {
+    final selected = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2025),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: const Color.fromRGBO(13, 91, 196, 1),
+            accentColor: const Color.fromRGBO(13, 91, 196, 1),
+            colorScheme: ColorScheme.light(
+              primary: const Color.fromRGBO(13, 91, 196, 1),
+            ),
+          ),
+          child: child,
+        );
+      },
+    );
+    if (selected != null)
+      setState(() {
+        startDate = DateFormat('EEE d, y').format(selected);
+      });
   }
 }

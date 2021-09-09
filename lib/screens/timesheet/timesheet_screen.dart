@@ -120,8 +120,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                       },
                                     ),
                                     Image.asset(
-                                      "images/notification@2x.png",
-                                      height: size.height * 0.02,
+                                      "images/Group 12126@2x.png",
+                                      height: size.height * 0.03,
                                       // fit: BoxFit.cover,
                                     ),
                                   ],
@@ -360,7 +360,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                     new Container(
                       child: new ListView.builder(
                         shrinkWrap: true,
-                        itemCount: state.timesheets.length,
+                        //       itemCount: state.timesheets.length,
+                        itemCount: 4,
                         physics: ScrollPhysics(),
                         itemBuilder: (context, index) {
                           return new Column(
@@ -1129,10 +1130,11 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       builder: (BuildContext context, Widget child) {
         return Theme(
           data: ThemeData.light().copyWith(
-            primaryColor: Colors.red, //Head background
-            accentColor: Colors.red, //selection colo
-            dialogBackgroundColor: Colors.white,
-          ),
+              primaryColor: const Color.fromRGBO(13, 91, 196, 1),
+              accentColor: const Color.fromRGBO(13, 91, 196, 1),
+              colorScheme: ColorScheme.light(
+                primary: const Color.fromRGBO(13, 91, 196, 1),
+              )),
           child: child,
         );
       },
@@ -1152,9 +1154,11 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       builder: (BuildContext context, Widget child) {
         return Theme(
           data: ThemeData.light().copyWith(
-            primaryColor: Colors.red, //Head background
-            accentColor: Colors.red, //selection color
-            dialogBackgroundColor: Colors.white, //Background color
+            primaryColor: const Color.fromRGBO(13, 91, 196, 1),
+            accentColor: const Color.fromRGBO(13, 91, 196, 1),
+            colorScheme: ColorScheme.light(
+              primary: const Color.fromRGBO(13, 91, 196, 1),
+            ),
           ),
           child: child,
         );

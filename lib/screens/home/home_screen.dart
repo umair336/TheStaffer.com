@@ -620,7 +620,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: 10,
+                                            height: 11,
                                           ),
                                           Container(
                                             padding:
@@ -636,7 +636,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: 12,
+                                            height: 10,
                                           ),
                                           Padding(
                                             padding:
