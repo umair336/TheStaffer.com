@@ -15,8 +15,8 @@ class TimesheetScreen extends StatefulWidget {
 class _TimesheetScreenState extends State<TimesheetScreen> {
   String start = "";
   String end = "";
-  String startDate = "Mon 6, 2021";
-  String endDate = "Mon 6, 2021";
+  String startDate = DateFormat('EEE d, y ').format(DateTime.now());
+  String endDate = DateFormat('EEE d, y ').format(DateTime.now());
 
   @override
   void initState() {

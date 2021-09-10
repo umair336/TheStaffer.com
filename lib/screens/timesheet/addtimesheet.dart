@@ -24,10 +24,11 @@ class _AddtimesheetState extends State<Addtimesheet> {
     ListItem(3, "Third Item"),
     ListItem(4, "Fourth Item")
   ];
-  String _seletedTime = '0:00 Am';
-  String _seletTime = ' 0:00 Pm ';
+  DateTime now = DateTime.now();
+  String _seletedTime = DateFormat('kk:mm:a').format(DateTime.now());
+  String _seletTime = DateFormat('kk:mm:a').format(DateTime.now());
   String start = "";
-  String startDate = "Mon 6, 2021";
+  String startDate = DateFormat('EEE d, y ').format(DateTime.now());
 
   @override
   void initState() {
@@ -39,6 +40,11 @@ class _AddtimesheetState extends State<Addtimesheet> {
   void loadData(start) {
     print('------date-----');
     print(start);
+    print('------time-----');
+    // var now = new DateTime.now();
+
+    //  String formattedTime = DateFormat('kk:mm:a').format(now);
+    // print(formattedTime);
 
     final Object _data = {
       "customer": "",
@@ -391,7 +397,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                               child: Container(
                                                 alignment: Alignment.centerLeft,
                                                 child: Text(
-                                                  'Start Time',
+                                                  'End Time',
                                                   style: TextStyle(
                                                       //    fontWeight: FontWeight.bold,
                                                       fontSize: 10.0,
@@ -578,7 +584,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                         child: Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            'Start Time',
+                                            'End Time',
                                             style: TextStyle(
                                                 //    fontWeight: FontWeight.bold,
                                                 fontSize: 10.0,
@@ -658,7 +664,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                           child: Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              'Start Time',
+                                              'End Time',
                                               style: TextStyle(
                                                   //    fontWeight: FontWeight.bold,
                                                   fontSize: 10.0,
@@ -729,7 +735,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                         child: Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            'Start Time',
+                                            'End Time',
                                             style: TextStyle(
                                                 //    fontWeight: FontWeight.bold,
                                                 fontSize: 10.0,
