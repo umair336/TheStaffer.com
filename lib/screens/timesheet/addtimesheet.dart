@@ -17,7 +17,9 @@ class ListItem {
 }
 
 class _AddtimesheetState extends State<Addtimesheet> {
+  int _count = 1;
   int _value = 1;
+
   List<ListItem> _dropdownItems = [
     ListItem(1, "one Value"),
     ListItem(2, "Second Item"),
@@ -25,8 +27,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
     ListItem(4, "Fourth Item")
   ];
   DateTime now = DateTime.now();
-  String _seletedTime = DateFormat('kk:mm:a').format(DateTime.now());
-  String _seletTime = DateFormat('kk:mm:a').format(DateTime.now());
+  String _seletedTime = DateFormat('h:mm a').format(DateTime.now());
+  String _seletTime = DateFormat('h:mm a').format(DateTime.now());
   String start = "";
   String startDate = DateFormat('EEE d, y ').format(DateTime.now());
 
@@ -88,6 +90,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
       }
     }
 
+    List<Widget> _contatos =
+        new List.generate(_count, (int i) => new ContactRow());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -454,7 +458,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                       height: 15,
                     ),
                     Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 10, 0),
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -468,323 +472,48 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                     color: Color.fromRGBO(13, 91, 196, 1)),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 5, 0),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Image.asset(
-                                  "images/Group 12823@2x.png",
-                                  height: size.height * 0.04,
-                                  // fit: BoxFit.cover,
-                                ),
+                            Container(
+                              child: Row(
+                                children: [
+                                  Container(
+                                    child: new TextButton(
+                                      //    onPressed: _addNewContactRow,
+                                      onPressed: () {
+                                        setState(() {
+                                          _count = _count - 1;
+                                        });
+                                      },
+                                      child: Image.asset(
+                                        "images/image202.png",
+                                        height: size.height * 0.04,
+                                        // fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: new TextButton(
+                                      onPressed: _addNewContactRow,
+                                      child: Image.asset(
+                                        "images/Group 12823@2x.png",
+                                        height: size.height * 0.04,
+                                        // fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
+                            )
                           ],
                         )),
                     SizedBox(
                       height: 15,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.baseline,
-                                      textBaseline: TextBaseline.alphabetic,
-                                      children: [
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              20, 5, 0, 0),
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              'Start Time',
-                                              style: TextStyle(
-                                                  //    fontWeight: FontWeight.bold,
-                                                  fontSize: 10.0,
-                                                  color: Color.fromRGBO(
-                                                      112, 112, 112, 1)),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              20, 5, 0, 0),
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              '00:00 AM',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14.0,
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 1)),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(20, 5, 5, 0),
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Image.asset(
-                                        "images/Path 57125@2x.png",
-                                        height: size.height * 0.02,
-                                        // fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                              child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.baseline,
-                                    textBaseline: TextBaseline.alphabetic,
-                                    children: [
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            20, 5, 0, 0),
-                                        child: Container(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            'End Time',
-                                            style: TextStyle(
-                                                //    fontWeight: FontWeight.bold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1)),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            20, 5, 0, 0),
-                                        child: Container(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            '00:00 AM',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.0,
-                                                color:
-                                                    Color.fromRGBO(0, 0, 0, 1)),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(20, 5, 5, 0),
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Image.asset(
-                                      "images/Path 57125@2x.png",
-                                      height: size.height * 0.02,
-                                      // fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ))
-                        ],
-                      ),
+                    new Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: _contatos,
                     ),
                     SizedBox(
-                      height: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.baseline,
-                                      textBaseline: TextBaseline.alphabetic,
-                                      children: [
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              20, 5, 0, 0),
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              'End Time',
-                                              style: TextStyle(
-                                                  //    fontWeight: FontWeight.bold,
-                                                  fontSize: 10.0,
-                                                  color: Color.fromRGBO(
-                                                      112, 112, 112, 1)),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              20, 5, 0, 0),
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              '00:00 AM',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14.0,
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 1)),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(20, 5, 5, 0),
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Image.asset(
-                                        "images/Path 57125@2x.png",
-                                        height: size.height * 0.02,
-                                        // fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                              child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.baseline,
-                                    textBaseline: TextBaseline.alphabetic,
-                                    children: [
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            20, 5, 0, 0),
-                                        child: Container(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            'End Time',
-                                            style: TextStyle(
-                                                //    fontWeight: FontWeight.bold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1)),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            20, 5, 0, 0),
-                                        child: Container(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            '00:00 AM',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.0,
-                                                color:
-                                                    Color.fromRGBO(0, 0, 0, 1)),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(20, 5, 5, 0),
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Image.asset(
-                                      "images/Path 57125@2x.png",
-                                      height: size.height * 0.02,
-                                      // fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ))
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
+                      height: 50,
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -941,21 +670,28 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                     child: Column(
                                       children: [
                                         SizedBox(
-                                          height: 10,
+                                          height: 15,
                                         ),
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 10),
-                                          child: Text(
-                                            'Lorem ipsum dolor sit amet, consetetur   sadipscing elitr, sed diam nonumy eirmod    tempor invidunt ut labore et ',
-                                            maxLines: 3,
-                                            style: TextStyle(
+                                          child: Container(
+                                            height: 60,
+                                            child: TextField(
+                                              maxLines: 3,
+                                              decoration: const InputDecoration(
+                                                hintText:
+                                                    'Lorem ipsum dolor sit amet, consetetur   sadipscing elitr, sed diam nonumy eirmod    tempor invidunt ut labore et ',
+                                                //      maxLines: 3,
+                                                hintStyle: TextStyle(
 
-                                                // fontWeight: FontWeight.bold,
+                                                    // fontWeight: FontWeight.bold,
 
-                                                fontSize: 14.0,
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1)),
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        112, 112, 112, 1)),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                         SizedBox(
@@ -967,7 +703,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             ),
                             Positioned(
                               left: 20,
-                              bottom: 61,
+                              bottom: 67,
                               child: Container(
                                   color: Colors.white,
                                   child: Text(
@@ -1110,5 +846,211 @@ class _AddtimesheetState extends State<Addtimesheet> {
       setState(() {
         startDate = DateFormat('EEE d, y').format(selected);
       });
+  }
+
+  void _addNewContactRow() {
+    setState(() {
+      _count = _count + 1;
+    });
+  }
+}
+
+class ContactRow extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => new _ContactRow();
+}
+
+class _ContactRow extends State<ContactRow> {
+  DateTime now = DateTime.now();
+
+  String _seletedTime = DateFormat('h:mm a').format(DateTime.now());
+  String _seletTime = DateFormat('h:mm a').format(DateTime.now());
+  @override
+  Widget build(BuildContext context) {
+    Future<void> _openTimePiker(BuildContext context) async {
+      final TimeOfDay t =
+          await showTimePicker(context: context, initialTime: TimeOfDay.now());
+
+      if (t != null) {
+        setState(() {
+          _seletedTime = t.format(context);
+          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+          print(_seletedTime);
+        });
+      }
+    }
+
+    Future<void> _openTimePikerr(BuildContext context) async {
+      final TimeOfDay t =
+          await showTimePicker(context: context, initialTime: TimeOfDay.now());
+
+      if (t != null) {
+        setState(() {
+          _seletTime = t.format(context);
+          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+          print(_seletTime);
+        });
+      }
+    }
+
+    return new Padding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    _openTimePiker(context);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              SizedBox(
+                                height: 8,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    'Start Time',
+                                    style: TextStyle(
+                                        //    fontWeight: FontWeight.bold,
+                                        fontSize: 10.0,
+                                        color:
+                                            Color.fromRGBO(112, 112, 112, 1)),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    _seletedTime,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Color.fromRGBO(0, 0, 0, 1)),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 8,
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 5, 5, 0),
+                          child: Container(
+                            alignment: Alignment.centerLeft,
+                            child: Image.asset(
+                              "images/Path 57125@2x.png",
+                              height: 15,
+                              // fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                  child: InkWell(
+                onTap: () {
+                  _openTimePikerr(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'End Time',
+                                  style: TextStyle(
+                                      //    fontWeight: FontWeight.bold,
+                                      fontSize: 10.0,
+                                      color: Color.fromRGBO(112, 112, 112, 1)),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  _seletTime,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                      color: Color.fromRGBO(0, 0, 0, 1)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 5, 5, 0),
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: Image.asset(
+                            "images/Path 57125@2x.png",
+                            height: 15,
+                            // fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ))
+            ],
+          ),
+          SizedBox(
+            height: 8,
+          )
+        ],
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    // _currentContactType = null;
+    super.initState();
   }
 }

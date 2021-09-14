@@ -793,7 +793,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                     style:
                                                                         TextStyle(
                                                                       fontSize:
-                                                                          40.0,
+                                                                          30.0,
                                                                       color: Color.fromRGBO(
                                                                           183,
                                                                           14,
@@ -806,7 +806,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                   ),
                                                                 ),
                                                                 Container(
-                                                                  height: 60,
+                                                                  height: 70,
                                                                   width: 2,
                                                                   color: Colors
                                                                       .grey
