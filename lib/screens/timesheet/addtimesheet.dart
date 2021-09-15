@@ -954,7 +954,7 @@ class _ContactRow extends State<ContactRow> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 5, 5, 0),
+                          padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                           child: Container(
                             alignment: Alignment.centerLeft,
                             child: Image.asset(
@@ -1024,7 +1024,7 @@ class _ContactRow extends State<ContactRow> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 5, 5, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
                         child: Container(
                           alignment: Alignment.centerLeft,
                           child: Image.asset(
@@ -1037,7 +1037,22 @@ class _ContactRow extends State<ContactRow> {
                     ],
                   ),
                 ),
-              ))
+              )),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 2, 0),
+                child: InkWell(
+                  onTap: () {
+                    
+                    //Navigator.of(context).pop(true);
+                  },
+                  child: Container(
+                      child: Image.asset(
+                    "images/003-trash@2x.png",
+                    height: 20,
+                    fit: BoxFit.cover,
+                  )),
+                ),
+              ),
             ],
           ),
           SizedBox(
