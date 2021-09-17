@@ -480,7 +480,11 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                       //    onPressed: _addNewContactRow,
                                       onPressed: () {
                                         setState(() {
-                                          _count = _count - 1;
+                                          if (_count == 1) {
+                                            _count = _count + 1;
+                                          } else {
+                                            _count = _count - 1;
+                                          }
                                         });
                                       },
                                       child: Image.asset(
@@ -1042,8 +1046,8 @@ class _ContactRow extends State<ContactRow> {
                 padding: const EdgeInsets.fromLTRB(10, 0, 2, 0),
                 child: InkWell(
                   onTap: () {
-                    
                     //Navigator.of(context).pop(true);
+                    setState(() {});
                   },
                   child: Container(
                       child: Image.asset(
