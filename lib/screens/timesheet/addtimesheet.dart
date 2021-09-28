@@ -17,9 +17,11 @@ class ListItem {
 }
 
 class _AddtimesheetState extends State<Addtimesheet> {
-  int _count = 1;
-  int _value = 1;
+  // final ContactRow contact = ContactRow();
 
+  int _count = 0;
+  int _value = 1;
+  List<String> numbers = [];
   List<ListItem> _dropdownItems = [
     ListItem(1, "one Value"),
     ListItem(2, "Second Item"),
@@ -90,6 +92,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
       }
     }
 
+    // final items = ContactRow();
+    //  ContactRow contactRow = new ContactRow();
     List<Widget> _contatos =
         new List.generate(_count, (int i) => new ContactRow());
     return Scaffold(
@@ -475,7 +479,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             Container(
                               child: Row(
                                 children: [
-                                  Container(
+                                  /*   Container(
                                     child: new TextButton(
                                       //    onPressed: _addNewContactRow,
                                       onPressed: () {
@@ -493,10 +497,16 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                         // fit: BoxFit.cover,
                                       ),
                                     ),
-                                  ),
+                                  ),*/
+
                                   Container(
                                     child: new TextButton(
-                                      onPressed: _addNewContactRow,
+                                      onPressed: () => setState(() {
+                                        numbers.add("T $_count ");
+                                        _count++;
+                                        //     numbers.add();
+                                        print(numbers);
+                                      }),
                                       child: Image.asset(
                                         "images/Group 12823@2x.png",
                                         height: size.height * 0.04,
@@ -512,10 +522,241 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     SizedBox(
                       height: 15,
                     ),
+                    ListView.builder(
+                      itemCount: numbers.length,
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => Row(
+                        //mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          //  Expanded(child: contact),
+
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 0, 0, 10),
+                            child: Row(
+                              children: [
+                                Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.shade200,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Container(
+                                      child: InkWell(
+                                        onTap: () {
+                                          _openTimePicker(context);
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.baseline,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(20, 5, 0, 0),
+                                                    child: Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Text(
+                                                        'Start Time',
+                                                        style: TextStyle(
+                                                            //    fontWeight: FontWeight.bold,
+                                                            fontSize: 10.0,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    112,
+                                                                    112,
+                                                                    112,
+                                                                    1)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(20, 5, 0, 0),
+                                                    child: Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Text(
+                                                        _seletedTime,
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 14.0,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    0,
+                                                                    0,
+                                                                    0,
+                                                                    1)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 8,
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      20, 5, 5, 0),
+                                              child: Container(
+                                                alignment: Alignment.centerLeft,
+                                                child: Image.asset(
+                                                  "images/Path 57125@2x.png",
+                                                  height: size.height * 0.02,
+                                                  // fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade200,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Container(
+                                    child: InkWell(
+                                      onTap: () {
+                                        _openTimePiker(context);
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.baseline,
+                                              textBaseline:
+                                                  TextBaseline.alphabetic,
+                                              children: [
+                                                SizedBox(
+                                                  height: 8,
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          20, 5, 0, 0),
+                                                  child: Container(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Text(
+                                                      'End Time',
+                                                      style: TextStyle(
+                                                          //    fontWeight: FontWeight.bold,
+                                                          fontSize: 10.0,
+                                                          color: Color.fromRGBO(
+                                                              112,
+                                                              112,
+                                                              112,
+                                                              1)),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          20, 5, 0, 0),
+                                                  child: Container(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Text(
+                                                      _seletTime,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14.0,
+                                                          color: Color.fromRGBO(
+                                                              0, 0, 0, 1)),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 8,
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                20, 5, 5, 0),
+                                            child: Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Image.asset(
+                                                "images/Path 57125@2x.png",
+                                                height: size.height * 0.02,
+                                                // fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          //   SizedBox(
+                          //   width: 14,
+                          // ),
+
+                          InkWell(
+                            onTap: () {
+                              //Navigator.of(context).pop(true);
+                              setState(() {
+                                numbers.removeAt(index);
+                              });
+                            },
+                            child: Container(
+                                child: Image.asset(
+                              "images/003-trash@2x.png",
+                              height: 20,
+                              fit: BoxFit.cover,
+                            )),
+                          ),
+                          Text(numbers[index]),
+
+                          // call the class in this line
+                          /*TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  // int removeIndex = numbers.indexOf(numbers[index]);
+                                  numbers.removeAt(index);
+                                  // print(removeIndex);
+                                });
+                              },
+                              child: Text('button')),
+                          Text(numbers[index]),*/
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    /*
                     new Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: _contatos,
                     ),
+                    */
                     SizedBox(
                       height: 50,
                     ),
@@ -769,6 +1010,11 @@ class _AddtimesheetState extends State<Addtimesheet> {
                   //     shape: RoundedRectangleBorder(
                   //borderRadius: BorderRadius.circular(30)),
                   onPressed: () {
+                    print("start Date is $startDate");
+                    print("Time in $_seletedTime");
+                    print("Time out $_seletTime,");
+                    print("Assignment is $_value,");
+                    print("##############################");
                     //     Navigator.push(context,
                     //            MaterialPageRoute(builder: (context) => Profile()));
                   },
@@ -851,12 +1097,13 @@ class _AddtimesheetState extends State<Addtimesheet> {
         startDate = DateFormat('EEE d, y').format(selected);
       });
   }
-
+/*
   void _addNewContactRow() {
     setState(() {
       _count = _count + 1;
     });
   }
+  */
 }
 
 class ContactRow extends StatefulWidget {
@@ -1027,36 +1274,10 @@ class _ContactRow extends State<ContactRow> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          child: Image.asset(
-                            "images/Path 57125@2x.png",
-                            height: 15,
-                            // fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
               )),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 0, 2, 0),
-                child: InkWell(
-                  onTap: () {
-                    //Navigator.of(context).pop(true);
-                    setState(() {});
-                  },
-                  child: Container(
-                      child: Image.asset(
-                    "images/003-trash@2x.png",
-                    height: 20,
-                    fit: BoxFit.cover,
-                  )),
-                ),
-              ),
             ],
           ),
           SizedBox(
