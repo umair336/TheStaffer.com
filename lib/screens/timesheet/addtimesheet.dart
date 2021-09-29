@@ -21,7 +21,9 @@ class _AddtimesheetState extends State<Addtimesheet> {
 
   int _count = 0;
   int _value = 1;
-  List<String> numbers = [];
+  List<String> totalbreak = [];
+  List<String> breaktime = [];
+  List<String> numbers = ['1'];
   List<ListItem> _dropdownItems = [
     ListItem(1, "one Value"),
     ListItem(2, "Second Item"),
@@ -504,8 +506,17 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                       onPressed: () => setState(() {
                                         numbers.add("T $_count ");
                                         _count++;
+                                        breaktime.add(
+                                          _seletedTime,
+                                        );
+                                        breaktime.add(
+                                          _seletTime,
+                                        );
                                         //     numbers.add();
                                         print(numbers);
+                                        print(breaktime);
+
+                                        //      totalbreak.add(breaktime);
                                       }),
                                       child: Image.asset(
                                         "images/Group 12823@2x.png",
@@ -1014,6 +1025,9 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     print("Time in $_seletedTime");
                     print("Time out $_seletTime,");
                     print("Assignment is $_value,");
+                    print("Break timings is  $breaktime ");
+//   print("Break timings is  $breaktime  endtime $breaktime");
+
                     print("##############################");
                     //     Navigator.push(context,
                     //            MaterialPageRoute(builder: (context) => Profile()));
