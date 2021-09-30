@@ -31,14 +31,14 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  bool hours = true; 
+  bool hours = true;
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return BlocBuilder<AuthenticationBloc, AuthenticationState>(
       builder: (context, state) {
         return new Scaffold(
             backgroundColor: const Color(0xfffafafa),
-            body: SingleChildScrollView(
+            body: Container(
               child: Stack(
                 overflow: Overflow.visible,
                 children: [

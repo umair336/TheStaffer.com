@@ -983,7 +983,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                 //   color: Color.fromRGBO(23, 197, 204, 1),
                 height: 45,
                 // height: MediaQuery.of(context).size.height * 0.08,
-                width: MediaQuery.of(context).size.width * 0.92,
+                width: 315,
                 child: TextButton(
                   child: Text(
                     'Save',

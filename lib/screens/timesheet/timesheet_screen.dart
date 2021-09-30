@@ -421,7 +421,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                             Padding(
                                               padding:
                                                   const EdgeInsets.fromLTRB(
-                                                      0, 0, 0, 0),
+                                                      27, 0, 0, 0),
                                               child: Row(
                                                 children: [
                                                   Text(
@@ -477,7 +477,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                             Padding(
                                               padding:
                                                   const EdgeInsets.fromLTRB(
-                                                      0, 0, 0, 0),
+                                                      25, 0, 0, 0),
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   color: Colors.grey.shade200,
