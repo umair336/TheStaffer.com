@@ -21,8 +21,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
 
   int _count = 0;
   int _value = 1;
-  List<String> totalbreak = [];
-  List<String> breaktime = [];
+  List totalbreak = [];
+  List breaktime = [];
   List<String> numbers = ['1'];
   List<ListItem> _dropdownItems = [
     ListItem(1, "one Value"),
@@ -506,17 +506,6 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                       onPressed: () => setState(() {
                                         numbers.add("T $_count ");
                                         _count++;
-                                        breaktime.add(
-                                          _seletedTime,
-                                        );
-                                        breaktime.add(
-                                          _seletTime,
-                                        );
-                                        //     numbers.add();
-                                        print(numbers);
-                                        print(breaktime);
-
-                                        //      totalbreak.add(breaktime);
                                       }),
                                       child: Image.asset(
                                         "images/Group 12823@2x.png",
@@ -1021,14 +1010,29 @@ class _AddtimesheetState extends State<Addtimesheet> {
                   //     shape: RoundedRectangleBorder(
                   //borderRadius: BorderRadius.circular(30)),
                   onPressed: () {
+                    breaktime.add(
+                      _seletedTime,
+                    );
+                    breaktime.add(
+                      _seletTime,
+                    );
+                    //     numbers.add();
+
+                    // print(breaktime);
+
+                    totalbreak.add(breaktime);
+
                     print("start Date is $startDate");
-                    print("Time in $_seletedTime");
-                    print("Time out $_seletTime,");
+                    print("check in $_seletedTime");
+                    print("check out $_seletTime,");
                     print("Assignment is $_value,");
-                    print("Break timings is  $breaktime ");
+                    print("Break timings is  $totalbreak ");
+                    breaktime.removeLast();
+                    breaktime.removeLast();
 //   print("Break timings is  $breaktime  endtime $breaktime");
 
                     print("##############################");
+
                     //     Navigator.push(context,
                     //            MaterialPageRoute(builder: (context) => Profile()));
                   },
