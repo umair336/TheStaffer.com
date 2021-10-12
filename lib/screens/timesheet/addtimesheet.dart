@@ -17,13 +17,13 @@ class ListItem {
 }
 
 class _AddtimesheetState extends State<Addtimesheet> {
-  // final ContactRow contact = ContactRow();
+  ContactRow contact = ContactRow();
 
   int _count = 0;
   int _value = 1;
   List totalbreak = [];
   List breaktime = [];
-  List<String> numbers = ['1'];
+  List<String> numbers = [];
   List<ListItem> _dropdownItems = [
     ListItem(1, "one Value"),
     ListItem(2, "Second Item"),
@@ -504,7 +504,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                   Container(
                                     child: new TextButton(
                                       onPressed: () => setState(() {
-                                        numbers.add("T $_count ");
+                                        numbers.add(" $_count ");
                                         _count++;
                                       }),
                                       child: Image.asset(
@@ -529,8 +529,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
                       itemBuilder: (context, index) => Row(
                         //mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          //  Expanded(child: contact),
-
+                          Expanded(child: contact),
+               /*
                           Padding(
                             padding: const EdgeInsets.fromLTRB(16, 0, 0, 10),
                             child: Row(
@@ -713,7 +713,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                 ),
                               ],
                             ),
-                          ),
+                          ),*/
                           //   SizedBox(
                           //   width: 14,
                           // ),
@@ -723,6 +723,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                               //Navigator.of(context).pop(true);
                               setState(() {
                                 numbers.removeAt(index);
+                                print("remove index is$numbers[index]");
                               });
                             },
                             child: Container(
@@ -733,6 +734,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             )),
                           ),
                           Text(numbers[index]),
+                        
+                        
 
                           // call the class in this line
                           /*TextButton(

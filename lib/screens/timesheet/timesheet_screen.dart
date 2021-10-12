@@ -1,3 +1,5 @@
+// ignore_for_file: missing_required_param
+
 import 'package:flutter/material.dart';
 import 'package:rounded_expansion_tile/rounded_expansion_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +15,7 @@ class TimesheetScreen extends StatefulWidget {
 }
 
 class _TimesheetScreenState extends State<TimesheetScreen> {
+  bool _customTileExpanded = false;
   String start = "";
   String end = "";
   String startDate = DateFormat('EEE d, y ').format(DateTime.now());
@@ -382,9 +385,55 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
 
                                   child: Column(
                                     children: <Widget>[
-                                      SizedBox(height: 0.0),
                                       ExpansionTile(
-                                        trailing: Image.asset(
+                                        trailing:
+/*
+ IconButton(
+                                            alignment: Alignment.topLeft,
+                                            icon: _customTileExpanded
+                                                ? Container(
+                                                    child: Stack(
+                                                      //    overflow: Overflow.clip,
+                                                      children: <Widget>[
+                                                        Positioned(
+                                                          left: 4,
+                                                          top: 0,
+                                                          bottom: 1,
+                                                          child: IconButton(
+                                                            onPressed: () {},
+                                                            icon: Image.asset(
+                                                              "images/Path 54463@2x.png",
+                                                              fit: BoxFit
+                                                                  .fitHeight,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                : Container(
+                                                    child: Stack(
+                                                      overflow: Overflow.clip,
+                                                      children: <Widget>[
+                                                        Positioned(
+                                                          left: 4,
+                                                          top: 0,
+                                                          bottom: 1,
+                                                          child: IconButton(
+                                                            onPressed: () {},
+                                                            icon: Image.asset(
+                                                              "images/Path 54470@2x.png",
+                                                              fit: BoxFit
+                                                                  .fitHeight,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )),
+
+*/
+                                            Image.asset(
                                           "images/Path 54463@2x.png",
                                           height: size.height * 0.02,
                                           // fit: BoxFit.cover,
@@ -421,7 +470,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                             Padding(
                                               padding:
                                                   const EdgeInsets.fromLTRB(
-                                                      27, 0, 0, 0),
+                                                      14, 0, 0, 0),
                                               child: Row(
                                                 children: [
                                                   Text(
@@ -435,14 +484,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           31, 33, 38, 1),
                                                     ),
                                                   ),
-                                                  SizedBox(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.03),
                                                   Text(
-                                                    'to',
+                                                    '  to  ',
                                                     style: TextStyle(
                                                       //  fontWeight: FontWeight.bold,
                                                       fontSize: 16.0,
@@ -451,12 +494,6 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           112, 112, 112, 1),
                                                     ),
                                                   ),
-                                                  SizedBox(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.03),
                                                   Text(
                                                     'JUN 07,2021',
                                                     style: TextStyle(
@@ -751,6 +788,10 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                             ),
                                           ],
                                         ),
+                                        onExpansionChanged: (bool expanded) {
+                                          setState(() =>
+                                              _customTileExpanded = expanded);
+                                        },
                                         children: <Widget>[
                                           ListTile(
                                             title: Column(
