@@ -186,7 +186,7 @@ class _ActiveState extends State<Active> {
                                   color: Color.fromRGBO(255, 255, 255, 1),
                                   //   color: Colors.white60,
                                   border: Border.all(
-                                    color: Color.fromRGBO(79, 171, 247, 1),
+                                    color: Colors.blueAccent.shade700,
                                     width: 1,
                                   ),
                                   borderRadius:
@@ -205,9 +205,8 @@ class _ActiveState extends State<Active> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 10),
+                                              const EdgeInsets.only(left: 8),
                                           child: Container(
-                                            alignment: Alignment.topLeft,
                                             child: Text(
                                                 state.assignments[index]
                                                     ['job_position'],
@@ -218,19 +217,20 @@ class _ActiveState extends State<Active> {
                                           ),
                                         ),
                                         Container(
-            child: InkWell(
-              onTap: () {
-               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Assignmentdetail()));
-              },
-              child:Image.asset(
-                                          "images/Path 58358.png",
-                                          height: size.height * 0.05,
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Assignmentdetail()));
+                                            },
+                                            child: Image.asset(
+                                              "images/Path 58358.png",
+                                              height: size.height * 0.05,
+                                            ),
+                                          ),
                                         ),
-            ),
-          ),
-
-                                        
                                       ],
                                     ),
                                   ),
@@ -257,9 +257,12 @@ class _ActiveState extends State<Active> {
                                       children: [
                                         Container(
                                           child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
                                             children: [
-                                              Text("Start Date              ",
-                                                  textAlign: TextAlign.start,
+                                              Text("Start Date ",
                                                   style: TextStyle(
                                                       color: Color.fromRGBO(
                                                           112, 112, 112, 1),
@@ -282,37 +285,38 @@ class _ActiveState extends State<Active> {
                                             ],
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: 70,
-                                        ),
-                                        Container(
-                                          child: Column(
-                                            children: [
-                                              Text("Start Date              ",
-                                                  style: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          112, 112, 112, 1),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 60),
+                                          child: Container(
+                                            child: Column(
+                                              children: [
+                                                Text("Start Date   ",
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            112, 112, 112, 1),
 
-                                                      //fontWeight: FontWeight.w600,
-                                                      fontSize: 10.0)),
-                                              SizedBox(
-                                                height: 2,
-                                              ),
-                                              Text(
-                                                  state.assignments[index]
-                                                              ['end_date'] !=
-                                                          null
-                                                      ? state.assignments[index]
-                                                          ['end_date']
-                                                      : '',
-                                                  style: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          0, 0, 0, 1),
-                                                      //fontWeight: FontWeight.w600,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14.0)),
-                                            ],
+                                                        //fontWeight: FontWeight.w600,
+                                                        fontSize: 10.0)),
+                                                SizedBox(
+                                                  height: 2,
+                                                ),
+                                                Text(
+                                                    state.assignments[index]
+                                                                ['end_date'] !=
+                                                            null
+                                                        ? state.assignments[
+                                                            index]['end_date']
+                                                        : '',
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            0, 0, 0, 1),
+                                                        //fontWeight: FontWeight.w600,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0)),
+                                              ],
+                                            ),
                                           ),
                                         )
                                       ],

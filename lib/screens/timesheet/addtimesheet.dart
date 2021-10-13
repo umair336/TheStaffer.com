@@ -34,7 +34,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
   String _seletedTime = DateFormat('h:mm a').format(DateTime.now());
   String _seletTime = DateFormat('h:mm a').format(DateTime.now());
   String start = "";
-  String startDate = DateFormat('EEE d, y ').format(DateTime.now());
+  String startDate = DateFormat('EEE d MMM, y ').format(DateTime.now());
 
   @override
   void initState() {
@@ -530,7 +530,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                         //mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Expanded(child: contact),
-               /*
+                          /*
                           Padding(
                             padding: const EdgeInsets.fromLTRB(16, 0, 0, 10),
                             child: Row(
@@ -734,8 +734,6 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             )),
                           ),
                           Text(numbers[index]),
-                        
-                        
 
                           // call the class in this line
                           /*TextButton(
@@ -900,7 +898,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                         child: Stack(
                           children: <Widget>[
                             Container(
-                              height: 80,
+                              height: 82,
                             ),
                             Positioned(
                               bottom: 0,
@@ -928,6 +926,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                             child: TextField(
                                               maxLines: 3,
                                               decoration: const InputDecoration(
+                                                border: InputBorder.none,
                                                 hintText:
                                                     'Lorem ipsum dolor sit amet, consetetur   sadipscing elitr, sed diam nonumy eirmod    tempor invidunt ut labore et ',
                                                 //      maxLines: 3,
@@ -951,7 +950,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             ),
                             Positioned(
                               left: 20,
-                              bottom: 67,
+                              bottom: 69,
                               child: Container(
                                   color: Colors.white,
                                   child: Text(

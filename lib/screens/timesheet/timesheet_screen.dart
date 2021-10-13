@@ -15,11 +15,11 @@ class TimesheetScreen extends StatefulWidget {
 }
 
 class _TimesheetScreenState extends State<TimesheetScreen> {
-  bool _customTileExpanded = false;
+  bool isExpanded = false;
   String start = "";
   String end = "";
-  String startDate = DateFormat('EEE d, y ').format(DateTime.now());
-  String endDate = DateFormat('EEE d, y ').format(DateTime.now());
+  String startDate = DateFormat('EEE d MMM, y').format(DateTime.now());
+  String endDate = DateFormat('EEE d MMM, y ').format(DateTime.now());
 
   @override
   void initState() {
@@ -387,50 +387,15 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                     children: <Widget>[
                                       ExpansionTile(
                                         trailing:
-/*
- IconButton(
-                                            alignment: Alignment.topLeft,
-                                            icon: _customTileExpanded
-                                                ? Container(
-                                                    child: Stack(
-                                                      //    overflow: Overflow.clip,
-                                                      children: <Widget>[
-                                                        Positioned(
-                                                          left: 4,
-                                                          top: 0,
-                                                          bottom: 1,
-                                                          child: IconButton(
-                                                            onPressed: () {},
-                                                            icon: Image.asset(
-                                                              "images/Path 54463@2x.png",
-                                                              fit: BoxFit
-                                                                  .fitHeight,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                            /* isExpanded //assets/collapse_arrow.png
+                                                ? Image.asset(
+                                                    "images/Path 54463.png",
                                                   )
-                                                : Container(
-                                                    child: Stack(
-                                                      overflow: Overflow.clip,
-                                                      children: <Widget>[
-                                                        Positioned(
-                                                          left: 4,
-                                                          top: 0,
-                                                          bottom: 1,
-                                                          child: IconButton(
-                                                            onPressed: () {},
-                                                            icon: Image.asset(
-                                                              "images/Path 54470@2x.png",
-                                                              fit: BoxFit
-                                                                  .fitHeight,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )),
+                                                : Image.asset(
+                                                    'images/Path 54470.png'),
+                                        onExpansionChanged: (bool expanding) =>
+                                            setState(
+                                                () => isExpanded = expanding),
 
 */
                                             Image.asset(
@@ -788,10 +753,6 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                             ),
                                           ],
                                         ),
-                                        onExpansionChanged: (bool expanded) {
-                                          setState(() =>
-                                              _customTileExpanded = expanded);
-                                        },
                                         children: <Widget>[
                                           ListTile(
                                             title: Column(

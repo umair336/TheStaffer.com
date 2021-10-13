@@ -188,7 +188,7 @@ class _UpcomingState extends State<Upcoming> {
                                   color: Color.fromRGBO(255, 255, 255, 1),
                                   //   color: Colors.white60,
                                   border: Border.all(
-                                    color: Color.fromRGBO(79, 171, 247, 1),
+                                    color: Colors.blueAccent.shade700,
                                     width: 1,
                                   ),
                                   borderRadius:
@@ -207,7 +207,7 @@ class _UpcomingState extends State<Upcoming> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 10),
+                                              const EdgeInsets.only(left: 6),
                                           child: Container(
                                             alignment: Alignment.topLeft,
                                             child: Text(
@@ -227,7 +227,7 @@ class _UpcomingState extends State<Upcoming> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 20),
+                                    padding: const EdgeInsets.only(left: 18),
                                     child: Container(
                                       alignment: Alignment.topLeft,
                                       child: Text(
@@ -249,8 +249,12 @@ class _UpcomingState extends State<Upcoming> {
                                       children: [
                                         Container(
                                           child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
                                             children: [
-                                              Text("Start Date              ",
+                                              Text("Start Date ",
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
                                                       color: Color.fromRGBO(
@@ -274,13 +278,12 @@ class _UpcomingState extends State<Upcoming> {
                                             ],
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: 70,
-                                        ),
-                                        Container(
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 60),
                                           child: Column(
                                             children: [
-                                              Text("Start Date              ",
+                                              Text("Start Date",
                                                   style: TextStyle(
                                                       color: Color.fromRGBO(
                                                           112, 112, 112, 1),
