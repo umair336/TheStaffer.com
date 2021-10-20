@@ -19,7 +19,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   String start = "";
   String end = "";
   String startDate = DateFormat('EEE d MMM, y').format(DateTime.now());
-  String endDate = DateFormat('EEE d MMM, y ').format(DateTime.now());
+  String endDate = DateFormat('EEE d MMM, y').format(DateTime.now());
 
   @override
   void initState() {
@@ -1143,7 +1143,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     );
     if (selected != null)
       setState(() {
-        startDate = DateFormat('EEE d, y').format(selected);
+        startDate = DateFormat('EEE d MMM, y').format(selected);
       });
   }
 
@@ -1168,7 +1168,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     );
     if (selected != null)
       setState(() {
-        endDate = DateFormat('EEE d, y').format(selected);
+        endDate = DateFormat('EEE d MMM, y').format(selected);
         print(endDate);
         // endDate = selected;
         // loadData(startDate, endDate);
