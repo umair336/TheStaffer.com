@@ -1018,6 +1018,21 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     breaktime.add(
                       _seletTime,
                     );
+                      var format = DateFormat("HH:mm");
+    var start = format.parse(_seletedTime);
+    var end = format.parse(_seletTime);
+
+
+    if (start.isAfter(end)) {
+      print('start is big');
+      print('difference = ${start.difference(end)}');
+    } else if(start.isBefore(end)){
+      print('end is big');
+      print('difference = ${end.difference(start)}');
+    }else{
+      print('difference = ${end.difference(start)}');
+    }
+
                     //     numbers.add();
 
                     // print(breaktime);
