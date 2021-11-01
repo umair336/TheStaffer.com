@@ -18,6 +18,8 @@ class ListItem {
 
 class _AddtimesheetState extends State<Addtimesheet> {
   ContactRow contact = ContactRow();
+  String hours = "";
+  String mints = "";
 
   int _count = 0;
   int _value = 1;
@@ -31,16 +33,25 @@ class _AddtimesheetState extends State<Addtimesheet> {
     ListItem(4, "Fourth Item")
   ];
   DateTime now = DateTime.now();
-  String _seletedTime = DateFormat('h:mm a').format(DateTime.now());
-  String _seletTime = DateFormat('h:mm a').format(DateTime.now());
+  // String _seletedTime = DateFormat('h:mm a').format(DateTime.now());
+  //String _seletTime = DateFormat('h:mm a').format(DateTime.now());
+  String _seletedTime = "00:00 ";
+  String _seletTime = "00:00";
   String start = "";
   String startDate = DateFormat('EEE d MMM, y ').format(DateTime.now());
-
+  TimeOfDay _t;
+  TimeOfDay _pp;
+  var h1;
+  var m1;
+  var h2;
+  var m2;
   @override
   void initState() {
     super.initState();
     initializeDateFormatting();
     loadData(startDate);
+    _t = TimeOfDay.now();
+    _pp = TimeOfDay.now();
   }
 
   void loadData(start) {
@@ -69,27 +80,35 @@ class _AddtimesheetState extends State<Addtimesheet> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     Future<void> _openTimePicker(BuildContext context) async {
-      final TimeOfDay t =
-          await showTimePicker(context: context, initialTime: TimeOfDay.now());
+      final t = await showTimePicker(context: context, initialTime: _t);
 
       if (t != null) {
         setState(() {
           _seletedTime = t.format(context);
-          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+          _t = t;
+          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
           print(_seletedTime);
+
+          h1 = t.hour.toString();
+          m1 = t.minute.toString();
+          print('object hour is $h1  and mint is $m1 ');
         });
       }
     }
 
     Future<void> _openTimePiker(BuildContext context) async {
-      final TimeOfDay t =
-          await showTimePicker(context: context, initialTime: TimeOfDay.now());
+      final p = await showTimePicker(context: context, initialTime: _pp);
 
-      if (t != null) {
+      if (p != null) {
         setState(() {
-          _seletTime = t.format(context);
+          _seletTime = p.format(context);
+          _pp = p;
           print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
           print(_seletTime);
+
+          h2 = p.hour.toString();
+          m2 = p.minute.toString();
+          print('object hour is $h2  and mint is $m2 ');
         });
       }
     }
@@ -782,12 +801,30 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             SizedBox(
                               width: 5,
                             ),
-                            Text(
-                              '00:00 hrs',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14.0,
-                                  color: Color.fromRGBO(13, 91, 196, 1)),
+                            Row(
+                              children: [
+                                Text(
+                                  hours.toString() ?? "select time",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                      color: Color.fromRGBO(13, 91, 196, 1)),
+                                ),
+                                SizedBox(
+                                  width: 2,
+                                ),
+                                Text(':'),
+                                SizedBox(
+                                  width: 2,
+                                ),
+                                Text(
+                                  mints.toString() ?? "select time",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                      color: Color.fromRGBO(13, 91, 196, 1)),
+                                ),
+                              ],
                             ),
                             SizedBox(
                               width: 13,
@@ -1018,20 +1055,55 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     breaktime.add(
                       _seletTime,
                     );
-                      var format = DateFormat("HH:mm");
-    var start = format.parse(_seletedTime);
-    var end = format.parse(_seletTime);
+                    print(
+                        'start time is hour is $h1 mint is $m1  and off is  hour is $h2 mint is $m2   ');
 
+                    setState(() {
+                      var format = DateFormat("H");
+                      var start = format.parse(h1.toString());
+                      var end = format.parse(h2.toString());
 
-    if (start.isAfter(end)) {
-      print('start is big');
-      print('difference = ${start.difference(end)}');
-    } else if(start.isBefore(end)){
-      print('end is big');
-      print('difference = ${end.difference(start)}');
-    }else{
-      print('difference = ${end.difference(start)}');
-    }
+                      if (start.isAfter(end)) {
+                        print('Error plz select correct date start is big ');
+                        print('difference = ${start.difference(end)}');
+                        var p = start.difference(end).inHours;
+                        p = p - 24;
+                        hours = p.abs().toString();
+                        print('oooooooooooooooooooooooo $p');
+                      } else if (start.isBefore(end)) {
+                        print('end is big');
+                        var re = end.difference(start).inHours;
+                        hours = re.toString();
+                        print('oooooooooooooooooooooooooooooooooooooooo$hours');
+                        print(
+                            'difference = ${end.difference(start)} TTTTTTTTTTTT $re');
+                      } else {
+                        print('difference ======== ${end.difference(start)}');
+                        hours = end.difference(start).toString();
+                      }
+                      print("##################minuters############$hours");
+
+                      var formate = DateFormat("mm");
+                      var mint1 = formate.parse(m1.toString());
+                      var mint2 = formate.parse(m2.toString());
+                      if (mint1.isAfter(mint2)) {
+                        print('start is big');
+                        //  print('difference = ${mint1.difference(mint2)}');
+                        var q = mint1.difference(mint2).inMinutes;
+                        q = q - 60;
+                        mints = q.abs().toString();
+                        print('oooooooooooooooooooooooo $q');
+                      } else if (mint1.isBefore(mint2)) {
+                        print('end is big');
+                        var t = mint2.difference(mint1).inMinutes;
+                        mints = t.toString();
+                        print(
+                            'difference = ${mint2.difference(mint1)} TTTTTTTTTTTT $t');
+                      } else {
+                        mints = mint2.difference(mint1).toString();
+                        print('difference ======== ${mint2.difference(mint1)}');
+                      }
+                    });
 
                     //     numbers.add();
 
