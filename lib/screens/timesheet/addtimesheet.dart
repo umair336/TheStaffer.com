@@ -1079,7 +1079,9 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             'difference = ${end.difference(start)} TTTTTTTTTTTT $re');
                       } else {
                         print('difference ======== ${end.difference(start)}');
+
                         hours = end.difference(start).toString();
+                        hours = hours.substring(0, 1);
                       }
                       print("##################minuters############$hours");
 
@@ -1101,7 +1103,10 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             'difference = ${mint2.difference(mint1)} TTTTTTTTTTTT $t');
                       } else {
                         mints = mint2.difference(mint1).toString();
-                        print('difference ======== ${mint2.difference(mint1)}');
+
+                        print(
+                            'difference ======== is ${mint2.difference(mint1)}');
+                        mints = mints.substring(0, 1);
                       }
                     });
 
