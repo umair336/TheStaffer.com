@@ -5,6 +5,8 @@ import './timesheet_screen.dart';
 import './main_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+String _addbreak = "";
+
 class Addtimesheet extends StatefulWidget {
   @override
   _AddtimesheetState createState() => _AddtimesheetState();
@@ -17,11 +19,9 @@ class ListItem {
 }
 
 class _AddtimesheetState extends State<Addtimesheet> {
-  ContactRow contact = ContactRow();
-  String hours = "";
-  String mints = "";
+  // ContactRow contact = ContactRow();
 
-  int _count = 0;
+  int _count = 1;
   int _value = 1;
   List totalbreak = [];
   List breaktime = [];
@@ -41,10 +41,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
   String startDate = DateFormat('EEE d MMM, y ').format(DateTime.now());
   TimeOfDay _t;
   TimeOfDay _pp;
-  var h1;
-  var m1;
-  var h2;
-  var m2;
+  String time = "";
+
   @override
   void initState() {
     super.initState();
@@ -88,10 +86,6 @@ class _AddtimesheetState extends State<Addtimesheet> {
           _t = t;
           print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
           print(_seletedTime);
-
-          h1 = t.hour.toString();
-          m1 = t.minute.toString();
-          print('object hour is $h1  and mint is $m1 ');
         });
       }
     }
@@ -105,10 +99,6 @@ class _AddtimesheetState extends State<Addtimesheet> {
           _pp = p;
           print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
           print(_seletTime);
-
-          h2 = p.hour.toString();
-          m2 = p.minute.toString();
-          print('object hour is $h2  and mint is $m2 ');
         });
       }
     }
@@ -500,13 +490,13 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             Container(
                               child: Row(
                                 children: [
-                                  /*   Container(
+                                  Container(
                                     child: new TextButton(
-                                      //    onPressed: _addNewContactRow,
+                                      // onPressed: _addNewContactRow,
                                       onPressed: () {
                                         setState(() {
                                           if (_count == 1) {
-                                            _count = _count + 1;
+                                            _count = _count;
                                           } else {
                                             _count = _count - 1;
                                           }
@@ -518,9 +508,18 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                         // fit: BoxFit.cover,
                                       ),
                                     ),
-                                  ),*/
-
+                                  ),
                                   Container(
+                                    child: new TextButton(
+                                      onPressed: _addNewContactRow,
+                                      child: Image.asset(
+                                        "images/Group 12823@2x.png",
+                                        height: size.height * 0.04,
+                                        // fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  )
+                                  /* Container(
                                     child: new TextButton(
                                       onPressed: () => setState(() {
                                         numbers.add(" $_count ");
@@ -532,13 +531,21 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                         // fit: BoxFit.cover,
                                       ),
                                     ),
-                                  ),
+                                  ),*/
                                 ],
                               ),
                             )
                           ],
                         )),
-                    SizedBox(
+                    Container(
+                      height: 180.0,
+                      child: new ListView(
+                        children: _contatos,
+                        scrollDirection: Axis.vertical,
+                      ),
+                    ),
+
+                    /* SizedBox(
                       height: 15,
                     ),
                     ListView.builder(
@@ -554,6 +561,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             padding: const EdgeInsets.fromLTRB(16, 0, 0, 10),
                             child: Row(
                               children: [
+                                 Expanded(child: contact),
                                 Container(
                                     decoration: BoxDecoration(
                                       color: Colors.grey.shade200,
@@ -768,8 +776,9 @@ class _AddtimesheetState extends State<Addtimesheet> {
                         ],
                       ),
                     ),
+                    */
                     SizedBox(
-                      height: 15,
+                      height: 40,
                     ),
                     /*
                     new Column(
@@ -777,9 +786,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                       children: _contatos,
                     ),
                     */
-                    SizedBox(
-                      height: 50,
-                    ),
+
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                       child: Container(
@@ -804,6 +811,13 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             Row(
                               children: [
                                 Text(
+                                  time.toString() ?? "select time",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                      color: Color.fromRGBO(13, 91, 196, 1)),
+                                ),
+                                /*  Text(
                                   hours.toString() ?? "select time",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -824,6 +838,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                       fontSize: 14.0,
                                       color: Color.fromRGBO(13, 91, 196, 1)),
                                 ),
+                                */
                               ],
                             ),
                             SizedBox(
@@ -1055,58 +1070,30 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     breaktime.add(
                       _seletTime,
                     );
-                    print(
-                        'start time is hour is $h1 mint is $m1  and off is  hour is $h2 mint is $m2   ');
 
                     setState(() {
-                      var format = DateFormat("H");
-                      var start = format.parse(h1.toString());
-                      var end = format.parse(h2.toString());
+                      var format = DateFormat("hh:mm a");
+                      var starttime = format.parse(_seletedTime);
+                      var endtime = format.parse(_seletTime);
 
-                      if (start.isAfter(end)) {
-                        print('Error plz select correct date start is big ');
-                        print('difference = ${start.difference(end)}');
-                        var p = start.difference(end).inHours;
-                        p = p - 24;
-                        hours = p.abs().toString();
-                        print('oooooooooooooooooooooooo $p');
-                      } else if (start.isBefore(end)) {
-                        print('end is big');
-                        var re = end.difference(start).inHours;
-                        hours = re.toString();
-                        print('oooooooooooooooooooooooooooooooooooooooo$hours');
-                        print(
-                            'difference = ${end.difference(start)} TTTTTTTTTTTT $re');
-                      } else {
-                        print('difference ======== ${end.difference(start)}');
-
-                        hours = end.difference(start).toString();
-                        hours = hours.substring(0, 1);
-                      }
-                      print("##################minuters############$hours");
-
-                      var formate = DateFormat("mm");
-                      var mint1 = formate.parse(m1.toString());
-                      var mint2 = formate.parse(m2.toString());
-                      if (mint1.isAfter(mint2)) {
+                      print('bbbbbbbbbbbbbbbbbbbbbb$starttime and $endtime');
+                      if (starttime.isAfter(endtime)) {
                         print('start is big');
-                        //  print('difference = ${mint1.difference(mint2)}');
-                        var q = mint1.difference(mint2).inMinutes;
-                        q = q - 60;
-                        mints = q.abs().toString();
-                        print('oooooooooooooooooooooooo $q');
-                      } else if (mint1.isBefore(mint2)) {
-                        print('end is big');
-                        var t = mint2.difference(mint1).inMinutes;
-                        mints = t.toString();
-                        print(
-                            'difference = ${mint2.difference(mint1)} TTTTTTTTTTTT $t');
+                        print('difference = ${starttime.difference(endtime)}');
+                        // time = starttime.difference(endtime).toString();
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                              "plz select accurate time of the day between 0 to 24"),
+                          backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+                        ));
+                      } else if (starttime.isBefore(endtime)) {
+                        print('end is big'); // correct val
+                        print('difference = ${endtime.difference(starttime)}');
+                        time = endtime.difference(starttime).toString();
                       } else {
-                        mints = mint2.difference(mint1).toString();
-
                         print(
-                            'difference ======== is ${mint2.difference(mint1)}');
-                        mints = mints.substring(0, 1);
+                            'difference === ${endtime.difference(starttime)}');
+                        time = endtime.difference(starttime).toString();
                       }
                     });
 
@@ -1124,8 +1111,14 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     breaktime.removeLast();
                     breaktime.removeLast();
 //   print("Break timings is  $breaktime  endtime $breaktime");
-
-                    print("##############################");
+                    print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$_addbreak");
+                    var format = DateFormat("HH:mm");
+                    var ss = format.parse(time);
+                    var ee = format.parse(_addbreak);
+                    print(
+                        'difference========================== = ${ss.difference(ee)}');
+                    time = ss.difference(ee).toString();
+                    print("##############################$time");
 
                     //     Navigator.push(context,
                     //            MaterialPageRoute(builder: (context) => Profile()));
@@ -1209,13 +1202,12 @@ class _AddtimesheetState extends State<Addtimesheet> {
         startDate = DateFormat('EEE d, y').format(selected);
       });
   }
-/*
+
   void _addNewContactRow() {
     setState(() {
       _count = _count + 1;
     });
   }
-  */
 }
 
 class ContactRow extends StatefulWidget {
@@ -1226,32 +1218,72 @@ class ContactRow extends StatefulWidget {
 class _ContactRow extends State<ContactRow> {
   DateTime now = DateTime.now();
 
-  String _seletedTime = DateFormat('h:mm a').format(DateTime.now());
-  String _seletTime = DateFormat('h:mm a').format(DateTime.now());
+  String _seletedTime = "00:00 ";
+  String _seletTime = "00:00";
+  TimeOfDay _qq;
+  TimeOfDay _ww;
+  String breakk = "";
+  @override
+  void initState() {
+    super.initState();
+
+    _qq = TimeOfDay.now();
+    _ww = TimeOfDay.now();
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<void> _openTimePiker(BuildContext context) async {
       final TimeOfDay t =
-          await showTimePicker(context: context, initialTime: TimeOfDay.now());
+          await showTimePicker(context: context, initialTime: _qq);
 
       if (t != null) {
         setState(() {
           _seletedTime = t.format(context);
-          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+          _qq = t;
+
+          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ');
           print(_seletedTime);
         });
       }
     }
 
     Future<void> _openTimePikerr(BuildContext context) async {
-      final TimeOfDay t =
-          await showTimePicker(context: context, initialTime: TimeOfDay.now());
+      final TimeOfDay p =
+          await showTimePicker(context: context, initialTime: _ww);
 
-      if (t != null) {
+      if (p != null) {
         setState(() {
-          _seletTime = t.format(context);
-          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+          _seletTime = p.format(context);
+          _ww = p;
+          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae');
           print(_seletTime);
+          var format = DateFormat("hh:mm a");
+          var start = format.parse(_seletedTime);
+          var end = format.parse(_seletTime);
+
+          print('bbbbbbbbbbbbbbbbbbbbbb$start and $end');
+          if (start.isAfter(end)) {
+            breakk = start.isAfter(end).toString();
+            print('start is big  select accurate time of the day');
+            print('difference = ${start.difference(end)}');
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content:
+                  Text("plz select accurate time of the day between 0 to 24"),
+              backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+            ));
+          } else if (start.isBefore(end)) {
+            breakk = end.difference(start).toString();
+            _addbreak = breakk;
+            print('end is big$breakk');
+            print('difference = ${end.difference(start)}');
+            print('bbbbbbbbbbbbbbbbbbbbbbbbb$breakk');
+          } else {
+            print('difference === ${end.difference(start)}');
+            breakk = end.difference(start).toString();
+            _addbreak = breakk;
+            print('bbbbbbbbbbbbbbbbbbbbbbbbb$breakk');
+          }
         });
       }
     }
@@ -1386,6 +1418,17 @@ class _ContactRow extends State<ContactRow> {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: Image.asset(
+                            "images/Path 57125@2x.png",
+                            height: 15,
+                            // fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -1398,11 +1441,5 @@ class _ContactRow extends State<ContactRow> {
         ],
       ),
     );
-  }
-
-  @override
-  void initState() {
-    // _currentContactType = null;
-    super.initState();
   }
 }
