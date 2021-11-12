@@ -6,6 +6,7 @@ import './main_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 String _addbreak = "";
+String _addbreakk = "";
 
 class Addtimesheet extends StatefulWidget {
   @override
@@ -105,8 +106,9 @@ class _AddtimesheetState extends State<Addtimesheet> {
 
     // final items = ContactRow();
     //  ContactRow contactRow = new ContactRow();
-    List<Widget> _contatos =
-        new List.generate(_count, (int i) => new ContactRow());
+    List<Widget> _contatos = new List.generate(1, (int i) => new ContactRow());
+    List<Widget> _contato = new List.generate(1, (int i) => new Contactrow());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -487,7 +489,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                     color: Color.fromRGBO(13, 91, 196, 1)),
                               ),
                             ),
-                            Container(
+                            /* Container(
                               child: Row(
                                 children: [
                                   Container(
@@ -518,8 +520,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                         // fit: BoxFit.cover,
                                       ),
                                     ),
-                                  )
-                                  /* Container(
+                                  )*/
+                            /* Container(
                                     child: new TextButton(
                                       onPressed: () => setState(() {
                                         numbers.add(" $_count ");
@@ -531,18 +533,21 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                         // fit: BoxFit.cover,
                                       ),
                                     ),
-                                  ),*/
+                                  ),
                                 ],
                               ),
                             )
+                            */
                           ],
                         )),
-                    Container(
-                      height: 180.0,
-                      child: new ListView(
-                        children: _contatos,
-                        scrollDirection: Axis.vertical,
-                      ),
+                    SizedBox(height: 17),
+                    Column(
+                      children: _contatos,
+                      //   scrollDirection: Axis.vertical,
+                    ),
+                    Column(
+                      children: _contato,
+                      //  scrollDirection: Axis.vertical,
                     ),
 
                     /* SizedBox(
@@ -1119,6 +1124,15 @@ class _AddtimesheetState extends State<Addtimesheet> {
                         'difference========================== = ${ss.difference(ee)}');
                     time = ss.difference(ee).toString();
                     print("##############################$time");
+                    var formt = DateFormat("HH:mm");
+                    var ii = format.parse(time);
+                    var oo = format.parse(_addbreakk);
+
+                    print(
+                        'difference========================== = ${ii.difference(oo)}');
+                    time = ii.difference(oo).toString();
+
+                    print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
 
                     //     Navigator.push(context,
                     //            MaterialPageRoute(builder: (context) => Profile()));
@@ -1282,6 +1296,240 @@ class _ContactRow extends State<ContactRow> {
             print('difference === ${end.difference(start)}');
             breakk = end.difference(start).toString();
             _addbreak = breakk;
+            print('bbbbbbbbbbbbbbbbbbbbbbbbb$breakk');
+          }
+        });
+      }
+    }
+
+    return new Padding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    _openTimePiker(context);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              SizedBox(
+                                height: 8,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    'Start Time',
+                                    style: TextStyle(
+                                        //    fontWeight: FontWeight.bold,
+                                        fontSize: 10.0,
+                                        color:
+                                            Color.fromRGBO(112, 112, 112, 1)),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    _seletedTime,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Color.fromRGBO(0, 0, 0, 1)),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 8,
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                          child: Container(
+                            alignment: Alignment.centerLeft,
+                            child: Image.asset(
+                              "images/Path 57125@2x.png",
+                              height: 15,
+                              // fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                  child: InkWell(
+                onTap: () {
+                  _openTimePikerr(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'End Time',
+                                  style: TextStyle(
+                                      //    fontWeight: FontWeight.bold,
+                                      fontSize: 10.0,
+                                      color: Color.fromRGBO(112, 112, 112, 1)),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  _seletTime,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                      color: Color.fromRGBO(0, 0, 0, 1)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: Image.asset(
+                            "images/Path 57125@2x.png",
+                            height: 15,
+                            // fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )),
+            ],
+          ),
+          SizedBox(
+            height: 8,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class Contactrow extends StatefulWidget {
+  @override
+  _ContactrowState createState() => _ContactrowState();
+}
+
+class _ContactrowState extends State<Contactrow> {
+  DateTime now = DateTime.now();
+
+  String _seletedTime = "00:00 ";
+  String _seletTime = "00:00";
+  TimeOfDay _qq;
+  TimeOfDay _ww;
+  String breakk = "";
+  @override
+  void initState() {
+    super.initState();
+
+    _qq = TimeOfDay.now();
+    _ww = TimeOfDay.now();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Future<void> _openTimePiker(BuildContext context) async {
+      final TimeOfDay t =
+          await showTimePicker(context: context, initialTime: _qq);
+
+      if (t != null) {
+        setState(() {
+          _seletedTime = t.format(context);
+          _qq = t;
+
+          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ');
+          print(_seletedTime);
+        });
+      }
+    }
+
+    Future<void> _openTimePikerr(BuildContext context) async {
+      final TimeOfDay p =
+          await showTimePicker(context: context, initialTime: _ww);
+
+      if (p != null) {
+        setState(() {
+          _seletTime = p.format(context);
+          _ww = p;
+          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae');
+          print(_seletTime);
+          var format = DateFormat("hh:mm a");
+          var start = format.parse(_seletedTime);
+          var end = format.parse(_seletTime);
+
+          print('bbbbbbbbbbbbbbbbbbbbbb$start and $end');
+          if (start.isAfter(end)) {
+            breakk = start.isAfter(end).toString();
+            print('start is big  select accurate time of the day');
+            print('difference = ${start.difference(end)}');
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content:
+                  Text("plz select accurate time of the day between 0 to 24"),
+              backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+            ));
+          } else if (start.isBefore(end)) {
+            breakk = end.difference(start).toString();
+            _addbreakk = breakk;
+            print('end is big$breakk');
+            print('difference = ${end.difference(start)}');
+            print('bbbbbbbbbbbbbbbbbbbbbbbbb$breakk');
+          } else {
+            print('difference === ${end.difference(start)}');
+            breakk = end.difference(start).toString();
+            _addbreakk = breakk;
             print('bbbbbbbbbbbbbbbbbbbbbbbbb$breakk');
           }
         });
