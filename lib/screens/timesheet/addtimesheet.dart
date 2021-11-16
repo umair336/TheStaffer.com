@@ -104,7 +104,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
         }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("First Select Start time"),
+          content: Text("Select Start time"),
           backgroundColor: Color.fromRGBO(13, 91, 196, 1),
         ));
         print('fff');
@@ -1110,7 +1110,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                         }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("plz select time of the day"),
+                          content: Text("please select time of the day"),
                           backgroundColor: Color.fromRGBO(13, 91, 196, 1),
                         ));
                       }
