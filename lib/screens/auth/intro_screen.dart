@@ -45,7 +45,7 @@ class _IntroPageState extends State<IntroPage> {
             Padding(
             padding: const EdgeInsets.only(top: 25.0, bottom: 0.0),
             child: Text(
-              'Get Your Schedule Anywher',
+              'Get Your Schedule Anywhere',
               style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,

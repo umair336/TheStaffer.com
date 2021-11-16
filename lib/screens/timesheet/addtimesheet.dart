@@ -1069,7 +1069,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                   ),
                   //      color: Colors.black,
                   //  textColor: Colors.white,
-                  //     shape: RoundedRectangleBorder(
+                  //     shape: RoundedRectangleBorde(
                   //borderRadius: BorderRadius.circular(30)),
                   onPressed: () {
                     breaktime.add(
@@ -1093,7 +1093,6 @@ class _AddtimesheetState extends State<Addtimesheet> {
                               'difference = ${starttime.difference(endtime)}');
                           // time = starttime.difference(endtime).toString();
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            
                             content: Text(
                                 "plz select accurate time of the day between 0 to 24"),
                             backgroundColor: Color.fromRGBO(13, 91, 196, 1),
@@ -1103,10 +1102,12 @@ class _AddtimesheetState extends State<Addtimesheet> {
                           print(
                               'difference = ${endtime.difference(starttime)}');
                           time = endtime.difference(starttime).toString();
+                          time = time.substring(0, 4);
                         } else {
                           print(
                               'difference === ${endtime.difference(starttime)}');
                           time = endtime.difference(starttime).toString();
+                            time = time.substring(0,4);
                         }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -1282,7 +1283,7 @@ class _ContactRow extends State<ContactRow> {
             print('difference = ${start.difference(end)}');
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content:
-                  Text("plz select accurate time of the day between 0 to 24"),
+                  Text("plz select accurate time of the day between 0 to 23"),
               backgroundColor: Color.fromRGBO(13, 91, 196, 1),
             ));
           } else if (start.isBefore(end)) {

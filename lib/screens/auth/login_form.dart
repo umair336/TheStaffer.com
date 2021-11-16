@@ -21,7 +21,7 @@ class _LoginFormState extends State<LoginForm> {
   _LoginFormState(this.userRepository);
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-   bool _showPassword = true;
+  bool _showPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,8 @@ class _LoginFormState extends State<LoginForm> {
         if (state is LoginFailure) {
           Scaffold.of(context).showSnackBar(
             SnackBar(
-              content: Text("Login failed."),
-              backgroundColor: Colors.red,
+              content: Text("Enter correct Credentials "),
+              backgroundColor: Colors.red.shade900,
             ),
           );
         }
@@ -48,8 +48,7 @@ class _LoginFormState extends State<LoginForm> {
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
           var size = MediaQuery.of(context).size;
-         
-        
+
           return Scaffold(
             body: Container(
                 height: double.infinity,
@@ -126,7 +125,7 @@ class _LoginFormState extends State<LoginForm> {
                             height: 20.0,
                           ),
                           TextFormField(
-                             obscureText: _showPassword,
+                            obscureText: _showPassword,
                             style: TextStyle(
                                 fontSize: 14.0,
                                 color: Colors.white,
@@ -134,14 +133,19 @@ class _LoginFormState extends State<LoginForm> {
                             cursorColor: Colors.white,
                             controller: _passwordController,
                             decoration: InputDecoration(
-                              
                               fillColor: Colors.white,
                               suffixIcon: GestureDetector(
-                          onTap: _togglePasswordVisibility,
-                          child: _showPassword
-                              ? Icon(Icons.visibility ,color: Colors.white60,)
-                              : Icon(Icons.visibility_off ,color: Colors.white60,),
-                        ),
+                                onTap: _togglePasswordVisibility,
+                                child: _showPassword
+                                    ? Icon(
+                                        Icons.visibility,
+                                        color: Colors.white60,
+                                      )
+                                    : Icon(
+                                        Icons.visibility_off,
+                                        color: Colors.white60,
+                                      ),
+                              ),
                               enabledBorder: OutlineInputBorder(
                                   borderSide:
                                       new BorderSide(color: Colors.white60),
@@ -163,7 +167,6 @@ class _LoginFormState extends State<LoginForm> {
                                   fontWeight: FontWeight.w500),
                             ),
                             autocorrect: false,
-                          
                           ),
                           SizedBox(
                             height: 30.0,
@@ -192,10 +195,13 @@ class _LoginFormState extends State<LoginForm> {
                                                     width: 25.0,
                                                     child:
                                                         CircularProgressIndicator(
-                                                          valueColor: new AlwaysStoppedAnimation<Color>(
-                                                              Style.Colors.mainColor),
-                                                          strokeWidth: 4.0,
-                                                        ),
+                                                      valueColor:
+                                                          new AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                              Style.Colors
+                                                                  .mainColor),
+                                                      strokeWidth: 4.0,
+                                                    ),
                                                   )
                                                 ],
                                               ))
@@ -231,6 +237,7 @@ class _LoginFormState extends State<LoginForm> {
       ),
     );
   }
+
   void _togglePasswordVisibility() {
     setState(() {
       _showPassword = !_showPassword;
