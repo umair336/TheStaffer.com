@@ -40,6 +40,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
   TimeOfDay _t;
   TimeOfDay _pp;
   String time = "";
+  bool isstart = false;
 
   @override
   void initState() {
@@ -84,20 +85,29 @@ class _AddtimesheetState extends State<Addtimesheet> {
           _t = t;
           print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
           print(_seletedTime);
+          isstart = true;
         });
       }
     }
 
     Future<void> _openTimePiker(BuildContext context) async {
-      final p = await showTimePicker(context: context, initialTime: _pp);
+      if (isstart == true) {
+        final p = await showTimePicker(context: context, initialTime: _pp);
 
-      if (p != null) {
-        setState(() {
-          _seletTime = p.format(context);
-          _pp = p;
-          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-          print(_seletTime);
-        });
+        if (p != null) {
+          setState(() {
+            _seletTime = p.format(context);
+            _pp = p;
+            print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+            print(_seletTime);
+          });
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("First Select Start time"),
+          backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+        ));
+        print('fff');
       }
     }
 
@@ -1070,28 +1080,39 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     );
 
                     setState(() {
-                      var format = DateFormat("hh:mm a");
-                      var starttime = format.parse(_seletedTime);
-                      var endtime = format.parse(_seletTime);
+                      print(isstart);
+                      if (isstart == true) {
+                        var format = DateFormat("hh:mm a");
+                        var starttime = format.parse(_seletedTime);
+                        var endtime = format.parse(_seletTime);
 
-                      print('bbbbbbbbbbbbbbbbbbbbbb$starttime and $endtime');
-                      if (starttime.isAfter(endtime)) {
-                        print('start is big');
-                        print('difference = ${starttime.difference(endtime)}');
-                        // time = starttime.difference(endtime).toString();
+                        print('bbbbbbbbbbbbbbbbbbbbbb$starttime and $endtime');
+                        if (starttime.isAfter(endtime)) {
+                          print('start is big');
+                          print(
+                              'difference = ${starttime.difference(endtime)}');
+                          // time = starttime.difference(endtime).toString();
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            
+                            content: Text(
+                                "plz select accurate time of the day between 0 to 24"),
+                            backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+                          ));
+                        } else if (starttime.isBefore(endtime)) {
+                          print('end is big'); // correct val
+                          print(
+                              'difference = ${endtime.difference(starttime)}');
+                          time = endtime.difference(starttime).toString();
+                        } else {
+                          print(
+                              'difference === ${endtime.difference(starttime)}');
+                          time = endtime.difference(starttime).toString();
+                        }
+                      } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text(
-                              "plz select accurate time of the day between 0 to 24"),
+                          content: Text("plz select time of the day"),
                           backgroundColor: Color.fromRGBO(13, 91, 196, 1),
                         ));
-                      } else if (starttime.isBefore(endtime)) {
-                        print('end is big'); // correct val
-                        print('difference = ${endtime.difference(starttime)}');
-                        time = endtime.difference(starttime).toString();
-                      } else {
-                        print(
-                            'difference === ${endtime.difference(starttime)}');
-                        time = endtime.difference(starttime).toString();
                       }
                     });
 
