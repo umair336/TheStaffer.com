@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:staffer/screens/main_screen/main_screen.dart';
-import './timesheet_screen.dart';
-import './main_screen.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
-class Addtimesheet extends StatefulWidget {
-  @override
-  _AddtimesheetState createState() => _AddtimesheetState();
-}
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:staffer/screens/timesheet/break_model.dart';
+import 'package:staffer/screens/timesheet/main_screen.dart';
 
 class ListItem {
   int value;
@@ -16,10 +11,21 @@ class ListItem {
   ListItem(this.value, this.name);
 }
 
-class _AddtimesheetState extends State<Addtimesheet> {
-  // ContactRow contact = ContactRow();
+class Addtimesheet extends StatefulWidget {
+  final List<BreakModel> timee;
+  Addtimesheet({this.timee});
 
-  int _count = 1;
+  @override
+  AddtimesheetState createState() {
+    return AddtimesheetState();
+  }
+}
+
+class AddtimesheetState extends State<Addtimesheet> {
+  // final items = List<String>.generate(20, (i) => 'Item ${i + 1}');
+  // final itemsString = new List<String>.generate(10, (i) =>  "${i+ 1}" );
+
+  var _count = 1;
   int _value = 1;
   List totalbreak = [];
   List breaktime = [];
@@ -50,6 +56,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
     _t = TimeOfDay.now();
     _pp = TimeOfDay.now();
   }
+  // item = List<String>.generate(_count, (i) => 'Item ${i + 1}');
 
   void loadData(start) {
     print('------date-----');
@@ -73,48 +80,93 @@ class _AddtimesheetState extends State<Addtimesheet> {
     };
   }
 
+  void _deleteContactRow() {
+    if (items.isEmpty) {
+    } else {
+      setState(() {
+        items.removeLast();
+      });
+    }
+  }
+
+  List<BreakModel> items = [];
+  addItem() {
+    setState(() {
+      items.add(BreakModel(
+        startTime: '0:00',
+        endTime: '0:00',
+        isEndTimeSelected: false,
+      ));
+    });
+  }
+
+  _selectStart(BuildContext context) async {
+    final selected = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2025),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: const Color.fromRGBO(13, 91, 196, 1),
+            accentColor: const Color.fromRGBO(13, 91, 196, 1),
+            colorScheme: ColorScheme.light(
+              primary: const Color.fromRGBO(13, 91, 196, 1),
+            ),
+          ),
+          child: child,
+        );
+      },
+    );
+    if (selected != null)
+      setState(() {
+        startDate = DateFormat('EEE d, y').format(selected);
+      });
+  }
+
+  Future<void> _openTimePicker(BuildContext context) async {
+    final t = await showTimePicker(context: context, initialTime: _t);
+
+    if (t != null) {
+      setState(() {
+        _seletedTime = t.format(context);
+        _t = t;
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
+        print(_seletedTime);
+        isstart = true;
+      });
+    }
+  }
+
+  Future<void> _openTimePiker(BuildContext context) async {
+    if (isstart == true) {
+      final p = await showTimePicker(context: context, initialTime: _pp);
+
+      if (p != null) {
+        setState(() {
+          _seletTime = p.format(context);
+          _pp = p;
+          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+          print(_seletTime);
+        });
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Select Start time"),
+        backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+      ));
+      print('fff');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    Future<void> _openTimePicker(BuildContext context) async {
-      final t = await showTimePicker(context: context, initialTime: _t);
 
-      if (t != null) {
-        setState(() {
-          _seletedTime = t.format(context);
-          _t = t;
-          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
-          print(_seletedTime);
-          isstart = true;
-        });
-      }
-    }
+    // final item = List<String>.generate(_count, (i) => 'Item ${i + 1}');
+    // List<Widget> _contatos = new List<Widget>.generate(_count, ( i) => new   ContactRow());
 
-    Future<void> _openTimePiker(BuildContext context) async {
-      if (isstart == true) {
-        final p = await showTimePicker(context: context, initialTime: _pp);
-
-        if (p != null) {
-          setState(() {
-            _seletTime = p.format(context);
-            _pp = p;
-            print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-            print(_seletTime);
-          });
-        }
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("Select Start time"),
-          backgroundColor: Color.fromRGBO(13, 91, 196, 1),
-        ));
-        print('fff');
-      }
-    }
-
-    // final items = ContactRow();
-    //  ContactRow contactRow = new ContactRow();
-    List<Widget> _contatos =
-        new List.generate(_count, (int i) => new ContactRow());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -175,6 +227,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
             SizedBox(
               height: 35,
             ),
+
             Padding(
               padding: const EdgeInsets.fromLTRB(23, 0, 23, 0),
               child: Container(
@@ -207,6 +260,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     SizedBox(
                       height: 15,
                     ),
+
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                       child: Container(
@@ -480,6 +534,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     SizedBox(
                       height: 15,
                     ),
+                    //TODO: Edit Code padding
+
                     Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                         child: Row(
@@ -500,26 +556,9 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                 children: [
                                   Container(
                                     child: new TextButton(
-                                      // onPressed: _addNewContactRow,
                                       onPressed: () {
-                                        setState(() {
-                                          if (_count == 1) {
-                                            _count = _count;
-                                          } else {
-                                            _count = _count - 1;
-                                          }
-                                        });
+                                        addItem();
                                       },
-                                      child: Image.asset(
-                                        "images/image202.png",
-                                        height: size.height * 0.04,
-                                        // fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: new TextButton(
-                                      onPressed: _addNewContactRow,
                                       child: Image.asset(
                                         "images/Group 12823@2x.png",
                                         height: size.height * 0.04,
@@ -545,12 +584,30 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             )
                           ],
                         )),
+
                     Container(
                       height: 180.0,
-                      child: new ListView(
-                        children: _contatos,
-                        scrollDirection: Axis.vertical,
+                      child: ListView.builder(
+                        itemCount: items.length,
+                        itemBuilder: (context, index) {
+                          // final itemddd = item[index];
+                          return ContactRow(
+                            callBackFun: () {
+                              setState(() {
+                                items.removeAt(index);
+                              });
+                            },
+                            breakModel: items[index],
+                            timeList: items,
+                          );
+                        },
                       ),
+
+                      //TODO: Old
+                      // ListView(
+                      //   children: _contatos,
+                      //   scrollDirection: Axis.vertical,
+                      // ),
                     ),
 
                     /* SizedBox(
@@ -1069,7 +1126,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                   ),
                   //      color: Colors.black,
                   //  textColor: Colors.white,
-                  //     shape: RoundedRectangleBorde(
+                  //     shape: RoundedRectangleBorder(
                   //borderRadius: BorderRadius.circular(30)),
                   onPressed: () {
                     breaktime.add(
@@ -1107,7 +1164,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                           print(
                               'difference === ${endtime.difference(starttime)}');
                           time = endtime.difference(starttime).toString();
-                            time = time.substring(0,4);
+                          time = time.substring(0, 4);
                         }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -1140,325 +1197,26 @@ class _AddtimesheetState extends State<Addtimesheet> {
                 ),
               ),
             ),
+            // ElevatedButton(onPressed: ()
+            // {
+            //  Navigator.push(
+            // context,
+            // MaterialPageRoute(builder: (context) => Addtimesheet(
+            // timee: breakk,
+            // )),
+            // );
+            //  },
+            //   child: Text('show date and time'),
+            // ),
             SizedBox(
               height: 25,
             ),
-            /*
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: Container(
-                //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                //   color: Color.fromRGBO(23, 197, 204, 1),
-                height: 45,
-                // height: MediaQuery.of(context).size.height * 0.08,
-                width: MediaQuery.of(context).size.width * 0.92,
-                child: TextButton(
-                  child: Text(
-                    _seletedTime,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14.0,
-                      color: Colors.white,
-                    ),
-                  ),
 
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromRGBO(13, 91, 196, 1)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-
-                        //   side: BorderSide(color: Colors.red.shade900),
-                      ),
-                    ),
-                  ),
-                  //      color: Colors.black,
-                  //  textColor: Colors.white,
-                  //     shape: RoundedRectangleBorder(
-                  //borderRadius: BorderRadius.circular(30)),
-                  onPressed: () {
-                    _openTimePicker(context);
-                  },
-                ),
-              ),
-            ),*/
             SizedBox(
               height: 25,
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  _selectStart(BuildContext context) async {
-    final selected = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1970),
-      lastDate: DateTime(2025),
-      builder: (BuildContext context, Widget child) {
-        return Theme(
-          data: ThemeData.light().copyWith(
-            primaryColor: const Color.fromRGBO(13, 91, 196, 1),
-            accentColor: const Color.fromRGBO(13, 91, 196, 1),
-            colorScheme: ColorScheme.light(
-              primary: const Color.fromRGBO(13, 91, 196, 1),
-            ),
-          ),
-          child: child,
-        );
-      },
-    );
-    if (selected != null)
-      setState(() {
-        startDate = DateFormat('EEE d, y').format(selected);
-      });
-  }
-
-  void _addNewContactRow() {
-    setState(() {
-      _count = _count + 1;
-    });
-  }
-}
-
-class ContactRow extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => new _ContactRow();
-}
-
-class _ContactRow extends State<ContactRow> {
-  DateTime now = DateTime.now();
-
-  String _seletedTime = "00:00 ";
-  String _seletTime = "00:00";
-  TimeOfDay _qq;
-  TimeOfDay _ww;
-  String breakk = "";
-  @override
-  void initState() {
-    super.initState();
-
-    _qq = TimeOfDay.now();
-    _ww = TimeOfDay.now();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    Future<void> _openTimePiker(BuildContext context) async {
-      final TimeOfDay t =
-          await showTimePicker(context: context, initialTime: _qq);
-
-      if (t != null) {
-        setState(() {
-          _seletedTime = t.format(context);
-          _qq = t;
-
-          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ');
-          print(_seletedTime);
-        });
-      }
-    }
-
-    Future<void> _openTimePikerr(BuildContext context) async {
-      final TimeOfDay p =
-          await showTimePicker(context: context, initialTime: _ww);
-
-      if (p != null) {
-        setState(() {
-          _seletTime = p.format(context);
-          _ww = p;
-          print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae');
-          print(_seletTime);
-          var format = DateFormat("hh:mm a");
-          var start = format.parse(_seletedTime);
-          var end = format.parse(_seletTime);
-
-          print('bbbbbbbbbbbbbbbbbbbbbb$start and $end');
-          if (start.isAfter(end)) {
-            breakk = start.isAfter(end).toString();
-            print('start is big  select accurate time of the day');
-            print('difference = ${start.difference(end)}');
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content:
-                  Text("plz select accurate time of the day between 0 to 23"),
-              backgroundColor: Color.fromRGBO(13, 91, 196, 1),
-            ));
-          } else if (start.isBefore(end)) {
-            breakk = end.difference(start).toString();
-            print('end is big');
-            print('difference = ${end.difference(start)}');
-            print('bbbbbbbbbbbbbbbbbbbbbbbbb$breakk');
-          } else {
-            print('difference === ${end.difference(start)}');
-            breakk = end.difference(start).toString();
-            print('bbbbbbbbbbbbbbbbbbbbbbbbb$breakk');
-          }
-        });
-      }
-    }
-
-    return new Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    _openTimePiker(context);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
-                            textBaseline: TextBaseline.alphabetic,
-                            children: [
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                                child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    'Start Time',
-                                    style: TextStyle(
-                                        //    fontWeight: FontWeight.bold,
-                                        fontSize: 10.0,
-                                        color:
-                                            Color.fromRGBO(112, 112, 112, 1)),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                                child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    _seletedTime,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14.0,
-                                        color: Color.fromRGBO(0, 0, 0, 1)),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            child: Image.asset(
-                              "images/Path 57125@2x.png",
-                              height: 15,
-                              // fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(width: 10),
-              Expanded(
-                  child: InkWell(
-                onTap: () {
-                  _openTimePikerr(context);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: [
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'End Time',
-                                  style: TextStyle(
-                                      //    fontWeight: FontWeight.bold,
-                                      fontSize: 10.0,
-                                      color: Color.fromRGBO(112, 112, 112, 1)),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  _seletTime,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: Color.fromRGBO(0, 0, 0, 1)),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          child: Image.asset(
-                            "images/Path 57125@2x.png",
-                            height: 15,
-                            // fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )),
-              SizedBox(
-                width: 6,
-              ),
-              Image.asset(
-                "images/003-trash.png",
-                height: 15,
-                // fit: BoxFit.cover,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 8,
-          )
-        ],
       ),
     );
   }
