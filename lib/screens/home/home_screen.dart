@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    final String _url = '/admin/employees/assignments/list';
+    /*  final String _url = '/admin/employees/assignments/list';
     final Object _data = {
       "status": "Active",
       "employee_id": "0",
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final String homeUrl = '/home';
     BlocProvider.of<AuthenticationBloc>(context).add(
       FetchHomeEvent(url: homeUrl, assignmentUrl: _url, data: _data),
-    );
+    );*/
   }
 
   bool hours = true;
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     top: 70,
                     left: 70,
                     child: Text(
-                      'Welcome,',
+                      'Welcome',
                       style: TextStyle(
                         //fontWeight: FontWeight.bold,
                         fontSize: 12.0,
@@ -94,12 +94,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  Positioned(
+                  /*    Positioned(
                     top: 90,
                     left: 70,
                     child: Text(
                       state is HomePageLoadedState
-                          ? state.homeData[0]['first_name'] +
+                          ? e.stathomeData[0]['first_name'] +
                               ' ' +
                               state.homeData[0]['last_name']
                           : '',
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Color.fromRGBO(255, 255, 255, 1),
                       ),
                     ),
-                  ),
+                  ),*/
                   Positioned(
                       top: 70,
                       right: 10,
@@ -886,7 +886,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Color.fromRGBO(13, 91, 196, 1)),
                         ),
                       )),
-                  Positioned(
+                  /*   Positioned( 
                       top: 570,
                       left: 23,
                       right: 20,
@@ -993,7 +993,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ))
                               ],
-                            ))
+                            ))*/
                 ],
               ),
             ));
