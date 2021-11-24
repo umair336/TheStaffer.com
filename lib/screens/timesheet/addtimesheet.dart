@@ -27,8 +27,7 @@ class AddtimesheetState extends State<Addtimesheet> {
 
   var _count = 1;
   int _value = 1;
-  List totalbreak = [];
-  List breaktime = [];
+
   List<String> numbers = [];
   List<ListItem> _dropdownItems = [
     ListItem(1, "one Value"),
@@ -47,7 +46,7 @@ class AddtimesheetState extends State<Addtimesheet> {
   TimeOfDay _pp;
   String time = "";
   bool isstart = false;
-
+  String totalbreak = "";
   @override
   void initState() {
     super.initState();
@@ -1129,13 +1128,6 @@ class AddtimesheetState extends State<Addtimesheet> {
                   //     shape: RoundedRectangleBorder(
                   //borderRadius: BorderRadius.circular(30)),
                   onPressed: () {
-                    breaktime.add(
-                      _seletedTime,
-                    );
-                    breaktime.add(
-                      _seletTime,
-                    );
-
                     setState(() {
                       print(isstart);
                       if (isstart == true) {
@@ -1159,12 +1151,12 @@ class AddtimesheetState extends State<Addtimesheet> {
                           print(
                               'difference = ${endtime.difference(starttime)}');
                           time = endtime.difference(starttime).toString();
-                          time = time.substring(0, 4);
+                          // time = time.substring(0, 4);
                         } else {
                           print(
                               'difference === ${endtime.difference(starttime)}');
                           time = endtime.difference(starttime).toString();
-                          time = time.substring(0, 4);
+                          //ime = time.substring(0, 4);
                         }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -1172,24 +1164,25 @@ class AddtimesheetState extends State<Addtimesheet> {
                           backgroundColor: Color.fromRGBO(13, 91, 196, 1),
                         ));
                       }
+                      breekcalculation();
                     });
 
                     //     numbers.add();
 
                     // print(breaktime);
 
-                    totalbreak.add(breaktime);
+                    // totalbreak.add(breaktime);
 
                     print("start Date is $startDate");
                     print("check in $_seletedTime");
                     print("check out $_seletTime,");
                     print("Assignment is $_value,");
-                    print("Break timings is  $totalbreak ");
-                    breaktime.removeLast();
-                    breaktime.removeLast();
+                    //  print("Break timings is  $totalbreak ");
+                    //     breaktime.removeLast();
+                    // breaktime.removeLast();
 //   print("Break timings is  $breaktime  endtime $breaktime");
-
-                    print("##############################");
+                    print("##############################${items.length}");
+                    //    print(  "##############################${items[0].startTime}");
 
                     //     Navigator.push(context,
                     //            MaterialPageRoute(builder: (context) => Profile()));
@@ -1219,5 +1212,59 @@ class AddtimesheetState extends State<Addtimesheet> {
         ),
       ),
     );
+  }
+
+  int breekcalculation() {
+    String breaak = "";
+    //print('hhhhhhhhhhhhhhhhhhhhhh${items.length}');
+    //  return items.length;
+    // ignore: dead_code
+    for (int i = 0; i < items.length; i++) {
+      // print('uuuuuuuuuuuuuuuuuuuuu${items[0].startTime}');
+      var format = DateFormat("hh:mm a");
+      var start = format.parse(items[i].startTime);
+      var end = format.parse(items[i].endTime);
+      print('uuuuuuuuuuuuuuuuuuuuu${start}uuuuuuuuuuuuu$end');
+
+      if (start.isAfter(end)) {
+        print('start is big');
+        print('difference = ${start.difference(end)}');
+        // time = starttime.difference(endtime).toString();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("plz select accurate time of the day between 0 to 24"),
+          backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+        ));
+      } else if (start.isBefore(end)) {
+        print('end is big'); // correct val
+        print('difference = ${end.difference(start)}');
+        breaak = end.difference(start).toString();
+        //  totalbreak = totalbreak.substring(0, 4);
+      } else {
+        print('difference === ${end.difference(start)}');
+        breaak = end.difference(start).toString();
+//totalbreak = totalbreak.substring(0, 4);
+      }
+      print('iiiiiiiiiiiiiiiiiiiiiiiiiiiiii $breaak   ooooooo $time  ');
+      var fomat = DateFormat("h:m");
+      var w = fomat.parse(time);
+      var b = fomat.parse(breaak);
+      time = w.difference(b).toString();
+      print('hhhhhhhhhhhhhhhhhhhhhhhh$time');
+      /*
+      if (w.isAfter(b)) {
+        print('start is big');
+        print('difference = ${w.difference(b)}');
+      } else if (w.isBefore(b)) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("enter correct time"),
+          backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+        ));
+      }
+      {
+        print('difference = ${b.difference(w)}');
+      }
+*/
+
+    }
   }
 }
