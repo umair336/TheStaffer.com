@@ -44,7 +44,7 @@ class AddtimesheetState extends State<Addtimesheet> {
   String startDate = DateFormat('EEE d MMM, y ').format(DateTime.now());
   TimeOfDay _t;
   TimeOfDay _pp;
-  String time = "";
+  String time = "00:00";
   bool isstart = false;
   String totalbreak = "";
   @override
@@ -120,7 +120,7 @@ class AddtimesheetState extends State<Addtimesheet> {
     );
     if (selected != null)
       setState(() {
-        startDate = DateFormat('EEE d, y').format(selected);
+        startDate = DateFormat('EEE d MMM, y').format(selected);
       });
   }
 
@@ -584,263 +584,24 @@ class AddtimesheetState extends State<Addtimesheet> {
                           ],
                         )),
 
-                    Container(
-                      height: 180.0,
-                      child: ListView.builder(
-                        itemCount: items.length,
-                        itemBuilder: (context, index) {
-                          // final itemddd = item[index];
-                          return ContactRow(
-                            callBackFun: () {
-                              setState(() {
-                                items.removeAt(index);
-                              });
-                            },
-                            breakModel: items[index],
-                            timeList: items,
-                          );
-                        },
-                      ),
-
-                      //TODO: Old
-                      // ListView(
-                      //   children: _contatos,
-                      //   scrollDirection: Axis.vertical,
-                      // ),
-                    ),
-
-                    /* SizedBox(
-                      height: 15,
-                    ),
                     ListView.builder(
-                      itemCount: numbers.length,
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
-                      itemBuilder: (context, index) => Row(
-                        //mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Expanded(child: contact),
-                          /*
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(16, 0, 0, 10),
-                            child: Row(
-                              children: [
-                                 Expanded(child: contact),
-                                Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey.shade200,
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Container(
-                                      child: InkWell(
-                                        onTap: () {
-                                          _openTimePicker(context);
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Container(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.baseline,
-                                                textBaseline:
-                                                    TextBaseline.alphabetic,
-                                                children: [
-                                                  SizedBox(
-                                                    height: 8,
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .fromLTRB(20, 5, 0, 0),
-                                                    child: Container(
-                                                      alignment:
-                                                          Alignment.centerLeft,
-                                                      child: Text(
-                                                        'Start Time',
-                                                        style: TextStyle(
-                                                            //    fontWeight: FontWeight.bold,
-                                                            fontSize: 10.0,
-                                                            color:
-                                                                Color.fromRGBO(
-                                                                    112,
-                                                                    112,
-                                                                    112,
-                                                                    1)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .fromLTRB(20, 5, 0, 0),
-                                                    child: Container(
-                                                      alignment:
-                                                          Alignment.centerLeft,
-                                                      child: Text(
-                                                        _seletedTime,
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 14.0,
-                                                            color:
-                                                                Color.fromRGBO(
-                                                                    0,
-                                                                    0,
-                                                                    0,
-                                                                    1)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 8,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      20, 5, 5, 0),
-                                              child: Container(
-                                                alignment: Alignment.centerLeft,
-                                                child: Image.asset(
-                                                  "images/Path 57125@2x.png",
-                                                  height: size.height * 0.02,
-                                                  // fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    )),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.shade200,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Container(
-                                    child: InkWell(
-                                      onTap: () {
-                                        _openTimePiker(context);
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.baseline,
-                                              textBaseline:
-                                                  TextBaseline.alphabetic,
-                                              children: [
-                                                SizedBox(
-                                                  height: 8,
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          20, 5, 0, 0),
-                                                  child: Container(
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      'End Time',
-                                                      style: TextStyle(
-                                                          //    fontWeight: FontWeight.bold,
-                                                          fontSize: 10.0,
-                                                          color: Color.fromRGBO(
-                                                              112,
-                                                              112,
-                                                              112,
-                                                              1)),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          20, 5, 0, 0),
-                                                  child: Container(
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Text(
-                                                      _seletTime,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 14.0,
-                                                          color: Color.fromRGBO(
-                                                              0, 0, 0, 1)),
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 8,
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                20, 5, 5, 0),
-                                            child: Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: Image.asset(
-                                                "images/Path 57125@2x.png",
-                                                height: size.height * 0.02,
-                                                // fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),*/
-                          //   SizedBox(
-                          //   width: 14,
-                          // ),
-
-                          InkWell(
-                            onTap: () {
-                              //Navigator.of(context).pop(true);
-                              setState(() {
-                                numbers.removeAt(index);
-                                print("remove index is$numbers[index]");
-                              });
-                            },
-                            child: Container(
-                                child: Image.asset(
-                              "images/003-trash@2x.png",
-                              height: 20,
-                              fit: BoxFit.cover,
-                            )),
-                          ),
-                          Text(numbers[index]),
-
-                          // call the class in this line
-                          /*TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  // int removeIndex = numbers.indexOf(numbers[index]);
-                                  numbers.removeAt(index);
-                                  // print(removeIndex);
-                                });
-                              },
-                              child: Text('button')),
-                          Text(numbers[index]),*/
-                        ],
-                      ),
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        // final itemddd = item[index];
+                        return ContactRow(
+                          callBackFun: () {
+                            setState(() {
+                              items.removeAt(index);
+                            });
+                          },
+                          breakModel: items[index],
+                          timeList: items,
+                        );
+                      },
                     ),
-                    */
+
                     SizedBox(
                       height: 40,
                     ),
@@ -1165,6 +926,7 @@ class AddtimesheetState extends State<Addtimesheet> {
                         ));
                       }
                       breekcalculation();
+                      time = removeTrailingZeros(time);
                     });
 
                     //     numbers.add();
@@ -1266,5 +1028,11 @@ class AddtimesheetState extends State<Addtimesheet> {
 */
 
     }
+  }
+
+  removeTrailingZeros(String time) {
+    time = time.replaceAll(RegExp(r"([.]*0+)(?!.*\d)"), "");
+    print('gggggggggggggggggggggg$time');
+    return time;
   }
 }
