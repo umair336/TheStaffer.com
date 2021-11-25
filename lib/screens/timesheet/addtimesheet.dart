@@ -153,7 +153,7 @@ class AddtimesheetState extends State<Addtimesheet> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Select Start time"),
-        backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
       ));
       print('fff');
     }
@@ -271,7 +271,6 @@ class AddtimesheetState extends State<Addtimesheet> {
                           child: InkWell(
                             onTap: () {
                               _selectStart(context);
-
                               //      Navigator.push(context,
                               //     MaterialPageRoute(builder: (context) => Loginorsignup()));
                             },
@@ -905,7 +904,7 @@ class AddtimesheetState extends State<Addtimesheet> {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
                                 "plz select accurate time of the day between 0 to 24"),
-                            backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+                            backgroundColor: Color.fromRGBO(183, 14, 105, 1),
                           ));
                         } else if (starttime.isBefore(endtime)) {
                           print('end is big'); // correct val
@@ -922,7 +921,7 @@ class AddtimesheetState extends State<Addtimesheet> {
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text("please select time of the day"),
-                          backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+                          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
                         ));
                       }
                       breekcalculation();
@@ -994,7 +993,7 @@ class AddtimesheetState extends State<Addtimesheet> {
         // time = starttime.difference(endtime).toString();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text("plz select accurate time of the day between 0 to 24"),
-          backgroundColor: Color.fromRGBO(13, 91, 196, 1),
+          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
         ));
       } else if (start.isBefore(end)) {
         print('end is big'); // correct val
@@ -1033,6 +1032,14 @@ class AddtimesheetState extends State<Addtimesheet> {
   removeTrailingZeros(String time) {
     time = time.replaceAll(RegExp(r"([.]*0+)(?!.*\d)"), "");
     print('gggggggggggggggggggggg$time');
-    return time;
+    if (time.startsWith("-")) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content:
+            Text("your break is greater than job plz select accurate time "),
+        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+      ));
+    } else {
+      return time;
+    }
   }
 }

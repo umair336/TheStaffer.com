@@ -88,6 +88,7 @@ class _ContactRow extends State<ContactRow> {
 
   String _seletedTime = "00:00 ";
   String _seletTime = "00:00";
+  bool endtime = false;
   TimeOfDay _qq;
   TimeOfDay _ww;
   String breakk = "";
@@ -113,7 +114,7 @@ class _ContactRow extends State<ContactRow> {
           // _seletedTime = t.format(context);
           breakTimePassed.startTime = t.format(context);
           _qq = t;
-
+          endtime = true;
           print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ');
           print(_seletedTime);
         });
@@ -122,6 +123,8 @@ class _ContactRow extends State<ContactRow> {
 
     Future<void> _openTimePikerr(
         BuildContext context, BreakModel breakTimePassed) async {
+      if (endtime == true) {
+        
       final TimeOfDay p =
           await showTimePicker(context: context, initialTime: _ww);
 
@@ -129,43 +132,18 @@ class _ContactRow extends State<ContactRow> {
         breakTimePassed.endTime = p.format(context);
         breakTimePassed.isEndTimeSelected = true;
         _ww = p;
-        // print('bbbbbbbbbbbbbb');
-        // print(_seletTime);
-        // var format = DateFormat("hh:mm a");
-        // var start = format.parse(_seletedTime);
-        // var end = format.parse(_seletTime);
-        //
-        // print('bbbbbbbbbbbbbbbbbbbbbb$start and $end');
-        // if (start.isAfter(end)) {
-        //   breakk = start.isAfter(end).toString();
-        //   print('start is big  select accurate time of the day');
-        //   print('difference = ${start.difference(end)}');
-        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        //     content:
-        //     Text("plz select accurate time of the day between 0 to 24"),
-        //     backgroundColor: Color.fromRGBO(13, 91, 196, 1),
-        //   ));
-        // } else if (start.isBefore(end)) {
-        //   breakk = end.difference(start).toString();
-        //   print('end is big');
-        //   print('difference = ${end.difference(start)}');
-        //   print('bbbbbbbbbbbbbbbbbbbbbbbbb$breakk');
-        //
-        // } else {
-        //   print('difference === ${end.difference(start)}');
-        //   breakk = end.difference(start).toString();
-        //   print('bbbbbbbbbbbbbbbbbbbbbbbbb$breakk');
-        //
-        //
-        //   // Navigator.push(
-        //   //   context,
-        //   //   MaterialPageRoute(builder: (context) => Addtimesheet(
-        //   //     timee: breakk,
-        //   //   )),
-        //   // );
-        // }
+        
         setState(() {});
       }
+      }
+
+      else{
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Select Start time"),
+        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+      ));
+      }
+
       bool isAllTimeSelect = false;
 
       for (BreakModel br in widget.timeList) {
