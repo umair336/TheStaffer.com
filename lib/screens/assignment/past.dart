@@ -286,7 +286,7 @@ class _PastState extends State<Past> {
                                             textBaseline:
                                                 TextBaseline.alphabetic,
                                             children: [
-                                              Text("Start Date",
+                                              Text("End Date",
                                                   style: TextStyle(
                                                       color: Color.fromRGBO(
                                                           112, 112, 112, 1),

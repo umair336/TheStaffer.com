@@ -124,24 +124,21 @@ class _ContactRow extends State<ContactRow> {
     Future<void> _openTimePikerr(
         BuildContext context, BreakModel breakTimePassed) async {
       if (endtime == true) {
-        
-      final TimeOfDay p =
-          await showTimePicker(context: context, initialTime: _ww);
+        final TimeOfDay p =
+            await showTimePicker(context: context, initialTime: _ww);
 
-      if (p != null) {
-        breakTimePassed.endTime = p.format(context);
-        breakTimePassed.isEndTimeSelected = true;
-        _ww = p;
-        
-        setState(() {});
-      }
-      }
+        if (p != null) {
+          breakTimePassed.endTime = p.format(context);
+          breakTimePassed.isEndTimeSelected = true;
+          _ww = p;
 
-      else{
+          setState(() {});
+        }
+      } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Select Start time"),
-        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
-      ));
+          content: Text("Select break Start time"),
+          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+        ));
       }
 
       bool isAllTimeSelect = false;

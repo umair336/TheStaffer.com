@@ -46,6 +46,7 @@ class AddtimesheetState extends State<Addtimesheet> {
   TimeOfDay _pp;
   String time = "00:00";
   bool isstart = false;
+  bool endtimee = false;
   String totalbreak = "";
   @override
   void initState() {
@@ -148,6 +149,7 @@ class AddtimesheetState extends State<Addtimesheet> {
           _pp = p;
           print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
           print(_seletTime);
+          endtimee = true;
         });
       }
     } else {
@@ -891,36 +893,44 @@ class AddtimesheetState extends State<Addtimesheet> {
                     setState(() {
                       print(isstart);
                       if (isstart == true) {
-                        var format = DateFormat("hh:mm a");
-                        var starttime = format.parse(_seletedTime);
-                        var endtime = format.parse(_seletTime);
+                        if (endtimee == true) {
+                          var format = DateFormat("hh:mm a");
+                          var starttime = format.parse(_seletedTime);
+                          var endtime = format.parse(_seletTime);
 
-                        print('bbbbbbbbbbbbbbbbbbbbbb$starttime and $endtime');
-                        if (starttime.isAfter(endtime)) {
-                          print('start is big');
                           print(
-                              'difference = ${starttime.difference(endtime)}');
-                          // time = starttime.difference(endtime).toString();
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                                "plz select accurate time of the day between 0 to 24"),
-                            backgroundColor: Color.fromRGBO(183, 14, 105, 1),
-                          ));
-                        } else if (starttime.isBefore(endtime)) {
-                          print('end is big'); // correct val
-                          print(
-                              'difference = ${endtime.difference(starttime)}');
-                          time = endtime.difference(starttime).toString();
-                          // time = time.substring(0, 4);
+                              'bbbbbbbbbbbbbbbbbbbbbb$starttime and $endtime');
+                          if (starttime.isAfter(endtime)) {
+                            print('start is big');
+                            print(
+                                'difference = ${starttime.difference(endtime)}');
+                            // time = starttime.difference(endtime).toString();
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(
+                                  "plz select accurate time of the day between 0 to 24"),
+                              backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+                            ));
+                          } else if (starttime.isBefore(endtime)) {
+                            print('end is big'); // correct val
+                            print(
+                                'difference = ${endtime.difference(starttime)}');
+                            time = endtime.difference(starttime).toString();
+                            // time = time.substring(0, 4);
+                          } else {
+                            print(
+                                'difference === ${endtime.difference(starttime)}');
+                            time = endtime.difference(starttime).toString();
+                            //ime = time.substring(0, 4);
+                          }
                         } else {
-                          print(
-                              'difference === ${endtime.difference(starttime)}');
-                          time = endtime.difference(starttime).toString();
-                          //ime = time.substring(0, 4);
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("please enter end time of the day"),
+                              backgroundColor:
+                                  Color.fromRGBO(183, 14, 105, 1)));
                         }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("please select time of the day"),
+                          content: Text("please enter start time of the day"),
                           backgroundColor: Color.fromRGBO(183, 14, 105, 1),
                         ));
                       }

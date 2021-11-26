@@ -290,8 +290,12 @@ class _ActiveState extends State<Active> {
                                               const EdgeInsets.only(left: 60),
                                           child: Container(
                                             child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.baseline,
+                                              textBaseline:
+                                                  TextBaseline.alphabetic,
                                               children: [
-                                                Text("Start Date   ",
+                                                Text("End Date   ",
                                                     style: TextStyle(
                                                         color: Color.fromRGBO(
                                                             112, 112, 112, 1),
@@ -302,11 +306,12 @@ class _ActiveState extends State<Active> {
                                                   height: 2,
                                                 ),
                                                 Text(
-                                                    state.assignments[index]
-                                                                ['end_date'] !=
+                                                    state.assignments[index][
+                                                                'job_end_date'] !=
                                                             null
                                                         ? state.assignments[
-                                                            index]['end_date']
+                                                                index]
+                                                            ['job_end_date']
                                                         : '',
                                                     style: TextStyle(
                                                         color: Color.fromRGBO(
