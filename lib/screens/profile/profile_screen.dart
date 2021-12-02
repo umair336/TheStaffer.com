@@ -417,7 +417,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: Container(
                                 child: InkWell(
                                   onTap: () {
-                                    showDialog(
+                                   showDialog(
                                         context: context,
                                         builder: (BuildContext context) {
                                           return AlertDialog(

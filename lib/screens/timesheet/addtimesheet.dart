@@ -42,7 +42,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
   TimeOfDay _pp;
   String time = "";
   bool timeount_false = false;
-
+  String paidunpaid;
   @override
   void initState() {
     super.initState();
@@ -501,15 +501,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             Container(
                               child: new TextButton(
                                 onPressed: () {
-                                  setState(() {
-                                    String _seletedTime = DateFormat('h:mm a')
-                                        .format(DateTime.now());
-                                    String _seletTime = DateFormat('h:mm a')
-                                        .format(DateTime.now());
-                                    _items.add(Contact(Breaktimeing(
-                                        _seletTime, _seletedTime)));
-                                    debugPrint(_items.length.toString());
-                                  });
+                                  showalert();
                                 },
                                 child: Image.asset(
                                   "images/Group 12823@2x.png",
@@ -988,6 +980,163 @@ class _AddtimesheetState extends State<Addtimesheet> {
     } else {
       return time;
     }
+  }
+
+  showalert() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Stack(
+              //   alignment: Alignment.center,
+
+              children: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.18,
+                  child: Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Select Break Status',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                            color: Color.fromRGBO(13, 91, 196, 1),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Break is paid or unpaid.',
+                          style: TextStyle(
+                            fontFamily: 'Nunito Sans',
+                            fontSize: 14.0,
+                            color: Color.fromRGBO(112, 112, 112, 1),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                            //   color: Color.fromRGBO(23, 197, 204, 1),
+
+                            child: TextButton(
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 3),
+                                  Text(
+                                    'Paid',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(height: 3),
+                                ],
+                              ),
+
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Color.fromRGBO(13, 91, 196, 1)),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+
+                                    //   side: BorderSide(color: Colors.red.shade900),
+                                  ),
+                                ),
+                              ),
+                              //      color: Colors.black,
+                              //  textColor: Colors.white,
+                              //     shape: RoundedRectangleBorder(
+                              //borderRadius: BorderRadius.circular(30)),
+                              onPressed: () {
+                                setState(() {
+                                  paidunpaid = "paid";
+                                  String _seletedTime = DateFormat('h:mm a')
+                                      .format(DateTime.now());
+                                  String _seletTime = DateFormat('h:mm a')
+                                      .format(DateTime.now());
+                                  _items.add(Contact(
+                                      Breaktimeing(_seletTime, _seletedTime,paidunpaid)));
+                                  debugPrint(_items.length.toString());
+                                });
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                            //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                            //   color: Color.fromRGBO(23, 197, 204, 1),
+
+                            child: TextButton(
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 3),
+                                  Text(
+                                    'Unpaid',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(height: 3),
+                                ],
+                              ),
+
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Color.fromRGBO(183, 14, 105, 1)),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+
+                                    //   side: BorderSide(color: Colors.red.shade900),
+                                  ),
+                                ),
+                              ),
+                              //      color: Colors.black,
+                              //  textColor: Colors.white,
+                              //     shape: RoundedRectangleBorder(
+                              //borderRadius: BorderRadius.circular(30)),
+                              onPressed: () {
+                                setState(() {
+                                   paidunpaid = "Unpaid";
+                                  String _seletedTime = DateFormat('h:mm a')
+                                      .format(DateTime.now());
+                                  String _seletTime = DateFormat('h:mm a')
+                                      .format(DateTime.now());
+                                  _items.add(Contact(
+                                      Breaktimeing(_seletTime, _seletedTime,paidunpaid)));
+                                  debugPrint(_items.length.toString());
+                                });
+                                Navigator.pop(context);
+                              },
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          );
+        });
   }
 }
 

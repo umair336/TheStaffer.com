@@ -40,79 +40,78 @@ class _ContactState extends State<Contact> {
         children: [
           Row(
             children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    _openTimePiker(context);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
-                            textBaseline: TextBaseline.alphabetic,
-                            children: [
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                                child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    "Start time",
-                                    style: TextStyle(
-                                        //    fontWeight: FontWeight.bold,
-                                        fontSize: 10.0,
-                                        color:
-                                            Color.fromRGBO(112, 112, 112, 1)),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                                child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    widget.timer.seletTime,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14.0,
-                                        color: Color.fromRGBO(0, 0, 0, 1)),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 4, 0),
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            child: Image.asset(
-                              "images/Path 57125@2x.png",
-                              height: 13,
-                              // fit: BoxFit.cover,
+              InkWell(
+                onTap: () {
+                  _openTimePiker(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            SizedBox(
+                              height: 8,
                             ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  widget.timer.paidunpaid,
+                                  style: TextStyle(
+                                      //    fontWeight: FontWeight.bold,
+                                      fontSize: 10.0,
+                                      color: Color.fromRGBO(112, 112, 112, 1)),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  widget.timer.seletTime,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14.0,
+                                      color: Color.fromRGBO(0, 0, 0, 1)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            )
+                          ],
+                        ),
+                      ),
+                      /* Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 5, 3, 0),
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          child: Image.asset(
+                            "images/Path 57125@2x.png",
+                            height: 13,
+                            // fit: BoxFit.cover,
                           ),
                         ),
-                      ],
-                    ),
+                      ),*/
+                      SizedBox(
+                        width: 15,
+                      )
+                    ],
                   ),
                 ),
               ),
               SizedBox(width: 10),
-              Expanded(
-                  child: InkWell(
+              InkWell(
                 onTap: () {
                   _openTimePikerr(context);
                 },
@@ -122,7 +121,8 @@ class _ContactState extends State<Contact> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         child: Column(
@@ -160,25 +160,14 @@ class _ContactState extends State<Contact> {
                             ),
                             SizedBox(
                               height: 8,
-                            )
+                            ),
                           ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 5, 4, 0),
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          child: Image.asset(
-                            "images/Path 57125@2x.png",
-                            height: 13,
-                            // fit: BoxFit.cover,
-                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-              )),
+              ),
             ],
           ),
           SizedBox(
