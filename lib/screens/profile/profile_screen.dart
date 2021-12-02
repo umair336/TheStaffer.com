@@ -86,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         SizedBox(
-                          width: 8,
+                          width: 7,
                         ),
                         Container(
                           child: Column(
@@ -103,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                               ),
                               SizedBox(
-                                height: 6,
+                                height: 5,
                               ),
                               Text(
                                 'Job Position will Come here',

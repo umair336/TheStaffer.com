@@ -1187,11 +1187,13 @@ class _AddtimesheetState extends State<Addtimesheet> {
     if (starttime.isAfter(endtime)) {
       print('start is big');
       print('difference = ${starttime.difference(endtime)}');
-      // time = starttime.difference(endtime).toString();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("plz select accurate time of the day between 0 to 24"),
-        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
-      ));
+      time = starttime.difference(endtime).toString();
+      String x = "24:00";
+      var f = DateFormat("hh:mm");
+      var c = f.parse(x);
+      var b = f.parse(time);
+      print('fffffffffffffffffffff$c ffffffffffffff$b');
+      time = c.difference(b).toString();
     } else if (starttime.isBefore(endtime)) {
       print('end is big'); // correct val
       print('difference = ${endtime.difference(starttime)}');
@@ -1220,3 +1222,12 @@ class _AddtimesheetState extends State<Addtimesheet> {
     }
   }
 }
+
+
+/*
+ String x = "23:59";
+      var c = f.parse(x);
+      var b = f.parse(time);
+      print('fffffffffffffffffffff$c ffffffffffffff$b');
+      time = c.difference(b).toString();
+      */
