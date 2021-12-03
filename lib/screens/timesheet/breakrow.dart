@@ -34,153 +34,202 @@ class _ContactState extends State<Contact> {
       }
     }
 
-    return new Padding(
-      padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              InkWell(
-                onTap: () {
-                  _openTimePiker(context);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Container(
+      child: Stack(
+        //  fit: StackFit.passthrough,
+        overflow: Overflow.visible,
+        children: <Widget>[
+          // Max Size
+          Positioned(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
+              child: Container(
+                //  color: Colors.green,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: Column(
                     children: [
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: [
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              onTap: () {
+                                _openTimePiker(context);
+                              },
                               child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  widget.timer.paidunpaid,
-                                  style: TextStyle(
-                                      //    fontWeight: FontWeight.bold,
-                                      fontSize: 10.0,
-                                      color: Color.fromRGBO(112, 112, 112, 1)),
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                20, 5, 0, 0),
+                                            child: Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                widget.timer.paidunpaid,
+                                                style: TextStyle(
+                                                    //    fontWeight: FontWeight.bold,
+                                                    fontSize: 10.0,
+                                                    color: Color.fromRGBO(
+                                                        112, 112, 112, 1)),
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                20, 5, 0, 0),
+                                            child: Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                widget.timer.seletTime,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1)),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 8,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                        child:
+                                            widget.timer.paidunpaid == 'Unpaid'
+                                                ? Image.asset(
+                                                    "images/Path 57125@2x.png",
+                                                    height: 13,
+                                                    color: Colors.red.shade800
+                                                    // fit: BoxFit.cover,
+                                                    )
+                                                : Image.asset(
+                                                    "images/Path 57125@2x.png",
+                                                    height: 13,
+                                                    color: Color.fromRGBO(
+                                                        13, 91, 196, 1)
+                                                    // fit: BoxFit.cover,
+                                                    )),
+                                    SizedBox(
+                                      width: 2,
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  widget.timer.seletTime,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: Color.fromRGBO(0, 0, 0, 1)),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            )
-                          ],
-                        ),
-                      ),
-                      /* Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 5, 3, 0),
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          child: Image.asset(
-                            "images/Path 57125@2x.png",
-                            height: 13,
-                            // fit: BoxFit.cover,
                           ),
-                        ),
-                      ),*/
+                          SizedBox(width: 10),
+                          Expanded(
+                              child: InkWell(
+                            onTap: () {
+                              _openTimePikerr(context);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade200,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.baseline,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              20, 5, 0, 0),
+                                          child: Container(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              'End Time',
+                                              style: TextStyle(
+                                                  //    fontWeight: FontWeight.bold,
+                                                  fontSize: 10.0,
+                                                  color: Color.fromRGBO(
+                                                      112, 112, 112, 1)),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              20, 5, 0, 0),
+                                          child: Container(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              widget.timer.seletedTime,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1)),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                 Container(
+                                        child:
+                                            widget.timer.paidunpaid == 'Unpaid'
+                                                ? Image.asset(
+                                                    "images/Path 57125@2x.png",
+                                                    height: 13,
+                                                    color: Colors.red.shade800
+                                                    // fit: BoxFit.cover,
+                                                    )
+                                                : Image.asset(
+                                                    "images/Path 57125@2x.png",
+                                                    height: 13,
+                                                    color: Color.fromRGBO(
+                                                        13, 91, 196, 1)
+                                                    // fit: BoxFit.cover,
+                                                    )),
+                                  SizedBox(
+                                    width: 2,
+                                  )
+                                ],
+                              ),
+                            ),
+                          )),
+                        ],
+                      ),
                       SizedBox(
-                        width: 15,
+                        height: 8,
                       )
                     ],
                   ),
                 ),
               ),
-              SizedBox(width: 10),
-              InkWell(
-                onTap: () {
-                  _openTimePikerr(context);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: [
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'End Time',
-                                  style: TextStyle(
-                                      //    fontWeight: FontWeight.bold,
-                                      fontSize: 10.0,
-                                      color: Color.fromRGBO(112, 112, 112, 1)),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 0),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  widget.timer.seletedTime,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: Color.fromRGBO(0, 0, 0, 1)),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-          SizedBox(
-            height: 8,
-          )
         ],
       ),
     );
-  }
-
-  @override
-  void initState() {
-    // _currentContactType = null;
-    super.initState();
   }
 }

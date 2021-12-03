@@ -42,6 +42,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
   TimeOfDay _pp;
   String time = "";
   bool timeount_false = false;
+
   String paidunpaid;
   @override
   void initState() {
@@ -85,10 +86,18 @@ class _AddtimesheetState extends State<Addtimesheet> {
           _seletedTime = t.format(context);
           _t = t;
           print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
+
           print(_seletedTime);
+         if (timeount_false == true) {
+            timecalculate();
+          //  removeTrailingZeros();
+          }
+          
+        
           timeount_false = true;
         });
       }
+        
     }
 
     Future<void> _openTimePiker(BuildContext context) async {
@@ -103,7 +112,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
             print(_seletTime);
             timecalculate();
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
-            removeTrailingZeros();
+          //  removeTrailingZeros();
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
           });
         }
@@ -513,7 +522,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                           ],
                         )),
                     ListView.builder(
-                      padding: const EdgeInsets.all(3),
+                      padding: const EdgeInsets.only(top: 3),
                       shrinkWrap: true,
 
                       // scrollDirection: Axis.vertical,
@@ -966,6 +975,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
     }
 
     print('dddddddddddddddddddddddd$time');
+    removeTrailingZeros();
   }
 
   removeTrailingZeros() {
@@ -1010,7 +1020,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                       Container(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          'Break is paid or unpaid.',
+                          'Choose a Break',
                           style: TextStyle(
                             fontFamily: 'Nunito Sans',
                             fontSize: 14.0,
@@ -1030,7 +1040,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             child: TextButton(
                               child: Column(
                                 children: [
-                                  SizedBox(height: 3),
+                                  SizedBox(height: 4),
                                   Text(
                                     'Paid',
                                     style: TextStyle(
@@ -1039,7 +1049,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                       color: Colors.white,
                                     ),
                                   ),
-                                  SizedBox(height: 3),
+                                  SizedBox(height: 4),
                                 ],
                               ),
 
@@ -1067,8 +1077,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                       .format(DateTime.now());
                                   String _seletTime = DateFormat('h:mm a')
                                       .format(DateTime.now());
-                                  _items.add(Contact(
-                                      Breaktimeing(_seletTime, _seletedTime,paidunpaid)));
+                                  _items.add(Contact(Breaktimeing(
+                                      _seletTime, _seletedTime, paidunpaid)));
                                   debugPrint(_items.length.toString());
                                 });
                                 Navigator.pop(context);
@@ -1083,7 +1093,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                             child: TextButton(
                               child: Column(
                                 children: [
-                                  SizedBox(height: 3),
+                                  SizedBox(height: 4),
                                   Text(
                                     'Unpaid',
                                     style: TextStyle(
@@ -1092,7 +1102,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                       color: Colors.white,
                                     ),
                                   ),
-                                  SizedBox(height: 3),
+                                  SizedBox(height: 4),
                                 ],
                               ),
 
@@ -1115,13 +1125,13 @@ class _AddtimesheetState extends State<Addtimesheet> {
                               //borderRadius: BorderRadius.circular(30)),
                               onPressed: () {
                                 setState(() {
-                                   paidunpaid = "Unpaid";
+                                  paidunpaid = "Unpaid";
                                   String _seletedTime = DateFormat('h:mm a')
                                       .format(DateTime.now());
                                   String _seletTime = DateFormat('h:mm a')
                                       .format(DateTime.now());
-                                  _items.add(Contact(
-                                      Breaktimeing(_seletTime, _seletedTime,paidunpaid)));
+                                  _items.add(Contact(Breaktimeing(
+                                      _seletTime, _seletedTime, paidunpaid)));
                                   debugPrint(_items.length.toString());
                                 });
                                 Navigator.pop(context);
