@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'breakmodelclasss.dart';
 
 class Contact extends StatefulWidget {
@@ -17,6 +18,7 @@ class _ContactState extends State<Contact> {
   bool selectstart = false;
   bool selectend = false;
   bool timeount_false = false;
+  String breakdifference = "";
   @override
   void initState() {
     super.initState();
@@ -35,6 +37,11 @@ class _ContactState extends State<Contact> {
           widget.timer.seletTime = t.format(context);
           _t = t;
           selectstart = true;
+          //  if (timeount_false == true) {
+          // Functionfbreakcalculate();
+          //  removeTrailingZeros();
+          // }
+
           timeount_false = true;
         });
       }
@@ -48,6 +55,8 @@ class _ContactState extends State<Contact> {
             widget.timer.seletedTime = p.format(context);
             _pp = p;
             selectend = true;
+
+            //  Functionfbreakcalculate();
           });
         }
       } else {
@@ -301,4 +310,52 @@ class _ContactState extends State<Contact> {
       ),
     );
   }
+/*
+  Functionfbreakcalculate() {
+    print(
+        "gggggggggggggggggggggggggggggggg${widget.timer.seletTime} gggggggggggggggggg${widget.timer.seletedTime}");
+    var format = DateFormat("hh:mm a");
+    var starttime = format.parse(widget.timer.seletTime);
+    var endtime = format.parse(widget.timer.seletedTime);
+    print('bbbbbbbbbbbbbbbbbbbbbb$starttime and $endtime');
+    if (starttime.isAfter(endtime)) {
+      print('start is big');
+      print('difference = ${starttime.difference(endtime)}');
+      breakdifference = starttime.difference(endtime).toString();
+      String x = "24:00";
+      var f = DateFormat("hh:mm");
+      var c = f.parse(x);
+      var b = f.parse(breakdifference);
+      print('fffffffffffffffffffff$c ffffffffffffff$b');
+      breakdifference = c.difference(b).toString();
+    } else if (starttime.isBefore(endtime)) {
+      print('end is big'); // correct val
+      print('difference = ${endtime.difference(starttime)}');
+      breakdifference = endtime.difference(starttime).toString();
+      // time = time.substring(0, 4);
+    } else {
+      print('difference === ${endtime.difference(starttime)}');
+      breakdifference = endtime.difference(starttime).toString();
+      //ime = time.substring(0, 4);
+    }
+
+    print('dddddddddddddddddddddddd$breakdifference');
+    removeTrailingZeros();
+  }
+
+  removeTrailingZeros() {
+    breakdifference =
+        breakdifference.replaceAll(RegExp(r"([.]*0+)(?!.*\d)"), "");
+    print('gggggggggggggggggggggg$breakdifference');
+    if (breakdifference.startsWith("-")) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content:
+            Text("your break is greater than job plz select accurate time "),
+        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+      ));
+    } else {
+      return breakdifference;
+    }
+  }
+  */
 }

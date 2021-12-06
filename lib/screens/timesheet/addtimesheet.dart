@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:staffer/screens/main_screen/main_screen.dart';
@@ -90,6 +92,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
           print(_seletedTime);
           if (timeount_false == true) {
             timecalculate();
+
             //  removeTrailingZeros();
           }
 
@@ -109,8 +112,9 @@ class _AddtimesheetState extends State<Addtimesheet> {
             print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
             print(_seletTime);
             timecalculate();
+            breekcalculation();
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
-          
+
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
           });
         }
@@ -973,6 +977,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
     }
 
     print('dddddddddddddddddddddddd$time');
+
     removeTrailingZeros();
   }
 
@@ -1146,13 +1151,64 @@ class _AddtimesheetState extends State<Addtimesheet> {
           );
         });
   }
-}
 
+  breekcalculation() {
+    String breaak = "";
+    print('hhhhhhhhhhhhhhhhhhhhhh${_items.length}');
 
-/*
- String x = "23:59";
-      var c = f.parse(x);
-      var b = f.parse(time);
-      print('fffffffffffffffffffff$c ffffffffffffff$b');
-      time = c.difference(b).toString();
+    for (int i = 0; i < _items.length; i++) {
+      var format = DateFormat("hh:mm a");
+      var starttime = format.parse(_items[i].timer.seletTime);
+      var endtime = format.parse(_items[i].timer.seletedTime);
+      print('bbbbbbbbbbbbbbbbbbbbbb$starttime and $endtime');
+      if (starttime.isAfter(endtime)) {
+        print('start is big');
+        print('difference = ${starttime.difference(endtime)}');
+        breaak = starttime.difference(endtime).toString();
+        String x = "24:00";
+        var f = DateFormat("hh:mm");
+        var c = f.parse(x);
+        var b = f.parse(breaak);
+        print('fffffffffffffffffffff$c ffffffffffffff$b');
+        breaak = c.difference(b).toString();
+      } else if (starttime.isBefore(endtime)) {
+        print('end is big'); // correct val
+        print('difference = ${endtime.difference(starttime)}');
+        breaak = endtime.difference(starttime).toString();
+        // time = time.substring(0, 4);
+      } else {
+        print('difference === ${endtime.difference(starttime)}');
+        breaak = endtime.difference(starttime).toString();
+        //ime = time.substring(0, 4);
+      }
+
+      print('dddddddddddddddddddddddd$breaak');
+      var fomat = DateFormat("h:m");
+      var w = fomat.parse(time);
+      var b = fomat.parse(breaak);
+      time = w.difference(b).toString();
+      print('hhhhhhhhhhhhhhhhhhhhhhhh$time');
+
+      /*
+      var format = DateFormat("hh:mm a");
+      var start = format.parse(_items[i].timer.seletTime);
+      var end = format.parse(_items[i].timer.seletedTime);
+      if (start.isAfter(end)) {
+        breaak = start.difference(end).toString();
+      } else if (start.isBefore(end)) {
+        print('end is big'); // correct val
+        print('difference = ${end.difference(start)}');
+        breaak = end.difference(start).toString();
+        // time = time.substring(0, 4);
+      } else {
+        print('difference === ${end.difference(start)}');
+        breaak = end.difference(start).toString();
+        //ime = time.substring(0, 4);
+      }
+      print("pppppppppppppppp$breaak");
+
       */
+
+    }
+  }
+}
