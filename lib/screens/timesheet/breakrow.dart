@@ -10,27 +10,50 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
+  TimeOfDay _t;
+  TimeOfDay _pp;
+  String s = '00:00';
+  String e = '00:00';
+  bool selectstart = false;
+  bool selectend = false;
+  bool timeount_false = false;
+  @override
+  void initState() {
+    super.initState();
+
+    _t = TimeOfDay.now();
+    _pp = TimeOfDay.now();
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<void> _openTimePiker(BuildContext context) async {
-      final t =
-          await showTimePicker(context: context, initialTime: TimeOfDay.now());
+      final t = await showTimePicker(context: context, initialTime: _t);
 
       if (t != null) {
         setState(() {
           widget.timer.seletTime = t.format(context);
+          _t = t;
+          selectstart = true;
+          timeount_false = true;
         });
       }
     }
 
     Future<void> _openTimePikerr(BuildContext context) async {
-      final t =
-          await showTimePicker(context: context, initialTime: TimeOfDay.now());
-
-      if (t != null) {
-        setState(() {
-          widget.timer.seletedTime = t.format(context);
-        });
+      if (timeount_false == true) {
+        final p = await showTimePicker(context: context, initialTime: _pp);
+        if (p != null) {
+          setState(() {
+            widget.timer.seletedTime = p.format(context);
+            _pp = p;
+            selectend = true;
+          });
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Select Start time"),
+            backgroundColor: Color.fromRGBO(183, 14, 105, 1)));
       }
     }
 
@@ -94,15 +117,41 @@ class _ContactState extends State<Contact> {
                                             padding: const EdgeInsets.fromLTRB(
                                                 20, 5, 0, 0),
                                             child: Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                widget.timer.seletTime,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14.0,
-                                                    color: Color.fromRGBO(
-                                                        0, 0, 0, 1)),
-                                              ),
+                                              child: selectstart == true
+                                                  ? Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Text(
+                                                        widget.timer.seletTime,
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 14.0,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    0,
+                                                                    0,
+                                                                    0,
+                                                                    1)),
+                                                      ),
+                                                    )
+                                                  : Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Text(
+                                                        s,
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 14.0,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    0,
+                                                                    0,
+                                                                    0,
+                                                                    1)),
+                                                      ),
+                                                    ),
                                             ),
                                           ),
                                           SizedBox(
@@ -179,15 +228,33 @@ class _ContactState extends State<Contact> {
                                           padding: const EdgeInsets.fromLTRB(
                                               20, 5, 0, 0),
                                           child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              widget.timer.seletedTime,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14.0,
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 1)),
-                                            ),
+                                            child: selectend == true
+                                                ? Container(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Text(
+                                                      widget.timer.seletedTime,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14.0,
+                                                          color: Color.fromRGBO(
+                                                              0, 0, 0, 1)),
+                                                    ),
+                                                  )
+                                                : Container(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Text(
+                                                      e,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14.0,
+                                                          color: Color.fromRGBO(
+                                                              0, 0, 0, 1)),
+                                                    ),
+                                                  ),
                                           ),
                                         ),
                                         SizedBox(
