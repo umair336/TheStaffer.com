@@ -88,16 +88,14 @@ class _AddtimesheetState extends State<Addtimesheet> {
           print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
 
           print(_seletedTime);
-         if (timeount_false == true) {
+          if (timeount_false == true) {
             timecalculate();
-          //  removeTrailingZeros();
+            //  removeTrailingZeros();
           }
-          
-        
+
           timeount_false = true;
         });
       }
-        
     }
 
     Future<void> _openTimePiker(BuildContext context) async {
@@ -112,7 +110,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
             print(_seletTime);
             timecalculate();
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
-          //  removeTrailingZeros();
+          
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
           });
         }
@@ -1056,7 +1054,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Color.fromRGBO(13, 91, 196, 1)),
+                                        Color.fromRGBO(183, 14, 105, 1)),
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -1109,7 +1107,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Color.fromRGBO(183, 14, 105, 1)),
+                                        Color.fromRGBO(13, 91, 196, 1)),
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(

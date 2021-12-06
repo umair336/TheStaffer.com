@@ -80,7 +80,8 @@ class _ContactState extends State<Contact> {
                                             child: Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                widget.timer.paidunpaid,
+                                                'Start Time',
+                                                // widget.timer.paidunpaid,
                                                 style: TextStyle(
                                                     //    fontWeight: FontWeight.bold,
                                                     fontSize: 10.0,
@@ -116,14 +117,15 @@ class _ContactState extends State<Contact> {
                                                 ? Image.asset(
                                                     "images/Path 57125@2x.png",
                                                     height: 13,
-                                                    color: Colors.red.shade800
+                                                    color: Color.fromRGBO(
+                                                        13, 91, 196, 1)
                                                     // fit: BoxFit.cover,
                                                     )
                                                 : Image.asset(
                                                     "images/Path 57125@2x.png",
                                                     height: 13,
-                                                    color: Color.fromRGBO(
-                                                        13, 91, 196, 1)
+                                                    color: Colors.red.shade800
+
                                                     // fit: BoxFit.cover,
                                                     )),
                                     SizedBox(
@@ -194,22 +196,22 @@ class _ContactState extends State<Contact> {
                                       ],
                                     ),
                                   ),
-                                 Container(
-                                        child:
-                                            widget.timer.paidunpaid == 'Unpaid'
-                                                ? Image.asset(
-                                                    "images/Path 57125@2x.png",
-                                                    height: 13,
-                                                    color: Colors.red.shade800
-                                                    // fit: BoxFit.cover,
-                                                    )
-                                                : Image.asset(
-                                                    "images/Path 57125@2x.png",
-                                                    height: 13,
-                                                    color: Color.fromRGBO(
-                                                        13, 91, 196, 1)
-                                                    // fit: BoxFit.cover,
-                                                    )),
+                                  Container(
+                                      child: widget.timer.paidunpaid == 'Unpaid'
+                                          ? Image.asset(
+                                              "images/Path 57125@2x.png",
+                                              height: 13,
+                                              color:
+                                                  Color.fromRGBO(13, 91, 196, 1)
+
+                                              // fit: BoxFit.cover,
+                                              )
+                                          : Image.asset(
+                                              "images/Path 57125@2x.png",
+                                              height: 13,
+                                              color: Colors.red.shade800
+                                              // fit: BoxFit.cover,
+                                              )),
                                   SizedBox(
                                     width: 2,
                                   )
