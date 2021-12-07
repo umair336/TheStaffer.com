@@ -92,7 +92,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
           print(_seletedTime);
           if (timeount_false == true) {
             timecalculate();
-
+            breekcalculation();
             //  removeTrailingZeros();
           }
 
@@ -543,6 +543,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                 ScaffoldMessenger.of(context)
                                   ..hideCurrentSnackBar()
                                   ..showSnackBar(snackBar);
+                                timecalculate();
+                                breekcalculation();
                               });
                             },
                             icon: Image.asset(
@@ -1182,11 +1184,13 @@ class _AddtimesheetState extends State<Addtimesheet> {
         //ime = time.substring(0, 4);
       }
 
+      
       print('dddddddddddddddddddddddd$breaak');
       var fomat = DateFormat("h:m");
       var w = fomat.parse(time);
       var b = fomat.parse(breaak);
       time = w.difference(b).toString();
+removeTrailingZeros();
       print('hhhhhhhhhhhhhhhhhhhhhhhh$time');
 
       /*
