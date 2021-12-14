@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'breakmodelclasss.dart';
+import 'addtimesheet.dart';
 
 class Contact extends StatefulWidget {
   Breaktimeing timer;
@@ -37,10 +38,10 @@ class _ContactState extends State<Contact> {
           widget.timer.seletTime = t.format(context);
           _t = t;
           selectstart = true;
-          //  if (timeount_false == true) {
-          // Functionfbreakcalculate();
-          //  removeTrailingZeros();
-          // }
+          if (timeount_false == true) {
+            calculate(time, widget.timer.seletTime, widget.timer.seletedTime);
+           
+          }
 
           timeount_false = true;
         });
@@ -55,7 +56,8 @@ class _ContactState extends State<Contact> {
             widget.timer.seletedTime = p.format(context);
             _pp = p;
             selectend = true;
-
+            calculate(time, widget.timer.seletTime, widget.timer.seletedTime);
+           
             //  Functionfbreakcalculate();
           });
         }
@@ -112,7 +114,8 @@ class _ContactState extends State<Contact> {
                                             child: Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                'Start Time',
+                                                time,
+                                                //  'Start Time',
                                                 // widget.timer.paidunpaid,
                                                 style: TextStyle(
                                                     //    fontWeight: FontWeight.bold,

@@ -9,6 +9,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'breakmodelclasss.dart';
 import './breakrow.dart';
 
+String time = "";
 class Addtimesheet extends StatefulWidget {
   @override
   _AddtimesheetState createState() => _AddtimesheetState();
@@ -42,7 +43,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
   String startDate = DateFormat('EEE d MMM, y ').format(DateTime.now());
   TimeOfDay _t;
   TimeOfDay _pp;
-  String time = "";
+  
   bool timeount_false = false;
 
   String paidunpaid;
@@ -513,6 +514,10 @@ class _AddtimesheetState extends State<Addtimesheet> {
                               child: new TextButton(
                                 onPressed: () {
                                   showalert();
+                                  setState(() {
+                                     timecalculate();
+            breekcalculation();
+                                  });
                                 },
                                 child: Image.asset(
                                   "images/Group 12823@2x.png",
@@ -847,7 +852,10 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     //     numbers.add();
 
                     // print(breaktime);
-
+setState(() {
+   timecalculate();
+            breekcalculation();
+});
                     totalbreak.add(breaktime);
 
                     print("start Date is $startDate");
