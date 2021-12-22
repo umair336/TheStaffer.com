@@ -4,9 +4,9 @@ import 'package:intl/intl.dart';
 class Breaktimeing {
   String seletedTime;
   String seletTime;
-  String paidunpaid;
+  
 
-  Breaktimeing(this.seletTime, this.seletedTime, this.paidunpaid);
+  Breaktimeing(this.seletTime, this.seletedTime);
 }
 
 calculate(time, seletTime, seletedTime) {

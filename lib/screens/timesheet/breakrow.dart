@@ -20,6 +20,25 @@ class _ContactState extends State<Contact> {
   bool selectend = false;
   bool timeount_false = false;
   String breakdifference = "";
+  bool isSwitched = false;
+  var textValue = 'Unpaid';
+
+  void toggleSwitch(bool value) {
+    if (isSwitched == false) {
+      setState(() {
+        isSwitched = true;
+        textValue = 'Paid';
+      });
+      print('Switch Button is ON');
+    } else {
+      setState(() {
+        isSwitched = false;
+        textValue = 'Unpaid';
+      });
+      print('Switch Button is OFF');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -39,9 +58,6 @@ class _ContactState extends State<Contact> {
           _t = t;
           selectstart = true;
           if (timeount_false == true) {
-        
-           
-         
             return calculate(
                 time, widget.timer.seletTime, widget.timer.seletedTime);
           }
@@ -119,8 +135,8 @@ class _ContactState extends State<Contact> {
                                             child: Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                time,
-                                                //  'Start Time',
+                                                // time,
+                                                'Start Time',
                                                 // widget.timer.paidunpaid,
                                                 style: TextStyle(
                                                     //    fontWeight: FontWeight.bold,
@@ -178,22 +194,12 @@ class _ContactState extends State<Contact> {
                                       ),
                                     ),
                                     Container(
-                                        child:
-                                            widget.timer.paidunpaid == 'Unpaid'
-                                                ? Image.asset(
-                                                    "images/Path 57125@2x.png",
-                                                    height: 13,
-                                                    color: Color.fromRGBO(
-                                                        13, 91, 196, 1)
-                                                    // fit: BoxFit.cover,
-                                                    )
-                                                : Image.asset(
-                                                    "images/Path 57125@2x.png",
-                                                    height: 13,
-                                                    color: Colors.red.shade800
-
-                                                    // fit: BoxFit.cover,
-                                                    )),
+                                      child: Image.asset(
+                                        "images/Path 57125@2x.png",
+                                        height: 13,
+                                        // fit: BoxFit.cover,
+                                      ),
+                                    ),
                                     SizedBox(
                                       width: 2,
                                     )
@@ -281,21 +287,12 @@ class _ContactState extends State<Contact> {
                                     ),
                                   ),
                                   Container(
-                                      child: widget.timer.paidunpaid == 'Unpaid'
-                                          ? Image.asset(
-                                              "images/Path 57125@2x.png",
-                                              height: 13,
-                                              color:
-                                                  Color.fromRGBO(13, 91, 196, 1)
-
-                                              // fit: BoxFit.cover,
-                                              )
-                                          : Image.asset(
-                                              "images/Path 57125@2x.png",
-                                              height: 13,
-                                              color: Colors.red.shade800
-                                              // fit: BoxFit.cover,
-                                              )),
+                                    child: Image.asset(
+                                      "images/Path 57125@2x.png",
+                                      height: 13,
+                                      // fit: BoxFit.cover,
+                                    ),
+                                  ),
                                   SizedBox(
                                     width: 2,
                                   )
@@ -303,6 +300,9 @@ class _ContactState extends State<Contact> {
                               ),
                             ),
                           )),
+                          SizedBox(
+                            width: 25,
+                          )
                         ],
                       ),
                       SizedBox(
@@ -314,6 +314,39 @@ class _ContactState extends State<Contact> {
               ),
             ),
           ),
+          Positioned(
+            top: 7,
+            bottom: 0,
+            left: 208,
+            right: -25,
+            child: Text(
+              '$textValue',
+              style: TextStyle(fontSize: 6),
+            ),
+          ),
+          Positioned(
+              top: 5,
+              bottom: 5,
+              left: 190,
+              right: -25,
+              child: Container(
+                //   color: Colors.green,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Transform.scale(
+                          scale: 1,
+                          child: Switch(
+                            onChanged: toggleSwitch,
+                            value: isSwitched,
+                            activeColor: Colors.white,
+                            activeTrackColor: Color.fromRGBO(183, 14, 105, 1),
+                            inactiveThumbColor: Colors.white,
+                            inactiveTrackColor:
+                                Color.fromRGBO(112, 112, 112, 1),
+                          )),
+                    ]),
+              ))
         ],
       ),
     );
