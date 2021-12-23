@@ -9,7 +9,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'breakmodelclasss.dart';
 import './breakrow.dart';
 
-String time = "";
+
 
 class Addtimesheet extends StatefulWidget {
   @override
@@ -24,6 +24,7 @@ class ListItem {
 
 class _AddtimesheetState extends State<Addtimesheet> {
   final List<Contact> _items = [];
+  String time = "";
   int _count = 1;
   int _value = 1;
   List totalbreak = [];

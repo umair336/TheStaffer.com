@@ -58,11 +58,9 @@ class _ContactState extends State<Contact> {
           _t = t;
           selectstart = true;
           if (timeount_false == true) {
-            return calculate(
-                time, widget.timer.seletTime, widget.timer.seletedTime);
+           ////
           }
 
-          print('aaaaaaaaaaaaaaaa$time');
           timeount_false = true;
         });
       }
@@ -76,10 +74,7 @@ class _ContactState extends State<Contact> {
             widget.timer.seletedTime = p.format(context);
             _pp = p;
             selectend = true;
-            return calculate(
-                time, widget.timer.seletTime, widget.timer.seletedTime);
-
-            //  Functionfbreakcalculate();
+          ////
           });
         }
       } else {
