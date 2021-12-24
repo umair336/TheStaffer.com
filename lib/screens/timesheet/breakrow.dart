@@ -58,7 +58,7 @@ class _ContactState extends State<Contact> {
           _t = t;
           selectstart = true;
           if (timeount_false == true) {
-           ////
+            ////
           }
 
           timeount_false = true;
@@ -74,7 +74,7 @@ class _ContactState extends State<Contact> {
             widget.timer.seletedTime = p.format(context);
             _pp = p;
             selectend = true;
-          ////
+            ////
           });
         }
       } else {
@@ -188,13 +188,13 @@ class _ContactState extends State<Contact> {
                                         ],
                                       ),
                                     ),
-                                    Container(
+                                    /*   Container(
                                       child: Image.asset(
                                         "images/Path 57125@2x.png",
                                         height: 13,
                                         // fit: BoxFit.cover,
                                       ),
-                                    ),
+                                    ),*/
                                     SizedBox(
                                       width: 2,
                                     )
@@ -281,13 +281,13 @@ class _ContactState extends State<Contact> {
                                       ],
                                     ),
                                   ),
-                                  Container(
+                                  /*        Container(
                                     child: Image.asset(
                                       "images/Path 57125@2x.png",
                                       height: 13,
                                       // fit: BoxFit.cover,
                                     ),
-                                  ),
+                                  ),*/
                                   SizedBox(
                                     width: 2,
                                   )

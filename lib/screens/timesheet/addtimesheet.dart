@@ -9,8 +9,6 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'breakmodelclasss.dart';
 import './breakrow.dart';
 
-
-
 class Addtimesheet extends StatefulWidget {
   @override
   _AddtimesheetState createState() => _AddtimesheetState();
@@ -523,8 +521,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                     _items.add(Contact(Breaktimeing(
                                         _seletTime, _seletedTime)));
                                     debugPrint(_items.length.toString());
-                                            timecalculate();
-            breekcalculation();
+                                    //                        timecalculate();
+                                    //   breekcalculation();
                                   });
                                 },
                                 child: Image.asset(
@@ -556,8 +554,8 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                 ScaffoldMessenger.of(context)
                                   ..hideCurrentSnackBar()
                                   ..showSnackBar(snackBar);
-                                timecalculate();
-                                breekcalculation();
+                                // timecalculate();
+                                // breekcalculation();
                               });
                             },
                             icon: Image.asset(
