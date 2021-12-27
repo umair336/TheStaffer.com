@@ -21,19 +21,20 @@ class _ContactState extends State<Contact> {
   bool timeount_false = false;
   String breakdifference = "";
   bool isSwitched = false;
+
   var textValue = 'Unpaid';
 
   void toggleSwitch(bool value) {
-    if (isSwitched == false) {
+    if (widget.timer.switched == false) {
       setState(() {
-        isSwitched = true;
-        textValue = 'Paid';
+        widget.timer.switched = true;
+        widget.timer.switchedvalue = 'Paid';
       });
       print('Switch Button is ON');
     } else {
       setState(() {
-        isSwitched = false;
-        textValue = 'Unpaid';
+        widget.timer.switched = false;
+          widget.timer.switchedvalue = 'Unpaid';
       });
       print('Switch Button is OFF');
     }
@@ -315,7 +316,7 @@ class _ContactState extends State<Contact> {
             left: 208,
             right: -25,
             child: Text(
-              '$textValue',
+              '${ widget.timer.switchedvalue}',
               style: TextStyle(fontSize: 6),
             ),
           ),
@@ -333,7 +334,7 @@ class _ContactState extends State<Contact> {
                           scale: 1,
                           child: Switch(
                             onChanged: toggleSwitch,
-                            value: isSwitched,
+                            value: widget.timer.switched,
                             activeColor: Colors.white,
                             activeTrackColor: Color.fromRGBO(183, 14, 105, 1),
                             inactiveThumbColor: Colors.white,

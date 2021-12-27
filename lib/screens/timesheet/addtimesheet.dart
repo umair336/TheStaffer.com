@@ -514,12 +514,14 @@ class _AddtimesheetState extends State<Addtimesheet> {
                               child: new TextButton(
                                 onPressed: () {
                                   setState(() {
+                                      bool switched = false;
+                                      var switchedvalue = 'Unpaid';
                                     String _seletedTime = DateFormat('h:mm a')
                                         .format(DateTime.now());
                                     String _seletTime = DateFormat('h:mm a')
                                         .format(DateTime.now());
                                     _items.add(Contact(Breaktimeing(
-                                        _seletTime, _seletedTime)));
+                                        _seletTime, _seletedTime,switched,switchedvalue)));
                                     debugPrint(_items.length.toString());
                                     //                        timecalculate();
                                     //   breekcalculation();
