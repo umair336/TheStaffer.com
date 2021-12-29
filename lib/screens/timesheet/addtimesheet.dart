@@ -39,6 +39,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
   //String _seletTime = DateFormat('h:mm a').format(DateTime.now());
   String _seletedTime = "00:00 ";
   String _seletTime = "00:00";
+
   String start = "";
   String startDate = DateFormat('EEE d MMM, y ').format(DateTime.now());
   TimeOfDay _t;
@@ -47,6 +48,9 @@ class _AddtimesheetState extends State<Addtimesheet> {
   bool timeount_false = false;
 
   String paidunpaid;
+
+  String checkstart = "";
+  String checkend = "";
   @override
   void initState() {
     super.initState();
@@ -87,6 +91,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
       if (t != null) {
         setState(() {
           _seletedTime = t.format(context);
+          checkstart = _seletedTime;
           _t = t;
           print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
 
@@ -94,6 +99,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
           if (timeount_false == true) {
             timecalculate();
             breekcalculation();
+            checkbreaktime();
             //  removeTrailingZeros();
           }
 
@@ -109,11 +115,13 @@ class _AddtimesheetState extends State<Addtimesheet> {
         if (p != null) {
           setState(() {
             _seletTime = p.format(context);
+            checkend = _seletTime;
             _pp = p;
             print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
             print(_seletTime);
             timecalculate();
             breekcalculation();
+            checkbreaktime();
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
 
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
@@ -514,14 +522,17 @@ class _AddtimesheetState extends State<Addtimesheet> {
                               child: new TextButton(
                                 onPressed: () {
                                   setState(() {
-                                      bool switched = false;
-                                      var switchedvalue = 'Unpaid';
+                                    bool switched = false;
+                                    var switchedvalue = 'Unpaid';
                                     String _seletedTime = DateFormat('h:mm a')
                                         .format(DateTime.now());
                                     String _seletTime = DateFormat('h:mm a')
                                         .format(DateTime.now());
                                     _items.add(Contact(Breaktimeing(
-                                        _seletTime, _seletedTime,switched,switchedvalue)));
+                                        _seletTime,
+                                        _seletedTime,
+                                        switched,
+                                        switchedvalue)));
                                     debugPrint(_items.length.toString());
                                     //                        timecalculate();
                                     //   breekcalculation();
@@ -863,6 +874,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     setState(() {
                       timecalculate();
                       breekcalculation();
+                      checkbreaktime();
                     });
                     totalbreak.add(breaktime);
 
@@ -1004,8 +1016,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
     print('gggggggggggggggggggggg$time');
     if (time.startsWith("-")) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content:
-            Text("your break is greater than job plz select accurate time "),
+        content: Text("Select acuurate time "),
         backgroundColor: Color.fromRGBO(183, 14, 105, 1),
       ));
     } else {
@@ -1073,4 +1084,43 @@ class _AddtimesheetState extends State<Addtimesheet> {
 
     }
   }
+
+  checkbreaktime() {
+    // print('ooooooooooooooooooooooo$checkstart');
+    //  print('ooooooooooooooooooooooo$checkend');
+
+    for (int i = 0; i < _items.length; i++) {
+      var format = DateFormat("hh:mm a");
+      var cs = format.parse(checkstart);
+      var ce = format.parse(checkend);
+      var s = format.parse(_items[i].timer.seletTime);
+      var e = format.parse(_items[i].timer.seletedTime);
+      //  print("hhhhhhhhhhhhhhhhhhhhhhhhhhhh$cs ddddddddddddddddddd$ce ddddddddddddddddddddddd$s ddddddddddddddddddd$e");
+      print(" ddddddddddddddddddd$ce ddddddddddddddddddd$e");
+      /* if (s.isAfter(cs)) {
+        print('fffffffffffffffffffffffffffff');
+      } else {
+        print('rrrrrrrrrrrrrrrrrrrrrrrrrr');
+      }
+      */
+      /*
+      if (e.isBefore(ce)) {
+        print('fffffffffffffffffffffffffffffrrrrrrrrrrrrrrrr');
+      } else {
+        print('tttttttttttttt');
+      }
+      */
+      if (s.isAfter(cs) && e.isBefore(ce)) {
+        print('fffffffffffffffffffffffffffff');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+              "Select accurate break time of break $i between checkin and checkout"),
+          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+        ));
+        print('rrrrrrrrrrrrrrrrrrrrrrrrrr');
+      }
+    }
+  }
 }
+//e.isBefore(ce)
