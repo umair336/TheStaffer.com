@@ -1122,22 +1122,12 @@ class _AddtimesheetState extends State<Addtimesheet> {
       var s = format.parse(_items[i].timer.seletTime);
       var e = format.parse(_items[i].timer.seletedTime);
       //  print("hhhhhhhhhhhhhhhhhhhhhhhhhhhh$cs ddddddddddddddddddd$ce ddddddddddddddddddddddd$s ddddddddddddddddddd$e");
-      print(" ddddddddddddddddddd${ce} ddddddddddddddddddd$e");
-      /* if (s.isAfter(cs)) {
+      print(" ddddddddddddddddddd$s ddddddddddddddddddd$e");
+
+      /* if (s.isAfter(cs) && e.isBefore(ce)) {
         print('fffffffffffffffffffffffffffff');
-      } else {
-        print('rrrrrrrrrrrrrrrrrrrrrrrrrr');
-      }
-      */
-      /*
-      if (e.isBefore(ce)) {
-        print('fffffffffffffffffffffffffffffrrrrrrrrrrrrrrrr');
-      } else {
-        print('tttttttttttttt');
-      }
-      */
-      if (s.isAfter(cs) && e.isBefore(ce)) {
-        print('fffffffffffffffffffffffffffff');
+      } else if (s.isBefore(cs)) {
+        print('sdssssssssssssssss');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
@@ -1145,6 +1135,19 @@ class _AddtimesheetState extends State<Addtimesheet> {
           backgroundColor: Color.fromRGBO(183, 14, 105, 1),
         ));
         print('rrrrrrrrrrrrrrrrrrrrrrrrrr');
+      }
+      */
+      if (s.isAfter(cs) && ce.isBefore(s)) {
+        print('kkkkkkkkkkkkkkkkkkkkkcorrect');
+      } else if (s.isBefore(cs)) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+              "Select accurate break time of break $i between checkin and checkout"),
+          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+        ));
+        print('Wrong Start time');
+      } else {
+        print('llllllllllllcorrect');
       }
     }
   }
