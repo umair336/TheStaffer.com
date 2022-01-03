@@ -46,6 +46,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
   TimeOfDay _pp;
 
   bool timeount_false = false;
+  bool save = false;
 
   String paidunpaid;
 
@@ -125,6 +126,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
 
             print('iiiiiiiiiiiiiiiiiiiiiiiii$time');
+            save = true;
           });
         }
       } else {
@@ -871,11 +873,35 @@ class _AddtimesheetState extends State<Addtimesheet> {
                     //     numbers.add();
 
                     // print(breaktime);
+                    if (save == true) {
+                      setState(() {
+                        timecalculate();
+                        breekcalculation();
+                        checkbreaktime();
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Time saved successfully"),
+                          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+                        ));
+                      });
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text("Select timeings of timeout"),
+                        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+                      ));
+                    }
+                    /*
                     setState(() {
-                      timecalculate();
-                      breekcalculation();
-                      checkbreaktime();
-                    });
+                      if (save == true) {
+                        timecalculate();
+                        breekcalculation();
+                        checkbreaktime();
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Select timeings"),
+                          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+                        ));
+                      }
+                    });*/
                     totalbreak.add(breaktime);
 
                     print("start Date is $startDate");
@@ -1016,7 +1042,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
     print('gggggggggggggggggggggg$time');
     if (time.startsWith("-")) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Select acuurate time "),
+        content: Text("Select accurate time "),
         backgroundColor: Color.fromRGBO(183, 14, 105, 1),
       ));
     } else {
@@ -1096,7 +1122,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
       var s = format.parse(_items[i].timer.seletTime);
       var e = format.parse(_items[i].timer.seletedTime);
       //  print("hhhhhhhhhhhhhhhhhhhhhhhhhhhh$cs ddddddddddddddddddd$ce ddddddddddddddddddddddd$s ddddddddddddddddddd$e");
-      print(" ddddddddddddddddddd$ce ddddddddddddddddddd$e");
+      print(" ddddddddddddddddddd${ce} ddddddddddddddddddd$e");
       /* if (s.isAfter(cs)) {
         print('fffffffffffffffffffffffffffff');
       } else {
