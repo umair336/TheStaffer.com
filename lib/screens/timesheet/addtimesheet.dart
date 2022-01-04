@@ -885,7 +885,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                       });
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text("Select timeings of timeout"),
+                        content: Text("Select timeing of job"),
                         backgroundColor: Color.fromRGBO(183, 14, 105, 1),
                       ));
                     }
@@ -1032,7 +1032,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
       //ime = time.substring(0, 4);
     }
 
-    print('dddddddddddddddddddddddd$time');
+    print('dddddddddddddddddddddtimddd$e');
 
     removeTrailingZeros();
   }
@@ -1142,7 +1142,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
       } else if (s.isBefore(cs)) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
-              "Select accurate break time of break $i between checkin and checkout"),
+              "Select accurate break time of break between checkin and checkout"),
           backgroundColor: Color.fromRGBO(183, 14, 105, 1),
         ));
         print('Wrong Start time');
