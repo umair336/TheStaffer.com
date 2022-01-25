@@ -3,9 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:staffer/bloc/auth_bloc/auth.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:staffer/style/theme.dart' as Style;
 import 'profileApi.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -780,7 +779,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
               return Text("${snapshot.error}");
             } else {
               print('jjjjjjjjj');
-              return Center(child: CircularProgressIndicator());
+              return Container(
+                height: MediaQuery.of(context).size.height,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: CircularProgressIndicator(
+                        valueColor: new AlwaysStoppedAnimation<Color>(
+                            Style.Colors.mainColor),
+                        strokeWidth: 4.0,
+                      ),
+                    )
+                  ],
+                ),
+              );
             }
 
             // By default, show a loading spinner.
