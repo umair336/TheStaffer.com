@@ -755,6 +755,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                           ],
                                         ),
                                         children: <Widget>[
+                                          /*
                                           ListTile(
                                             title: Column(
                                               children: [
@@ -1079,6 +1080,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                               ],
                                             ),
                                           ),
+                                          */
                                         ],
                                       ),
                                     ],
