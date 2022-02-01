@@ -1077,8 +1077,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           padding:
                                               const EdgeInsets.only(left: 20),
                                           child: Text(
-                                            snapshot.data.data[0].assignments[0]
-                                                .employeeName
+                                            snapshot.data.data[0]
+                                                .assignments[index].cutomerName
                                                 .toString(),
                                             style: TextStyle(
                                                 fontSize: 10,

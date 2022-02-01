@@ -125,6 +125,7 @@ class Assignments {
   String jobTitle;
   String employeeName;
   int customer;
+  String cutomerName;
 
   Assignments(
       {this.number,
@@ -147,7 +148,8 @@ class Assignments {
       this.employeeJobId,
       this.jobTitle,
       this.employeeName,
-      this.customer});
+      this.customer,
+      this.cutomerName});
 
   Assignments.fromJson(Map<String, dynamic> json) {
     number = json['number'];
@@ -171,6 +173,7 @@ class Assignments {
     jobTitle = json['job_title'];
     employeeName = json['employee_name'];
     customer = json['customer'];
+    cutomerName = json['customer_name'];
   }
 
   Map<String, dynamic> toJson() {
@@ -196,6 +199,7 @@ class Assignments {
     data['job_title'] = this.jobTitle;
     data['employee_name'] = this.employeeName;
     data['customer'] = this.customer;
+    data['customer_name'] = this.cutomerName;
     return data;
   }
 }
