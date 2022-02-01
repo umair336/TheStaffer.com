@@ -117,11 +117,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         size: 40,
                                       ),
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ProfileApi()));
+                                    //    Navigator.push(
+                                       //     context,
+                                        //    MaterialPageRoute(
+                                       //         builder: (context) =>
+                                           //         ProfileApi()));
                                       },
                                     ),
                                   ),

@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return new Scaffold(
       backgroundColor: const Color(0xfffafafa),
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: FutureBuilder<Home>(
           future: futureData,
           builder: (context, snapshot) {
@@ -555,18 +556,51 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         TextBaseline.alphabetic,
                                                     children: [
                                                       Text(
-                                                        snapshot.data.data[0]
-                                                            .earnings
-                                                            .toString(),
-                                                        style: TextStyle(
-                                                          fontSize: 30,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                        ),
-                                                      ),
+                                                                snapshot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .earnings
+                                                                    .toString(),
+                                                              ) ==
+                                                              null
+                                                          ? new Container(
+                                                              child: Text(
+                                                                snapshot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .earnings
+                                                                    .toString(),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          83,
+                                                                          83,
+                                                                          83,
+                                                                          1),
+                                                                ),
+                                                              ),
+                                                            )
+                                                          : new Container(
+                                                              child: Text('00',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        30,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontFamily:
+                                                                        'Nunito Sans',
+                                                                  ))),
+
                                                       /*   Text(
                                                         '.50',
                                                         style: TextStyle(
@@ -691,18 +725,50 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         TextBaseline.alphabetic,
                                                     children: [
                                                       Text(
-                                                        snapshot.data.data[0]
-                                                            .earnings
-                                                            .toString(),
-                                                        style: TextStyle(
-                                                          fontSize: 30,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                        ),
-                                                      ),
+                                                                snapshot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .earnings
+                                                                    .toString(),
+                                                              ) ==
+                                                              null
+                                                          ? new Container(
+                                                              child: Text(
+                                                                snapshot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .earnings
+                                                                    .toString(),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          83,
+                                                                          83,
+                                                                          83,
+                                                                          1),
+                                                                ),
+                                                              ),
+                                                            )
+                                                          : new Container(
+                                                              child: Text('00',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        30,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontFamily:
+                                                                        'Nunito Sans',
+                                                                  ))),
                                                       /*   Text(
                                                         '.50',
                                                         style: TextStyle(
@@ -1160,8 +1226,23 @@ class _HomeScreenState extends State<HomeScreen> {
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             } else {
-              print('jjjjjjjjj');
-              return CircularProgressIndicator();
+              // print('jjjjjjjjj');
+              return Container(
+                height: MediaQuery.of(context).size.height,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: CircularProgressIndicator(
+                        valueColor: new AlwaysStoppedAnimation<Color>(
+                            Style.Colors.mainColor),
+                        strokeWidth: 4.0,
+                      ),
+                    )
+                  ],
+                ),
+              );
             }
 
             // By default, show a loading spinner.
