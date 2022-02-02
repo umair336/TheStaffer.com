@@ -319,7 +319,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                 ],
                               ),
                             ),
-                            Container(
+                            /*  Container(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.baseline,
                                 textBaseline: TextBaseline.alphabetic,
@@ -348,7 +348,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                   ),
                                 ],
                               ),
-                            )
+                            )*/
                           ],
                         ),
                       ),
@@ -681,7 +681,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           ],
                                                         ),
                                                       ),
-                                                      Container(
+                                                      /*   Container(
                                                         child: Column(
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
@@ -745,6 +745,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           ],
                                                         ),
                                                       ),
+                                                      */
                                                     ],
                                                   ),
                                                 ),
