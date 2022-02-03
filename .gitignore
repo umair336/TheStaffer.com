@@ -54,5 +54,3 @@ Build
 .flutter-plugins-dependencies
 .packages
 pubspec.lock
-ios
-pubspec.lock
