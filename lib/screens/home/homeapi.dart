@@ -60,7 +60,7 @@ class Data {
   String empName;
   String profilePic;
   List<Assignments> assignments;
-  Null earnings;
+  int earnings;
   int pending;
   int shifts;
 
