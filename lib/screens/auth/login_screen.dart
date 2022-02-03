@@ -1,6 +1,6 @@
-import 'package:staffer/bloc/auth_bloc/auth.dart';
-import 'package:staffer/bloc/login_bloc/login_bloc.dart';
-import 'package:staffer/repositories/repositories.dart';
+import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
+import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
+import 'package:TheStafferEmployee/repositories/repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'login_form.dart';

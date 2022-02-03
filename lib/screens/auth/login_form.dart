@@ -1,10 +1,10 @@
-import 'package:staffer/bloc/login_bloc/login_bloc.dart';
-import 'package:staffer/repositories/repositories.dart';
+import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
+import 'package:TheStafferEmployee/repositories/repositories.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:staffer/style/theme.dart' as Style;
+import 'package:TheStafferEmployee/style/theme.dart' as Style;
 
 class LoginForm extends StatefulWidget {
   final UserRepository userRepository;

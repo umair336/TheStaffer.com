@@ -1,5 +1,5 @@
-name: staffer
-description: A new Flutter project.
+name: TheStafferEmployee
+description: TheStaffer Employees App.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -44,8 +44,12 @@ dependencies:
   carousel_slider: 4.0.0 
   http: ^0.12.0+4
 dev_dependencies:
+  flutter_app_name: ^0.1.1
   flutter_test:
     sdk: flutter
+
+flutter_app_name:
+  name: "TheStafferEmployee"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

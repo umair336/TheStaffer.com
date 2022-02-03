@@ -1,8 +1,8 @@
-import 'package:staffer/repositories/repositories.dart';
+import 'package:TheStafferEmployee/repositories/repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:staffer/style/theme.dart' as Style;
+import 'package:TheStafferEmployee/style/theme.dart' as Style;
 
 import 'login_screen.dart';
 
