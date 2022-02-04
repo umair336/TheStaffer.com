@@ -164,7 +164,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   var rugular = "";
   var over = "";
   var total = "";
-  String week_end_date = '';
+  var week_end_date;
   var week_start_date;
   var sssssdate;
 
@@ -642,10 +642,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                             over = snapshot.data
                                                 .timesheet[index].overtimeHours;
                                             Container(
-                                              child: TotalHoursCalculate(
-                                                  week_start_date,
-                                                  rugular,
-                                                  over),
+                                              child: TotalHoursCalculate(),
                                             );
                                             return new Column(
                                               children: <Widget>[
@@ -735,7 +732,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                 child: Row(
                                                                   children: [
                                                                     Text(
-                                                                      sssssdate,
+                                                                      week_start_date
+                                                                          .toString(),
                                                                       style:
                                                                           TextStyle(
                                                                         fontWeight:
@@ -1446,26 +1444,11 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       });
   }
 
-  TotalHoursCalculate(var rugular, var over, var week_start_date) {
-    print('bbbbbbbbbbbbbbbb$week_start_date');
-    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$over');
-    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$rugular');
-    // String formatter = DateFormat('yMd').format(week_start_date);
-    //  print('zzzzzzzzzzzzzzzzzzzzzzzzzz$formatter');
-    //DateTime parseDate = new DateFormat("y-M-d").parse(week_end_date);
+  TotalHoursCalculate() {
+    print('ccccccccccc$week_start_date');
 
-    // final n = week_start_date;
-
-    final now = new DateTime.now();
-    String formatter = DateFormat('y-M-d').format(now);
-    print('zzzzzzzzzzzzzzzzzzzz$formatter');
-    sssssdate = formatter;
     //  to
 
 //
   }
-/*
-  weekDifference(String weekstrart) {
-    print('dddddddddddddddddddddddddddd$weekstrart');
-  }*/
 }
