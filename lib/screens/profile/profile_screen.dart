@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:staffer/bloc/auth_bloc/auth.dart';
+import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:staffer/style/theme.dart' as Style;
+import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'profileApi.dart';
 
 class ProfileScreen extends StatefulWidget {

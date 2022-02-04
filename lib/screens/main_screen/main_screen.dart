@@ -1,12 +1,12 @@
-import 'package:staffer/bloc/auth_bloc/auth.dart';
+import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:staffer/style/theme.dart' as Style;
-import 'package:staffer/screens/home/home_screen.dart';
-import 'package:staffer/screens/assignment/assignment_screen.dart';
-import 'package:staffer/screens/profile/profile_screen.dart';
-import 'package:staffer/screens/timesheet/timesheet_screen.dart';
+import 'package:TheStafferEmployee/style/theme.dart' as Style;
+import 'package:TheStafferEmployee/screens/home/home_screen.dart';
+import 'package:TheStafferEmployee/screens/assignment/assignment_screen.dart';
+import 'package:TheStafferEmployee/screens/profile/profile_screen.dart';
+import 'package:TheStafferEmployee/screens/timesheet/timesheet_screen.dart';
 import 'package:adobe_xd/pinned.dart';
 
 class MainScreen extends StatefulWidget {

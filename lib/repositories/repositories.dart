@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
-import 'package:staffer/models/models.dart';
-import 'package:staffer/constants/string.dart';
+import 'package:TheStafferEmployee/models/models.dart';
+import 'package:TheStafferEmployee/constants/string.dart';
 import 'auth.dart';
 
 class UserRepository {

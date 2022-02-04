@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:staffer/repositories/repositories.dart';
+import 'package:TheStafferEmployee/repositories/repositories.dart';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'auth.dart';
-import 'package:staffer/repositories/auth.dart';
+import 'package:TheStafferEmployee/repositories/auth.dart';
 
-import 'package:staffer/models/models.dart';
+import 'package:TheStafferEmployee/models/models.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {

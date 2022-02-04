@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:staffer/bloc/auth_bloc/auth.dart';
-import 'package:staffer/repositories/repositories.dart';
+import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
+import 'package:TheStafferEmployee/repositories/repositories.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';

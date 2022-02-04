@@ -1,4 +1,4 @@
-import 'package:staffer/screens/main_screen/main_screen.dart';
+import 'package:TheStafferEmployee/screens/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bloc/bloc.dart';
@@ -7,7 +7,7 @@ import 'bloc/auth_bloc/auth.dart';
 import 'bloc/auth_bloc/auth_bloc.dart';
 import 'repositories/repositories.dart';
 import 'screens/auth/intro_screen.dart';
-import 'package:staffer/style/theme.dart' as Style;
+import 'package:TheStafferEmployee/style/theme.dart' as Style;
 
 class SimpleBlocDelegate extends BlocDelegate {
   @override

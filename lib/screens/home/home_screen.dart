@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:staffer/bloc/auth_bloc/auth.dart';
+import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:staffer/style/theme.dart' as Style;
+import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'package:carousel_slider/carousel_slider.dart';
 import './homeapi.dart';
 

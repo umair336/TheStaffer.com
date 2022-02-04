@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:staffer/screens/main_screen/main_screen.dart';
+import 'package:TheStafferEmployee/screens/main_screen/main_screen.dart';
 import './timesheet_screen.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
