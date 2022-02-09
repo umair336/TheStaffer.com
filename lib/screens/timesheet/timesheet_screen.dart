@@ -1,5 +1,4 @@
-// ignore_for_file: missing_required_param
-
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rounded_expansion_tile/rounded_expansion_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,8 +12,6 @@ import './addtimesheet.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-
-///
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 Future<TimeSheetData> timesheet() async {
@@ -22,6 +19,7 @@ Future<TimeSheetData> timesheet() async {
   final String token = await storage.read(key: 'token');
   final a = 2022 / 1 / 1;
   final b = 2022 / 1 / 31;
+  int sum = 0;
 
   const url =
       'https://dev2.thestaffer.com/api/admin/employees/timesheet/list?start_date=${2022 / 1 / 10}&end_date=b';
@@ -37,9 +35,9 @@ Future<TimeSheetData> timesheet() async {
 
   print('aaaaaaaaaaaaaaaaaaaaaaaaa${response.statusCode}');
   if (response.statusCode == 200) {
-    print('cccccccccccccccccccccccccccccccc${response.body}');
-
-    //print('vvvvvvvvvvvvvvvvvvv${jsonDecode(response.body)}');
+    // print('iiiiiiiiiiiiiiiiiiiiiiiiiiii${response.statusCode}');
+    print('cccccccccccccccccccccccccccccccc${jsonDecode(response.body)}');
+    //  setReceivedText(response.body);
 
     return TimeSheetData.fromJson(jsonDecode(response.body));
   } else {
@@ -157,64 +155,61 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   bool isExpanded = false;
   String start = "";
   String end = "";
-  String startDate = DateFormat('EEE d MMM, y').format(DateTime.now());
-  String endDate = DateFormat('EEE d MMM, y').format(DateTime.now());
+  String startDate = DateFormat('yyyy/M/d').format(DateTime.now());
+  String endDate = DateFormat('yyyy/M/d').format(DateTime.now());
   // String weekstrart = "";
   // String weekend = "";
   var rugular = "";
   var over = "";
-  var total = "";
+  int total = 0;
   var week_end_date;
   var week_start_date;
-  var sssssdate;
+  int monthreg = 0;
+
+  setReceivedText(text) {
+    print('aaaa${text.toString()}');
+    monthreg = monthreg + int.parse(text);
+    print('mont$monthreg');
+
+    /*
+  Map<String, dynamic> jsonInput = jsonDecode(text);
+  int sum = 0;
+  var a = "";
+
+  String _receivedText =
+      'ID: ' + jsonInput['timesheet'][0]['regular_hours'] + '\n';
+  for (int i = 0; i < jsonInput['timesheet'].length; i++) {
+    a = jsonInput['timesheet'][i]['regular_hours'];
+    sum = sum + int.parse(a);
+    //sum += jsonInput['timesheet'][i]['regular_hours'];
+  }
+  print('sum$a fffffffffffffffffffff${sum}');
+  return sum;*/
+
+    // print(  'dddddddddddddddddddddddddddddddddddddddddddddddd${_receivedText.toString()}');
+  }
 
   @override
   void initState() {
     super.initState();
     initializeDateFormatting();
-    loadData(startDate, endDate);
 
     futureData = timesheet();
-  }
-
-  void loadData(start, end) {
-    print('------date-----');
-    print(start);
-    print(end);
-
-    final String _url = '/admin/reports/employee-timesheet/list';
-    final Object _data = {
-      "customer": "",
-      "start_date": "Aug 22, 2021",
-      "end_date": "Sep 04, 2021",
-      //"start_date": start,
-      //"end_date": end,
-      "vendors": "",
-      "week_ends": "",
-      "branch": "",
-      "date_format": "M",
-    };
-    BlocProvider.of<AuthenticationBloc>(context).add(
-      FetchTimeSheetEvent(url: _url, data: _data),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
-      builder: (context, state) {
-        if (state is TimesheetLoadedState) {
-          return new Scaffold(
-              body: SingleChildScrollView(
-                  child: FutureBuilder<TimeSheetData>(
-                      future: futureData,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Column(
-                            children: [
-                              /* Text(
+    return new Scaffold(
+        body: SingleChildScrollView(
+            child: FutureBuilder<TimeSheetData>(
+                future: futureData,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: [
+                        /* Text(
                         "employee_job_id   ==  ${snapshot.data.data.records[0].employeeJobId}"),
                     Text(
                         "employee_id   ==  ${snapshot.data.data.records[0].employeeId}"),
@@ -261,190 +256,130 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                     Text(
                         "week  type  == ${snapshot.data.data.records[0].timeSheetWeekly.timesheetType}"),*/
 
-                              Column(
+                        Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(15),
+                                      bottomRight: Radius.circular(15)),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    stops: [
+                                      0.1,
+                                      0.5,
+                                    ],
+                                    colors: [
+                                      Color.fromRGBO(0, 91, 196, 1),
+                                      Color.fromRGBO(97, 29, 165, 1),
+                                    ],
+                                  )),
+                              child: Column(
                                 children: [
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.03),
                                   Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(15),
-                                            bottomRight: Radius.circular(15)),
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topRight,
-                                          end: Alignment.bottomLeft,
-                                          stops: [
-                                            0.1,
-                                            0.5,
-                                          ],
-                                          colors: [
-                                            Color.fromRGBO(0, 91, 196, 1),
-                                            Color.fromRGBO(97, 29, 165, 1),
-                                          ],
-                                        )),
-                                    child: Column(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        SizedBox(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.03),
                                         Container(
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
-                                                child: Row(
-                                                  children: [
-                                                    SizedBox(
-                                                      width: 10,
-                                                    ),
-                                                    Text(
-                                                      'Time Sheet',
-                                                      style: TextStyle(
-                                                        fontSize: 18.0,
-                                                        color: Color.fromRGBO(
-                                                            255, 255, 255, 1),
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontFamily:
-                                                            'Nunito Sans',
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
+                                              SizedBox(
+                                                width: 10,
                                               ),
-                                              Container(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          right: 10),
-                                                  child: Row(
-                                                    children: [
-                                                      IconButton(
-                                                        icon: Icon(
-                                                          Icons.add_circle,
-                                                          color: Color.fromRGBO(
-                                                              255, 255, 255, 1),
-                                                          size: 20,
-                                                        ),
-                                                        onPressed: () {
-                                                          ///    weekDifference(weekstrart);
-                                                        },
-                                                      ),
-                                                      Image.asset(
-                                                        "images/Group 12126@2x.png",
-                                                        height:
-                                                            size.height * 0.03,
-                                                        // fit: BoxFit.cover,
-                                                      ),
-                                                    ],
-                                                  ),
+                                              Text(
+                                                'Time Sheet',
+                                                style: TextStyle(
+                                                  fontSize: 18.0,
+                                                  color: Color.fromRGBO(
+                                                      255, 255, 255, 1),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Nunito Sans',
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        SizedBox(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.03),
                                         Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 40,
-                                                //   height: MediaQuery.of(context).size.height * 0.04,
-                                                decoration: new BoxDecoration(
-                                                  color: Colors.purple.shade700,
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 10),
+                                            child: Row(
+                                              children: [
+                                                IconButton(
+                                                  icon: Icon(
+                                                    Icons.add_circle,
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
+                                                    size: 20,
+                                                  ),
+                                                  onPressed: () {
+                                                    ///    weekDifference(weekstrart);
+                                                  },
                                                 ),
-                                                child: Center(
-                                                  child: TextButton(
-                                                      onPressed: () {
-                                                        _selectStart(context);
-                                                      },
-                                                      child: Text(
-                                                        startDate,
-                                                        style: TextStyle(
-                                                          //  fontWeight: FontWeight.bold,
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          color: Color.fromRGBO(
-                                                              255, 255, 255, 1),
-                                                        ),
-                                                      )),
+                                                Image.asset(
+                                                  "images/Group 12126@2x.png",
+                                                  height: size.height * 0.03,
+                                                  // fit: BoxFit.cover,
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.03),
-                                              Container(
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.03),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 40,
+                                          //   height: MediaQuery.of(context).size.height * 0.04,
+                                          decoration: new BoxDecoration(
+                                            color: Colors.purple.shade700,
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                          ),
+                                          child: Center(
+                                            child: TextButton(
+                                                onPressed: () {
+                                                  _selectStart(context);
+                                                },
                                                 child: Text(
-                                                  'to',
+                                                  startDate,
                                                   style: TextStyle(
                                                     //  fontWeight: FontWeight.bold,
-                                                    fontSize: 12.0,
+                                                    fontSize: 16.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontFamily: 'Nunito Sans',
                                                     color: Color.fromRGBO(
                                                         255, 255, 255, 1),
                                                   ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.03),
-                                              Container(
-                                                height: 40,
-                                                decoration: new BoxDecoration(
-                                                  color: Colors.purple.shade700,
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                ),
-                                                child: Center(
-                                                  child: TextButton(
-                                                      onPressed: () {
-                                                        _selectEnd(context);
-                                                      },
-                                                      child: Text(
-                                                        endDate,
-                                                        style: TextStyle(
-                                                          //  fontWeight: FontWeight.bold,
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          color: Color.fromRGBO(
-                                                              255, 255, 255, 1),
-                                                        ),
-                                                      )),
-                                                ),
-                                              ),
-                                            ],
+                                                )),
                                           ),
                                         ),
                                         SizedBox(
-                                            height: MediaQuery.of(context)
+                                            width: MediaQuery.of(context)
                                                     .size
-                                                    .height *
+                                                    .width *
                                                 0.03),
                                         Container(
                                           child: Text(
-                                            'Overall Totals',
+                                            'to',
                                             style: TextStyle(
-                                              fontSize: 14.0,
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 12.0,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: 'Nunito Sans',
                                               color: Color.fromRGBO(
@@ -453,130 +388,175 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                           ),
                                         ),
                                         SizedBox(
-                                            height: MediaQuery.of(context)
+                                            width: MediaQuery.of(context)
                                                     .size
-                                                    .height *
+                                                    .width *
                                                 0.03),
                                         Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
+                                          height: 40,
+                                          decoration: new BoxDecoration(
+                                            color: Colors.purple.shade700,
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                          ),
+                                          child: Center(
+                                            child: TextButton(
+                                                onPressed: () {
+                                                  _selectEnd(context);
+                                                },
+                                                child: Text(
+                                                  endDate,
+                                                  style: TextStyle(
+                                                    //  fontWeight: FontWeight.bold,
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
+                                                  ),
+                                                )),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.03),
+                                  Container(
+                                    child: Text(
+                                      'Overall Totals',
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Nunito Sans',
+                                        color: Color.fromRGBO(255, 255, 255, 1),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.03),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
                                             children: [
                                               Container(
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .baseline,
-                                                  textBaseline:
-                                                      TextBaseline.alphabetic,
-                                                  children: [
-                                                    Container(
-                                                      child: Text(
-                                                        'Regular',
-                                                        style: TextStyle(
-                                                          fontSize: 10.0,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          color: Color.fromRGBO(
-                                                              255, 255, 255, 1),
-                                                          //     fontWeight: FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        '41:57',
-                                                        style: TextStyle(
-                                                          fontSize: 14.0,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          color: Color.fromRGBO(
-                                                              255, 255, 255, 1),
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
+                                                child: Text(
+                                                  'Regular',
+                                                  style: TextStyle(
+                                                    fontSize: 10.0,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
+                                                    //     fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                              for (int i = 0;
+                                                  i <
+                                                      snapshot.data.timesheet
+                                                          .length;
+                                                  i++)
+                                                Container(
+                                                  child: setReceivedText(
+                                                      snapshot.data.timesheet[i]
+                                                          .regularHours),
+                                                ),
+                                              Container(
+                                                child: Text(
+                                                  monthreg.toString(),
+                                                  style: TextStyle(
+                                                    fontSize: 14.0,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Container(
+                                                child: Text(
+                                                  'Over',
+                                                  style: TextStyle(
+                                                    fontSize: 10.0,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
+                                                    //    fontWeight: FontWeight.bold,
+                                                  ),
                                                 ),
                                               ),
                                               Container(
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .baseline,
-                                                  textBaseline:
-                                                      TextBaseline.alphabetic,
-                                                  children: [
-                                                    Container(
-                                                      child: Text(
-                                                        'Over',
-                                                        style: TextStyle(
-                                                          fontSize: 10.0,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          color: Color.fromRGBO(
-                                                              255, 255, 255, 1),
-                                                          //    fontWeight: FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        '02:52',
-                                                        style: TextStyle(
-                                                          fontSize: 14.0,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          color: Color.fromRGBO(
-                                                              255, 255, 255, 1),
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
+                                                child: Text(
+                                                  '02:52',
+                                                  style: TextStyle(
+                                                    fontSize: 14.0,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Container(
+                                                child: Text(
+                                                  'Total',
+                                                  style: TextStyle(
+                                                    fontSize: 10.0,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
+                                                    // fontWeight: FontWeight.bold,
+                                                  ),
                                                 ),
                                               ),
                                               Container(
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .baseline,
-                                                  textBaseline:
-                                                      TextBaseline.alphabetic,
-                                                  children: [
-                                                    Container(
-                                                      child: Text(
-                                                        'Total',
-                                                        style: TextStyle(
-                                                          fontSize: 10.0,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          color: Color.fromRGBO(
-                                                              255, 255, 255, 1),
-                                                          // fontWeight: FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        '41:49',
-                                                        style: TextStyle(
-                                                          fontSize: 14.0,
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          color: Color.fromRGBO(
-                                                              255, 255, 255, 1),
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
+                                                child: Text(
+                                                  '41:49',
+                                                  style: TextStyle(
+                                                    fontSize: 14.0,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                                 ),
                                               ),
-                                              /*  Container(
+                                            ],
+                                          ),
+                                        ),
+                                        /*  Container(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.baseline,
                                 textBaseline: TextBaseline.alphabetic,
@@ -606,69 +586,59 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                 ],
                               ),
                             )*/
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.02),
                                       ],
                                     ),
                                   ),
-                                  ListView(
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02),
+                                ],
+                              ),
+                            ),
+                            ListView(
+                              shrinkWrap: true,
+                              physics: ScrollPhysics(),
+                              children: <Widget>[
+                                new SizedBox(height: 0.0),
+                                new Container(
+                                  child: new ListView.builder(
                                     shrinkWrap: true,
+                                    //       itemCount: state.timesheets.length,
+                                    itemCount: snapshot.data.timesheet.length,
                                     physics: ScrollPhysics(),
-                                    children: <Widget>[
-                                      new SizedBox(height: 0.0),
-                                      new Container(
-                                        child: new ListView.builder(
-                                          shrinkWrap: true,
-                                          //       itemCount: state.timesheets.length,
-                                          itemCount:
-                                              snapshot.data.timesheet.length,
-                                          physics: ScrollPhysics(),
-                                          itemBuilder: (context, index) {
-                                            week_end_date = snapshot.data
-                                                .timesheet[index].hoursForWeek;
-                                            week_start_date =
-                                                DateTime.parse(week_end_date)
-                                                    .subtract(
-                                                        new Duration(days: 7));
-                                            //
-                                            rugular = snapshot.data
-                                                .timesheet[index].regularHours;
-                                            over = snapshot.data
-                                                .timesheet[index].overtimeHours;
-                                            Container(
-                                              child: TotalHoursCalculate(),
-                                            );
-                                            return new Column(
-                                              children: <Widget>[
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          25, 0, 25, 0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      border: Border.all(
-                                                        color: Colors
-                                                            .grey.shade300,
-                                                        width: 1,
-                                                      ),
-                                                    ),
-                                                    //color: Colors.black12,
+                                    itemBuilder: (context, index) {
+                                      week_end_date = snapshot
+                                          .data.timesheet[index].hoursForWeek;
+                                      week_start_date =
+                                          DateTime.parse(week_end_date)
+                                              .subtract(new Duration(days: 7));
+                                      //
+                                      //  rugular = snapshot.data    .timesheet[index].regularHours;
+                                      //    over = snapshot.data  .timesheet[index].overtimeHours;
+                                      Container(child: DateCalculte());
+                                      return new Column(
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                25, 0, 25, 0),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                border: Border.all(
+                                                  color: Colors.grey.shade300,
+                                                  width: 1,
+                                                ),
+                                              ),
+                                              //color: Colors.black12,
 
-                                                    child: Column(
-                                                      children: <Widget>[
-                                                        ExpansionTile(
-                                                          trailing:
-                                                              /* isExpanded //assets/collapse_arrow.png
+                                              child: Column(
+                                                children: <Widget>[
+                                                  ExpansionTile(
+                                                    trailing:
+                                                        /* isExpanded //assets/collapse_arrow.png
                                                 ? Image.asset(
                                                     "images/Path 54463.png",
                                                   )
@@ -679,265 +649,296 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                 () => isExpanded = expanding),
 
 */
-                                                              Image.asset(
-                                                            "images/Path 54463@2x.png",
-                                                            height:
-                                                                size.height *
-                                                                    0.02,
-                                                            // fit: BoxFit.cover,
-                                                          ),
-                                                          title: Column(
+                                                        Image.asset(
+                                                      "images/Path 54463@2x.png",
+                                                      height:
+                                                          size.height * 0.02,
+                                                      // fit: BoxFit.cover,
+                                                    ),
+                                                    title: Column(
+                                                      children: [
+                                                        SizedBox(
+                                                          height: 10,
+                                                        ),
+                                                        Container(
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
                                                             children: [
-                                                              SizedBox(
-                                                                height: 10,
-                                                              ),
                                                               Container(
-                                                                child: Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceBetween,
-                                                                  children: [
-                                                                    Container(
-                                                                      child:
-                                                                          Text(
-                                                                        'Weekly Summary',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          color: Color.fromRGBO(
-                                                                              13,
-                                                                              91,
-                                                                              196,
-                                                                              1),
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ],
+                                                                child: Text(
+                                                                  'Weekly Summary',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        14.0,
+                                                                    color: Color
+                                                                        .fromRGBO(
+                                                                            13,
+                                                                            91,
+                                                                            196,
+                                                                            1),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
                                                                 ),
                                                               ),
-                                                              SizedBox(
-                                                                height: 10,
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 10,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  14, 0, 0, 0),
+                                                          child: Row(
+                                                            children: [
+                                                              Text(
+                                                                week_start_date
+                                                                    .toString(),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          31,
+                                                                          33,
+                                                                          38,
+                                                                          1),
+                                                                ),
                                                               ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .fromLTRB(
-                                                                        14,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                                child: Row(
-                                                                  children: [
-                                                                    Text(
-                                                                      week_start_date
-                                                                          .toString(),
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        fontSize:
-                                                                            16.0,
-                                                                        fontFamily:
-                                                                            'Nunito Sans',
-                                                                        color: Color.fromRGBO(
-                                                                            31,
-                                                                            33,
-                                                                            38,
-                                                                            1),
-                                                                      ),
-                                                                    ),
-                                                                    Text(
-                                                                      '  to  ',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        //  fontWeight: FontWeight.bold,
-                                                                        fontSize:
-                                                                            16.0,
-                                                                        fontFamily:
-                                                                            'Nunito Sans',
-                                                                        color: Color.fromRGBO(
-                                                                            112,
-                                                                            112,
-                                                                            112,
-                                                                            1),
-                                                                      ),
-                                                                    ),
-                                                                    Text(
-                                                                      /* weekstrart = snapshot
+                                                              Text(
+                                                                '  to  ',
+                                                                style:
+                                                                    TextStyle(
+                                                                  //  fontWeight: FontWeight.bold,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          112,
+                                                                          112,
+                                                                          112,
+                                                                          1),
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                /* weekstrart = snapshot
                                                                           .data
                                                                           .timesheet[
                                                                               index]
                                                                           .hoursForWeek,
                                                                         */
-                                                                      snapshot
-                                                                          .data
-                                                                          .timesheet[
-                                                                              index]
-                                                                          .hoursForWeek,
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        fontSize:
-                                                                            16.0,
-                                                                        fontFamily:
-                                                                            'Nunito Sans',
-                                                                        color: Color.fromRGBO(
-                                                                            31,
-                                                                            33,
-                                                                            38,
-                                                                            1),
-                                                                      ),
-                                                                    ),
-                                                                    //          Container(
-                                                                    //  child: weekDifference(weekstrart),
-                                                                    //),
-                                                                  ],
+                                                                snapshot
+                                                                    .data
+                                                                    .timesheet[
+                                                                        index]
+                                                                    .hoursForWeek,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          31,
+                                                                          33,
+                                                                          38,
+                                                                          1),
                                                                 ),
                                                               ),
-                                                              SizedBox(
-                                                                height: 15,
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .fromLTRB(
-                                                                        25,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                                child:
-                                                                    Container(
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Colors
-                                                                        .grey
-                                                                        .shade200,
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            10),
+                                                              //          Container(
+                                                              //  child: weekDifference(weekstrart),
+                                                              //),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 15,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  25, 0, 0, 0),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Colors.grey
+                                                                  .shade200,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                            ),
+                                                            // color: Color.fromRGBO(0, 0, 0, 0.16),
+                                                            child: Container(
+                                                              child: Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceAround,
+                                                                children: [
+                                                                  Container(
+                                                                    child:
+                                                                        Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .baseline,
+                                                                      textBaseline:
+                                                                          TextBaseline
+                                                                              .alphabetic,
+                                                                      children: [
+                                                                        SizedBox(
+                                                                          height:
+                                                                              15,
+                                                                        ),
+                                                                        Container(
+                                                                          child:
+                                                                              Text(
+                                                                            'Regular',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontSize: 10.0,
+                                                                              fontFamily: 'Nunito Sans',
+                                                                              color: Color.fromRGBO(112, 112, 112, 1),
+                                                                              //  fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Container(
+                                                                          child:
+                                                                              Text(
+                                                                            rugular =
+                                                                                snapshot.data.timesheet[index].regularHours,
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontSize: 12.0,
+                                                                              fontFamily: 'Nunito Sans',
+                                                                              color: Color.fromRGBO(31, 33, 38, 1),
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          height:
+                                                                              15,
+                                                                        ),
+                                                                      ],
+                                                                    ),
                                                                   ),
-                                                                  // color: Color.fromRGBO(0, 0, 0, 0.16),
-                                                                  child:
-                                                                      Container(
-                                                                    child: Row(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceAround,
+                                                                  Container(
+                                                                    child:
+                                                                        Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .baseline,
+                                                                      textBaseline:
+                                                                          TextBaseline
+                                                                              .alphabetic,
+                                                                      children: [
+                                                                        SizedBox(
+                                                                            height:
+                                                                                MediaQuery.of(context).size.height * 0.01),
+                                                                        Container(
+                                                                          child:
+                                                                              Text(
+                                                                            'Over',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontFamily: 'Nunito Sans',
+                                                                              fontSize: 10.0,
+                                                                              color: Color.fromRGBO(112, 112, 112, 1),
+                                                                              // fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Container(
+                                                                          child:
+                                                                              Text(
+                                                                            over =
+                                                                                snapshot.data.timesheet[index].overtimeHours,
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontSize: 12.0,
+                                                                              fontFamily: 'Nunito Sans',
+                                                                              color: Color.fromRGBO(31, 33, 38, 1),
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                            height:
+                                                                                MediaQuery.of(context).size.height * 0.01),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Container(
+                                                                    child:
+                                                                        Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .baseline,
+                                                                      textBaseline:
+                                                                          TextBaseline
+                                                                              .alphabetic,
                                                                       children: [
                                                                         Container(
                                                                           child:
-                                                                              Column(
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.baseline,
-                                                                            textBaseline:
-                                                                                TextBaseline.alphabetic,
-                                                                            children: [
-                                                                              SizedBox(
-                                                                                height: 15,
-                                                                              ),
-                                                                              Container(
-                                                                                child: Text(
-                                                                                  'Regular',
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 10.0,
-                                                                                    fontFamily: 'Nunito Sans',
-                                                                                    color: Color.fromRGBO(112, 112, 112, 1),
-                                                                                    //  fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              Container(
-                                                                                child: Text(
-                                                                                  rugular = snapshot.data.timesheet[index].regularHours,
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 12.0,
-                                                                                    fontFamily: 'Nunito Sans',
-                                                                                    color: Color.fromRGBO(31, 33, 38, 1),
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              SizedBox(
-                                                                                height: 15,
-                                                                              ),
-                                                                            ],
+                                                                              Weektotal(),
+                                                                        ),
+                                                                        SizedBox(
+                                                                            height:
+                                                                                MediaQuery.of(context).size.height * 0.01),
+                                                                        Container(
+                                                                          child:
+                                                                              Text(
+                                                                            'Total',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontFamily: 'Nunito Sans',
+                                                                              fontSize: 10.0,
+                                                                              color: Color.fromRGBO(112, 112, 112, 1),
+                                                                              //   fontWeight: FontWeight.bold,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                         Container(
                                                                           child:
-                                                                              Column(
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.baseline,
-                                                                            textBaseline:
-                                                                                TextBaseline.alphabetic,
-                                                                            children: [
-                                                                              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                                                                              Container(
-                                                                                child: Text(
-                                                                                  'Over',
-                                                                                  style: TextStyle(
-                                                                                    fontFamily: 'Nunito Sans',
-                                                                                    fontSize: 10.0,
-                                                                                    color: Color.fromRGBO(112, 112, 112, 1),
-                                                                                    // fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              Container(
-                                                                                child: Text(
-                                                                                  over = snapshot.data.timesheet[index].overtimeHours,
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 12.0,
-                                                                                    fontFamily: 'Nunito Sans',
-                                                                                    color: Color.fromRGBO(31, 33, 38, 1),
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                                                                            ],
+                                                                              Text(
+                                                                            total.toString(),
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontFamily: 'Nunito Sans',
+                                                                              fontSize: 12.0,
+                                                                              color: Color.fromRGBO(31, 33, 38, 1),
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
                                                                           ),
                                                                         ),
-                                                                        Container(
-                                                                          child:
-                                                                              Column(
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.baseline,
-                                                                            textBaseline:
-                                                                                TextBaseline.alphabetic,
-                                                                            children: [
-                                                                              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                                                                              Container(
-                                                                                child: Text(
-                                                                                  'Total',
-                                                                                  style: TextStyle(
-                                                                                    fontFamily: 'Nunito Sans',
-                                                                                    fontSize: 10.0,
-                                                                                    color: Color.fromRGBO(112, 112, 112, 1),
-                                                                                    //   fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              Container(
-                                                                                child: Text(
-                                                                                  '41:49.......',
-                                                                                  style: TextStyle(
-                                                                                    fontFamily: 'Nunito Sans',
-                                                                                    fontSize: 12.0,
-                                                                                    color: Color.fromRGBO(31, 33, 38, 1),
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                        /*   Container(
+                                                                        SizedBox(
+                                                                            height:
+                                                                                MediaQuery.of(context).size.height * 0.01),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  /*   Container(
                                                         child: Column(
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
@@ -1002,18 +1003,18 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                         ),
                                                       ),
                                                       */
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
+                                                                ],
                                                               ),
-                                                              SizedBox(
-                                                                height: 10,
-                                                              ),
-                                                            ],
+                                                            ),
                                                           ),
-                                                          children: <Widget>[
-                                                            /*
+                                                        ),
+                                                        SizedBox(
+                                                          height: 10,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    children: <Widget>[
+                                                      /*
                                           ListTile(
                                             title: Column(
                                               children: [
@@ -1339,57 +1340,31 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                             ),
                                           ),
                                           */
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
+                                                    ],
                                                   ),
-                                                ),
-                                                SizedBox(height: 20.0),
-                                              ],
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ],
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 20.0),
+                                        ],
+                                      );
+                                    },
                                   ),
-                                ],
-                              )
-                            ],
-                          );
-                        } else if (snapshot.hasError) {
-                          return Text("${snapshot.error}");
-                        } else {
-                          print('jjjjjjjjj');
-                          return CircularProgressIndicator();
-                        }
-                      })));
-        } else {
-          return Scaffold(
-            //loader
-            body: Container(
-              color: Colors.white,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: 25.0,
-                    width: 25.0,
-                    child: CircularProgressIndicator(
-                      valueColor: new AlwaysStoppedAnimation<Color>(
-                          Style.Colors.mainColor),
-                      strokeWidth: 4.0,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          );
-        }
-      },
-    );
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text("${snapshot.error}");
+                  } else {
+                    print('jjjjjjjjj');
+                    return CircularProgressIndicator();
+                  }
+                })));
   }
 
   _selectStart(BuildContext context) async {
@@ -1412,7 +1387,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     );
     if (selected != null)
       setState(() {
-        startDate = DateFormat('EEE d MMM, y').format(selected);
+        startDate = DateFormat('yyyy/M/d').format(selected);
       });
   }
 
@@ -1437,18 +1412,37 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     );
     if (selected != null)
       setState(() {
-        endDate = DateFormat('EEE d MMM, y').format(selected);
+        endDate = DateFormat('yyyy/M/d').format(selected);
         print(endDate);
         // endDate = selected;
         // loadData(startDate, endDate);
       });
   }
 
-  TotalHoursCalculate() {
-    print('ccccccccccc$week_start_date');
+  DateCalculte() {
+    // print('ccccccccccc$week_start_date');
+    week_start_date = DateFormat("yyyy/M/d").format(week_start_date);
+  }
 
-    //  to
+  Weektotal() {
+    print('ccccccccccc$rugular cccccccccccccc$over');
+    int a = int.parse(rugular);
+    int b = int.parse(over);
+    total = a + b;
+    //  monthreg = monthreg + a;
+    //  setState(() {
+    // monthreg = monthreg + a;
+    //});
+    print("sssssssssssss$monthreg");
 
-//
+    //setState(() {});
+
+    /// print('aaaaaaaaaaaaaaaaaaa$a');
+
+    // final d1 = Duration(hours: a, minutes: 3);
+    //  print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$d1');
+    //final d2 = Duration(hours: b, minutes: 3);
+
+    // print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$d2');
   }
 }
