@@ -1354,7 +1354,22 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                     return Text("${snapshot.error}");
                   } else {
                     print('jjjjjjjjj');
-                    return CircularProgressIndicator();
+                    return Container(
+                      height: MediaQuery.of(context).size.height,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: CircularProgressIndicator(
+                              valueColor: new AlwaysStoppedAnimation<Color>(
+                                  Style.Colors.mainColor),
+                              strokeWidth: 4.0,
+                            ),
+                          )
+                        ],
+                      ),
+                    );
                   }
                 })));
   }
