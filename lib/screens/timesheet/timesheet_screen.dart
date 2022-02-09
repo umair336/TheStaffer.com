@@ -155,7 +155,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   bool isExpanded = false;
   String start = "";
   String end = "";
-  String startDate = DateFormat('yyyy/M/d').format(DateTime.now());
+  String startDate = DateFormat('yyyy/M/d')
+      .format(DateTime.now().subtract(new Duration(days: 30)));
   String endDate = DateFormat('yyyy/M/d').format(DateTime.now());
   // String weekstrart = "";
   // String weekend = "";
@@ -165,30 +166,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   var week_end_date;
   var week_start_date;
   int monthreg = 0;
-
-  setReceivedText(text) {
-    print('aaaa${text.toString()}');
-    monthreg = monthreg + int.parse(text);
-    print('mont$monthreg');
-
-    /*
-  Map<String, dynamic> jsonInput = jsonDecode(text);
-  int sum = 0;
-  var a = "";
-
-  String _receivedText =
-      'ID: ' + jsonInput['timesheet'][0]['regular_hours'] + '\n';
-  for (int i = 0; i < jsonInput['timesheet'].length; i++) {
-    a = jsonInput['timesheet'][i]['regular_hours'];
-    sum = sum + int.parse(a);
-    //sum += jsonInput['timesheet'][i]['regular_hours'];
-  }
-  print('sum$a fffffffffffffffffffff${sum}');
-  return sum;*/
-
-    // print(  'dddddddddddddddddddddddddddddddddddddddddddddddd${_receivedText.toString()}');
-  }
-
+  int monthover = 0;
+  int monthtotal = 0;
   @override
   void initState() {
     super.initState();
@@ -311,7 +290,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                 right: 10),
                                             child: Row(
                                               children: [
-                                                IconButton(
+                                                /*  IconButton(
                                                   icon: Icon(
                                                     Icons.add_circle,
                                                     color: Color.fromRGBO(
@@ -321,7 +300,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                   onPressed: () {
                                                     ///    weekDifference(weekstrart);
                                                   },
-                                                ),
+                                                ),*/
                                                 Image.asset(
                                                   "images/Group 12126@2x.png",
                                                   height: size.height * 0.03,
@@ -469,7 +448,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           .length;
                                                   i++)
                                                 Container(
-                                                  child: setReceivedText(
+                                                  child: Regulartotalfunction(
                                                       snapshot.data.timesheet[i]
                                                           .regularHours),
                                                 ),
@@ -507,9 +486,19 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                   ),
                                                 ),
                                               ),
+                                              for (int i = 0;
+                                                  i <
+                                                      snapshot.data.timesheet
+                                                          .length;
+                                                  i++)
+                                                Container(
+                                                  child: Overtotalfunction(
+                                                      snapshot.data.timesheet[i]
+                                                          .overtimeHours),
+                                                ),
                                               Container(
                                                 child: Text(
-                                                  '02:52',
+                                                  monthover.toString(),
                                                   style: TextStyle(
                                                     fontSize: 14.0,
                                                     fontFamily: 'Nunito Sans',
@@ -542,8 +531,11 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                 ),
                                               ),
                                               Container(
+                                                child: Monthtotalfuction(),
+                                              ),
+                                              Container(
                                                 child: Text(
-                                                  '41:49',
+                                                  monthtotal.toString(),
                                                   style: TextStyle(
                                                     fontSize: 14.0,
                                                     fontFamily: 'Nunito Sans',
@@ -1429,20 +1421,25 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     int a = int.parse(rugular);
     int b = int.parse(over);
     total = a + b;
-    //  monthreg = monthreg + a;
-    //  setState(() {
-    // monthreg = monthreg + a;
-    //});
+
     print("sssssssssssss$monthreg");
+  }
 
-    //setState(() {});
+  Regulartotalfunction(reg) {
+    print('aaaa${reg.toString()}');
+    monthreg = monthreg + int.parse(reg);
+    print('mont$monthreg');
+  }
 
-    /// print('aaaaaaaaaaaaaaaaaaa$a');
+  Overtotalfunction(ov) {
+    print('aaaa${ov.toString()}');
+    monthover = monthover + int.parse(ov);
+    print('mont$monthover');
+  }
 
-    // final d1 = Duration(hours: a, minutes: 3);
-    //  print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$d1');
-    //final d2 = Duration(hours: b, minutes: 3);
-
-    // print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$d2');
+  Monthtotalfuction() {
+    monthtotal = monthover + monthreg;
+    monthreg = 0;
+    monthover = 0;
   }
 }
