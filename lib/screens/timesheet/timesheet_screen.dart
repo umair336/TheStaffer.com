@@ -19,9 +19,8 @@ Future<TimeSheetData> timesheet() async {
   final String token = await storage.read(key: 'token');
   final a = 2022 / 1 / 1;
   final b = 2022 / 1 / 31;
-  int sum = 0;
 
-  const url =
+  final url =
       'https://dev2.thestaffer.com/api/admin/employees/timesheet/list?start_date=${2022 / 1 / 10}&end_date=b';
   print('dddddddddddddddddddd$token');
   String authorization = token;
