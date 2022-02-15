@@ -1420,7 +1420,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   _selectStart(BuildContext context) async {
     final selected = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: new DateFormat('yyyy/M/d').parse(startDate),
       firstDate: DateTime(1970),
       lastDate: DateTime(2025),
       builder: (BuildContext context, Widget child) {
@@ -1451,7 +1451,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   _selectEnd(BuildContext context) async {
     final selected = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+     initialDate: new DateFormat('yyyy/M/d').parse(endDate),
       firstDate: DateTime(2010),
       lastDate: DateTime(2025),
       builder: (BuildContext context, Widget child) {
@@ -1471,11 +1471,11 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       setState(() {
         endDate = DateFormat('yyyy/M/d').format(selected);
         print(endDate);
-          var fre = timesheet(startDate, endDate);
+        var fre = timesheet(startDate, endDate);
         setState(() {
           futureData = fre;
         });
-       // timesheet(startDate, endDate);
+        // timesheet(startDate, endDate);
 
         // endDate = selected;
         // loadData(startDate, endDate);
