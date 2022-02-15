@@ -490,17 +490,31 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           .record[i]
                                                           .regularHours),
                                                 ),
-                                              Container(
-                                                child: Text(
-                                                  monthreg.toString(),
-                                                  style: TextStyle(
-                                                    fontSize: 14.0,
-                                                    fontFamily: 'Nunito Sans',
-                                                    color: Color.fromRGBO(
-                                                        255, 255, 255, 1),
-                                                    fontWeight: FontWeight.bold,
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    monthreg.toString(),
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          255, 255, 255, 1),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
                                                   ),
-                                                ),
+                                                  Text(
+                                                    ':00',
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          255, 255, 255, 1),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
@@ -537,17 +551,31 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           .record[i]
                                                           .overtimeHours),
                                                 ),
-                                              Container(
-                                                child: Text(
-                                                  monthover.toString(),
-                                                  style: TextStyle(
-                                                    fontSize: 14.0,
-                                                    fontFamily: 'Nunito Sans',
-                                                    color: Color.fromRGBO(
-                                                        255, 255, 255, 1),
-                                                    fontWeight: FontWeight.bold,
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    monthover.toString(),
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          255, 255, 255, 1),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
                                                   ),
-                                                ),
+                                                  Text(
+                                                    ':00',
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          255, 255, 255, 1),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
@@ -574,17 +602,30 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                               Container(
                                                 child: Monthtotalfuction(),
                                               ),
-                                              Container(
-                                                child: Text(
-                                                  monthtotal.toString(),
-                                                  style: TextStyle(
-                                                    fontSize: 14.0,
-                                                    fontFamily: 'Nunito Sans',
-                                                    color: Color.fromRGBO(
-                                                        255, 255, 255, 1),
-                                                    fontWeight: FontWeight.bold,
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    monthtotal.toString(),
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          255, 255, 255, 1),
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
                                                   ),
-                                                ),
+                                                  Text(
+                                                    ':00',
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          255, 255, 255, 1),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
@@ -857,19 +898,27 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        Container(
-                                                                          child:
-                                                                              Text(
-                                                                            rugular =
-                                                                                snapshot.data.timesheet.record[index].regularHours,
-                                                                            style:
-                                                                                TextStyle(
-                                                                              fontSize: 12.0,
-                                                                              fontFamily: 'Nunito Sans',
-                                                                              color: Color.fromRGBO(31, 33, 38, 1),
-                                                                              fontWeight: FontWeight.bold,
+                                                                        Row(
+                                                                          children: [
+                                                                            Text(
+                                                                              rugular = snapshot.data.timesheet.record[index].regularHours,
+                                                                              style: TextStyle(
+                                                                                fontSize: 12.0,
+                                                                                fontFamily: 'Nunito Sans',
+                                                                                color: Color.fromRGBO(31, 33, 38, 1),
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
                                                                             ),
-                                                                          ),
+                                                                            Text(
+                                                                              ':00',
+                                                                              style: TextStyle(
+                                                                                fontSize: 12.0,
+                                                                                fontFamily: 'Nunito Sans',
+                                                                                color: Color.fromRGBO(31, 33, 38, 1),
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                         SizedBox(
                                                                           height:
@@ -904,19 +953,27 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        Container(
-                                                                          child:
-                                                                              Text(
-                                                                            over =
-                                                                                snapshot.data.timesheet.record[index].overtimeHours,
-                                                                            style:
-                                                                                TextStyle(
-                                                                              fontSize: 12.0,
-                                                                              fontFamily: 'Nunito Sans',
-                                                                              color: Color.fromRGBO(31, 33, 38, 1),
-                                                                              fontWeight: FontWeight.bold,
+                                                                        Row(
+                                                                          children: [
+                                                                            Text(
+                                                                              over = snapshot.data.timesheet.record[index].overtimeHours,
+                                                                              style: TextStyle(
+                                                                                fontSize: 12.0,
+                                                                                fontFamily: 'Nunito Sans',
+                                                                                color: Color.fromRGBO(31, 33, 38, 1),
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
                                                                             ),
-                                                                          ),
+                                                                            Text(
+                                                                              ':00',
+                                                                              style: TextStyle(
+                                                                                fontSize: 12.0,
+                                                                                fontFamily: 'Nunito Sans',
+                                                                                color: Color.fromRGBO(31, 33, 38, 1),
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                         SizedBox(
                                                                             height:
@@ -954,18 +1011,27 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        Container(
-                                                                          child:
-                                                                              Text(
-                                                                            total.toString(),
-                                                                            style:
-                                                                                TextStyle(
-                                                                              fontFamily: 'Nunito Sans',
-                                                                              fontSize: 12.0,
-                                                                              color: Color.fromRGBO(31, 33, 38, 1),
-                                                                              fontWeight: FontWeight.bold,
+                                                                        Row(
+                                                                          children: [
+                                                                            Text(
+                                                                              total.toString(),
+                                                                              style: TextStyle(
+                                                                                fontFamily: 'Nunito Sans',
+                                                                                fontSize: 12.0,
+                                                                                color: Color.fromRGBO(31, 33, 38, 1),
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
                                                                             ),
-                                                                          ),
+                                                                            Text(
+                                                                              ':00',
+                                                                              style: TextStyle(
+                                                                                fontSize: 12.0,
+                                                                                fontFamily: 'Nunito Sans',
+                                                                                color: Color.fromRGBO(31, 33, 38, 1),
+                                                                                fontWeight: FontWeight.bold,
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                         SizedBox(
                                                                             height:
@@ -1451,7 +1517,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   _selectEnd(BuildContext context) async {
     final selected = await showDatePicker(
       context: context,
-     initialDate: new DateFormat('yyyy/M/d').parse(endDate),
+      initialDate: new DateFormat('yyyy/M/d').parse(endDate),
       firstDate: DateTime(2010),
       lastDate: DateTime(2025),
       builder: (BuildContext context, Widget child) {
