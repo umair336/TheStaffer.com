@@ -76,7 +76,7 @@ class Data {
   String employee;
   String department;
   String payroll;
-  Null vendorDeletedDate;
+  String vendorDeletedDate;
   String branch;
 
   Data(

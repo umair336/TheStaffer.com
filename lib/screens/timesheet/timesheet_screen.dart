@@ -14,14 +14,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
-Future<TimeSheetData> timesheet() async {
+Future<TimeSheetData> timesheet(String dateStart, String dateEnd) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  String a = '2022/2/2';
+  String a = '2022/1/2';
   String b = '2022/2/11';
 
   var url =
-      'https://dev2.thestaffer.com/api/admin/employees/timesheet/list?start_date=$a&end_date=$b';
+      'https://dev2.thestaffer.com/api/admin/employees/timesheet/list?start_date=$dateStart&end_date=$dateEnd';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');
@@ -45,29 +45,49 @@ Future<TimeSheetData> timesheet() async {
 }
 
 class TimeSheetData {
-  List<Timesheet> timesheet;
+  Timesheet timesheet;
 
   TimeSheetData({this.timesheet});
 
   TimeSheetData.fromJson(Map<String, dynamic> json) {
-    if (json['timesheet'] != null) {
-      timesheet = <Timesheet>[];
-      json['timesheet'].forEach((v) {
-        timesheet.add(new Timesheet.fromJson(v));
-      });
-    }
+    timesheet = json['timesheet'] != null
+        ? new Timesheet.fromJson(json['timesheet'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.timesheet != null) {
-      data['timesheet'] = this.timesheet.map((v) => v.toJson()).toList();
+      data['timesheet'] = this.timesheet.toJson();
     }
     return data;
   }
 }
 
 class Timesheet {
+  List<Record> record;
+
+  Timesheet({this.record});
+
+  Timesheet.fromJson(Map<String, dynamic> json) {
+    if (json['record'] != null) {
+      record = <Record>[];
+      json['record'].forEach((v) {
+        record.add(new Record.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.record != null) {
+      data['record'] = this.record.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Record {
   int id;
   int parentId;
   int employeeJobId;
@@ -84,8 +104,10 @@ class Timesheet {
   String regularHours;
   String timesheetType;
   String customerName;
+  int payRate;
+  int overRate;
 
-  Timesheet(
+  Record(
       {this.id,
       this.parentId,
       this.employeeJobId,
@@ -101,9 +123,11 @@ class Timesheet {
       this.overtimeHours,
       this.regularHours,
       this.timesheetType,
-      this.customerName});
+      this.customerName,
+      this.payRate,
+      this.overRate});
 
-  Timesheet.fromJson(Map<String, dynamic> json) {
+  Record.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     parentId = json['parent_id'];
     employeeJobId = json['employee_job_id'];
@@ -120,6 +144,8 @@ class Timesheet {
     regularHours = json['regular_hours'];
     timesheetType = json['timesheet_type'];
     customerName = json['customer_name'];
+    payRate = json['pay_rate'];
+    overRate = json['over_rate'];
   }
 
   Map<String, dynamic> toJson() {
@@ -140,6 +166,8 @@ class Timesheet {
     data['regular_hours'] = this.regularHours;
     data['timesheet_type'] = this.timesheetType;
     data['customer_name'] = this.customerName;
+    data['pay_rate'] = this.payRate;
+    data['over_rate'] = this.overRate;
     return data;
   }
 }
@@ -170,9 +198,17 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   @override
   void initState() {
     super.initState();
+
     initializeDateFormatting();
 
-    futureData = timesheet();
+    futureData = timesheet(startDate, endDate);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    futureData = timesheet(startDate, endDate);
+    super.dispose();
   }
 
   @override
@@ -183,7 +219,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
         body: SingleChildScrollView(
             child: FutureBuilder<TimeSheetData>(
                 future: futureData,
-                builder: (context, snapshot) {
+                builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     return Column(
                       children: [
@@ -258,7 +294,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                   SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.03),
+                                              0.04),
                                   Container(
                                     child: Row(
                                       mainAxisAlignment:
@@ -289,7 +325,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                 right: 10),
                                             child: Row(
                                               children: [
-                                                /*  IconButton(
+                                                /* IconButton(
                                                   icon: Icon(
                                                     Icons.add_circle,
                                                     color: Color.fromRGBO(
@@ -444,11 +480,14 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                               for (int i = 0;
                                                   i <
                                                       snapshot.data.timesheet
-                                                          .length;
+                                                          .record.length;
                                                   i++)
                                                 Container(
                                                   child: Regulartotalfunction(
-                                                      snapshot.data.timesheet[i]
+                                                      snapshot
+                                                          .data
+                                                          .timesheet
+                                                          .record[i]
                                                           .regularHours),
                                                 ),
                                               Container(
@@ -488,11 +527,14 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                               for (int i = 0;
                                                   i <
                                                       snapshot.data.timesheet
-                                                          .length;
+                                                          .record.length;
                                                   i++)
                                                 Container(
                                                   child: Overtotalfunction(
-                                                      snapshot.data.timesheet[i]
+                                                      snapshot
+                                                          .data
+                                                          .timesheet
+                                                          .record[i]
                                                           .overtimeHours),
                                                 ),
                                               Container(
@@ -596,11 +638,12 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                   child: new ListView.builder(
                                     shrinkWrap: true,
                                     //       itemCount: state.timesheets.length,
-                                    itemCount: snapshot.data.timesheet.length,
+                                    itemCount:
+                                        snapshot.data.timesheet.record.length,
                                     physics: ScrollPhysics(),
                                     itemBuilder: (context, index) {
-                                      week_end_date = snapshot
-                                          .data.timesheet[index].hoursForWeek;
+                                      week_end_date = snapshot.data.timesheet
+                                          .record[index].hoursForWeek;
                                       week_start_date =
                                           DateTime.parse(week_end_date)
                                               .subtract(new Duration(days: 7));
@@ -735,7 +778,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                         */
                                                                 snapshot
                                                                     .data
-                                                                    .timesheet[
+                                                                    .timesheet
+                                                                    .record[
                                                                         index]
                                                                     .hoursForWeek,
                                                                 style:
@@ -817,7 +861,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                           child:
                                                                               Text(
                                                                             rugular =
-                                                                                snapshot.data.timesheet[index].regularHours,
+                                                                                snapshot.data.timesheet.record[index].regularHours,
                                                                             style:
                                                                                 TextStyle(
                                                                               fontSize: 12.0,
@@ -864,7 +908,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                           child:
                                                                               Text(
                                                                             over =
-                                                                                snapshot.data.timesheet[index].overtimeHours,
+                                                                                snapshot.data.timesheet.record[index].overtimeHours,
                                                                             style:
                                                                                 TextStyle(
                                                                               fontSize: 12.0,
@@ -1394,6 +1438,13 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     if (selected != null)
       setState(() {
         startDate = DateFormat('yyyy/M/d').format(selected);
+        print('rrrrrrrrrrrrrrrrrrrr');
+
+        // timesheet(startDate, endDate);
+        var fre = timesheet(startDate, endDate);
+        setState(() {
+          futureData = fre;
+        });
       });
   }
 
@@ -1420,6 +1471,12 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       setState(() {
         endDate = DateFormat('yyyy/M/d').format(selected);
         print(endDate);
+          var fre = timesheet(startDate, endDate);
+        setState(() {
+          futureData = fre;
+        });
+       // timesheet(startDate, endDate);
+
         // endDate = selected;
         // loadData(startDate, endDate);
       });

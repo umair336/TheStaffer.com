@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return new Scaffold(
       backgroundColor: const Color(0xfffafafa),
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
+        // physics: const NeverScrollableScrollPhysics(),
         child: FutureBuilder<Home>(
           future: futureData,
           builder: (context, snapshot) {
@@ -589,7 +589,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               ),
                                                             )
                                                           : new Container(
-                                                              child: Text('00',
+                                                              child: Text('0',
                                                                   style:
                                                                       TextStyle(
                                                                     fontSize:
@@ -758,7 +758,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               ),
                                                             )
                                                           : new Container(
-                                                              child: Text('00',
+                                                              child: Text('0',
                                                                   style:
                                                                       TextStyle(
                                                                     fontSize:
