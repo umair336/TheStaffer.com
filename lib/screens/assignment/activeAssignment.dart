@@ -237,12 +237,13 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                       Container(
                                                         child: InkWell(
                                                           onTap: () {
+                                                           
                                                             Navigator.push(
                                                                 context,
                                                                 MaterialPageRoute(
                                                                     builder:
                                                                         (context) =>
-                                                                            Assignmentdetail()));
+                                                                            Assignmentdetail(jobid: snapshot.data.data[index].jobId,)));
                                                           },
                                                           child: Image.asset(
                                                             "images/Path 58358.png",

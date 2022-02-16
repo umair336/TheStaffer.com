@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import './active.dart';
-import './past.dart';
-import './upcoming.dart';
+
 import './activeAssignment.dart';
 import './upcomingAssignment.dart';
 import './pastAssignment.dart';

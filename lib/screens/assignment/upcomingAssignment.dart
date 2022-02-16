@@ -237,12 +237,12 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                       Container(
                                                         child: InkWell(
                                                           onTap: () {
-                                                            Navigator.push(
+                                                             Navigator.push(
                                                                 context,
                                                                 MaterialPageRoute(
                                                                     builder:
                                                                         (context) =>
-                                                                            Assignmentdetail()));
+                                                                            Assignmentdetail(jobid: snapshot.data.data[index].jobId,)));
                                                           },
                                                           child: Image.asset(
                                                             "images/Path 58358.png",
