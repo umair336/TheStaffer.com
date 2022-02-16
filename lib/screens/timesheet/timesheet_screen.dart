@@ -106,6 +106,7 @@ class Record {
   String customerName;
   int payRate;
   int overRate;
+  String jobPosition;
 
   Record(
       {this.id,
@@ -125,7 +126,8 @@ class Record {
       this.timesheetType,
       this.customerName,
       this.payRate,
-      this.overRate});
+      this.overRate,
+      this.jobPosition});
 
   Record.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -146,6 +148,7 @@ class Record {
     customerName = json['customer_name'];
     payRate = json['pay_rate'];
     overRate = json['over_rate'];
+    jobPosition = json['job_position'];
   }
 
   Map<String, dynamic> toJson() {
@@ -168,6 +171,7 @@ class Record {
     data['customer_name'] = this.customerName;
     data['pay_rate'] = this.payRate;
     data['over_rate'] = this.overRate;
+    data['job_position'] = this.jobPosition;
     return data;
   }
 }
@@ -351,7 +355,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                   SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.03),
+                                              0.02),
                                   Container(
                                     child: Row(
                                       mainAxisAlignment:
@@ -437,7 +441,41 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                   SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.03),
+                                              0.02),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Job position',
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          fontFamily: 'Nunito Sans',
+                                          color:
+                                              Color.fromRGBO(255, 255, 255, 1),
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Text(
+                                        //  'ssssssssss',
+                                        snapshot.data.timesheet.record[0]
+                                            .jobPosition,
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          fontFamily: 'Nunito Sans',
+                                          color:
+                                              Color.fromRGBO(255, 255, 255, 1),
+                                          //     fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.02),
                                   Container(
                                     child: Text(
                                       'Overall Totals',
@@ -452,7 +490,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                   SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.03),
+                                              0.02),
                                   Container(
                                     child: Row(
                                       mainAxisAlignment:
@@ -611,7 +649,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                       fontFamily: 'Nunito Sans',
                                                       color: Color.fromRGBO(
                                                           255, 255, 255, 1),
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   Text(
@@ -712,24 +751,13 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                               child: Column(
                                                 children: <Widget>[
                                                   ExpansionTile(
-                                                    trailing:
-                                                        /* isExpanded //assets/collapse_arrow.png
-                                                ? Image.asset(
-                                                    "images/Path 54463.png",
-                                                  )
-                                                : Image.asset(
-                                                    'images/Path 54470.png'),
-                                        onExpansionChanged: (bool expanding) =>
-                                            setState(
-                                                () => isExpanded = expanding),
-
-*/
-                                                        Image.asset(
+                                                    trailing: SizedBox(),
+                                                    /*Image.asset(
                                                       "images/Path 54463@2x.png",
                                                       height:
                                                           size.height * 0.02,
                                                       // fit: BoxFit.cover,
-                                                    ),
+                                                    ),*/
                                                     title: Column(
                                                       children: [
                                                         SizedBox(
@@ -1537,6 +1565,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       setState(() {
         endDate = DateFormat('yyyy/M/d').format(selected);
         print(endDate);
+
         var fre = timesheet(startDate, endDate);
         setState(() {
           futureData = fre;

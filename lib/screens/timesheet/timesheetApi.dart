@@ -77,6 +77,7 @@ class Timesheet {
   String regularHours;
   String timesheetType;
   String customerName;
+  String jobPosition;
 
   Timesheet(
       {this.id,
@@ -94,7 +95,8 @@ class Timesheet {
       this.overtimeHours,
       this.regularHours,
       this.timesheetType,
-      this.customerName});
+      this.customerName,
+      this.jobPosition});
 
   Timesheet.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -113,6 +115,7 @@ class Timesheet {
     regularHours = json['regular_hours'];
     timesheetType = json['timesheet_type'];
     customerName = json['customer_name'];
+    jobPosition = json['job_position'];
   }
 
   Map<String, dynamic> toJson() {
@@ -133,6 +136,7 @@ class Timesheet {
     data['regular_hours'] = this.regularHours;
     data['timesheet_type'] = this.timesheetType;
     data['customer_name'] = this.customerName;
+    data['job_position'] = this.jobPosition;
     return data;
   }
 }
