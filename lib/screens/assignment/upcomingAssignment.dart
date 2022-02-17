@@ -182,68 +182,87 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                           // padding: const EdgeInsets.all(20.0),
                                           padding: const EdgeInsets.fromLTRB(
                                               20, 10, 20, 5),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
-                                                    255, 255, 255, 1),
-                                                //   color: Colors.white60,
-                                                border: Border.all(
-                                                  color: Colors
-                                                      .blueAccent.shade700,
-                                                  width: 1,
-                                                ),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(5))),
-                                            child: Column(
-                                              children: [
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          10, 0, 10, 0),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(left: 8),
-                                                        child: Container(
-                                                          child: Text(
-                                                              snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              index]
-                                                                          .jobPosition !=
-                                                                      null
-                                                                  ? snapshot
-                                                                      .data
-                                                                      .data[
-                                                                          index]
-                                                                      .jobPosition
-                                                                  : ' - - - ',
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  fontSize:
-                                                                      19.0)),
-                                                          /* Text(
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Assignmentdetail(
+                                                            jobid: snapshot
+                                                                .data
+                                                                .data[index]
+                                                                .jobId,
+                                                          )));
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: Color.fromRGBO(
+                                                      255, 255, 255, 1),
+                                                  //   color: Colors.white60,
+                                                  border: Border.all(
+                                                    color: Colors
+                                                        .blueAccent.shade700,
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(5))),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(10, 0, 10, 0),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8),
+                                                          child: Container(
+                                                            child: Text(
+                                                                snapshot
+                                                                            .data
+                                                                            .data[
+                                                                                index]
+                                                                            .jobPosition !=
+                                                                        null
+                                                                    ? snapshot
+                                                                        .data
+                                                                        .data[
+                                                                            index]
+                                                                        .jobPosition
+                                                                    : ' - - - ',
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontSize:
+                                                                        19.0)),
+                                                            /* Text(
                                                 state.assignments[index]
                                                     ['job_position'],
                                                 style: TextStyle(
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.w600,
                                                     fontSize: 19.0)),*/
+                                                          ),
                                                         ),
-                                                      ),
-                                                      Container(
+                                                        Image.asset(
+                                                          "images/Path 58358.png",
+                                                          height: 15,
+                                                          // fit: BoxFit.cover,
+                                                        ),
+                                                        /* Container(
                                                         child: InkWell(
                                                           onTap: () {
                                                             Navigator.push(
@@ -255,124 +274,60 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                               jobid: snapshot.data.data[index].jobId,
                                                                             )));
                                                           },
-                                                          child: Image.asset(
-                                                            "images/Path 58358.png",
-                                                            height: 15,
-                                                            // fit: BoxFit.cover,
-                                                          ),
+                                                          child:
                                                         ),
                                                       ),
-                                                    ],
+                                                      */
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 20),
-                                                  child: Container(
-                                                    alignment:
-                                                        Alignment.topLeft,
-                                                    child: Text(
-                                                        snapshot
-                                                                    .data
-                                                                    .data[index]
-                                                                    .customer !=
-                                                                null
-                                                            ? snapshot
-                                                                .data
-                                                                .data[index]
-                                                                .customer
-                                                            : ' - - - ',
-                                                        style: TextStyle(
-                                                            color:
-                                                                Color.fromRGBO(
-                                                                    112,
-                                                                    112,
-                                                                    112,
-                                                                    1),
-                                                            //fontWeight: FontWeight.w600,
-                                                            fontSize: 10.0)),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 20),
+                                                    child: Container(
+                                                      alignment:
+                                                          Alignment.topLeft,
+                                                      child: Text(
+                                                          snapshot
+                                                                      .data
+                                                                      .data[
+                                                                          index]
+                                                                      .customer !=
+                                                                  null
+                                                              ? snapshot
+                                                                  .data
+                                                                  .data[index]
+                                                                  .customer
+                                                              : ' - - - ',
+                                                          style: TextStyle(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      112,
+                                                                      112,
+                                                                      112,
+                                                                      1),
+                                                              //fontWeight: FontWeight.w600,
+                                                              fontSize: 10.0)),
 
-                                                    /* Text(
+                                                      /* Text(
                                           state.assignments[index]['customer'],
                                           style: TextStyle(
                                               color: Color.fromRGBO(
                                                   112, 112, 112, 1),
                                               //fontWeight: FontWeight.w600,
                                               fontSize: 10.0)),*/
+                                                    ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  height: 15,
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          18, 0, 20, 0),
-                                                  child: Row(
-                                                    children: [
-                                                      Container(
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .baseline,
-                                                          textBaseline:
-                                                              TextBaseline
-                                                                  .alphabetic,
-                                                          children: [
-                                                            Text("Start Date ",
-                                                                style:
-                                                                    TextStyle(
-                                                                        color: Color.fromRGBO(
-                                                                            112,
-                                                                            112,
-                                                                            112,
-                                                                            1),
-
-                                                                        //fon textAlign: TextAlign.left,tWeight: FontWeight.w600,
-                                                                        fontSize:
-                                                                            10.0)),
-                                                            SizedBox(
-                                                              height: 2,
-                                                            ),
-
-                                                            //
-                                                            Text(
-                                                                snapshot
-                                                                            .data
-                                                                            .data[
-                                                                                index]
-                                                                            .startDate !=
-                                                                        null
-                                                                    ? DateFormat(
-                                                                            'yyyy/M/d')
-                                                                        .format(DateTime.parse(snapshot
-                                                                            .data
-                                                                            .data[
-                                                                                index]
-                                                                            .startDate))
-                                                                    : ' - - - ',
-                                                                style:
-                                                                    TextStyle(
-                                                                        color: Color.fromRGBO(
-                                                                            0,
-                                                                            0,
-                                                                            0,
-                                                                            1),
-                                                                        //fontWeight: FontWeight.w600,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .bold,
-                                                                        fontSize:
-                                                                            14.0)),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(left: 60),
-                                                        child: Container(
+                                                  SizedBox(
+                                                    height: 15,
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(18, 0, 20, 0),
+                                                    child: Row(
+                                                      children: [
+                                                        Container(
                                                           child: Column(
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
@@ -382,7 +337,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                     .alphabetic,
                                                             children: [
                                                               Text(
-                                                                  "End Date   ",
+                                                                  "Start Date ",
                                                                   style:
                                                                       TextStyle(
                                                                           color: Color.fromRGBO(
@@ -391,20 +346,22 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                               112,
                                                                               1),
 
-                                                                          //fontWeight: FontWeight.w600,
+                                                                          //fon textAlign: TextAlign.left,tWeight: FontWeight.w600,
                                                                           fontSize:
                                                                               10.0)),
                                                               SizedBox(
                                                                 height: 2,
                                                               ),
+
+                                                              //
                                                               Text(
-                                                                  snapshot.data.data[index].endDate !=
+                                                                  snapshot.data.data[index].startDate !=
                                                                           null
                                                                       ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
                                                                           .data
                                                                           .data[
                                                                               index]
-                                                                          .endDate))
+                                                                          .startDate))
                                                                       : ' - - - ',
                                                                   style:
                                                                       TextStyle(
@@ -421,14 +378,55 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                             ],
                                                           ),
                                                         ),
-                                                      )
-                                                    ],
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 60),
+                                                          child: Container(
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .baseline,
+                                                              textBaseline:
+                                                                  TextBaseline
+                                                                      .alphabetic,
+                                                              children: [
+                                                                Text(
+                                                                    "End Date   ",
+                                                                    style: TextStyle(
+                                                                        color: Color.fromRGBO(112, 112, 112, 1),
+
+                                                                        //fontWeight: FontWeight.w600,
+                                                                        fontSize: 10.0)),
+                                                                SizedBox(
+                                                                  height: 2,
+                                                                ),
+                                                                Text(
+                                                                    snapshot.data.data[index].endDate !=
+                                                                            null
+                                                                        ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
+                                                                            .data
+                                                                            .data[index]
+                                                                            .endDate))
+                                                                        : ' - - - ',
+                                                                    style: TextStyle(
+                                                                        color: Color.fromRGBO(0, 0, 0, 1),
+                                                                        //fontWeight: FontWeight.w600,
+                                                                        fontWeight: FontWeight.bold,
+                                                                        fontSize: 14.0)),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  height: 20,
-                                                ),
-                                              ],
+                                                  SizedBox(
+                                                    height: 20,
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         )
