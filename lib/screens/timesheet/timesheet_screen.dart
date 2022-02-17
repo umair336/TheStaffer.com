@@ -275,7 +275,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.02),
-                                  Row(
+                                  /* Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
@@ -304,7 +304,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                         ),
                                       ),
                                     ],
-                                  ),
+                                  ),*/
                                   SizedBox(
                                       height:
                                           MediaQuery.of(context).size.height *
@@ -607,7 +607,12 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                             children: [
                                                               Container(
                                                                 child: Text(
-                                                                  'Weekly Summary',
+                                                                  snapshot
+                                                                      .data
+                                                                      .timesheet
+                                                                      .record[0]
+                                                                      .jobPosition
+                                                                      .toString(),
                                                                   style:
                                                                       TextStyle(
                                                                     fontSize:
@@ -686,7 +691,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                     .timesheet
                                                                     .record[
                                                                         index]
-                                                                    .hoursForWeek.toString(),
+                                                                    .hoursForWeek
+                                                                    .toString(),
                                                                 style:
                                                                     TextStyle(
                                                                   fontWeight:

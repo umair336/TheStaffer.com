@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // String endDate = DateTime.now().parse().subtract(new Duration(days: 7)) as String;
   String endDate = DateFormat('yyyy/M/d')
       .format(DateTime.now().subtract(new Duration(days: 7)));
+  String tiledate = "";
 
   @override
   void initState() {
@@ -1302,12 +1303,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                         SizedBox(
                                           height: 12,
                                         ),
+                                        Container(
+                                          child: functionFormateDate(
+                                            snapshot.data.data[0].assignments[0]
+                                                .startDate,
+                                          ),
+                                        ),
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 20),
                                           child: Text(
-                                            snapshot.data.data[0].assignments[0]
-                                                .startDate,
+                                            tiledate.toString(),
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.bold,
@@ -1464,5 +1470,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
       /**/
     );
+  }
+
+  functionFormateDate(String date) {
+    print('qqqqqqqqqqqq$date');
+    tiledate = DateFormat('yyyy/M/d').format(DateTime.parse(date));
+    print('sssssssssss$tiledate');
+ 
   }
 }
