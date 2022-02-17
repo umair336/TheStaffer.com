@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './assignmentapi.dart';
 import 'assignmentdetail.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
@@ -343,11 +344,13 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                                 index]
                                                                             .startDate !=
                                                                         null
-                                                                    ? snapshot
-                                                                        .data
-                                                                        .data[
-                                                                            index]
-                                                                        .startDate
+                                                                    ? DateFormat(
+                                                                            'yyyy/M/d')
+                                                                        .format(DateTime.parse(snapshot
+                                                                            .data
+                                                                            .data[
+                                                                                index]
+                                                                            .startDate))
                                                                     : ' - - - ',
                                                                 style:
                                                                     TextStyle(
@@ -397,11 +400,11 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                               Text(
                                                                   snapshot.data.data[index].endDate !=
                                                                           null
-                                                                      ? snapshot
+                                                                      ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
                                                                           .data
                                                                           .data[
                                                                               index]
-                                                                          .endDate
+                                                                          .endDate))
                                                                       : ' - - - ',
                                                                   style:
                                                                       TextStyle(

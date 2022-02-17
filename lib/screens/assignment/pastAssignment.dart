@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './assignmentapi.dart';
 import 'assignmentdetail.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
@@ -177,7 +178,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                     children: [
                                       if (snapshot.data.data[index].empStatus ==
                                           'Completed')
-                                         Padding(
+                                        Padding(
                                           // padding: const EdgeInsets.all(20.0),
                                           padding: const EdgeInsets.fromLTRB(
                                               20, 10, 20, 5),
@@ -343,11 +344,13 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                                 index]
                                                                             .startDate !=
                                                                         null
-                                                                    ? snapshot
-                                                                        .data
-                                                                        .data[
-                                                                            index]
-                                                                        .startDate
+                                                                    ? DateFormat(
+                                                                            'yyyy/M/d')
+                                                                        .format(DateTime.parse(snapshot
+                                                                            .data
+                                                                            .data[
+                                                                                index]
+                                                                            .startDate))
                                                                     : ' - - - ',
                                                                 style:
                                                                     TextStyle(
@@ -397,11 +400,11 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                               Text(
                                                                   snapshot.data.data[index].endDate !=
                                                                           null
-                                                                      ? snapshot
+                                                                      ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
                                                                           .data
                                                                           .data[
                                                                               index]
-                                                                          .endDate
+                                                                          .endDate))
                                                                       : ' - - - ',
                                                                   style:
                                                                       TextStyle(

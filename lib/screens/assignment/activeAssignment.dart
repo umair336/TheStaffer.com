@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './assignmentapi.dart';
 import 'assignmentdetail.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
@@ -334,8 +335,6 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                             SizedBox(
                                                               height: 2,
                                                             ),
-
-                                                            //
                                                             Text(
                                                                 snapshot
                                                                             .data
@@ -343,11 +342,13 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                                                 index]
                                                                             .startDate !=
                                                                         null
-                                                                    ? snapshot
-                                                                        .data
-                                                                        .data[
-                                                                            index]
-                                                                        .startDate
+                                                                    ? DateFormat(
+                                                                            'yyyy/M/d')
+                                                                        .format(DateTime.parse(snapshot
+                                                                            .data
+                                                                            .data[
+                                                                                index]
+                                                                            .startDate))
                                                                     : ' - - - ',
                                                                 style:
                                                                     TextStyle(
@@ -397,11 +398,11 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                               Text(
                                                                   snapshot.data.data[index].endDate !=
                                                                           null
-                                                                      ? snapshot
+                                                                      ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
                                                                           .data
                                                                           .data[
                                                                               index]
-                                                                          .endDate
+                                                                          .endDate))
                                                                       : ' - - - ',
                                                                   style:
                                                                       TextStyle(

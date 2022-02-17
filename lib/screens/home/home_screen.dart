@@ -1303,16 +1303,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                         SizedBox(
                                           height: 12,
                                         ),
-                                        Container(
-                                          child: functionFormateDate(
-                                            snapshot.data.data[0].assignments[0]
-                                                .startDate,
-                                          ),
-                                        ),
+
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 20),
                                           child: Text(
+                                              snapshot
+                                                          .data
+                                                          .data[0]
+                                                          .assignments[0]
+                                                          .startDate !=
+                                                      null
+                                                  ? DateFormat('yyyy/M/d')
+                                                      .format(DateTime.parse(
+                                                          snapshot
+                                                              .data
+                                                              .data[0]
+                                                              .assignments[0]
+                                                              .startDate))
+                                                  : ' - - - ',
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Nunito Sans',
+                                                  color: Color.fromRGBO(
+                                                      31, 33, 38, 1))),
+
+                                          /* Text(
                                             tiledate.toString(),
                                             style: TextStyle(
                                                 fontSize: 12,
@@ -1320,7 +1337,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 fontFamily: 'Nunito Sans',
                                                 color: Color.fromRGBO(
                                                     31, 33, 38, 1)),
-                                          ),
+                                          ),*/
                                         )
                                       ],
                                     ),
@@ -1470,12 +1487,5 @@ class _HomeScreenState extends State<HomeScreen> {
 
       /**/
     );
-  }
-
-  functionFormateDate(String date) {
-    print('qqqqqqqqqqqq$date');
-    tiledate = DateFormat('yyyy/M/d').format(DateTime.parse(date));
-    print('sssssssssss$tiledate');
- 
   }
 }
