@@ -4,6 +4,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:intl/intl.dart';
 import './homeapi.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,6 +17,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Future<Home> futureData;
+  String startDate = DateFormat('yyyy/M/d').format(DateTime.now());
+  // String endDate = DateTime.now().parse().subtract(new Duration(days: 7)) as String;
+  String endDate = DateFormat('yyyy/M/d')
+      .format(DateTime.now().subtract(new Duration(days: 7)));
 
   @override
   void initState() {
@@ -221,22 +226,67 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             SizedBox(
                                                               height: 10,
                                                             ),
-                                                            Text(
-                                                              '13 JUN to 19 JUN',
-                                                              style: TextStyle(
-                                                                  fontSize: 10,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  fontFamily:
-                                                                      'Nunito Sans',
-                                                                  color: Color
-                                                                      .fromRGBO(
-                                                                          31,
-                                                                          33,
-                                                                          38,
-                                                                          1)),
-                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  startDate,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color
+                                                                          .fromRGBO(
+                                                                              31,
+                                                                              33,
+                                                                              38,
+                                                                              1)),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 7,
+                                                                ),
+                                                                Text(
+                                                                  'to',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color
+                                                                          .fromRGBO(
+                                                                              31,
+                                                                              33,
+                                                                              38,
+                                                                              1)),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 7,
+                                                                ),
+                                                                Text(
+                                                                  endDate,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color
+                                                                          .fromRGBO(
+                                                                              31,
+                                                                              33,
+                                                                              38,
+                                                                              1)),
+                                                                ),
+                                                              ],
+                                                            )
                                                           ],
                                                         ),
                                                       ),
@@ -357,7 +407,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             SizedBox(
                                                               height: 10,
                                                             ),
-                                                            Text(
+                                                            /*Text(
                                                               '13 JUN to 19 JUN',
                                                               style: TextStyle(
                                                                   fontSize: 10,
@@ -372,7 +422,65 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           91,
                                                                           196,
                                                                           1)),
-                                                            ),
+                                                            ),*/
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  startDate,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color.fromRGBO(
+                                                                          13,
+                                                                          91,
+                                                                          196,
+                                                                          1)),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 7,
+                                                                ),
+                                                                Text(
+                                                                  'to',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color.fromRGBO(
+                                                                          13,
+                                                                          91,
+                                                                          196,
+                                                                          1)),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 7,
+                                                                ),
+                                                                Text(
+                                                                  endDate,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color.fromRGBO(
+                                                                          13,
+                                                                          91,
+                                                                          196,
+                                                                          1)),
+                                                                ),
+                                                              ],
+                                                            )
                                                           ],
                                                         ),
                                                       ),
@@ -525,7 +633,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             SizedBox(
                                                               height: 10,
                                                             ),
-                                                            Text(
+                                                            /*  Text(
                                                               '20 JUN to 27 JUN',
                                                               style: TextStyle(
                                                                   fontSize: 10,
@@ -541,6 +649,68 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           38,
                                                                           1)),
                                                             ),
+                                                            */
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  startDate,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color
+                                                                          .fromRGBO(
+                                                                              31,
+                                                                              33,
+                                                                              38,
+                                                                              1)),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 7,
+                                                                ),
+                                                                Text(
+                                                                  'to',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color
+                                                                          .fromRGBO(
+                                                                              31,
+                                                                              33,
+                                                                              38,
+                                                                              1)),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 7,
+                                                                ),
+                                                                Text(
+                                                                  endDate,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color
+                                                                          .fromRGBO(
+                                                                              31,
+                                                                              33,
+                                                                              38,
+                                                                              1)),
+                                                                ),
+                                                              ],
+                                                            )
                                                           ],
                                                         ),
                                                       ),
@@ -694,22 +864,64 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             SizedBox(
                                                               height: 10,
                                                             ),
-                                                            Text(
-                                                              '27 JUN to 30 JUN',
-                                                              style: TextStyle(
-                                                                  fontSize: 10,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  fontFamily:
-                                                                      'Nunito Sans',
-                                                                  color: Color
-                                                                      .fromRGBO(
+                                                            Row(
+                                                              children: [
+                                                                Text(
+                                                                  startDate,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color.fromRGBO(
                                                                           13,
                                                                           91,
                                                                           196,
                                                                           1)),
-                                                            ),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 7,
+                                                                ),
+                                                                Text(
+                                                                  'to',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color.fromRGBO(
+                                                                          13,
+                                                                          91,
+                                                                          196,
+                                                                          1)),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 7,
+                                                                ),
+                                                                Text(
+                                                                  endDate,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      color: Color.fromRGBO(
+                                                                          13,
+                                                                          91,
+                                                                          196,
+                                                                          1)),
+                                                                ),
+                                                              ],
+                                                            )
                                                           ],
                                                         ),
                                                       ),
