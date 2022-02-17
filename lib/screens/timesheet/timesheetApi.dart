@@ -7,14 +7,16 @@ import 'dart:convert';
 ///
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
-Future<TimeSheetData> timesheet() async {
+
+
+Future<TimeSheetData> timesheet(String dateStart, String dateEnd) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  final a = 2022 / 1 / 1;
-  final b = 2022 / 1 / 31;
+  String a = '2022/1/2';
+  String b = '2022/2/11';
 
-  const url =
-      'https://dev2.thestaffer.com/api/admin/employees/timesheet/list?start_date=${2022 / 1 / 10}&end_date=b';
+  var url =
+      'https://dev2.thestaffer.com/api/admin/employees/timesheet/list?start_date=$dateStart&end_date=$dateEnd';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');
@@ -27,9 +29,9 @@ Future<TimeSheetData> timesheet() async {
 
   print('aaaaaaaaaaaaaaaaaaaaaaaaa${response.statusCode}');
   if (response.statusCode == 200) {
-    print('cccccccccccccccccccccccccccccccc${response.body}');
-
-    //print('vvvvvvvvvvvvvvvvvvv${jsonDecode(response.body)}');
+    // print('iiiiiiiiiiiiiiiiiiiiiiiiiiii${response.statusCode}');
+    print('cccccccccccccccccccccccccccccccc${jsonDecode(response.body)}');
+    //  setReceivedText(response.body);
 
     return TimeSheetData.fromJson(jsonDecode(response.body));
   } else {
@@ -38,29 +40,49 @@ Future<TimeSheetData> timesheet() async {
 }
 
 class TimeSheetData {
-  List<Timesheet> timesheet;
+  Timesheet timesheet;
 
   TimeSheetData({this.timesheet});
 
   TimeSheetData.fromJson(Map<String, dynamic> json) {
-    if (json['timesheet'] != null) {
-      timesheet = <Timesheet>[];
-      json['timesheet'].forEach((v) {
-        timesheet.add(new Timesheet.fromJson(v));
-      });
-    }
+    timesheet = json['timesheet'] != null
+        ? new Timesheet.fromJson(json['timesheet'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.timesheet != null) {
-      data['timesheet'] = this.timesheet.map((v) => v.toJson()).toList();
+      data['timesheet'] = this.timesheet.toJson();
     }
     return data;
   }
 }
 
 class Timesheet {
+  List<Record> record;
+
+  Timesheet({this.record});
+
+  Timesheet.fromJson(Map<String, dynamic> json) {
+    if (json['record'] != null) {
+      record = <Record>[];
+      json['record'].forEach((v) {
+        record.add(new Record.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.record != null) {
+      data['record'] = this.record.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Record {
   int id;
   int parentId;
   int employeeJobId;
@@ -70,16 +92,18 @@ class Timesheet {
   String hoursForWeek;
   String createdAt;
   String updatedAt;
-  Null invoiceId;
+
   int payrollStatus;
-  Null ckDate;
+
   String overtimeHours;
   String regularHours;
   String timesheetType;
   String customerName;
+  int payRate;
+  int overRate;
   String jobPosition;
 
-  Timesheet(
+  Record(
       {this.id,
       this.parentId,
       this.employeeJobId,
@@ -89,16 +113,18 @@ class Timesheet {
       this.hoursForWeek,
       this.createdAt,
       this.updatedAt,
-      this.invoiceId,
+ 
       this.payrollStatus,
-      this.ckDate,
+ 
       this.overtimeHours,
       this.regularHours,
       this.timesheetType,
       this.customerName,
+      this.payRate,
+      this.overRate,
       this.jobPosition});
 
-  Timesheet.fromJson(Map<String, dynamic> json) {
+  Record.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     parentId = json['parent_id'];
     employeeJobId = json['employee_job_id'];
@@ -108,13 +134,14 @@ class Timesheet {
     hoursForWeek = json['hours_for_week'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    invoiceId = json['invoice_id'];
     payrollStatus = json['payroll_status'];
-    ckDate = json['ck_date'];
+   
     overtimeHours = json['overtime_hours'];
     regularHours = json['regular_hours'];
     timesheetType = json['timesheet_type'];
     customerName = json['customer_name'];
+    payRate = json['pay_rate'];
+    overRate = json['over_rate'];
     jobPosition = json['job_position'];
   }
 
@@ -129,114 +156,16 @@ class Timesheet {
     data['hours_for_week'] = this.hoursForWeek;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-    data['invoice_id'] = this.invoiceId;
+   
     data['payroll_status'] = this.payrollStatus;
-    data['ck_date'] = this.ckDate;
+ 
     data['overtime_hours'] = this.overtimeHours;
     data['regular_hours'] = this.regularHours;
     data['timesheet_type'] = this.timesheetType;
     data['customer_name'] = this.customerName;
+    data['pay_rate'] = this.payRate;
+    data['over_rate'] = this.overRate;
     data['job_position'] = this.jobPosition;
     return data;
-  }
-}
-
-class TimeSheetApi extends StatefulWidget {
-  @override
-  _TimeSheetApiState createState() => _TimeSheetApiState();
-}
-
-class _TimeSheetApiState extends State<TimeSheetApi> {
-  Future<TimeSheetData> futureData;
-  @override
-  void initState() {
-    super.initState();
-    futureData = timesheet();
-    print('aaaaaaaaaaaaaaaaaa$futureData');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 15),
-          Container(
-            color: Colors.blueAccent,
-            child: TextButton(
-              child: Text("Button"),
-              onPressed: () {
-                timesheet();
-              },
-            ),
-          ),
-          FutureBuilder<TimeSheetData>(
-            future: futureData,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Column(
-                  children: [
-                    Text(snapshot.data.timesheet[0].id.toString())
-                    /* Text(
-                        "employee_job_id   ==  ${snapshot.data.data.records[0].employeeJobId}"),
-                    Text(
-                        "employee_id   ==  ${snapshot.data.data.records[0].employeeId}"),
-                    Text(
-                        "customer_id   ==  ${snapshot.data.data.records[0].customerId}"),
-                    Text(
-                        "billing_rate   ==  ${snapshot.data.data.records[0].billingRate}"),
-                    Text(
-                        "overtime_billing_rate   ==  ${snapshot.data.data.records[0].overtimeBillingRate}"),
-                    Text(
-                        "Pay Rate   ==  ${snapshot.data.data.records[0].payRate}"),
-                    Text(
-                        "over_time pay rate   ==  ${snapshot.data.data.records[0]..overtimePayRate}"),
-                    Text(
-                        "emplyee name ==  ${snapshot.data.data.records[0].empName}"),
-                    Text(
-                        "Job number   ==  ${snapshot.data.data.records[0].jobNumber}"),
-                    Text(
-                        "Job Position   ==  ${snapshot.data.data.records[0].jobPosition}"),
-                    Text(
-                        "timesheet table id   ==  ${snapshot.data.data.records[0].timesheetTableId}"),
-                    Text(
-                        "-----------------------------------time_sheet_weekly----------------------"),
-                    Text(
-                        "id  == ${snapshot.data.data.records[0].timeSheetWeekly.id}"),
-                    Text(
-                        "parent id  == ${snapshot.data.data.records[0].timeSheetWeekly.parentId}"),
-                    Text(
-                        "employ job id  == ${snapshot.data.data.records[0].timeSheetWeekly.employeeJobId}"),
-                    Text(
-                        "customer id  == ${snapshot.data.data.records[0].timeSheetWeekly.customerId}"),
-                    Text(
-                        "department id  == ${snapshot.data.data.records[0].timeSheetWeekly.departmentId}"),
-                    Text(
-                        "employee id  == ${snapshot.data.data.records[0].timeSheetWeekly.employeeId}"),
-                    Text(
-                        "hours for week  == ${snapshot.data.data.records[0].timeSheetWeekly.hoursForWeek}"),
-                    Text(
-                        "created at  == ${snapshot.data.data.records[0].timeSheetWeekly.createdAt}"),
-                    Text(
-                        "updated  at  == ${snapshot.data.data.records[0].timeSheetWeekly.updatedAt}"),
-                    Text(
-                        "payroll  status  == ${snapshot.data.data.records[0].timeSheetWeekly.payrollStatus}"),
-                    Text(
-                        "week  type  == ${snapshot.data.data.records[0].timeSheetWeekly.timesheetType}"),*/
-                  ],
-                );
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              } else {
-                print('jjjjjjjjj');
-                return CircularProgressIndicator();
-              }
-
-              // By default, show a loading spinner.
-            },
-          ),
-        ],
-      ),
-    );
   }
 }

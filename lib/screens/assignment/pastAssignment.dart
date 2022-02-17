@@ -177,7 +177,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                     children: [
                                       if (snapshot.data.data[index].empStatus ==
                                           'Completed')
-                                        Padding(
+                                         Padding(
                                           // padding: const EdgeInsets.all(20.0),
                                           padding: const EdgeInsets.fromLTRB(
                                               20, 10, 20, 5),
@@ -214,9 +214,17 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                         child: Container(
                                                           child: Text(
                                                               snapshot
-                                                                  .data
-                                                                  .data[index]
-                                                                  .jobPosition,
+                                                                          .data
+                                                                          .data[
+                                                                              index]
+                                                                          .jobPosition !=
+                                                                      null
+                                                                  ? snapshot
+                                                                      .data
+                                                                      .data[
+                                                                          index]
+                                                                      .jobPosition
+                                                                  : ' - - - ',
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .black,
@@ -237,12 +245,14 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                       Container(
                                                         child: InkWell(
                                                           onTap: () {
-                                                              Navigator.push(
+                                                            Navigator.push(
                                                                 context,
                                                                 MaterialPageRoute(
                                                                     builder:
                                                                         (context) =>
-                                                                            Assignmentdetail(jobid: snapshot.data.data[index].jobId,)));
+                                                                            Assignmentdetail(
+                                                                              jobid: snapshot.data.data[index].jobId,
+                                                                            )));
                                                           },
                                                           child: Image.asset(
                                                             "images/Path 58358.png",
@@ -263,9 +273,15 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                         Alignment.topLeft,
                                                     child: Text(
                                                         snapshot
-                                                            .data
-                                                            .data[index]
-                                                            .customer,
+                                                                    .data
+                                                                    .data[index]
+                                                                    .customer !=
+                                                                null
+                                                            ? snapshot
+                                                                .data
+                                                                .data[index]
+                                                                .customer
+                                                            : ' - - - ',
                                                         style: TextStyle(
                                                             color:
                                                                 Color.fromRGBO(
@@ -275,6 +291,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                     1),
                                                             //fontWeight: FontWeight.w600,
                                                             fontSize: 10.0)),
+
                                                     /* Text(
                                           state.assignments[index]['customer'],
                                           style: TextStyle(
@@ -317,11 +334,21 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                             SizedBox(
                                                               height: 2,
                                                             ),
+
+                                                            //
                                                             Text(
                                                                 snapshot
-                                                                    .data
-                                                                    .data[index]
-                                                                    .startDate,
+                                                                            .data
+                                                                            .data[
+                                                                                index]
+                                                                            .startDate !=
+                                                                        null
+                                                                    ? snapshot
+                                                                        .data
+                                                                        .data[
+                                                                            index]
+                                                                        .startDate
+                                                                    : ' - - - ',
                                                                 style:
                                                                     TextStyle(
                                                                         color: Color.fromRGBO(
@@ -335,16 +362,6 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                                 .bold,
                                                                         fontSize:
                                                                             14.0)),
-                                                            /* Text(
-                                                  state.assignments[index]
-                                                      ['start_date'],
-                                                  style: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          0, 0, 0, 1),
-                                                      //fontWeight: FontWeight.w600,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14.0))*/
                                                           ],
                                                         ),
                                                       ),
@@ -385,7 +402,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                           .data[
                                                                               index]
                                                                           .endDate
-                                                                      : ' - - ',
+                                                                      : ' - - - ',
                                                                   style:
                                                                       TextStyle(
                                                                           color: Color.fromRGBO(

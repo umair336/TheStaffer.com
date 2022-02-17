@@ -117,11 +117,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         size: 40,
                                       ),
                                       onPressed: () {
-                                    //    Navigator.push(
-                                       //     context,
+                                        //    Navigator.push(
+                                        //     context,
                                         //    MaterialPageRoute(
-                                       //         builder: (context) =>
-                                           //         ProfileApi()));
+                                        //         builder: (context) =>
+                                        //         ProfileApi()));
                                       },
                                     ),
                                   ),
@@ -215,12 +215,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         child: Text(
                                           snapshot.data.data.phone,
                                           style: TextStyle(
-                                            fontFamily: 'Nunito Sans',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 12.0,
-                                            color:
-                                                Color.fromRGBO(83, 83, 83, 1),
-                                          ),
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Nunito Sans',
+                                              color: Color.fromRGBO(
+                                                  31, 33, 38, 1)),
                                         ),
                                       ),
                                     ],
@@ -250,12 +249,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           Text(
                                             'Email',
                                             style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              // fontWeight: FontWeight.semibold,
-                                              fontSize: 10.0,
-                                              color:
-                                                  Color.fromRGBO(83, 83, 83, 1),
-                                            ),
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Nunito Sans',
+                                                color: Color.fromRGBO(
+                                                    31, 33, 38, 1)),
                                           ),
                                         ],
                                       ),
@@ -279,8 +277,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 ),
                                               )
                                             : new Container(
-                                                child:
-                                                    Text('-----------------')),
+                                                child: Text('----')),
 
                                         /*Text(
                                           'Employeeemail@email.com',
@@ -337,12 +334,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         child: Text(
                                           snapshot.data.data.dob,
                                           style: TextStyle(
-                                            fontFamily: 'Nunito Sans',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 12.0,
-                                            color:
-                                                Color.fromRGBO(83, 83, 83, 1),
-                                          ),
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Nunito Sans',
+                                              color: Color.fromRGBO(
+                                                  31, 33, 38, 1)),
                                         ),
                                       ),
                                     ],
@@ -389,12 +385,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         child: Text(
                                           snapshot.data.data.ssn,
                                           style: TextStyle(
-                                            fontFamily: 'Nunito Sans',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 12.0,
-                                            color:
-                                                Color.fromRGBO(83, 83, 83, 1),
-                                          ),
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Nunito Sans',
+                                              color: Color.fromRGBO(
+                                                  31, 33, 38, 1)),
                                         ),
                                       ),
                                     ],
@@ -441,12 +436,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         child: Text(
                                           snapshot.data.data.location,
                                           style: TextStyle(
-                                            fontFamily: 'Nunito Sans',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 12.0,
-                                            color:
-                                                Color.fromRGBO(83, 83, 83, 1),
-                                          ),
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Nunito Sans',
+                                              color: Color.fromRGBO(
+                                                  31, 33, 38, 1)),
                                         ),
                                       ),
                                     ],

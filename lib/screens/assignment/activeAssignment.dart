@@ -214,9 +214,17 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                         child: Container(
                                                           child: Text(
                                                               snapshot
-                                                                  .data
-                                                                  .data[index]
-                                                                  .jobPosition,
+                                                                          .data
+                                                                          .data[
+                                                                              index]
+                                                                          .jobPosition !=
+                                                                      null
+                                                                  ? snapshot
+                                                                      .data
+                                                                      .data[
+                                                                          index]
+                                                                      .jobPosition
+                                                                  : ' - - - ',
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .black,
@@ -237,13 +245,14 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                       Container(
                                                         child: InkWell(
                                                           onTap: () {
-                                                           
                                                             Navigator.push(
                                                                 context,
                                                                 MaterialPageRoute(
                                                                     builder:
                                                                         (context) =>
-                                                                            Assignmentdetail(jobid: snapshot.data.data[index].jobId,)));
+                                                                            Assignmentdetail(
+                                                                              jobid: snapshot.data.data[index].jobId,
+                                                                            )));
                                                           },
                                                           child: Image.asset(
                                                             "images/Path 58358.png",
@@ -264,9 +273,15 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                         Alignment.topLeft,
                                                     child: Text(
                                                         snapshot
-                                                            .data
-                                                            .data[index]
-                                                            .customer,
+                                                                    .data
+                                                                    .data[index]
+                                                                    .customer !=
+                                                                null
+                                                            ? snapshot
+                                                                .data
+                                                                .data[index]
+                                                                .customer
+                                                            : ' - - - ',
                                                         style: TextStyle(
                                                             color:
                                                                 Color.fromRGBO(
@@ -276,6 +291,7 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                                     1),
                                                             //fontWeight: FontWeight.w600,
                                                             fontSize: 10.0)),
+
                                                     /* Text(
                                           state.assignments[index]['customer'],
                                           style: TextStyle(
@@ -318,11 +334,21 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                             SizedBox(
                                                               height: 2,
                                                             ),
+
+                                                            //
                                                             Text(
                                                                 snapshot
-                                                                    .data
-                                                                    .data[index]
-                                                                    .startDate,
+                                                                            .data
+                                                                            .data[
+                                                                                index]
+                                                                            .startDate !=
+                                                                        null
+                                                                    ? snapshot
+                                                                        .data
+                                                                        .data[
+                                                                            index]
+                                                                        .startDate
+                                                                    : ' - - - ',
                                                                 style:
                                                                     TextStyle(
                                                                         color: Color.fromRGBO(
@@ -336,16 +362,6 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                                                 .bold,
                                                                         fontSize:
                                                                             14.0)),
-                                                            /* Text(
-                                                  state.assignments[index]
-                                                      ['start_date'],
-                                                  style: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          0, 0, 0, 1),
-                                                      //fontWeight: FontWeight.w600,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14.0))*/
                                                           ],
                                                         ),
                                                       ),
@@ -386,7 +402,7 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                                           .data[
                                                                               index]
                                                                           .endDate
-                                                                      : ' - - ',
+                                                                      : ' - - - ',
                                                                   style:
                                                                       TextStyle(
                                                                           color: Color.fromRGBO(
