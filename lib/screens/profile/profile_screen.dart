@@ -249,11 +249,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           Text(
                                             'Email',
                                             style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Nunito Sans',
-                                                color: Color.fromRGBO(
-                                                    31, 33, 38, 1)),
+                                              fontFamily: 'Nunito Sans',
+                                              // fontWeight: FontWeight.semibold,
+                                              fontSize: 10.0,
+                                              color:
+                                                  Color.fromRGBO(83, 83, 83, 1),
+                                            ),
                                           ),
                                         ],
                                       ),
