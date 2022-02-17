@@ -24,9 +24,9 @@ class _ActiveassignmentState extends State<Activeassignment> {
         child: Column(
           children: [
             SizedBox(
-              height: 5,
+              height: 20,
             ),
-            Row(
+            /*   Row(
               children: [
                 Expanded(
                   child: Padding(
@@ -155,7 +155,7 @@ class _ActiveassignmentState extends State<Activeassignment> {
                   ),
                 ),
               ],
-            ),
+            ),*/
             /* SizedBox(
               height: 450,
             ),
@@ -427,7 +427,7 @@ class _ActiveassignmentState extends State<Activeassignment> {
                       return Text("${snapshot.error}");
                     } else {
                       return Container(
-                        height: MediaQuery.of(context).size.height / 2,
+                        height: MediaQuery.of(context).size.height / 1.5,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,

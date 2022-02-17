@@ -24,9 +24,9 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
         child: Column(
           children: [
             SizedBox(
-              height: 5,
+              height: 20,
             ),
-            Row(
+           /* Row(
               children: [
                 Expanded(
                   child: Padding(
@@ -155,7 +155,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                   ),
                 ),
               ],
-            ),
+            ),*/
             /* SizedBox(
               height: 450,
             ),
@@ -441,7 +441,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                     } else {
                       print('jjjjjjjjj');
                       return Container(
-                        height: MediaQuery.of(context).size.height / 2,
+                        height: MediaQuery.of(context).size.height / 1.5,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
