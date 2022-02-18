@@ -301,7 +301,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 SizedBox(height: 12),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 43),
+                                  padding: const EdgeInsets.only(left: 44),
                                   child: Column(
                                     //  mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -314,7 +314,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             height: size.height * 0.02,
                                             // fit: BoxFit.cover,
                                           ),
-                                          SizedBox(width: 15),
+                                          SizedBox(width: 11),
                                           Text(
                                             'Date of Birth',
                                             style: TextStyle(
@@ -331,7 +331,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         height: 6,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(left: 30),
+                                        padding: EdgeInsets.only(left: 26),
                                         child: Text(
                                           snapshot.data.data.dob,
                                           style: TextStyle(
@@ -352,7 +352,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 SizedBox(height: 12),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 39),
+                                  padding: const EdgeInsets.only(left: 40),
                                   child: Column(
                                     //  mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -365,7 +365,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             height: size.height * 0.02,
                                             // fit: BoxFit.cover,
                                           ),
-                                          SizedBox(width: 18),
+                                          SizedBox(width: 12),
                                           Text(
                                             'SSN',
                                             style: TextStyle(
@@ -382,7 +382,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         height: 6,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(left: 36),
+                                        padding: EdgeInsets.only(left: 31),
                                         child: Text(
                                           snapshot.data.data.ssn,
                                           style: TextStyle(
@@ -403,7 +403,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 SizedBox(height: 12),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 47),
+                                  padding: const EdgeInsets.only(left: 48),
                                   child: Column(
                                     //  mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -416,7 +416,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             height: size.height * 0.02,
                                             // fit: BoxFit.cover,
                                           ),
-                                          SizedBox(width: 19),
+                                          SizedBox(width: 13),
                                           Text(
                                             'Location',
                                             style: TextStyle(
@@ -433,7 +433,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         height: 6,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(left: 31),
+                                        padding: EdgeInsets.only(left: 24),
                                         child: Text(
                                           snapshot.data.data.location,
                                           style: TextStyle(
@@ -454,7 +454,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 SizedBox(height: 12),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 41),
+                                  padding: const EdgeInsets.only(left: 44),
                                   child: Column(
                                     //  mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -467,7 +467,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             height: size.height * 0.02,
                                             // fit: BoxFit.cover,
                                           ),
-                                          SizedBox(width: 18),
+                                          SizedBox(width: 12),
                                           Text(
                                             'Change Passored',
                                             style: TextStyle(
@@ -484,7 +484,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         height: 6,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(left: 35),
+                                        padding: EdgeInsets.only(left: 29),
                                         child: Container(
                                           child: InkWell(
                                             onTap: () {
