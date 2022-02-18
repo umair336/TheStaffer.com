@@ -17,11 +17,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Future<Home> futureData;
-  String startDate = DateFormat('yyyy/M/d').format(DateTime.now());
-  // String endDate = DateTime.now().parse().subtract(new Duration(days: 7)) as String;
-  String endDate = DateFormat('yyyy/M/d')
+  String startDate = DateFormat('yyyy/M/d')
       .format(DateTime.now().subtract(new Duration(days: 7)));
-  String tiledate = "";
+  
+  // String endDate = DateTime.now().parse().subtract(new Duration(days: 7)) as String;
+  String endDate = DateFormat('yyyy/M/d').format(DateTime.now());
 
   @override
   void initState() {
