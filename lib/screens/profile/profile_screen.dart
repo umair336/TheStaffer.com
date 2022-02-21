@@ -6,6 +6,7 @@ import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'profileApi.dart';
+import './reset_password.dart';
 
 class ProfileScreen extends StatefulWidget {
   // const ProfileScreen({ Key? key }) : super(key: key);
@@ -469,7 +470,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ),
                                           SizedBox(width: 12),
                                           Text(
-                                            'Change Passored',
+                                            'Change Password',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               // fontWeight: FontWeight.semibold,
@@ -488,6 +489,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         child: Container(
                                           child: InkWell(
                                             onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Resetpassword()),
+                                              );
+                                              /*
                                               showDialog(
                                                   context: context,
                                                   builder:
@@ -743,6 +751,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       ),
                                                     );
                                                   });
+                                                  */
                                             },
                                             child: Text(
                                               'Reset Password',
