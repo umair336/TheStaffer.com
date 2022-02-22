@@ -1,4 +1,4 @@
-package com.bilguunint.staffer
+package com.foxteksystems.thestaffer.employee
 
 import io.flutter.embedding.android.FlutterActivity
 
