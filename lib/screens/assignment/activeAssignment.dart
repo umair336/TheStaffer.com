@@ -395,9 +395,13 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                                               null
                                                                           ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
                                                                               .data
-                                                                              .data[index]
+                                                                              .data[
+                                                                                  index]
                                                                               .endDate))
-                                                                          : ' - - - ',
+                                                                          : DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
+                                                                              .data
+                                                                              .data[index]
+                                                                              .jobEndDate)),
                                                                       style: TextStyle(
                                                                           color: Color.fromRGBO(0, 0, 0, 1),
                                                                           //fontWeight: FontWeight.w600,

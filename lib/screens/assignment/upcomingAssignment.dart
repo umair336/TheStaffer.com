@@ -26,7 +26,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
             SizedBox(
               height: 20,
             ),
-           /* Row(
+            /* Row(
               children: [
                 Expanded(
                   child: Padding(
@@ -407,9 +407,13 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                             null
                                                                         ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
                                                                             .data
-                                                                            .data[index]
+                                                                            .data[
+                                                                                index]
                                                                             .endDate))
-                                                                        : ' - - - ',
+                                                                        : DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
+                                                                            .data
+                                                                            .data[index]
+                                                                            .jobEndDate)),
                                                                     style: TextStyle(
                                                                         color: Color.fromRGBO(0, 0, 0, 1),
                                                                         //fontWeight: FontWeight.w600,
