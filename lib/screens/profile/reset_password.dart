@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class Resetpassword extends StatefulWidget {
@@ -63,8 +64,11 @@ class _ResetpasswordState extends State<Resetpassword> {
                             size: 20,
                           ),
                           onPressed: () {
-                            
-                      //      Navigator.pop(context);
+                        Navigator.pop(context);
+                          //  Navigator.push(
+                            //    context,
+                               // MaterialPageRoute(
+                                //    builder: (context) => MainScreen()));
                           },
                         ),
                       ])),

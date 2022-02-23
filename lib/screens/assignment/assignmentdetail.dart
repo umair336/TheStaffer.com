@@ -755,17 +755,22 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                     SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
-                                      snapshot.data.detail.record.shiftNotes ==
-                                              null
-                                          ? snapshot
-                                              .data.detail.record.shiftNotes
-                                          : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.',
-                                      style: TextStyle(
-                                        fontFamily: 'Nunito Sans',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14.0,
-                                        color: Color.fromRGBO(0, 0, 0, 1),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 37),
+                                      child: Text(
+                                        snapshot.data.detail.record
+                                                    .shiftNotes !=
+                                                null
+                                            ? snapshot
+                                                .data.detail.record.shiftNotes
+                                            : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.',
+                                        style: TextStyle(
+                                          fontFamily: 'Nunito Sans',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14.0,
+                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                        ),
                                       ),
                                     ),
                                   ],
