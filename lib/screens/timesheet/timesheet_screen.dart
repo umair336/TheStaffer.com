@@ -607,9 +607,6 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                         ),
                                                         Container(
                                                           child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
                                                             children: [
                                                               Container(
                                                                 child: Text(
@@ -717,13 +714,14 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                               index]
                                                                           .hoursForWeek,
                                                                         */
-                                                                snapshot
-                                                                    .data
-                                                                    .timesheet
-                                                                    .record[
-                                                                        index]
-                                                                    .hoursForWeek
-                                                                    .toString(),
+                                                                DateFormat(
+                                                                        'yyyy/M/d')
+                                                                    .format(DateTime.parse(snapshot
+                                                                        .data
+                                                                        .timesheet
+                                                                        .record[
+                                                                            index]
+                                                                        .hoursForWeek)),
                                                                 style:
                                                                     TextStyle(
                                                                   fontWeight:
