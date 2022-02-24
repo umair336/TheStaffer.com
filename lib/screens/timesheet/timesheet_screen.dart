@@ -752,7 +752,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           padding:
                                                               const EdgeInsets
                                                                       .fromLTRB(
-                                                                  0, 0, 0, 0),
+                                                                  27, 0, 0, 0),
                                                           child: Container(
                                                             decoration:
                                                                 BoxDecoration(
