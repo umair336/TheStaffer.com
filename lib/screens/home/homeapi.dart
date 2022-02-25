@@ -9,11 +9,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 Future<Home> fetchhome() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  const url = 'https://dev2.thestaffer.com/api/admin/home';
+  final url = 'https://dev2.thestaffer.com/api/admin/home';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');
-  final response = await http.get(url, headers: {
+  final response = await http.get(Uri.parse(url), headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Authorization': 'Bearer $authorization'

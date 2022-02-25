@@ -59,12 +59,13 @@ class _IntroPageState extends State<IntroPage> {
       body: "Let your manager know when the best times are for you to work.",
 
       decoration: const PageDecoration(
+           titlePadding: EdgeInsets.only(left: 20, right: 20),
           pageColor: Color.fromRGBO(97, 29, 165, 1),
           bodyTextStyle: TextStyle(
             fontSize: 16,
             color: Color.fromRGBO(255, 255, 255, 1),
           ),
-          descriptionPadding: EdgeInsets.only(left: 20, right: 20),
+        //  descriptionPadding: EdgeInsets.only(left: 20, right: 20),
           imagePadding: EdgeInsets.all(20)),
     ),
     PageViewModel(
@@ -105,12 +106,13 @@ class _IntroPageState extends State<IntroPage> {
       body: "Let your manager know when the best times are for you to work.",
      
       decoration: const PageDecoration(
+      titlePadding:  EdgeInsets.only(left: 20, right: 20),
         pageColor: Color.fromRGBO(97, 29, 165, 1),
         bodyTextStyle: TextStyle(
           color: Color.fromRGBO(255, 255, 255, 1),
           fontSize: 16,
         ),
-        descriptionPadding: EdgeInsets.only(left: 20, right: 20),
+      //  descriptionPadding: EdgeInsets.only(left: 20, right: 20),
         imagePadding: EdgeInsets.all(20),
       ),
     ),
@@ -145,12 +147,13 @@ class _IntroPageState extends State<IntroPage> {
       body: "Let your manager know when the best times are for you to work.",
       
       decoration: const PageDecoration(
+        titlePadding:  EdgeInsets.only(left: 20, right: 20),
           pageColor: Color.fromRGBO(97, 29, 165, 1),
           bodyTextStyle: TextStyle(
             color: Color.fromRGBO(255, 255, 255, 1),
             fontSize: 16,
           ),
-          descriptionPadding: EdgeInsets.only(left: 20, right: 20),
+       
           imagePadding: EdgeInsets.all(20)),
     ),
   ];

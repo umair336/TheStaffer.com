@@ -15,7 +15,7 @@ Future<Detailassignment> fetchAssignmentDetail(int id) async {
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');
-  final response = await http.get(url, headers: {
+  final response = await http.get(Uri.parse(url), headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Authorization': 'Bearer $authorization'
