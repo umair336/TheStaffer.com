@@ -9,6 +9,9 @@ class _ResetpasswordState extends State<Resetpassword> {
   bool _showPassword = true;
   bool _changePassword = true;
   bool _confirmPassword = true;
+  final currentpassword = TextEditingController();
+  final newpassword = TextEditingController();
+  final confirmpassword = TextEditingController();
   void _togglePasswordVisibility() {
     setState(() {
       _showPassword = !_showPassword;
@@ -113,6 +116,7 @@ class _ResetpasswordState extends State<Resetpassword> {
                       Padding(
                         padding: EdgeInsets.all(14),
                         child: TextFormField(
+                          controller: currentpassword,
                           obscureText: _showPassword,
                           style: TextStyle(
                               fontSize: 14.0,
@@ -156,6 +160,7 @@ class _ResetpasswordState extends State<Resetpassword> {
                         padding: EdgeInsets.all(14),
                         child: TextFormField(
                           obscureText: _changePassword,
+                          controller: newpassword,
                           style: TextStyle(
                               fontSize: 14.0,
                               color: Color.fromRGBO(83, 83, 83, 1)
@@ -198,6 +203,7 @@ class _ResetpasswordState extends State<Resetpassword> {
                         padding: EdgeInsets.all(14),
                         child: TextFormField(
                           obscureText: _confirmPassword,
+                          controller: confirmpassword,
                           style: TextStyle(
                               fontSize: 14.0,
                               color: Color.fromRGBO(83, 83, 83, 1)
@@ -272,6 +278,9 @@ class _ResetpasswordState extends State<Resetpassword> {
                           onPressed: () {
                             //          Navigator.push(context,
                             //            MaterialPageRoute(builder: (context) => Profile()));
+                            setState(() {
+                              functionChangepassword();
+                            });
                           },
                         ),
                       ),
@@ -283,5 +292,17 @@ class _ResetpasswordState extends State<Resetpassword> {
         ),
       ),
     );
+  }
+
+  functionChangepassword() {
+    String curentp = currentpassword.text;
+    String newp = newpassword.text;
+    String confirmp = confirmpassword.text;
+    // print('ddddddddddddddddddddddddddddddd$cp');
+    if (curentp != '' && newp != '' && confirmp != '') {
+      print('correct');
+    } else {
+      print('wrong');
+    }
   }
 }
