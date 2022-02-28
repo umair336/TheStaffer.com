@@ -29,7 +29,7 @@ class _IntroPageState extends State<IntroPage> {
       // pageColor: const Color(0xFF607D8B),
       titleWidget: Column(
         children: <Widget>[
-           Padding(
+          Padding(
             padding: const EdgeInsets.only(top: 60.0, bottom: 15.0),
             child: Image.asset(
               "images/Group 12869.png",
@@ -41,8 +41,7 @@ class _IntroPageState extends State<IntroPage> {
               "images/Group 13122.png",
             ),
           ),
-
-            Padding(
+          Padding(
             padding: const EdgeInsets.only(top: 25.0, bottom: 0.0),
             child: Text(
               'Get Your Schedule Anywhere',
@@ -52,38 +51,36 @@ class _IntroPageState extends State<IntroPage> {
                   color: Color.fromRGBO(255, 255, 255, 1)),
             ),
           ),
-         
         ],
       ),
 
       body: "Let your manager know when the best times are for you to work.",
 
       decoration: const PageDecoration(
-           titlePadding: EdgeInsets.only(left: 20, right: 20),
           pageColor: Color.fromRGBO(97, 29, 165, 1),
           bodyTextStyle: TextStyle(
             fontSize: 16,
             color: Color.fromRGBO(255, 255, 255, 1),
           ),
-        //  descriptionPadding: EdgeInsets.only(left: 20, right: 20),
+          //     descriptionPadding: EdgeInsets.only(left: 20, right: 20),
           imagePadding: EdgeInsets.all(20)),
     ),
     PageViewModel(
       titleWidget: Column(
         children: <Widget>[
-           Padding(
+          Padding(
             padding: const EdgeInsets.only(top: 60.0, bottom: 15.0),
             child: Image.asset(
               "images/Group 12869.png",
             ),
           ),
-              Padding(
+          Padding(
             padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
-             child: Image.asset(
-                   "images/Group 13216.png",
-                 ),
-           ),
-           Padding(
+            child: Image.asset(
+              "images/Group 13216.png",
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.only(top: 25.0, bottom: 0.0),
             child: Text(
               'Chat With Your Coworkers',
@@ -104,34 +101,32 @@ class _IntroPageState extends State<IntroPage> {
         ],
       ),
       body: "Let your manager know when the best times are for you to work.",
-     
       decoration: const PageDecoration(
-      titlePadding:  EdgeInsets.only(left: 20, right: 20),
         pageColor: Color.fromRGBO(97, 29, 165, 1),
         bodyTextStyle: TextStyle(
           color: Color.fromRGBO(255, 255, 255, 1),
           fontSize: 16,
         ),
-      //  descriptionPadding: EdgeInsets.only(left: 20, right: 20),
+        //     descriptionPadding: EdgeInsets.only(left: 20, right: 20),
         imagePadding: EdgeInsets.all(20),
       ),
     ),
     PageViewModel(
       titleWidget: Column(
         children: <Widget>[
-           Padding(
+          Padding(
             padding: const EdgeInsets.only(top: 60.0, bottom: 15.0),
             child: Image.asset(
               "images/Group 12869.png",
             ),
           ),
-           Padding(
+          Padding(
             padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
             child: Image.asset(
-                  "images/Group 13178.png",
-                ),
+              "images/Group 13178.png",
+            ),
           ),
-           Padding(
+          Padding(
             padding: const EdgeInsets.only(top: 25.0, bottom: 0.0),
             child: Text(
               'Set Your Availability',
@@ -145,15 +140,13 @@ class _IntroPageState extends State<IntroPage> {
         ],
       ),
       body: "Let your manager know when the best times are for you to work.",
-      
       decoration: const PageDecoration(
-        titlePadding:  EdgeInsets.only(left: 20, right: 20),
           pageColor: Color.fromRGBO(97, 29, 165, 1),
           bodyTextStyle: TextStyle(
             color: Color.fromRGBO(255, 255, 255, 1),
             fontSize: 16,
           ),
-       
+          // descriptionPadding: EdgeInsets.only(left: 20, right: 20),
           imagePadding: EdgeInsets.all(20)),
     ),
   ];
@@ -165,7 +158,7 @@ class _IntroPageState extends State<IntroPage> {
             userRepository: userRepository,
           )
         : IntroductionScreen(
-            //    globalBackgroundColor: Colors.amber,
+            globalBackgroundColor: Color.fromRGBO(97, 29, 165, 1),
             pages: pages,
             onDone: () {
               afterIntroComplete();
@@ -179,7 +172,6 @@ class _IntroPageState extends State<IntroPage> {
                   fontWeight: FontWeight.w600,
                   color: Color.fromRGBO(255, 255, 255, 1),
                 )),
-
             next: const Icon(
               Icons.navigate_next,
               color: Color.fromRGBO(255, 255, 255, 1),

@@ -9,7 +9,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 Future<Profile> fetchprofile() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  final url = 'https://dev2.thestaffer.com/api/admin/getprofile';
+  final url = 'https://dev2.thestaffer.com/api/admin/get-profile-data';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');

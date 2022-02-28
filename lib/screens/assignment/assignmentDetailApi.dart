@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-
 ///import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 import 'package:http/http.dart' as http;
@@ -11,7 +10,7 @@ Future<Detailassignment> fetchAssignmentDetail(int id) async {
   final String token = await storage.read(key: 'token');
   print('hhhhhhhhhhhhhhhhhhhhhh$id');
   final url =
-      'https://dev2.thestaffer.com/api/admin/employees/assignments/detail/$id';
+      'https://dev2.thestaffer.com/api/admin/employee/assignment/detail/$id';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');
