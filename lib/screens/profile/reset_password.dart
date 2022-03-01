@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 class Resetpassword extends StatefulWidget {
   @override
@@ -299,10 +304,49 @@ class _ResetpasswordState extends State<Resetpassword> {
     String newp = newpassword.text;
     String confirmp = confirmpassword.text;
     // print('ddddddddddddddddddddddddddddddd$cp');
+    if (newp == confirmp) {
+      print('truen');
+    } else {
+      print('false');
+    }
     if (curentp != '' && newp != '' && confirmp != '') {
       print('correct');
+      if (newp == confirmp) {
+      print('truen');
+      postRequest(curentp , newp , confirmp );
+    } else {
+      print('false');
+    }
+
+      // postRequest(curentp , newp , confirmp );
     } else {
       print('wrong');
     }
+  }
+
+  Future<http.Response> postRequest(
+      String curentp, String newp, String confirmp) async {
+    final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
+    final String token = await storage.read(key: 'token');
+    String authorization = token;
+    var urll = 'https://dev2.thestaffer.com/api/admin/reset-password';
+
+    Map data = {
+      'password': curentp,
+      'new_password': newp,
+      'confirm_password': confirmp
+    };
+    //encode Map to JSON
+    var body = json.encode(data);
+
+    var response = await http.post(Uri.parse(urll),
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $authorization'
+        },
+        body: body);
+    print("${response.statusCode}");
+    print("${response.body}");
+    return response;
   }
 }
