@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:TheStafferEmployee/screens/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +10,7 @@ import 'bloc/auth_bloc/auth_bloc.dart';
 import 'repositories/repositories.dart';
 import 'screens/auth/intro_screen.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
-
+/*
 class SimpleBlocDelegate extends BlocDelegate {
   @override
   void onEvent(Bloc bloc, Object event) {
@@ -28,9 +30,10 @@ class SimpleBlocDelegate extends BlocDelegate {
     print(error);
   }
 }
+*/
 
-void main() {
-  BlocSupervisor.delegate = SimpleBlocDelegate();
+Future<void> main() async {
+  // BlocSupervisor.delegate = SimpleBlocDelegate();
   final userRepository = UserRepository();
 
   runApp(
@@ -38,6 +41,7 @@ void main() {
       create: (context) {
         return AuthenticationBloc(userRepository: userRepository)
           ..add(AppStarted());
+          
       },
       child: MyApp(
         userRepository: userRepository,
@@ -91,6 +95,7 @@ class MyApp extends StatelessWidget {
               ),
             );
           }
+
           return MainScreen();
           return Scaffold(
             body: Container(
