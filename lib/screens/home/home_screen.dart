@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<Home> futureData;
   String startDate = DateFormat('yyyy/M/d')
       .format(DateTime.now().subtract(new Duration(days: 7)));
-  
+
   // String endDate = DateTime.now().parse().subtract(new Duration(days: 7)) as String;
   String endDate = DateFormat('yyyy/M/d').format(DateTime.now());
 
