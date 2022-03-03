@@ -63,15 +63,19 @@ class Data {
   int earnings;
   int pending;
   int shifts;
-
-  Data(
-      {this.totalWeeklyHours,
-      this.empName,
-      this.profilePic,
-      this.assignments,
-      this.earnings,
-      this.pending,
-      this.shifts});
+  String startDate;
+  String endDate;
+  Data({
+    this.totalWeeklyHours,
+    this.empName,
+    this.profilePic,
+    this.assignments,
+    this.earnings,
+    this.pending,
+    this.shifts,
+    this.startDate,
+    this.endDate,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     totalWeeklyHours = json['total_weekly_hours'];
@@ -86,6 +90,8 @@ class Data {
     earnings = json['earnings'];
     pending = json['pending'];
     shifts = json['shifts'];
+    startDate = json['start_date'];
+    endDate = json['end_date'];
   }
 
   Map<String, dynamic> toJson() {
@@ -99,6 +105,8 @@ class Data {
     data['earnings'] = this.earnings;
     data['pending'] = this.pending;
     data['shifts'] = this.shifts;
+    data['start_date'] = this.startDate;
+    data['end_date'] = this.endDate;
     return data;
   }
 }

@@ -17,11 +17,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Future<Home> futureData;
-  String startDate = DateFormat('yyyy/M/d')
-      .format(DateTime.now().subtract(new Duration(days: 7)));
+  // String startDate = DateFormat('yyyy/M/d').format(DateTime.now().subtract(new Duration(days: 7)));
 
   // String endDate = DateTime.now().parse().subtract(new Duration(days: 7)) as String;
-  String endDate = DateFormat('yyyy/M/d').format(DateTime.now());
+
 
   @override
   void initState() {
@@ -230,7 +229,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  startDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .startDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -270,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                                  endDate,
+                                                                   snapshot.data.data[0].endDate.toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -427,7 +430,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  startDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .startDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -465,7 +472,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                                  endDate,
+                                                               snapshot.data.data[0].endDate.toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -654,7 +661,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  startDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .startDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -694,7 +705,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                                  endDate,
+                                                        snapshot.data.data[0].endDate.toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -868,7 +879,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  startDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .startDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -906,7 +921,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                                  endDate,
+                                                              snapshot.data.data[0].endDate.toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
