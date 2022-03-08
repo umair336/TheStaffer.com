@@ -263,7 +263,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                       Padding(
                                         padding: EdgeInsets.only(left: 35),
-                                        child: Text(snapshot.data.data.email) ==
+                                        child: Text(snapshot.data.data.email) !=
                                                 null
                                             ? new Container(
                                                 child: Text(
@@ -495,7 +495,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       return MyDialog();
                                                     });
                                               });
-                                              
                                             },
                                             child: Text(
                                               'Reset Password',

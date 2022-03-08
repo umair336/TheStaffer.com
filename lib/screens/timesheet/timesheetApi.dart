@@ -7,8 +7,6 @@ import 'dart:convert';
 ///
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
-
-
 Future<TimeSheetData> timesheet(String dateStart, String dateEnd) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
@@ -92,14 +90,14 @@ class Record {
   String hoursForWeek;
   String createdAt;
   String updatedAt;
-
+  Null invoiceId;
   int payrollStatus;
-
+  Null ckDate;
   String overtimeHours;
   String regularHours;
   String timesheetType;
   String customerName;
-  int payRate;
+
   int overRate;
   String jobPosition;
 
@@ -113,14 +111,13 @@ class Record {
       this.hoursForWeek,
       this.createdAt,
       this.updatedAt,
- 
+      this.invoiceId,
       this.payrollStatus,
- 
+      this.ckDate,
       this.overtimeHours,
       this.regularHours,
       this.timesheetType,
       this.customerName,
-      this.payRate,
       this.overRate,
       this.jobPosition});
 
@@ -134,13 +131,14 @@ class Record {
     hoursForWeek = json['hours_for_week'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    invoiceId = json['invoice_id'];
     payrollStatus = json['payroll_status'];
-   
+    ckDate = json['ck_date'];
     overtimeHours = json['overtime_hours'];
     regularHours = json['regular_hours'];
     timesheetType = json['timesheet_type'];
     customerName = json['customer_name'];
-    payRate = json['pay_rate'];
+
     overRate = json['over_rate'];
     jobPosition = json['job_position'];
   }
@@ -156,14 +154,14 @@ class Record {
     data['hours_for_week'] = this.hoursForWeek;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-   
+    data['invoice_id'] = this.invoiceId;
     data['payroll_status'] = this.payrollStatus;
- 
+    data['ck_date'] = this.ckDate;
     data['overtime_hours'] = this.overtimeHours;
     data['regular_hours'] = this.regularHours;
     data['timesheet_type'] = this.timesheetType;
     data['customer_name'] = this.customerName;
-    data['pay_rate'] = this.payRate;
+
     data['over_rate'] = this.overRate;
     data['job_position'] = this.jobPosition;
     return data;
