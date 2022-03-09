@@ -30,11 +30,14 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   var week_end_date;
   var week_start_date;
   int mg = 0;
-  int monthover = 0;
+
   int monthtotal = 0;
   // static const duration = 0;
   Duration totalweek;
   Duration month_reg;
+  Duration month_over;
+  bool val_month_reg = false;
+  bool val_month_over = false;
   @override
   void initState() {
     super.initState();
@@ -374,7 +377,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    mg.toString(),
+                                                    month_reg.inHours
+                                                        .toString(),
                                                     style: TextStyle(
                                                       fontSize: 14.0,
                                                       fontFamily: 'Nunito Sans',
@@ -419,7 +423,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                   ),
                                                 ),
                                               ),
-                                              /* for (int i = 0;
+                                              for (int i = 0;
                                                   i <
                                                       snapshot.data.timesheet
                                                           .record.length;
@@ -432,11 +436,12 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           .record[i]
                                                           .overtimeHours
                                                           .toString()),
-                                                ),*/
+                                                ),
                                               Row(
                                                 children: [
                                                   Text(
-                                                    monthover.toString(),
+                                                    month_over.inHours
+                                                        .toString(),
                                                     style: TextStyle(
                                                       fontSize: 14.0,
                                                       fontFamily: 'Nunito Sans',
@@ -1367,6 +1372,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                               ],
                             ),
                           ],
+                        ),
+                        Container(
+                          child: dispos(),
                         )
                       ],
                     );
@@ -1518,10 +1526,17 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     print('pppppp $reg');
     var m_reg = reg.split('.');
     print('object${m_reg[0]}jjjjjjjj${m_reg[1]}');
-   
-    month_reg = new Duration(
-        hours: int.parse(m_reg[0]), minutes: int.parse(m_reg[1]), seconds: 0);
 
+    if (val_month_reg == false) {
+      month_reg = new Duration(
+          hours: int.parse(m_reg[0]), minutes: int.parse(m_reg[1]), seconds: 0);
+      val_month_reg = true;
+    } else {
+      month_reg = new Duration(
+          hours: int.parse(m_reg[0]) + int.parse(month_reg.inHours.toString()),
+          minutes: int.parse(m_reg[1]),
+          seconds: 0);
+    }
     print('dddddddddddddddddddddd$month_reg');
 
     /* print('aaaa${reg.toString()}');
@@ -1530,14 +1545,30 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   }
 
   Overtotalfunction(ov) {
-    print('aaaa${ov.toString()}');
-    monthover = monthover + int.parse(ov);
-    print('mont$monthover');
+    print('pppppp $ov');
+    var m_reg = ov.split('.');
+    print('object${m_reg[0]}jjjjjjjj${m_reg[1]}');
+    if (val_month_over == false) {
+      month_over = new Duration(
+          hours: int.parse(m_reg[0]), minutes: int.parse(m_reg[1]), seconds: 0);
+      val_month_over = true;
+    } else {
+      month_over = new Duration(
+          hours: int.parse(m_reg[0]) + int.parse(month_over.inHours.toString()),
+          minutes: int.parse(m_reg[1]),
+          seconds: 0);
+    }
   }
 
   Monthtotalfuction() {
-    monthtotal = monthover + mg;
-    mg = 0;
-    monthover = 0;
+    //monthtotal = monthover + mg;
+    // month_reg = month_reg.inHours=;
+    // monthover = 0;
+  }
+  dispos() {
+    month_reg = new Duration(hours: 0, minutes: 0, seconds: 0);
+    month_over = new Duration(hours: 0, minutes: 0, seconds: 0);
+
+    //month_reg= new Duration()
   }
 }
