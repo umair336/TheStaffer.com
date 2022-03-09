@@ -61,7 +61,7 @@ class Data {
   String profilePic;
   List<Assignments> assignments;
   int earnings;
-  int pending;
+  double pending;
   int shifts;
   String startDate;
   String endDate;
