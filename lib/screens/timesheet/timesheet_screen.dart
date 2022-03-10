@@ -31,11 +31,11 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   var week_start_date;
   int mg = 0;
 
-  int monthtotal = 0;
   // static const duration = 0;
   Duration totalweek;
   Duration month_reg;
   Duration month_over;
+  Duration month_toal;
   bool val_month_reg = false;
   bool val_month_over = false;
   @override
@@ -506,13 +506,15 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                   ),
                                                 ),
                                               ),
-                                              /* Container(
-                                                child: Monthtotalfuction(),
-                                              ),*/
+                                              Container(
+                                                child: Monthtotalfuction(
+                                                    month_reg, month_over),
+                                              ),
                                               Row(
                                                 children: [
                                                   Text(
-                                                    monthtotal.toString(),
+                                                    month_toal.inHours
+                                                        .toString(),
                                                     style: TextStyle(
                                                       fontSize: 14.0,
                                                       fontFamily: 'Nunito Sans',
@@ -523,7 +525,20 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                     ),
                                                   ),
                                                   Text(
-                                                    ':00',
+                                                    '.',
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          255, 255, 255, 1),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    month_toal.inMinutes
+                                                        .remainder(60)
+                                                        .toString(),
                                                     style: TextStyle(
                                                       fontSize: 14.0,
                                                       fontFamily: 'Nunito Sans',
@@ -1557,11 +1572,17 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     }
   }
 
-  Monthtotalfuction() {
-    //monthtotal = monthover + mg;
-    // month_reg = month_reg.inHours=;
-    // monthover = 0;
+  Monthtotalfuction(Duration d1, Duration d2) {
+    print('yyyyyyyyyyyyyyyyyyyyyy$d1 yyyyyyyyyyyyyyyyyyyyyy$d2');
+
+    month_toal = new Duration(
+      hours:
+          int.parse(d1.inHours.toString()) + int.parse(d2.inHours.toString()),
+      minutes: int.parse(d1.inMinutes.remainder(60).toString()) +
+          int.parse(d2.inMinutes.remainder(60).toString()),
+    );
   }
+
   dispos() {
     month_reg = new Duration(hours: 0, minutes: 0, seconds: 0);
     month_over = new Duration(hours: 0, minutes: 0, seconds: 0);
