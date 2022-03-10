@@ -59,9 +59,9 @@ class Data {
   int totalWeeklyHours;
   String empName;
   Null profilePic;
-  List<Assignments>assignments;
+  List<Assignments> assignments;
   int earnings;
-  int pending;
+  double pending;
   int shifts;
   String startDate;
   String endDate;
@@ -219,6 +219,7 @@ class Assignments {
     return data;
   }
 }
+
 class Homeapi extends StatefulWidget {
   @override
   _HomeapiState createState() => _HomeapiState();
