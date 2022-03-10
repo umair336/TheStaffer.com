@@ -33,7 +33,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
 
   int monthtotal = 0;
   // static const duration = 0;
-  Duration totalweek;
+  DateTime totalweek;
   Duration month_reg;
   Duration month_over;
   bool val_month_reg = false;
@@ -893,10 +893,10 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                           TextBaseline
                                                                               .alphabetic,
                                                                       children: [
-                                                                        /* Container(
+                                                                        Container(
                                                                           child:
                                                                               Weektotal(),
-                                                                        ),*/
+                                                                        ),
                                                                         SizedBox(
                                                                             height:
                                                                                 MediaQuery.of(context).size.height * 0.01),
@@ -916,8 +916,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                         Row(
                                                                           children: [
                                                                             Text(
-                                                                              'inhour',
-                                                                              // totalweek.inHours.toString(),
+                                                                             totalweek.hour.toString(),
                                                                               style: TextStyle(
                                                                                 fontFamily: 'Nunito Sans',
                                                                                 fontSize: 12.0,
@@ -935,7 +934,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                               ),
                                                                             ),
                                                                             Text(
-                                                                              '00',
+                                                                              totalweek.minute.toString(),
                                                                               style: TextStyle(
                                                                                 fontFamily: 'Nunito Sans',
                                                                                 fontSize: 12.0,
@@ -1494,9 +1493,15 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     Duration total_reg_over = new Duration(
         hours: int.parse(regular_week[0]) + int.parse(over_week[0]),
         minutes: int.parse(regular_week[1]) + int.parse(over_week[1]));
-    //  print('ddddddddddddddddd$total_reg_over');
+    //var f = DateFormat("hh:mm");
+    // var c = f.parse(total_reg_over.toString());
+    // print('ddddddddddddddddd${c.hour}');
 
-    totalweek = total_reg_over;
+    print(total_reg_over.toString());
+
+    totalweek = DateFormat("hh:mm:ss").parse(total_reg_over.toString());
+
+    print('iiiiiiiiiiiiiiiiiiiiiiiiiiiiii${totalweek} ');
 
     //var today = new DateTime.now();
     /* const duration = Duration(
