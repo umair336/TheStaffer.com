@@ -360,25 +360,22 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                   ),
                                                 ),
                                               ),
-                                              /*  for (int i = 0;
+                                              for (int i = 0;
                                                   i <
                                                       snapshot.data.timesheet
-                                                          .record.length;
+                                                          .length;
                                                   i++)
                                                 Container(
                                                   child: Regulartotalfunction(
-                                                      snapshot
-                                                          .data
-                                                          .timesheet
-                                                          .record[i]
+                                                      snapshot.data.timesheet[i]
                                                           .regularHours
                                                           .toString()),
-                                                ),*/
+                                                ),
                                               Row(
                                                 children: [
                                                   Text(
-                                                    'inho',
-                                                    // month_reg.inHours.toString(),
+                                                    month_reg.inHours
+                                                        .toString(),
                                                     style: TextStyle(
                                                       fontSize: 14.0,
                                                       fontFamily: 'Nunito Sans',
@@ -389,7 +386,20 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                     ),
                                                   ),
                                                   Text(
-                                                    ':00',
+                                                    '.',
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          255, 255, 255, 1),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    month_reg.inMinutes
+                                                        .remainder(60)
+                                                        .toString(),
                                                     style: TextStyle(
                                                       fontSize: 14.0,
                                                       fontFamily: 'Nunito Sans',
@@ -423,25 +433,22 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                   ),
                                                 ),
                                               ),
-                                              /* for (int i = 0;
+                                              for (int i = 0;
                                                   i <
                                                       snapshot.data.timesheet
-                                                          .record.length;
+                                                          .length;
                                                   i++)
                                                 Container(
                                                   child: Overtotalfunction(
-                                                      snapshot
-                                                          .data
-                                                          .timesheet
-                                                          .record[i]
+                                                      snapshot.data.timesheet[i]
                                                           .overtimeHours
                                                           .toString()),
-                                                ),*/
+                                                ),
                                               Row(
                                                 children: [
                                                   Text(
-                                                    'inh',
-                                                    // month_over.inHours .toString(),
+                                                    month_over.inHours
+                                                        .toString(),
                                                     style: TextStyle(
                                                       fontSize: 14.0,
                                                       fontFamily: 'Nunito Sans',
@@ -452,7 +459,20 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                     ),
                                                   ),
                                                   Text(
-                                                    ':00',
+                                                    '.',
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          255, 255, 255, 1),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    month_over.inMinutes
+                                                        .remainder(60)
+                                                        .toString(),
                                                     style: TextStyle(
                                                       fontSize: 14.0,
                                                       fontFamily: 'Nunito Sans',
@@ -1501,25 +1521,6 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
 
     print(
         'iiiiiiiiiiiiiiiiiiiiiiiiiiiiii${total_reg_over.inMinutes} dddddddddddddddddddddddddd${totalweek}');
-
-    //var today = new DateTime.now();
-    /* const duration = Duration(
-      // days: 1,
-      hours: x,
-      minutes: 56 + 10,
-      //  seconds: 59,
-    );
-    print(duration);*/
-    //var fiftyDaysFromNow =  duration.add(new Duration(hours: int.parse(regular_week[1])));
-    // print(fiftyDaysFromNow);
-
-    // const fastestMarathon = Duration(hours: 2, minutes: 3, seconds: 2);
-
-    //  int a = int.parse(rugular);
-    // int b = int.parse(over);
-    //  total = a + b;
-    // print("sssssssssssss$monthreg");
-    //
   }
 
   Regulartotalfunction(reg) {
