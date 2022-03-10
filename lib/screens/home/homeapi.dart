@@ -58,24 +58,28 @@ class Home {
 class Data {
   int totalWeeklyHours;
   String empName;
-  String profilePic;
-  List<Assignments> assignments;
+  Null profilePic;
+  List<Assignments>assignments;
   int earnings;
-  double pending;
+  int pending;
   int shifts;
   String startDate;
   String endDate;
-  Data({
-    this.totalWeeklyHours,
-    this.empName,
-    this.profilePic,
-    this.assignments,
-    this.earnings,
-    this.pending,
-    this.shifts,
-    this.startDate,
-    this.endDate,
-  });
+  String currentDateFormat;
+  String currencyformat;
+
+  Data(
+      {this.totalWeeklyHours,
+      this.empName,
+      this.profilePic,
+      this.assignments,
+      this.earnings,
+      this.pending,
+      this.shifts,
+      this.startDate,
+      this.endDate,
+      this.currentDateFormat,
+      this.currencyformat});
 
   Data.fromJson(Map<String, dynamic> json) {
     totalWeeklyHours = json['total_weekly_hours'];
@@ -92,6 +96,8 @@ class Data {
     shifts = json['shifts'];
     startDate = json['start_date'];
     endDate = json['end_date'];
+    currentDateFormat = json['current_date_format'];
+    currencyformat = json['currencyformat'];
   }
 
   Map<String, dynamic> toJson() {
@@ -107,6 +113,8 @@ class Data {
     data['shifts'] = this.shifts;
     data['start_date'] = this.startDate;
     data['end_date'] = this.endDate;
+    data['current_date_format'] = this.currentDateFormat;
+    data['currencyformat'] = this.currencyformat;
     return data;
   }
 }
@@ -124,7 +132,7 @@ class Assignments {
   String agencyMargin;
   String customerPayRate;
   String customerOvertimePayRate;
-  String endDate;
+  Null endDate;
   String startDate;
   String createdAt;
   String updatedAt;
@@ -133,7 +141,7 @@ class Assignments {
   String jobTitle;
   String employeeName;
   int customer;
-  String cutomerName;
+  String customerName;
 
   Assignments(
       {this.number,
@@ -157,7 +165,7 @@ class Assignments {
       this.jobTitle,
       this.employeeName,
       this.customer,
-      this.cutomerName});
+      this.customerName});
 
   Assignments.fromJson(Map<String, dynamic> json) {
     number = json['number'];
@@ -181,7 +189,7 @@ class Assignments {
     jobTitle = json['job_title'];
     employeeName = json['employee_name'];
     customer = json['customer'];
-    cutomerName = json['customer_name'];
+    customerName = json['customer_name'];
   }
 
   Map<String, dynamic> toJson() {
@@ -207,11 +215,10 @@ class Assignments {
     data['job_title'] = this.jobTitle;
     data['employee_name'] = this.employeeName;
     data['customer'] = this.customer;
-    data['customer_name'] = this.cutomerName;
+    data['customer_name'] = this.customerName;
     return data;
   }
 }
-
 class Homeapi extends StatefulWidget {
   @override
   _HomeapiState createState() => _HomeapiState();

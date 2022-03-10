@@ -21,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // String endDate = DateTime.now().parse().subtract(new Duration(days: 7)) as String;
 
-
   @override
   void initState() {
     super.initState();
@@ -273,7 +272,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                                   snapshot.data.data[0].endDate.toString(),
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .endDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -472,7 +475,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                               snapshot.data.data[0].endDate.toString(),
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .endDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -705,7 +712,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                        snapshot.data.data[0].endDate.toString(),
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .endDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -921,7 +932,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                              snapshot.data.data[0].endDate.toString(),
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .endDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -1306,7 +1321,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               const EdgeInsets.only(left: 20),
                                           child: Text(
                                             snapshot.data.data[0]
-                                                .assignments[index].cutomerName
+                                                .assignments[index].customerName
                                                 .toString(),
                                             style: TextStyle(
                                                 fontSize: 10,

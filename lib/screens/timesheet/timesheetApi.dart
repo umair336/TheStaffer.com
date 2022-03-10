@@ -38,49 +38,29 @@ Future<TimeSheetData> timesheet(String dateStart, String dateEnd) async {
 }
 
 class TimeSheetData {
-  Timesheet timesheet;
+  List<Timesheet> timesheet;
 
   TimeSheetData({this.timesheet});
 
   TimeSheetData.fromJson(Map<String, dynamic> json) {
-    timesheet = json['timesheet'] != null
-        ? new Timesheet.fromJson(json['timesheet'])
-        : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.timesheet != null) {
-      data['timesheet'] = this.timesheet.toJson();
-    }
-    return data;
-  }
-}
-
-class Timesheet {
-  List<Record> record;
-
-  Timesheet({this.record});
-
-  Timesheet.fromJson(Map<String, dynamic> json) {
-    if (json['record'] != null) {
-      record = <Record>[];
-      json['record'].forEach((v) {
-        record.add(new Record.fromJson(v));
+    if (json['timesheet'] != null) {
+      timesheet = <Timesheet>[];
+      json['timesheet'].forEach((v) {
+        timesheet.add(new Timesheet.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.record != null) {
-      data['record'] = this.record.map((v) => v.toJson()).toList();
+    if (this.timesheet != null) {
+      data['timesheet'] = this.timesheet.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Record {
+class Timesheet {
   int id;
   int parentId;
   int employeeJobId;
@@ -97,11 +77,11 @@ class Record {
   String regularHours;
   String timesheetType;
   String customerName;
-
+ 
   int overRate;
   String jobPosition;
 
-  Record(
+  Timesheet(
       {this.id,
       this.parentId,
       this.employeeJobId,
@@ -118,10 +98,11 @@ class Record {
       this.regularHours,
       this.timesheetType,
       this.customerName,
+      
       this.overRate,
       this.jobPosition});
 
-  Record.fromJson(Map<String, dynamic> json) {
+  Timesheet.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     parentId = json['parent_id'];
     employeeJobId = json['employee_job_id'];
@@ -138,7 +119,7 @@ class Record {
     regularHours = json['regular_hours'];
     timesheetType = json['timesheet_type'];
     customerName = json['customer_name'];
-
+   
     overRate = json['over_rate'];
     jobPosition = json['job_position'];
   }
