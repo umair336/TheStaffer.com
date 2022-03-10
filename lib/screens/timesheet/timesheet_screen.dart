@@ -934,7 +934,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                               ),
                                                                             ),
                                                                             Text(
-                                                                              totalweek.inMinutes.toString(),
+                                                                              totalweek.inMinutes.remainder(60).toString(),
                                                                               style: TextStyle(
                                                                                 fontFamily: 'Nunito Sans',
                                                                                 fontSize: 12.0,
@@ -1480,14 +1480,14 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     // print(over_week[1]);
 
     Duration reg_week = new Duration(
-        hours: int.parse(regular_week[0]),
-        minutes: int.parse(regular_week[1]),
-        seconds: 0);
+      hours: int.parse(regular_week[0]),
+      minutes: int.parse(regular_week[1]),
+    );
     //print('ssssssssss$reg_week');
     Duration ove_week = new Duration(
-        hours: int.parse(over_week[0]),
-        minutes: int.parse(over_week[1]),
-        seconds: 0);
+      hours: int.parse(over_week[0]),
+      minutes: int.parse(over_week[1]),
+    );
     //  print(ove_week);
 
     Duration total_reg_over = new Duration(
@@ -1497,9 +1497,10 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     print(total_reg_over);
 
     totalweek = total_reg_over;
+    //String duration = DateFormat('hh:mm').format(totalweek);
 
     print(
-        'iiiiiiiiiiiiiiiiiiiiiiiiiiiiii${total_reg_over.inMinutes} dddddddddddddddddddddddddd${totalweek.inMinutes}');
+        'iiiiiiiiiiiiiiiiiiiiiiiiiiiiii${total_reg_over.inMinutes} dddddddddddddddddddddddddd${totalweek}');
 
     //var today = new DateTime.now();
     /* const duration = Duration(
