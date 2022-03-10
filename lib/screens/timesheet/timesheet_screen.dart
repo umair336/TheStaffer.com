@@ -33,7 +33,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
 
   int monthtotal = 0;
   // static const duration = 0;
-  DateTime totalweek;
+  Duration totalweek;
   Duration month_reg;
   Duration month_over;
   bool val_month_reg = false;
@@ -916,7 +916,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                         Row(
                                                                           children: [
                                                                             Text(
-                                                                             totalweek.hour.toString(),
+                                                                              totalweek.inHours.toString(),
                                                                               style: TextStyle(
                                                                                 fontFamily: 'Nunito Sans',
                                                                                 fontSize: 12.0,
@@ -934,7 +934,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                               ),
                                                                             ),
                                                                             Text(
-                                                                              totalweek.minute.toString(),
+                                                                              totalweek.inMinutes.toString(),
                                                                               style: TextStyle(
                                                                                 fontFamily: 'Nunito Sans',
                                                                                 fontSize: 12.0,
@@ -1493,15 +1493,13 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     Duration total_reg_over = new Duration(
         hours: int.parse(regular_week[0]) + int.parse(over_week[0]),
         minutes: int.parse(regular_week[1]) + int.parse(over_week[1]));
-    //var f = DateFormat("hh:mm");
-    // var c = f.parse(total_reg_over.toString());
-    // print('ddddddddddddddddd${c.hour}');
 
-    print(total_reg_over.toString());
+    print(total_reg_over);
 
-    totalweek = DateFormat("hh:mm:ss").parse(total_reg_over.toString());
+    totalweek = total_reg_over;
 
-    print('iiiiiiiiiiiiiiiiiiiiiiiiiiiiii${totalweek} ');
+    print(
+        'iiiiiiiiiiiiiiiiiiiiiiiiiiiiii${total_reg_over.inMinutes} dddddddddddddddddddddddddd${totalweek.inMinutes}');
 
     //var today = new DateTime.now();
     /* const duration = Duration(
