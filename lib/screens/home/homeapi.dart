@@ -58,12 +58,12 @@ class Home {
 }
 
 class Data {
-  double totalWeeklyHours;
+  String totalWeeklyHours;
   String empName;
   Null profilePic;
   List<Assignments> assignments;
-  int earnings;
-  double pending;
+  String earnings;
+  String pending;
   int shifts;
   String startDate;
   String endDate;
@@ -93,8 +93,8 @@ class Data {
         assignments.add(new Assignments.fromJson(v));
       });
     }
-    earnings = json['earnings'];
-    pending = json['pending'];
+    earnings = json['earnings'].toString();
+    pending = json['pending'].toString();
     shifts = json['shifts'];
     startDate = json['start_date'];
     endDate = json['end_date'];
@@ -110,8 +110,8 @@ class Data {
     if (this.assignments != null) {
       data['assignments'] = this.assignments.map((v) => v.toJson()).toList();
     }
-    data['earnings'] = this.earnings;
-    data['pending'] = this.pending;
+    data['earnings'] = this.earnings.toString();
+    data['pending'] = this.pending.toString();
     data['shifts'] = this.shifts;
     data['start_date'] = this.startDate;
     data['end_date'] = this.endDate;
