@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           left: 20,
                           child: IconButton(
                             icon: Icon(
-                              Icons.perm_identity_rounded,
+                            Icons.person_rounded,
                               color: Color.fromRGBO(255, 255, 255, 1),
                               size: 40,
                             ),
