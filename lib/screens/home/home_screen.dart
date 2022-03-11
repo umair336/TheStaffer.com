@@ -91,17 +91,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Positioned(
-                          top: 60,
-                          left: 20,
-                          child: IconButton(
-                            icon: Icon(
-                            Icons.person_rounded,
-                              color: Color.fromRGBO(255, 255, 255, 1),
-                              size: 40,
-                            ),
-                            onPressed: () {},
-                          ),
-                        ),
+                            top: 60,
+                            left: 20,
+                            child: Image.network(
+                              snapshot.data.data[0].profilePic,
+                              width: 50,
+                              height: 50,
+                              //fit: BoxFit.cover,
+                            )),
                         Positioned(
                           top: 70,
                           left: 70,

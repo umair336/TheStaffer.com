@@ -60,7 +60,7 @@ class Home {
 class Data {
   String totalWeeklyHours;
   String empName;
-  Null profilePic;
+  String profilePic;
   List<Assignments> assignments;
   String earnings;
   String pending;
