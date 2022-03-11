@@ -110,21 +110,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: Row(
                                 children: [
                                   Container(
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.person_rounded,
-                                        color: Colors.white,
-                                        size: 40,
-                                      ),
-                                      onPressed: () {
-                                        //    Navigator.push(
-                                        //     context,
-                                        //    MaterialPageRoute(
-                                        //         builder: (context) =>
-                                        //         ProfileApi()));
-                                      },
-                                    ),
-                                  ),
+                                      child: Image.network(
+                                    snapshot.data.data.profilePic,
+                                    width: 50,
+                                    height: 50,
+                                    //fit: BoxFit.cover,
+                                  )),
                                   SizedBox(
                                     width: 7,
                                   ),
