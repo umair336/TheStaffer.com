@@ -4,6 +4,7 @@ import 'package:TheStafferEmployee/screens/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/auth_bloc/auth.dart';
 import 'bloc/auth_bloc/auth_bloc.dart';
@@ -34,6 +35,9 @@ class SimpleBlocDelegate extends BlocDelegate {
 
 Future<void> main() async {
   // BlocSupervisor.delegate = SimpleBlocDelegate();
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   final userRepository = UserRepository();
 
   runApp(
@@ -41,7 +45,6 @@ Future<void> main() async {
       create: (context) {
         return AuthenticationBloc(userRepository: userRepository)
           ..add(AppStarted());
-          
       },
       child: MyApp(
         userRepository: userRepository,
