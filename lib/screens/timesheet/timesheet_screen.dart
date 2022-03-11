@@ -1557,18 +1557,21 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   }
 
   Overtotalfunction(ov) {
-    print('pppppp $ov');
+    print('iiiiiiiiiiiiiiiiiiiiiiiiii $ov');
     var m_reg = ov.split('.');
     print('object${m_reg[0]}jjjjjjjj${m_reg[1]}');
     if (val_month_over == false) {
       month_over = new Duration(
           hours: int.parse(m_reg[0]), minutes: int.parse(m_reg[1]), seconds: 0);
       val_month_over = true;
+      print('hhhhhhhhhhhhhhhhhhhhhh$month_over');
     } else {
       month_over = new Duration(
           hours: int.parse(m_reg[0]) + int.parse(month_over.inHours.toString()),
-          minutes: int.parse(m_reg[1]),
+          minutes:
+              int.parse(m_reg[1]) + int.parse(month_over.inMinutes.toString()),
           seconds: 0);
+      print('hhhhhhhhhhhhhhhhhhhhhh$month_over');
     }
   }
 

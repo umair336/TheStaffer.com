@@ -70,9 +70,9 @@ class Timesheet {
   String hoursForWeek;
   String createdAt;
   String updatedAt;
-  Null invoiceId;
+
   int payrollStatus;
-  Null ckDate;
+  
   String overtimeHours;
   String regularHours;
   String timesheetType;
@@ -91,9 +91,9 @@ class Timesheet {
       this.hoursForWeek,
       this.createdAt,
       this.updatedAt,
-      this.invoiceId,
+
       this.payrollStatus,
-      this.ckDate,
+      
       this.overtimeHours,
       this.regularHours,
       this.timesheetType,
@@ -112,9 +112,9 @@ class Timesheet {
     hoursForWeek = json['hours_for_week'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    invoiceId = json['invoice_id'];
+   
     payrollStatus = json['payroll_status'];
-    ckDate = json['ck_date'];
+   
     overtimeHours = json['overtime_hours'];
     regularHours = json['regular_hours'];
     timesheetType = json['timesheet_type'];
@@ -135,9 +135,9 @@ class Timesheet {
     data['hours_for_week'] = this.hoursForWeek;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-    data['invoice_id'] = this.invoiceId;
+   
     data['payroll_status'] = this.payrollStatus;
-    data['ck_date'] = this.ckDate;
+   
     data['overtime_hours'] = this.overtimeHours;
     data['regular_hours'] = this.regularHours;
     data['timesheet_type'] = this.timesheetType;

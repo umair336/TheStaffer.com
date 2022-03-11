@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -56,7 +58,7 @@ class Home {
 }
 
 class Data {
-  int totalWeeklyHours;
+  double totalWeeklyHours;
   String empName;
   Null profilePic;
   List<Assignments> assignments;
