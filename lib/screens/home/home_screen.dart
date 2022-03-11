@@ -1212,7 +1212,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ],
                                         ),
                                       ),
-                                      Container(
+                                      Flexible(
+                                          child: Text(
+                                        snapshot.data.data[0].pending
+                                            .toString(),
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Nunito Sans',
+                                          //      color: Color.fromRGBO(255, 255, 255, 1)
+                                        ),
+                                      ))
+
+                                      /*  Container(
                                         child: Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.baseline,
@@ -1242,7 +1255,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             )
                                           ],
                                         ),
-                                      )
+                                      )*/
                                     ],
                                   ),
                                 ),
