@@ -63,8 +63,31 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
             child: FutureBuilder<TimeSheetData>(
                 future: futureData,
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Column(
+
+                    switch (snapshot.connectionState) {
+          case ConnectionState.none:
+            break;
+          case ConnectionState.waiting:
+            return Container(
+                height: MediaQuery.of(context).size.height,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: CircularProgressIndicator(
+                        valueColor: new AlwaysStoppedAnimation<Color>(
+                            Style.Colors.mainColor),
+                        strokeWidth: 4.0,
+                      ),
+                    )
+                  ],
+                ),
+              );
+          case ConnectionState.active:
+             break;
+          case ConnectionState.done:
+             return Column(
                       children: [
                         /* Text(
                         "employee_job_id   ==  ${snapshot.data.data.records[0].employeeJobId}"),
@@ -1408,27 +1431,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                         )
                       ],
                     );
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  } else {
-                    print('jjjjjjjjj');
-                    return Container(
-                      height: MediaQuery.of(context).size.height,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Center(
-                            child: CircularProgressIndicator(
-                              valueColor: new AlwaysStoppedAnimation<Color>(
-                                  Style.Colors.mainColor),
-                              strokeWidth: 4.0,
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  }
+       }
+                 
+                  
                 })));
   }
 
