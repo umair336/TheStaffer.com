@@ -758,6 +758,46 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     textBaseline:
                                                         TextBaseline.alphabetic,
                                                     children: [
+                                                      FutureBuilder<FormateApi>(
+                                                          future: futureFormate,
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            if (snapshot
+                                                                .hasData) {
+                                                              return Text(snapshot
+                                                                          .data
+                                                                          .data[
+                                                                              0]
+                                                                          .currencyformat
+                                                                          .toString()) !=
+                                                                      null
+                                                                  ? Container(
+                                                                      child:
+                                                                          AutoSizeText(
+                                                                        snapshot
+                                                                            .data
+                                                                            .data[0]
+                                                                            .currencyformat
+                                                                            .toString(),
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              30,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontFamily:
+                                                                              'Nunito Sans',
+                                                                          //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : Container(
+                                                                      child: Text(
+                                                                          ' '));
+                                                            } else {
+                                                              return Text('');
+                                                            }
+                                                          }),
                                                       Text(
                                                                 snapshot
                                                                     .data
@@ -977,6 +1017,46 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     textBaseline:
                                                         TextBaseline.alphabetic,
                                                     children: [
+                                                      FutureBuilder<FormateApi>(
+                                                          future: futureFormate,
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            if (snapshot
+                                                                .hasData) {
+                                                              return Text(snapshot
+                                                                          .data
+                                                                          .data[
+                                                                              0]
+                                                                          .currencyformat
+                                                                          .toString()) !=
+                                                                      null
+                                                                  ? Container(
+                                                                      child:
+                                                                          AutoSizeText(
+                                                                        snapshot
+                                                                            .data
+                                                                            .data[0]
+                                                                            .currencyformat
+                                                                            .toString(),
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              30,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontFamily:
+                                                                              'Nunito Sans',
+                                                                          //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : Container(
+                                                                      child: Text(
+                                                                          ' '));
+                                                            } else {
+                                                              return Text('');
+                                                            }
+                                                          }),
                                                       Text(
                                                                 snapshot
                                                                     .data
@@ -1224,23 +1304,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       Row(
                                         children: [
-                                          AutoSizeText(
-                                            // '123',
-                                            snapshot.data.data[0].pending
-                                                .toString(),
-                                            //    maxLines: 1,
-                                            style: TextStyle(
-                                              fontSize: 30,
-                                              fontWeight: FontWeight.bold,
-                                              //  fontFamily: 'Nunito Sans',
-
-                                              //      color: Color.fromRGBO(255, 255, 255, 1)
-                                            ),
-                                            maxFontSize: 26,
-                                            minFontSize: 26,
-                                            maxLines: 1,
-                                            //     overflow: TextOverflow.ellipsis,
-                                          ),
                                           FutureBuilder<FormateApi>(
                                               future: futureFormate,
                                               builder: (context, snapshot) {
@@ -1274,7 +1337,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 } else {
                                                   return Text('');
                                                 }
-                                              })
+                                              }),
+                                          AutoSizeText(
+                                            // '123',
+                                            snapshot.data.data[0].pending
+                                                .toString(),
+                                            //    maxLines: 1,
+                                            style: TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold,
+                                              //  fontFamily: 'Nunito Sans',
+
+                                              //      color: Color.fromRGBO(255, 255, 255, 1)
+                                            ),
+                                            maxFontSize: 26,
+                                            minFontSize: 26,
+                                            maxLines: 1,
+                                            //     overflow: TextOverflow.ellipsis,
+                                          ),
                                         ],
                                       )
 
