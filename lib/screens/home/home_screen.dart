@@ -8,6 +8,7 @@ import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
 import './homeapi.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeScreen extends StatefulWidget {
   // const HomeScreen({ Key? key }) : super(key: key);
@@ -1204,7 +1205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Container(
                                               child: Column(
                                                 children: [
-                                                  Text(
+                                                  AutoSizeText(
                                                     'Pending Balance',
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -1221,18 +1222,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ],
                                         ),
                                       ),
-                                      Flexible(
-                                          child: Row(
+                                      Row(
                                         children: [
-                                          Text(
+                                          AutoSizeText(
                                             // '123',
                                             snapshot.data.data[0].pending
                                                 .toString(),
-                                            maxLines: 1,
+                                            //    maxLines: 1,
                                             style: TextStyle(
                                               fontSize: 26,
                                               fontWeight: FontWeight.bold,
-                                              fontFamily: 'Nunito Sans',
+                                              //  fontFamily: 'Nunito Sans',
+
                                               //      color: Color.fromRGBO(255, 255, 255, 1)
                                             ),
                                           ),
@@ -1247,7 +1248,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               .toString()) !=
                                                           null
                                                       ? Container(
-                                                          child: Text(
+                                                          child: AutoSizeText(
                                                             snapshot
                                                                 .data
                                                                 .data[0]
@@ -1271,7 +1272,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 }
                                               })
                                         ],
-                                      ))
+                                      )
 
                                       /*  Container(
                                         child: Row(

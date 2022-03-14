@@ -44,6 +44,7 @@ dependencies:
   carousel_slider: 4.0.0 
   http: ^0.13.4
   avatar_view: ^1.0.0+3
+  auto_size_text: ^2.1.0
 dev_dependencies:
   flutter_app_name: ^0.1.1
   flutter_test:
