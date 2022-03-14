@@ -1230,12 +1230,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .toString(),
                                             //    maxLines: 1,
                                             style: TextStyle(
-                                              fontSize: 26,
+                                              fontSize: 30,
                                               fontWeight: FontWeight.bold,
                                               //  fontFamily: 'Nunito Sans',
 
                                               //      color: Color.fromRGBO(255, 255, 255, 1)
                                             ),
+                                            maxFontSize: 26,
+                                            minFontSize: 26,
+                                            maxLines: 1,
+                                            //     overflow: TextOverflow.ellipsis,
                                           ),
                                           FutureBuilder<FormateApi>(
                                               future: futureFormate,
