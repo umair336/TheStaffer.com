@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Positioned(
                             top: 65,
-                            left: 25 ,
+                            left: 25,
                             child: AvatarView(
                               radius: 23,
                               //borderWidth: 8,
@@ -1447,6 +1447,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   snapshot.data.data[0]
                                                       .assignments[0].jobTitle,
                                                   style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 14,
                                                       fontFamily: 'Nunito Sans',
                                                       color: Color.fromRGBO(
@@ -1471,6 +1473,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .toString(),
                                             style: TextStyle(
                                                 fontSize: 10,
+                                                fontWeight: FontWeight.normal,
                                                 fontFamily: 'Nunito Sans',
                                                 color: Color.fromRGBO(
                                                     83, 83, 83, 1)),
