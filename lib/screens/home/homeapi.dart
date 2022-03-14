@@ -67,6 +67,8 @@ class Data {
   int shifts;
   String startDate;
   String endDate;
+  String previousStartDate;
+  String previousEndDate;
   String currentDateFormat;
   String currencyformat;
 
@@ -80,6 +82,8 @@ class Data {
       this.shifts,
       this.startDate,
       this.endDate,
+      this.previousStartDate,
+      this.previousEndDate,
       this.currentDateFormat,
       this.currencyformat});
 
@@ -98,6 +102,8 @@ class Data {
     shifts = json['shifts'];
     startDate = json['start_date'];
     endDate = json['end_date'];
+     previousStartDate = json['prev_week_start'];
+    previousEndDate = json['prev_week_end'];
     currentDateFormat = json['current_date_format'];
     currencyformat = json['currencyformat'];
   }

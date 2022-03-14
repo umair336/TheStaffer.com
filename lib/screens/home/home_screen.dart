@@ -241,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   snapshot
                                                                       .data
                                                                       .data[0]
-                                                                      .startDate
+                                                                      .previousStartDate
                                                                       .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
@@ -285,7 +285,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   snapshot
                                                                       .data
                                                                       .data[0]
-                                                                      .endDate
+                                                                      .previousEndDate
                                                                       .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
@@ -681,7 +681,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   snapshot
                                                                       .data
                                                                       .data[0]
-                                                                      .startDate
+                                                                      .previousStartDate
                                                                       .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
@@ -725,7 +725,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   snapshot
                                                                       .data
                                                                       .data[0]
-                                                                      .endDate
+                                                                      .previousEndDate
                                                                       .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
