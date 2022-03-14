@@ -1,3 +1,4 @@
+import 'package:TheStafferEmployee/constants/formate.dart';
 import 'package:avatar_view/avatar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
@@ -18,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Future<Home> futureData;
+  Future<FormateApi> futureFormate;
   // String startDate = DateFormat('yyyy/M/d').format(DateTime.now().subtract(new Duration(days: 7)));
 
   // String endDate = DateTime.now().parse().subtract(new Duration(days: 7)) as String;
@@ -26,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     futureData = fetchhome();
+    futureFormate = fetchformate();
   }
 
   bool hours = true;
@@ -1219,16 +1222,55 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ),
                                       Flexible(
-                                          child: Text(
-                                        snapshot.data.data[0].pending
-                                            .toString(),
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Nunito Sans',
-                                          //      color: Color.fromRGBO(255, 255, 255, 1)
-                                        ),
+                                          child: Row(
+                                        children: [
+                                          Text(
+                                            // '123',
+                                            snapshot.data.data[0].pending
+                                                .toString(),
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                              fontSize: 26,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Nunito Sans',
+                                              //      color: Color.fromRGBO(255, 255, 255, 1)
+                                            ),
+                                          ),
+                                          FutureBuilder<FormateApi>(
+                                              future: futureFormate,
+                                              builder: (context, snapshot) {
+                                                if (snapshot.hasData) {
+                                                  return Text(snapshot
+                                                              .data
+                                                              .data[0]
+                                                              .currencyformat
+                                                              .toString()) !=
+                                                          null
+                                                      ? Container(
+                                                          child: Text(
+                                                            snapshot
+                                                                .data
+                                                                .data[0]
+                                                                .currencyformat
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                              fontSize: 30,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontFamily:
+                                                                  'Nunito Sans',
+                                                              //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : Container(
+                                                          child: Text(' '));
+                                                } else {
+                                                  return Text('');
+                                                }
+                                              })
+                                        ],
                                       ))
 
                                       /*  Container(
