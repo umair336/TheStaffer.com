@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Positioned(
                             top: 65,
-                            left: 20,
+                            left: 25 ,
                             child: AvatarView(
                               radius: 23,
                               //borderWidth: 8,
@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             )),
                         Positioned(
                           top: 70,
-                          left: 70,
+                          left: 80,
                           child: Text(
                             'Welcome',
                             style: TextStyle(
@@ -126,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Positioned(
                           top: 90,
-                          left: 70,
+                          left: 80,
                           child: Text(
                             snapshot.data.data[0].empName,
                             style: TextStyle(
