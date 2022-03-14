@@ -1,3 +1,4 @@
+import 'package:avatar_view/avatar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -91,13 +92,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Positioned(
-                            top: 60,
+                            top: 65,
                             left: 20,
-                            child: Image.network(
-                              snapshot.data.data[0].profilePic,
-                              width: 50,
-                              height: 50,
-                              //fit: BoxFit.cover,
+                            child: AvatarView(
+                              radius: 23,
+                              //borderWidth: 8,
+                              // borderColor: Colors.yellow,
+                              avatarType: AvatarType.CIRCLE,
+                              backgroundColor: Colors.red,
+                              imagePath: snapshot.data.data[0].profilePic,
+                              placeHolder: Image.network(
+                                snapshot.data.data[0].profilePic,
+                                width: 50,
+                                height: 50,
+                                //fit: BoxFit.cover,
+                              ),
                             )),
                         Positioned(
                           top: 70,
