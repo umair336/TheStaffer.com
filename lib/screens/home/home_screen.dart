@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Container(
                                               alignment: Alignment.topRight,
                                               child: Image.asset(
-                                                "images/Path 54457@2x.png",
+                                                "images/Path 52375@2x.png",
                                                 height: size.height * 0.02,
                                                 // fit: BoxFit.cover,
                                               ),
@@ -370,7 +370,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Container(
                                               alignment: Alignment.topRight,
                                               child: Image.asset(
-                                                "images/Path 52375@2x.png",
+                                                "images/Path 54457@2x.png",
 
                                                 height: size.height * 0.02,
                                                 // fit: BoxFit.cover,
@@ -560,7 +560,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                                 //Slider Container properties
                                 options: CarouselOptions(
-                                  reverse: true,
+                                  reverse: false,
                                   initialPage: 2,
                                   enlargeCenterPage: true,
                                   viewportFraction: 3.0,
@@ -605,7 +605,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Container(
                                               alignment: Alignment.topRight,
                                               child: Image.asset(
-                                                "images/Path 54457@2x.png",
+                                                "images/Path 52375@2x.png",
                                                 height: size.height * 0.02,
                                                 // fit: BoxFit.cover,
                                               ),
@@ -883,7 +883,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Container(
                                               alignment: Alignment.topRight,
                                               child: Image.asset(
-                                                "images/Path 52375@2x.png",
+                                                "images/Path 54457@2x.png",
 
                                                 height: size.height * 0.02,
                                                 // fit: BoxFit.cover,
@@ -1129,7 +1129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                                 //Slider Container properties
                                 options: CarouselOptions(
-                                  reverse: true,
+                                  reverse: false,
                                   initialPage: 2,
                                   enlargeCenterPage: true,
                                   viewportFraction: 3.0,
