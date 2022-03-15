@@ -1426,7 +1426,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     snapshot.data.data[0].assignments.length,
                                 itemBuilder: (context, index) {
                                   return Card(
-                                    elevation: 1.0,
+                                    elevation: 4.0,
+                                    shadowColor: Colors.grey.withOpacity(0.2),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.baseline,
