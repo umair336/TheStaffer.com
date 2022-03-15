@@ -1463,7 +1463,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                         SizedBox(
-                                          height: 7,
+                                          height: 11,
                                         ),
                                         Container(
                                           padding:
@@ -1474,14 +1474,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 .toString(),
                                             style: TextStyle(
                                                 fontSize: 10,
-                                                fontWeight: FontWeight.normal,
+                                                fontWeight: FontWeight.w600,
                                                 fontFamily: 'Nunito Sans',
                                                 color: Color.fromRGBO(
-                                                    83, 83, 83, 1)),
+                                                    112, 112, 112, 1)),
                                           ),
                                         ),
                                         SizedBox(
-                                          height: 12,
+                                          height: 9,
                                         ),
 
                                         Padding(
