@@ -217,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Total Hours',
+                                                              'Total Hourss',
                                                               style: TextStyle(
                                                                   fontSize: 14,
                                                                   fontWeight:
@@ -789,6 +789,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                               'Nunito Sans',
                                                                           //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                         ),
+                                                                        maxFontSize:
+                                                                            20,
+                                                                        minFontSize:
+                                                                            15,
+                                                                        maxLines:
+                                                                            1,
                                                                       ),
                                                                     )
                                                                   : Container(
@@ -804,31 +810,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     .data[0]
                                                                     .earnings
                                                                     .toString(),
-                                                              ) ==
+                                                              ) !=
                                                               null
                                                           ? new Container(
-                                                              child: Text(
+                                                              child:
+                                                                  AutoSizeText(
                                                                 snapshot
                                                                     .data
                                                                     .data[0]
-                                                                    .earnings
+                                                                    .prevearnings
                                                                     .toString(),
                                                                 style:
                                                                     TextStyle(
-                                                                  fontFamily:
-                                                                      'Nunito Sans',
+                                                                  fontSize: 30,
+
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  color: Color
-                                                                      .fromRGBO(
-                                                                          83,
-                                                                          83,
-                                                                          83,
-                                                                          1),
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                 ),
+                                                                maxFontSize: 20,
+                                                                minFontSize: 15,
+                                                                maxLines: 1,
                                                               ),
                                                             )
                                                           : new Container(
@@ -1048,6 +1053,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                               'Nunito Sans',
                                                                           //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                         ),
+                                                                        maxFontSize:
+                                                                            20,
+                                                                        minFontSize:
+                                                                            15,
+                                                                        maxLines:
+                                                                            1,
                                                                       ),
                                                                     )
                                                                   : Container(
@@ -1063,10 +1074,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     .data[0]
                                                                     .earnings
                                                                     .toString(),
-                                                              ) ==
+                                                              ) !=
                                                               null
                                                           ? new Container(
-                                                              child: Text(
+                                                              child:
+                                                                  AutoSizeText(
                                                                 snapshot
                                                                     .data
                                                                     .data[0]
@@ -1074,20 +1086,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     .toString(),
                                                                 style:
                                                                     TextStyle(
-                                                                  fontFamily:
-                                                                      'Nunito Sans',
+                                                                  fontSize: 30,
+
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  color: Color
-                                                                      .fromRGBO(
-                                                                          83,
-                                                                          83,
-                                                                          83,
-                                                                          1),
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                 ),
+                                                                maxFontSize: 20,
+                                                                minFontSize: 15,
+                                                                maxLines: 1,
                                                               ),
                                                             )
                                                           : new Container(
@@ -1330,6 +1340,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   'Nunito Sans',
                                                               //      color: Color.fromRGBO(255, 255, 255, 1)
                                                             ),
+                                                            maxFontSize: 23,
+                                                            minFontSize: 15,
                                                           ),
                                                         )
                                                       : Container(
@@ -1350,11 +1362,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
                                               //      color: Color.fromRGBO(255, 255, 255, 1)
                                             ),
-                                            maxFontSize: 26,
-                                            minFontSize: 26,
+                                            maxFontSize: 23,
+                                            minFontSize: 15,
                                             maxLines: 1,
                                             //     overflow: TextOverflow.ellipsis,
                                           ),
+                                          SizedBox(
+                                            width: 18,
+                                          )
                                         ],
                                       )
                                     ],

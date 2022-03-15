@@ -63,6 +63,7 @@ class Data {
   String profilePic;
   List<Assignments> assignments;
   String earnings;
+  String prevearnings;
   String pending;
   int shifts;
   String startDate;
@@ -78,6 +79,7 @@ class Data {
       this.profilePic,
       this.assignments,
       this.earnings,
+      this.prevearnings,
       this.pending,
       this.shifts,
       this.startDate,
@@ -98,11 +100,12 @@ class Data {
       });
     }
     earnings = json['earnings'].toString();
+    prevearnings = json['prev_earnings'].toString();
     pending = json['pending'].toString();
     shifts = json['shifts'];
     startDate = json['start_date'];
     endDate = json['end_date'];
-     previousStartDate = json['prev_week_start'];
+    previousStartDate = json['prev_week_start'];
     previousEndDate = json['prev_week_end'];
     currentDateFormat = json['current_date_format'];
     currencyformat = json['currencyformat'];
@@ -117,6 +120,7 @@ class Data {
       data['assignments'] = this.assignments.map((v) => v.toJson()).toList();
     }
     data['earnings'] = this.earnings.toString();
+    data['prev_earnings'] = this.prevearnings.toString();
     data['pending'] = this.pending.toString();
     data['shifts'] = this.shifts;
     data['start_date'] = this.startDate;
