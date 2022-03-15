@@ -1357,38 +1357,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ],
                                       )
-
-                                      /*  Container(
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.baseline,
-                                          textBaseline: TextBaseline.alphabetic,
-                                          children: [
-                                            Text(
-                                              snapshot.data.data[0].pending
-                                                  .toString(),
-                                              style: TextStyle(
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Nunito Sans',
-                                                //      color: Color.fromRGBO(255, 255, 255, 1)
-                                              ),
-                                            ),
-                                            /* Text(
-                                              '.50',
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Nunito Sans',
-                                                //      color: Color.fromRGBO(255, 255, 255, 1)
-                                              ),
-                                            ),*/
-                                            SizedBox(
-                                              width: 18,
-                                            )
-                                          ],
-                                        ),
-                                      )*/
                                     ],
                                   ),
                                 ),
@@ -1419,133 +1387,35 @@ class _HomeScreenState extends State<HomeScreen> {
                           right: 20,
                           child: Container(
                             height: 100.0,
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount:
-                                    snapshot.data.data[0].assignments.length,
-                                itemBuilder: (context, index) {
-                                  return Card(
-                                    elevation: 4.0,
-                                    shadowColor: Colors.grey.withOpacity(0.2),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.baseline,
-                                      textBaseline: TextBaseline.alphabetic,
-                                      children: [
-                                        //////////////////////
-                                        SizedBox(
-                                          height: 15,
-                                        ),
-                                        Container(
-                                          child: Row(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        20, 0, 120, 0),
-                                                child: Text(
-                                                  snapshot.data.data[0]
-                                                      .assignments[0].jobTitle,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14,
-                                                      fontFamily: 'Nunito Sans',
-                                                      color: Color.fromRGBO(
-                                                          13, 91, 196, 1)),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 11,
-                                        ),
-                                        Container(
-                                          padding:
-                                              const EdgeInsets.only(left: 20),
-                                          child: Text(
-                                            snapshot.data.data[0]
-                                                .assignments[index].customerName
-                                                .toString(),
-                                            style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.w600,
-                                                fontFamily: 'Nunito Sans',
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1)),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 9,
-                                        ),
-
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 20),
-                                          child: Text(
-                                              snapshot
-                                                          .data
-                                                          .data[0]
-                                                          .assignments[0]
-                                                          .startDate !=
-                                                      null
-                                                  ? DateFormat('yyyy/M/d')
-                                                      .format(DateTime.parse(
-                                                          snapshot
-                                                              .data
-                                                              .data[0]
-                                                              .assignments[0]
-                                                              .startDate))
-                                                  : ' - - - ',
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Nunito Sans',
-                                                  color: Color.fromRGBO(
-                                                      31, 33, 38, 1))),
-
-                                          /* Text(
-                                            tiledate.toString(),
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Nunito Sans',
-                                                color: Color.fromRGBO(
-                                                    31, 33, 38, 1)),
-                                          ),*/
-                                        )
-                                      ],
+                            child: snapshot.data.data[0].assignments.length == 0
+                                ? Padding(
+                                    padding: EdgeInsets.only(top: 10),
+                                    child: Text(
+                                      'No Assignment',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Nunito Sans',
+                                          color:
+                                              Color.fromRGBO(112, 112, 112, 1)),
                                     ),
-                                  );
-                                }),
-                          ),
-                        ),
-                        /*   Positioned( 
-                        top: 570,
-                        left: 23,
-                        right: 20,
-                        child: state is HomePageLoadedState
-                            ? new Container(
-                                height: 100.0,
-                                child: new ListView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: state.assignments.length > 5
-                                      ? 5
-                                      : state.assignments.length,
-                                  itemBuilder: (context, index) {
-                                    return new Card(
-                                        elevation: 1.0,
+                                  )
+                                : ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: snapshot
+                                        .data.data[0].assignments.length,
+                                    itemBuilder: (context, index) {
+                                      return Card(
+                                        elevation: 4.0,
+                                        shadowColor:
+                                            Colors.grey.withOpacity(0.2),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.baseline,
                                           textBaseline: TextBaseline.alphabetic,
                                           children: [
+                                            //////////////////////
                                             SizedBox(
                                               height: 15,
                                             ),
@@ -1553,13 +1423,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                               child: Row(
                                                 children: [
                                                   Padding(
-                                                    padding:
-                                                        const EdgeInsets.fromLTRB(
-                                                            20, 0, 120, 0),
+                                                    padding: const EdgeInsets
+                                                            .fromLTRB(
+                                                        20, 0, 120, 0),
                                                     child: Text(
-                                                      state.assignments[index]
-                                                          ['job_position'],
+                                                      snapshot
+                                                          .data
+                                                          .data[0]
+                                                          .assignments[0]
+                                                          .jobTitle,
                                                       style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                           fontSize: 14,
                                                           fontFamily:
                                                               'Nunito Sans',
@@ -1574,65 +1449,73 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 10,
+                                              height: 11,
                                             ),
                                             Container(
-                                              padding:
-                                                  const EdgeInsets.only(left: 20),
+                                              padding: const EdgeInsets.only(
+                                                  left: 20),
                                               child: Text(
-                                                state.assignments[index]
-                                                    ['customer'],
+                                                snapshot
+                                                    .data
+                                                    .data[0]
+                                                    .assignments[index]
+                                                    .customerName
+                                                    .toString(),
                                                 style: TextStyle(
                                                     fontSize: 10,
+                                                    fontWeight: FontWeight.w600,
                                                     fontFamily: 'Nunito Sans',
                                                     color: Color.fromRGBO(
-                                                        83, 83, 83, 1)),
+                                                        112, 112, 112, 1)),
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 12,
+                                              height: 9,
                                             ),
+
                                             Padding(
-                                              padding:
-                                                  const EdgeInsets.only(left: 20),
+                                              padding: const EdgeInsets.only(
+                                                  left: 20),
                                               child: Text(
-                                                state.assignments[index]
-                                                    ['start_date'],
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: 'Nunito Sans',
-                                                    color: Color.fromRGBO(
-                                                        31, 33, 38, 1)),
-                                              ),
+                                                  snapshot
+                                                              .data
+                                                              .data[0]
+                                                              .assignments[0]
+                                                              .startDate !=
+                                                          null
+                                                      ? DateFormat('yyyy/M/d')
+                                                          .format(DateTime
+                                                              .parse(snapshot
+                                                                  .data
+                                                                  .data[0]
+                                                                  .assignments[
+                                                                      0]
+                                                                  .startDate))
+                                                      : ' - - - ',
+                                                  style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          31, 33, 38, 1))),
+
+                                              /* Text(
+                                            tiledate.toString(),
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Nunito Sans',
+                                                color: Color.fromRGBO(
+                                                    31, 33, 38, 1)),
+                                          ),*/
                                             )
                                           ],
-                                        ));
-                                  },
-                                ),
-                              )
-                            : Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Center(
-                                      child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 25.0,
-                                        width: 25.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              new AlwaysStoppedAnimation<Color>(
-                                                  Style.Colors.mainColor),
-                                          strokeWidth: 4.0,
                                         ),
-                                      )
-                                    ],
-                                  ))
-                                ],
-                              ))*/
+                                      );
+                                    }),
+                          ),
+                        ),
                       ],
                     ),
                   )
