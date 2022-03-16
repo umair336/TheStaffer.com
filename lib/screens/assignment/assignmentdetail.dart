@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import './assignment_screen.dart';
 import './assignmentDetailApi.dart';
@@ -13,13 +14,20 @@ class Assignmentdetail extends StatefulWidget {
 
 class _AssignmentdetailState extends State<Assignmentdetail> {
   Future<Detailassignment> futureData;
-
+  bool timeount_false = false;
   bool in_out = true;
+  String _seletedTime = "00:00 ";
+  String _seletTime = "00:00";
+  TimeOfDay _t;
+  TimeOfDay _pp;
+  String time = "";
 
   @override
   void initState() {
     super.initState();
     futureData = fetchAssignmentDetail(widget.jobid);
+    _t = TimeOfDay.now();
+    _pp = TimeOfDay.now();
   }
 
   @override
@@ -527,17 +535,33 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 padding: const EdgeInsets.only(left: 20),
                                 child: Column(
                                   children: [
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'Shift Details',
-                                        style: TextStyle(
-                                          fontFamily: 'Nunito Sans',
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14.0,
-                                          color: Color.fromRGBO(13, 91, 196, 1),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Shift Details',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(
+                                                  13, 91, 196, 1),
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text(
+                                          time.toString(),
+                                          style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Colors.black),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -553,7 +577,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       width: 230,
                                       child: TextButton(
                                         child: Text(
-                                          'Push-In',
+                                          'Punch-In',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 14.0,
@@ -583,9 +607,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         onPressed: () {
                                           //          Navigator.push(context,
                                           //            MaterialPageRoute(builder: (context) => Profile()));
-
+                                          _openTimePicker(context);
                                           setState(() {
-                                            in_out = !in_out;
+                                            //   in_out = !in_out;
                                           });
                                         },
                                       ),
@@ -627,9 +651,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         onPressed: () {
                                           //          Navigator.push(context,
                                           //            MaterialPageRoute(builder: (context) => Profile()));
+                                          _openTimePiker(context);
 
                                           setState(() {
-                                            in_out = !in_out;
+                                            //    in_out = !in_out;
                                           });
                                         },
                                       ),
@@ -892,5 +917,82 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
         ),
       ),
     );
+  }
+
+  Future<void> _openTimePicker(BuildContext context) async {
+    final t = await showTimePicker(context: context, initialTime: _t);
+
+    if (t != null) {
+      setState(() {
+        _seletedTime = t.format(context);
+        _t = t;
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
+
+        print(_seletedTime);
+        in_out = !in_out;
+
+        if (timeount_false == true) {
+          timecaluculat();
+          //  removeTrailingZeros();
+        }
+
+        timeount_false = true;
+      });
+    }
+  }
+
+  Future<void> _openTimePiker(BuildContext context) async {
+    final p = await showTimePicker(context: context, initialTime: _pp);
+
+    if (p != null) {
+      setState(() {
+        _seletTime = p.format(context);
+        _pp = p;
+        print('ccccccccccccccccccc');
+        print(_seletTime);
+        in_out = !in_out;
+        timecaluculat();
+      });
+    }
+  }
+
+  timecaluculat() {
+    print('jjjjjjjjj$_seletedTime');
+    print('hhhhhhhhhh$_seletTime');
+    var format = DateFormat("hh:mm a");
+    var starttime = format.parse(_seletedTime);
+    var endtime = format.parse(_seletTime);
+    print('bbbbbbbbbbbbbbbbbbbbbb$starttime and $endtime');
+    if (starttime.isAfter(endtime)) {
+      print('start is big');
+      time = starttime.difference(endtime).toString();
+      String x = "24:00";
+      var f = DateFormat("hh:mm");
+      var c = f.parse(x);
+      var b = f.parse(time);
+      print('fffffffffffffffffffff$c ffffffffffffff$b');
+      time = c.difference(b).toString();
+    } else if (starttime.isBefore(endtime)) {
+      print('end is big');
+      time = endtime.difference(starttime).toString();
+    } else {
+      print('difference === ${endtime.difference(starttime)}');
+      time = endtime.difference(starttime).toString();
+    }
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$time");
+    removeTrailingZeros(); // correct val}
+  }
+
+  removeTrailingZeros() {
+    time = time.replaceAll(RegExp(r"([.]*0+)(?!.*\d)"), "");
+    print('gggggggggggggggggggggg$time');
+    if (time.startsWith("-")) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Select accurate time "),
+        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+      ));
+    } else {
+      return time;
+    }
   }
 }
