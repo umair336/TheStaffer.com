@@ -201,17 +201,15 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                       255, 255, 255, 1),
                                                   //   color: Colors.white60,
                                                   border: Border.all(
-                                                    color: Colors
-                                                        .blueAccent.shade700,
-                                                    width: 1,
-                                                  ),
+                                                      color: Color.fromRGBO(
+                                                          79, 171, 247, 1)),
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(5))),
                                               child: Column(
                                                 children: [
                                                   SizedBox(
-                                                    height: 10,
+                                                    height: 15,
                                                   ),
                                                   Padding(
                                                     padding: const EdgeInsets
@@ -258,7 +256,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                           ),
                                                         ),
                                                         Image.asset(
-                                                          "images/Path 58358.png",
+                                                          "images/Path 58358@2x.png",
                                                           height: 15,
                                                           // fit: BoxFit.cover,
                                                         ),
