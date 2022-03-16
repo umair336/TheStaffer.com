@@ -324,7 +324,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         ],
                                       ),
                                     ),
-                                    Container(
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 17),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.baseline,
