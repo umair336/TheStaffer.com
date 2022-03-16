@@ -14,6 +14,8 @@ class Assignmentdetail extends StatefulWidget {
 class _AssignmentdetailState extends State<Assignmentdetail> {
   Future<Detailassignment> futureData;
 
+  bool in_out = true;
+
   @override
   void initState() {
     super.initState();
@@ -515,47 +517,6 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         ),
                                       ),
                                     ),
-                                    /*
-                          Container(
-                            height: 30,
-                            //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                            //   color: Color.fromRGBO(23, 197, 204, 1),
-
-                            child: TextButton(
-                              child: Text(
-                                'Active',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10.0,
-                                    color: Color.fromRGBO(27, 185, 31, 1)),
-                              ),
-
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Color.fromRGBO(255, 255, 255, 1),),
-                                        shadowColor: MaterialStateProperty.all<Color>(Colors.green),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7.0),
-                                    side: BorderSide(
-                                        color: Color.fromRGBO(27, 185, 31, 1)),
-                                        
-                                  ),
-                                ),
-                              ),
-                              //      color: Colors.black,
-                              //  textColor: Colors.white,
-                              //     shape: RoundedRectangleBorder(
-                              //borderRadius: BorderRadius.circular(30)),
-                              onPressed: () {
-                                //          Navigator.push(context,
-                                //            MaterialPageRoute(builder: (context) => Profile()));
-                              },
-                            ),
-                          )
-                          */
                                   ],
                                 ),
                               ),
@@ -581,6 +542,123 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                   ],
                                 ),
                               ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              in_out
+                                  ? Container(
+                                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                      //   color: Color.fromRGBO(23, 197, 204, 1),
+                                      height: 45,
+                                      width: 230,
+                                      child: TextButton(
+                                        child: Text(
+                                          'Push-In',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14.0,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color.fromRGBO(
+                                                      13, 91, 196, 1)),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+
+                                              //   side: BorderSide(color: Colors.red.shade900),
+                                            ),
+                                          ),
+                                        ),
+                                        //      color: Colors.black,
+                                        //  textColor: Colors.white,
+                                        //     shape: RoundedRectangleBorder(
+                                        //borderRadius: BorderRadius.circular(30)),
+                                        onPressed: () {
+                                          //          Navigator.push(context,
+                                          //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                          setState(() {
+                                            in_out = !in_out;
+                                          });
+                                        },
+                                      ),
+                                    )
+                                  : Container(
+                                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                      //   color: Color.fromRGBO(23, 197, 204, 1),
+                                      height: 45,
+                                      width: 230,
+                                      child: TextButton(
+                                        child: Text(
+                                          'Punch-Out',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14.0,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color.fromRGBO(
+                                                      13, 91, 196, 1)),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+
+                                              //   side: BorderSide(color: Colors.red.shade900),
+                                            ),
+                                          ),
+                                        ),
+                                        //      color: Colors.black,
+                                        //  textColor: Colors.white,
+                                        //     shape: RoundedRectangleBorder(
+                                        //borderRadius: BorderRadius.circular(30)),
+                                        onPressed: () {
+                                          //          Navigator.push(context,
+                                          //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                          setState(() {
+                                            in_out = !in_out;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                              /* TextButton(
+                                child:
+                                    cmbscritta ? Text("GeoOn") : Text("GeoOFF"),
+
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color.fromRGBO(13, 91, 196, 1)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+
+                                      //   side: BorderSide(color: Colors.red.shade900),
+                                    ),
+                                  ),
+                                ),
+
+                                //    style: TextStyle(fontSize: 14)
+
+                                onPressed: () {
+                                  setState(() => in_out = !in_out);
+                                  setState(() => cmbscritta = !cmbscritta);
+                                },
+                              ),*/
                               ListView.builder(
                                   shrinkWrap: true,
                                   itemCount: snapshot.data.detail.shifts.length,
