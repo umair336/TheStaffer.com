@@ -575,8 +575,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
                                       //   color: Color.fromRGBO(23, 197, 204, 1),
                                       height: 45,
-                                      width: 230,
-                                      child: TextButton(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.75,
+                                      child: ElevatedButton(
                                         child: Text(
                                           'Punch-In',
                                           style: TextStyle(
@@ -619,7 +620,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
                                       //   color: Color.fromRGBO(23, 197, 204, 1),
                                       height: 45,
-                                      width: 230,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.75,
                                       child: TextButton(
                                         child: Text(
                                           'Punch-Out',
