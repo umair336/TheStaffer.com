@@ -318,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     textBaseline:
                                                         TextBaseline.alphabetic,
                                                     children: [
-                                                      Text(
+                                                      AutoSizeText(
                                                         snapshot.data.data[0]
                                                             .totalWeeklyHours
                                                             .toString(),
@@ -330,6 +330,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               'Nunito Sans',
                                                           //      color: Color.fromRGBO(255, 255, 255, 1)
                                                         ),
+                                                        maxFontSize: 23,
+                                                        minFontSize: 15,
+                                                        maxLines: 1,
                                                       ),
                                                       /*      Text(
                                                         '.50',
@@ -520,7 +523,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     textBaseline:
                                                         TextBaseline.alphabetic,
                                                     children: [
-                                                      Text(
+                                                      AutoSizeText(
                                                         snapshot.data.data[0]
                                                             .totalWeeklyHours
                                                             .toString(),
@@ -532,6 +535,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               'Nunito Sans',
                                                           //      color: Color.fromRGBO(255, 255, 255, 1)
                                                         ),
+                                                        maxFontSize: 23,
+                                                        minFontSize: 15,
+                                                        maxLines: 1,
                                                       ),
                                                       /*   Text(
                                                         '.50',
@@ -790,7 +796,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                         ),
                                                                         maxFontSize:
-                                                                            20,
+                                                                            23,
                                                                         minFontSize:
                                                                             15,
                                                                         maxLines:
@@ -831,7 +837,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       'Nunito Sans',
                                                                   //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                 ),
-                                                                maxFontSize: 20,
+                                                                maxFontSize: 23,
                                                                 minFontSize: 15,
                                                                 maxLines: 1,
                                                               ),
@@ -1054,7 +1060,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                         ),
                                                                         maxFontSize:
-                                                                            20,
+                                                                            23,
                                                                         minFontSize:
                                                                             15,
                                                                         maxLines:
@@ -1095,7 +1101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       'Nunito Sans',
                                                                   //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                 ),
-                                                                maxFontSize: 20,
+                                                                maxFontSize: 23,
                                                                 minFontSize: 15,
                                                                 maxLines: 1,
                                                               ),
@@ -1222,7 +1228,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               CrossAxisAlignment.baseline,
                                           textBaseline: TextBaseline.alphabetic,
                                           children: [
-                                            Text(
+                                            AutoSizeText(
                                               snapshot.data.data[0].shifts
                                                   .toString(),
                                               style: TextStyle(
@@ -1231,6 +1237,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 fontFamily: 'Nunito Sans',
                                                 //      color: Color.fromRGBO(255, 255, 255, 1)
                                               ),
+                                              maxFontSize: 23,
+                                              minFontSize: 15,
+                                              maxLines: 1,
                                             ),
                                             SizedBox(
                                               width: 18,
@@ -1342,6 +1351,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             ),
                                                             maxFontSize: 23,
                                                             minFontSize: 15,
+                                                            maxLines: 1,
                                                           ),
                                                         )
                                                       : Container(
