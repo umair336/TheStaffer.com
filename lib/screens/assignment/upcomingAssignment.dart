@@ -11,6 +11,7 @@ class Upcomingassignment extends StatefulWidget {
 
 class _UpcomingassignmentState extends State<Upcomingassignment> {
   Future<AssignmentApi> futureData;
+  bool show = false;
   @override
   void initState() {
     super.initState();
@@ -208,6 +209,9 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                           Radius.circular(5))),
                                               child: Column(
                                                 children: [
+                                                  Container(
+                                                    child: intcrement(),
+                                                  ),
                                                   SizedBox(
                                                     height: 15,
                                                   ),
@@ -434,7 +438,23 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                         )
                                     ],
                                   );
-                                })
+                                }),
+                            show == false
+                                ? Container(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 50),
+                                      child: Text(
+                                        'No Upcoming Assignment',
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Nunito Sans',
+                                            color: Color.fromRGBO(
+                                                112, 112, 112, 1)),
+                                      ),
+                                    ),
+                                  )
+                                : Text(''),
                           ],
                         ),
                       );
@@ -465,5 +485,10 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
         ),
       ),
     );
+  }
+
+  intcrement() {
+    show = true;
+    print('dddddd$show');
   }
 }
