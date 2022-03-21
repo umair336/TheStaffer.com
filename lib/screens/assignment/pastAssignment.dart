@@ -11,7 +11,7 @@ class PastAssignment extends StatefulWidget {
 
 class _PastAssignmentState extends State<PastAssignment> {
   Future<AssignmentApi> futureData;
- 
+
   @override
   void initState() {
     super.initState();
@@ -214,7 +214,6 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                 5))),
                                                 child: Column(
                                                   children: [
-                                                  
                                                     SizedBox(
                                                       height: 15,
                                                     ),
@@ -429,7 +428,6 @@ class _PastAssignmentState extends State<PastAssignment> {
                                     ],
                                   );
                                 }),
-                          
                           ],
                         ),
                       );
@@ -455,12 +453,13 @@ class _PastAssignmentState extends State<PastAssignment> {
                       );
                     }
                   }),
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),
     );
   }
-
- 
 }

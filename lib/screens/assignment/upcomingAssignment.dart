@@ -209,7 +209,6 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                           Radius.circular(5))),
                                               child: Column(
                                                 children: [
-                                                
                                                   SizedBox(
                                                     height: 15,
                                                   ),
@@ -437,7 +436,6 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                     ],
                                   );
                                 }),
-                          
                           ],
                         ),
                       );
@@ -463,12 +461,13 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                       );
                     }
                   }),
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),
     );
   }
-
-  
 }

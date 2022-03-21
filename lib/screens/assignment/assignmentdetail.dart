@@ -922,6 +922,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: 35,
+                  ),
                 ],
               );
             } else if (snapshot.hasError) {
