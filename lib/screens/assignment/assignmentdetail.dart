@@ -21,7 +21,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var workingOff;
   TimeOfDay _t;
   TimeOfDay _pp;
-  String time = "";
+  var time;
   var now = DateTime.now();
 
   @override
@@ -1055,14 +1055,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                   height: 10,
                 ),
                 Row(
-                
                   children: [
                     Expanded(
                       child: Container(
                         //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
                         //   color: Color.fromRGBO(23, 197, 204, 1),
                         height: 35,
-                    
+
                         child: TextButton(
                           child: Text(
                             '  Cancel  ',
@@ -1072,18 +1071,18 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               color: Color.fromRGBO(13, 91, 196, 1),
                             ),
                           ),
-                    
+
                           style: ButtonStyle(
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white),
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                                 side: BorderSide(
                                     color: Color.fromRGBO(13, 91, 196, 1),
                                     width: 1),
-                    
+
                                 //   side: BorderSide(color: Colors.red.shade900),
                               ),
                             ),
@@ -1095,7 +1094,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                           onPressed: () {
                             //          Navigator.push(context,
                             //            MaterialPageRoute(builder: (context) => Profile()));
-                    
+
                             setState(() {
                               Navigator.pop(context);
                             });
@@ -1103,13 +1102,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                         ),
                       ),
                     ),
-                    SizedBox(width:10),
+                    SizedBox(width: 10),
                     Expanded(
                       child: Container(
                         //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
                         //   color: Color.fromRGBO(23, 197, 204, 1),
                         height: 35,
-                    
+
                         child: TextButton(
                           child: Text(
                             '  Ok  ',
@@ -1119,15 +1118,15 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               color: Colors.white,
                             ),
                           ),
-                    
+
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
                                 Color.fromRGBO(13, 91, 196, 1)),
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
-                    
+
                                 //   side: BorderSide(color: Colors.red.shade900),
                               ),
                             ),
@@ -1139,7 +1138,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                           onPressed: () {
                             //          Navigator.push(context,
                             //            MaterialPageRoute(builder: (context) => Profile()));
-                    
+
                             setState(() {
                               workingStart = DateTime.now().toString();
                               in_out = !in_out;
@@ -1191,7 +1190,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                         child: TextButton(
                           child: Text(
-                            '  Cancel  ',
+                            'Cancel',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14.0,
@@ -1235,7 +1234,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                         child: TextButton(
                           child: Text(
-                            '  Ok  ',
+                            'Ok',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14.0,
@@ -1281,8 +1280,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
         });
   }
 
-  WorkingHoursCalculate(String workingStart, String workingOff) {
+  WorkingHoursCalculate(var workingStart, var workingOff) {
     print('ccccccccccc$workingStart');
     print('ccccccccccc$workingOff');
+    DateTime dt1 = DateTime.parse(workingStart);
+    DateTime dt2 = DateTime.parse(workingOff);
+    time = dt1.difference(dt2);
+    print('sssssssssssssss$time');
   }
 }
