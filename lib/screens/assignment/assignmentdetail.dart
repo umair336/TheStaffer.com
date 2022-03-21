@@ -572,7 +572,35 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               SizedBox(
                                 height: 25,
                               ),
-                           
+                              /* Container(
+                                height: 150,
+                                width: 150,
+                                child: AnalogClock(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 3.0, color: Colors.black),
+                                      color: Colors.black,
+                                      shape: BoxShape.circle),
+                                  width: 100.0,
+                                  isLive: true,
+                                  hourHandColor: Colors.white,
+                                  minuteHandColor: Colors.white,
+                                  showSecondHand: false,
+                                  numberColor: Colors.white,
+                                  showNumbers: true,
+                                  textScaleFactor: 1.5,
+                                  showTicks: true,
+                                  showDigitalClock: false,
+                                  digitalClockColor: Colors.white,
+                                  datetime: DateTime(
+                                      now.year,
+                                      now.month,
+                                      now.day,
+                                      now.hour,
+                                      now.minute,
+                                      now.second),
+                                ),
+                              ),*/
                               in_out
                                   ? Container(
                                       //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
@@ -660,7 +688,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           //            MaterialPageRoute(builder: (context) => Profile()));
 
                                           setState(() {
-                                            DialogOffTime();
+                                            DialogFininshTime();
                                           });
                                         },
                                       ),
@@ -1004,12 +1032,126 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
   DialogStarttime() {
     showDialog(
-      context: context,
-      builder: (context) {
-        String contentText = "Content of Dialog";
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return AlertDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: Column(
+              children: [
+                DigitalClock(
+                  digitAnimationStyle: Curves.elasticOut,
+                  is24HourTimeFormat: false,
+                  showSecondsDigit: false,
+                  areaDecoration: BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                  hourMinuteDigitTextStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 50,
+                  ),
+                  amPmDigitTextStyle: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                      //   color: Color.fromRGBO(23, 197, 204, 1),
+                      height: 35,
+
+                      child: TextButton(
+                        child: Text(
+                          '  Cancel  ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.white,
+                          ),
+                        ),
+
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromRGBO(13, 91, 196, 1)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+
+                              //   side: BorderSide(color: Colors.red.shade900),
+                            ),
+                          ),
+                        ),
+                        //      color: Colors.black,
+                        //  textColor: Colors.white,
+                        //     shape: RoundedRectangleBorder(
+                        //borderRadius: BorderRadius.circular(30)),
+                        onPressed: () {
+                          //          Navigator.push(context,
+                          //            MaterialPageRoute(builder: (context) => Profile()));
+
+                          setState(() {
+                            Navigator.pop(context);
+                          });
+                        },
+                      ),
+                    ),
+                    Container(
+                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                      //   color: Color.fromRGBO(23, 197, 204, 1),
+                      height: 35,
+
+                      child: TextButton(
+                        child: Text(
+                          '  Ok  ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.white,
+                          ),
+                        ),
+
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromRGBO(13, 91, 196, 1)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+
+                              //   side: BorderSide(color: Colors.red.shade900),
+                            ),
+                          ),
+                        ),
+                        //      color: Colors.black,
+                        //  textColor: Colors.white,
+                        //     shape: RoundedRectangleBorder(
+                        //borderRadius: BorderRadius.circular(30)),
+                        onPressed: () {
+                          //          Navigator.push(context,
+                          //            MaterialPageRoute(builder: (context) => Profile()));
+
+                          setState(() {
+                            in_out = !in_out;
+                            Navigator.pop(context);
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          );
+        });
+  }
+    DialogFininshTime() {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return new AlertDialog(
               title: Column(
                 children: [
                   DigitalClock(
@@ -1120,133 +1262,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                 ],
               ),
             );
-          },
-        );
-      },
-    );
+          });
+    }
   }
 
-  DialogOffTime() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        String contentText = "Content of Dialog";
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return AlertDialog(
-              title: Column(
-                children: [
-                  DigitalClock(
-                    digitAnimationStyle: Curves.elasticOut,
-                    is24HourTimeFormat: false,
-                    showSecondsDigit: false,
-                    areaDecoration: BoxDecoration(
-                      color: Colors.transparent,
-                    ),
-                    hourMinuteDigitTextStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 50,
-                    ),
-                    amPmDigitTextStyle: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                        //   color: Color.fromRGBO(23, 197, 204, 1),
-                        height: 35,
-
-                        child: TextButton(
-                          child: Text(
-                            '  Cancel  ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14.0,
-                              color: Colors.white,
-                            ),
-                          ),
-
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromRGBO(13, 91, 196, 1)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-
-                                //   side: BorderSide(color: Colors.red.shade900),
-                              ),
-                            ),
-                          ),
-                          //      color: Colors.black,
-                          //  textColor: Colors.white,
-                          //     shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.circular(30)),
-                          onPressed: () {
-                            //          Navigator.push(context,
-                            //            MaterialPageRoute(builder: (context) => Profile()));
-
-                            setState(() {
-                              Navigator.pop(context);
-                            });
-                          },
-                        ),
-                      ),
-                      Container(
-                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                        //   color: Color.fromRGBO(23, 197, 204, 1),
-                        height: 35,
-
-                        child: TextButton(
-                          child: Text(
-                            '  Ok  ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14.0,
-                              color: Colors.white,
-                            ),
-                          ),
-
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromRGBO(13, 91, 196, 1)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-
-                                //   side: BorderSide(color: Colors.red.shade900),
-                              ),
-                            ),
-                          ),
-                          //      color: Colors.black,
-                          //  textColor: Colors.white,
-                          //     shape: RoundedRectangleBorder(
-                          //borderRadius: BorderRadius.circular(30)),
-                          onPressed: () {
-                            //          Navigator.push(context,
-                            //            MaterialPageRoute(builder: (context) => Profile()));
-
-                            setState(() {
-                              in_out = !in_out;
-                              Navigator.pop(context);
-                            });
-                          },
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
-}
