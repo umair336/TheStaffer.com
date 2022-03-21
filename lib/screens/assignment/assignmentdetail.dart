@@ -144,9 +144,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                     Container(
                                       child: IconButton(
                                         icon: Icon(
-                                          Icons.circle_outlined,
-                                          color: Colors.grey,
-                                          size: 45,
+                                          Icons.person_rounded,
+                                          color: Colors.black,
+                                          size: 35,
                                         ),
                                         onPressed: () {},
                                       ),
