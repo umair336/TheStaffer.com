@@ -1055,93 +1055,98 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                
                   children: [
-                    Container(
-                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                      //   color: Color.fromRGBO(23, 197, 204, 1),
-                      height: 35,
-
-                      child: TextButton(
-                        child: Text(
-                          '  Cancel  ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Color.fromRGBO(13, 91, 196, 1),
-                          ),
-                        ),
-
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(
-                                  color: Color.fromRGBO(13, 91, 196, 1),
-                                  width: 1),
-
-                              //   side: BorderSide(color: Colors.red.shade900),
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                        height: 35,
+                    
+                        child: TextButton(
+                          child: Text(
+                            '  Cancel  ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Color.fromRGBO(13, 91, 196, 1),
                             ),
                           ),
+                    
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                            shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(
+                                    color: Color.fromRGBO(13, 91, 196, 1),
+                                    width: 1),
+                    
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+                    
+                            setState(() {
+                              Navigator.pop(context);
+                            });
+                          },
                         ),
-                        //      color: Colors.black,
-                        //  textColor: Colors.white,
-                        //     shape: RoundedRectangleBorder(
-                        //borderRadius: BorderRadius.circular(30)),
-                        onPressed: () {
-                          //          Navigator.push(context,
-                          //            MaterialPageRoute(builder: (context) => Profile()));
-
-                          setState(() {
-                            Navigator.pop(context);
-                          });
-                        },
                       ),
                     ),
-                    Container(
-                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                      //   color: Color.fromRGBO(23, 197, 204, 1),
-                      height: 35,
-
-                      child: TextButton(
-                        child: Text(
-                          '  Ok  ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.white,
-                          ),
-                        ),
-
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromRGBO(13, 91, 196, 1)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-
-                              //   side: BorderSide(color: Colors.red.shade900),
+                    SizedBox(width:10),
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                        height: 35,
+                    
+                        child: TextButton(
+                          child: Text(
+                            '  Ok  ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Colors.white,
                             ),
                           ),
+                    
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromRGBO(13, 91, 196, 1)),
+                            shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                    
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+                    
+                            setState(() {
+                              workingStart = DateTime.now().toString();
+                              in_out = !in_out;
+                              Navigator.pop(context);
+                            });
+                          },
                         ),
-                        //      color: Colors.black,
-                        //  textColor: Colors.white,
-                        //     shape: RoundedRectangleBorder(
-                        //borderRadius: BorderRadius.circular(30)),
-                        onPressed: () {
-                          //          Navigator.push(context,
-                          //            MaterialPageRoute(builder: (context) => Profile()));
-
-                          setState(() {
-                            workingStart = DateTime.now().toString();
-                            in_out = !in_out;
-                            Navigator.pop(context);
-                          });
-                        },
                       ),
                     ),
                   ],
@@ -1177,89 +1182,95 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                      //   color: Color.fromRGBO(23, 197, 204, 1),
-                      height: 35,
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                        height: 35,
 
-                      child: TextButton(
-                        child: Text(
-                          '  Cancel  ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Color.fromRGBO(13, 91, 196, 1),
-                          ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(
-                                  color: Color.fromRGBO(13, 91, 196, 1),
-                                  width: 1),
-
-                              //   side: BorderSide(color: Colors.red.shade900),
+                        child: TextButton(
+                          child: Text(
+                            '  Cancel  ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Color.fromRGBO(13, 91, 196, 1),
                             ),
                           ),
-                        ),
-                        onPressed: () {
-                          //          Navigator.push(context,
-                          //            MaterialPageRoute(builder: (context) => Profile()));
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(
+                                    color: Color.fromRGBO(13, 91, 196, 1),
+                                    width: 1),
 
-                          setState(() {
-                            Navigator.pop(context);
-                          });
-                        },
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+
+                            setState(() {
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
                       ),
                     ),
-                    Container(
-                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                      //   color: Color.fromRGBO(23, 197, 204, 1),
-                      height: 35,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                        height: 35,
 
-                      child: TextButton(
-                        child: Text(
-                          '  Ok  ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.white,
-                          ),
-                        ),
-
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromRGBO(13, 91, 196, 1)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-
-                              //   side: BorderSide(color: Colors.red.shade900),
+                        child: TextButton(
+                          child: Text(
+                            '  Ok  ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Colors.white,
                             ),
                           ),
-                        ),
-                        //      color: Colors.black,
-                        //  textColor: Colors.white,
-                        //     shape: RoundedRectangleBorder(
-                        //borderRadius: BorderRadius.circular(30)),
-                        onPressed: () {
-                          //          Navigator.push(context,
-                          //            MaterialPageRoute(builder: (context) => Profile()));
 
-                          setState(() {
-                            in_out = !in_out;
-                            workingOff = DateTime.now().toString();
-                            WorkingHoursCalculate(workingStart, workingOff);
-                            Navigator.pop(context);
-                          });
-                        },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromRGBO(13, 91, 196, 1)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+
+                            setState(() {
+                              in_out = !in_out;
+                              workingOff = DateTime.now().toString();
+                              WorkingHoursCalculate(workingStart, workingOff);
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
                       ),
                     ),
                   ],
