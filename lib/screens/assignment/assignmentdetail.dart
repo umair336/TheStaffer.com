@@ -20,9 +20,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   bool break_start_end = true;
   var workingStart;
   var workingOff;
+  var breakstart;
+  var breakoff;
   TimeOfDay _t;
   TimeOfDay _pp;
   var time;
+  var breaks;
   var now = DateTime.now();
 
   @override
@@ -676,6 +679,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                       setState(() {
                                                         break_start_end =
                                                             !break_start_end;
+                                                        breakstart =
+                                                            DateTime.now()
+                                                                .toString();
                                                         //  DialogFininshTime();
                                                       });
                                                     },
@@ -739,6 +745,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                       setState(() {
                                                         break_start_end =
                                                             !break_start_end;
+                                                        breakoff =
+                                                            DateTime.now()
+                                                                .toString();
+                                                        FunctionBreakCalculate();
                                                         //  DialogFininshTime();
                                                       });
                                                     },
@@ -1413,7 +1423,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                             setState(() {
                               in_out = !in_out;
                               workingOff = DateTime.now().toString();
-                              WorkingHoursCalculate(workingStart, workingOff);
+                              WorkingHoursCalculate();
                               Navigator.pop(context);
                             });
                           },
@@ -1428,7 +1438,20 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
         });
   }
 
-  WorkingHoursCalculate(var workingStart, var workingOff) {
+  FunctionBreakCalculate() {
+    print('bbbbbbb$breakstart');
+    print('bbbbbbb$breakoff');
+    DateTime v1 = DateTime.parse(breakstart);
+    DateTime v2 = DateTime.parse(breakoff);
+    breaks = v1.difference(v2);
+    print('wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
+
+    // print('ddddddddd${v1.toString()}');
+    // braaks = v1.difference(v2);
+    //print('ooooooooo$braaks');
+  }
+
+  WorkingHoursCalculate() {
     print('ccccccccccc$workingStart');
     print('ccccccccccc$workingOff');
     DateTime dt1 = DateTime.parse(workingStart);
