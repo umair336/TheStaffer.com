@@ -27,6 +27,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var time;
   var breaks;
   var now = DateTime.now();
+  //String showtimeStart = "";
+ // String showtimeEnd = "";
 
   @override
   void initState() {
@@ -609,6 +611,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           //            MaterialPageRoute(builder: (context) => Profile()));
 
                                           setState(() {
+                                          
                                             DialogStarttime();
                                             //  in_out = !in_out;
                                           });
@@ -800,6 +803,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                   //            MaterialPageRoute(builder: (context) => Profile()));
 
                                                   setState(() {
+                                                 
                                                     DialogFininshTime();
                                                   });
                                                 },
@@ -1189,13 +1193,30 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   }
 */
   DialogStarttime() {
+      DateTime now = DateTime.now();
+String showtimeStart = DateFormat('kk:mm').format(now);
+    
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return new AlertDialog(
             title: Column(
               children: [
-                DigitalClock(
+                SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  showtimeStart,
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                /* DigitalClock(
                   digitAnimationStyle: Curves.elasticOut,
                   is24HourTimeFormat: false,
                   showSecondsDigit: false,
@@ -1208,7 +1229,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                   ),
                   amPmDigitTextStyle: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
-                ),
+                ),*/
                 SizedBox(
                   height: 10,
                 ),
@@ -1315,28 +1336,28 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   }
 
   DialogFininshTime() {
+    DateTime now = DateTime.now();
+String showtimeEnd = DateFormat('kk:mm').format(now);
+    
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return new AlertDialog(
             title: Column(
               children: [
-                DigitalClock(
-                  digitAnimationStyle: Curves.elasticOut,
-                  is24HourTimeFormat: false,
-                  showSecondsDigit: false,
-                  areaDecoration: BoxDecoration(
-                    color: Colors.transparent,
-                  ),
-                  hourMinuteDigitTextStyle: TextStyle(
+                SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  showtimeEnd,
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
                     color: Colors.black,
-                    fontSize: 50,
                   ),
-                  amPmDigitTextStyle: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 8,
                 ),
                 Row(
                   children: [
