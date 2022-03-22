@@ -28,7 +28,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var breaks;
   var now = DateTime.now();
   //String showtimeStart = "";
- // String showtimeEnd = "";
+  // String showtimeEnd = "";
 
   @override
   void initState() {
@@ -611,7 +611,6 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           //            MaterialPageRoute(builder: (context) => Profile()));
 
                                           setState(() {
-                                          
                                             DialogStarttime();
                                             //  in_out = !in_out;
                                           });
@@ -803,7 +802,6 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                   //            MaterialPageRoute(builder: (context) => Profile()));
 
                                                   setState(() {
-                                                 
                                                     DialogFininshTime();
                                                   });
                                                 },
@@ -1193,9 +1191,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   }
 */
   DialogStarttime() {
-      DateTime now = DateTime.now();
-String showtimeStart = DateFormat('kk:mm').format(now);
-    
+    DateTime now = DateTime.now();
+    String showtimeStart = DateFormat('kk:mm').format(now);
+
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -1337,8 +1335,8 @@ String showtimeStart = DateFormat('kk:mm').format(now);
 
   DialogFininshTime() {
     DateTime now = DateTime.now();
-String showtimeEnd = DateFormat('kk:mm').format(now);
-    
+    String showtimeEnd = DateFormat('kk:mm').format(now);
+
     showDialog(
         context: context,
         builder: (BuildContext context) {
