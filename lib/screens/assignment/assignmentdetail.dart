@@ -17,6 +17,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   Future<Detailassignment> futureData;
   bool timeount_false = false;
   bool in_out = true;
+  bool break_start_end = true;
   var workingStart;
   var workingOff;
   TimeOfDay _t;
@@ -534,44 +535,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               SizedBox(
                                 height: 25,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            'Shift Details',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Color.fromRGBO(
-                                                  13, 91, 196, 1),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Text(
-                                          time.toString(),
-                                          style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 25,
-                              ),
+
                               /* Container(
                                 height: 150,
                                 width: 150,
@@ -648,51 +612,232 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         },
                                       ),
                                     )
-                                  : Container(
-                                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                                      //   color: Color.fromRGBO(23, 197, 204, 1),
-                                      height: 45,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.75,
-                                      child: TextButton(
-                                        child: Text(
-                                          'Punch-Out',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14.0,
-                                            color: Colors.white,
+                                  : Padding(
+                                      padding:
+                                          EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                      child: Row(
+                                        children: [
+                                          break_start_end
+                                              ? Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.30,
+                                                  //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                                  //   color: Color.fromRGBO(23, 197, 204, 1),
+                                                  height: 45,
+
+                                                  child: TextButton(
+                                                    child: Text(
+                                                      'Break Start',
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            13, 91, 196, 1),
+                                                      ),
+                                                    ),
+
+                                                    style: ButtonStyle(
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all<Color>(
+                                                                  Colors.white),
+                                                      shape: MaterialStateProperty
+                                                          .all<
+                                                              RoundedRectangleBorder>(
+                                                        RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                          side: BorderSide(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      13,
+                                                                      91,
+                                                                      196,
+                                                                      1),
+                                                              width: 1),
+
+                                                          //   side: BorderSide(color: Colors.red.shade900),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    //      color: Colors.black,
+                                                    //  textColor: Colors.white,
+                                                    //     shape: RoundedRectangleBorder(
+                                                    //borderRadius: BorderRadius.circular(30)),
+                                                    onPressed: () {
+                                                      //          Navigator.push(context,
+                                                      //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                                      setState(() {
+                                                        break_start_end =
+                                                            !break_start_end;
+                                                        //  DialogFininshTime();
+                                                      });
+                                                    },
+                                                  ),
+                                                )
+                                              : Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.30,
+                                                  //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                                  //   color: Color.fromRGBO(23, 197, 204, 1),
+                                                  height: 45,
+
+                                                  child: TextButton(
+                                                    child: Text(
+                                                      'Break End',
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            13, 91, 196, 1),
+                                                      ),
+                                                    ),
+
+                                                    style: ButtonStyle(
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all<Color>(
+                                                                  Colors.white),
+                                                      shape: MaterialStateProperty
+                                                          .all<
+                                                              RoundedRectangleBorder>(
+                                                        RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                          side: BorderSide(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      13,
+                                                                      91,
+                                                                      196,
+                                                                      1),
+                                                              width: 1),
+
+                                                          //   side: BorderSide(color: Colors.red.shade900),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    //      color: Colors.black,
+                                                    //  textColor: Colors.white,
+                                                    //     shape: RoundedRectangleBorder(
+                                                    //borderRadius: BorderRadius.circular(30)),
+                                                    onPressed: () {
+                                                      //          Navigator.push(context,
+                                                      //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                                      setState(() {
+                                                        break_start_end =
+                                                            !break_start_end;
+                                                        //  DialogFininshTime();
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                          SizedBox(
+                                            width: 10,
                                           ),
-                                        ),
+                                          Expanded(
+                                            child: Container(
+                                              //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                              //   color: Color.fromRGBO(23, 197, 204, 1),
+                                              height: 45,
 
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  Color.fromRGBO(
-                                                      13, 91, 196, 1)),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
+                                              child: TextButton(
+                                                child: Text(
+                                                  'Punch-Out',
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
 
-                                              //   side: BorderSide(color: Colors.red.shade900),
+                                                style: ButtonStyle(
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all<
+                                                              Color>(
+                                                          Color.fromRGBO(
+                                                              13, 91, 196, 1)),
+                                                  shape:
+                                                      MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+
+                                                      //   side: BorderSide(color: Colors.red.shade900),
+                                                    ),
+                                                  ),
+                                                ),
+                                                //      color: Colors.black,
+                                                //  textColor: Colors.white,
+                                                //     shape: RoundedRectangleBorder(
+                                                //borderRadius: BorderRadius.circular(30)),
+                                                onPressed: () {
+                                                  //          Navigator.push(context,
+                                                  //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                                  setState(() {
+                                                    DialogFininshTime();
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Shift Details',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(
+                                                  13, 91, 196, 1),
                                             ),
                                           ),
                                         ),
-                                        //      color: Colors.black,
-                                        //  textColor: Colors.white,
-                                        //     shape: RoundedRectangleBorder(
-                                        //borderRadius: BorderRadius.circular(30)),
-                                        onPressed: () {
-                                          //          Navigator.push(context,
-                                          //            MaterialPageRoute(builder: (context) => Profile()));
-
-                                          setState(() {
-                                            DialogFininshTime();
-                                          });
-                                        },
-                                      ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text(
+                                          time.toString(),
+                                          style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Colors.black),
+                                        ),
+                                      ],
                                     ),
+                                  ],
+                                ),
+                              ),
+
                               /* TextButton(
                                 child:
                                     cmbscritta ? Text("GeoOn") : Text("GeoOFF"),
