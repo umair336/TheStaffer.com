@@ -816,6 +816,89 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 height: 25,
                               ),
                               Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 0, 60, 0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Text(
+                                            'Start Time',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            workingStart != null
+                                                ? DateFormat('yyyy/M/d').format(
+                                                    DateTime.parse(
+                                                        workingStart))
+                                                : ' - - - ',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(0, 0, 0, 1),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 52),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Text(
+                                            'End Time',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            workingOff != null
+                                                ? DateFormat('yyyy/M/d').format(
+                                                    DateTime.parse(workingOff))
+                                                : ' - - - ',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(0, 0, 0, 1),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              Padding(
                                 padding: const EdgeInsets.only(left: 20),
                                 child: Column(
                                   children: [
@@ -824,7 +907,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            'Shift Details',
+                                            'Breaks',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               fontWeight: FontWeight.bold,
@@ -855,6 +938,36 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                   for (int i = 0; i < Breaklist.length; i++)
                                     Text(Breaklist[i].toString())
                                 ],
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Shift Details',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(
+                                                  13, 91, 196, 1),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
 
                               /* TextButton(
@@ -1489,7 +1602,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
       var timeformate = DateFormat("h:m:s");
       var dt3 = timeformate.parse(time.toString());
       var dt4 = timeformate.parse(Breaklist[i].toString());
-       time = dt3.difference(dt4);
+      time = dt3.difference(dt4);
       print('gggggggggggggggggg$time');
 
       //   print(Breaklist[i]);
