@@ -27,6 +27,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var time;
   var breaks;
   var Breaklist = [];
+  var breakStartList = [];
+  var braeakEndList = [];
   var now = DateTime.now();
   //String showtimeStart = "";
   // String showtimeEnd = "";
@@ -816,49 +818,48 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 height: 25,
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(20, 0, 60, 0),
+                                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Container(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.baseline,
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: [
-                                          Text(
-                                            'Start Time',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              //  fontWeight: FontWeight.bold,
-                                              fontSize: 10.0,
-                                              color: Color.fromRGBO(
-                                                  112, 112, 112, 1),
+                                    Expanded(
+                                      child: Container(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.baseline,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            Text(
+                                              'Start Time',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito Sans',
+                                                //  fontWeight: FontWeight.bold,
+                                                fontSize: 10.0,
+                                                color: Color.fromRGBO(
+                                                    112, 112, 112, 1),
+                                              ),
                                             ),
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                            workingStart != null
-                                                ? DateFormat('yyyy/M/d').format(
-                                                    DateTime.parse(
-                                                        workingStart))
-                                                : ' - - - ',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Color.fromRGBO(0, 0, 0, 1),
+                                            SizedBox(
+                                              height: 5,
                                             ),
-                                          ),
-                                        ],
+                                            Text(
+                                              workingStart != null
+                                                  ? DateFormat('hh:mm:ss')
+                                                      .format(DateTime.parse(
+                                                          workingStart))
+                                                  : '',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito Sans',
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14.0,
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(right: 52),
+                                    Expanded(
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.baseline,
@@ -879,9 +880,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           ),
                                           Text(
                                             workingOff != null
-                                                ? DateFormat('yyyy/M/d').format(
+                                                ? DateFormat('hh:mm:ss').format(
                                                     DateTime.parse(workingOff))
-                                                : ' - - - ',
+                                                : '',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               fontWeight: FontWeight.bold,
@@ -891,7 +892,38 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           ),
                                         ],
                                       ),
-                                    )
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Text(
+                                            'Total',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            time.toString(),
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(0, 0, 0, 1),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -925,7 +957,115 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                   ],
                                 ),
                               ),
-                              Column(
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 0, 60, 0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            'Start Time',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          for (int i = 0;
+                                              i < breakStartList.length;
+                                              i++)
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 5, 0, 5),
+                                              child: Text(
+                                                breakStartList[i] != null
+                                                    ? DateFormat('hh:mm:ss')
+                                                        .format(DateTime.parse(
+                                                            breakStartList[i]))
+                                                    : '---',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
+                                            ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 52),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Text(
+                                            'End Time',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          for (int i = 0;
+                                              i < braeakEndList.length;
+                                              i++)
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 5, 0, 5),
+                                              child: Text(
+                                                braeakEndList[i] != null
+                                                    ? DateFormat('hh:mm:ss')
+                                                        .format(DateTime.parse(
+                                                            braeakEndList[i]))
+                                                    : '---',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              /* Column(
                                 children: [
                                   Text(
                                     time.toString(),
@@ -938,9 +1078,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                   for (int i = 0; i < Breaklist.length; i++)
                                     Text(Breaklist[i].toString())
                                 ],
+                              ),*/
+                              new Divider(
+                                height: 5,
+                                color: Colors.grey,
                               ),
                               SizedBox(
-                                height: 25,
+                                height: 10,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -995,6 +1139,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                   setState(() => cmbscritta = !cmbscritta);
                                 },
                               ),*/
+
                               ListView.builder(
                                   shrinkWrap: true,
                                   itemCount: snapshot.data.detail.shifts.length,
@@ -1580,6 +1725,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   FunctionBreakCalculate() {
     print('bbbbbbb$breakstart');
     print('bbbbbbb$breakoff');
+    breakStartList.add(breakstart);
+    braeakEndList.add(breakoff);
     DateTime v1 = DateTime.parse(breakstart);
     DateTime v2 = DateTime.parse(breakoff);
     breaks = v1.difference(v2);
@@ -1604,9 +1751,11 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
       var dt4 = timeformate.parse(Breaklist[i].toString());
       time = dt3.difference(dt4);
       print('gggggggggggggggggg$time');
-
       //   print(Breaklist[i]);
     }
-    Breaklist.clear();
+
+  //  Breaklist.clear();
+ //   breakStartList.clear();
+ //  braeakEndList.clear();
   }
 }
