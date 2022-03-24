@@ -26,6 +26,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   TimeOfDay _pp;
   var time;
   var breaks;
+  var Breaklist = [];
   var now = DateTime.now();
   //String showtimeStart = "";
   // String showtimeEnd = "";
@@ -836,18 +837,24 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         SizedBox(
                                           width: 15,
                                         ),
-                                        Text(
-                                          time.toString(),
-                                          style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Colors.black),
-                                        ),
                                       ],
                                     ),
                                   ],
                                 ),
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    time.toString(),
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito Sans',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Colors.black),
+                                  ),
+                                  for (int i = 0; i < Breaklist.length; i++)
+                                    Text(Breaklist[i].toString())
+                                ],
                               ),
 
                               /* TextButton(
@@ -1464,6 +1471,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     DateTime v2 = DateTime.parse(breakoff);
     breaks = v1.difference(v2);
     print('wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
+    Breaklist.add(breaks);
 
     // print('ddddddddd${v1.toString()}');
     // braaks = v1.difference(v2);
@@ -1476,6 +1484,16 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     DateTime dt1 = DateTime.parse(workingStart);
     DateTime dt2 = DateTime.parse(workingOff);
     time = dt1.difference(dt2);
-    print('sssssssssssssss$time');
+    print('sssssssssssssss$time sssssssss$Breaklist');
+    for (int i = 0; i < Breaklist.length; i++) {
+      var timeformate = DateFormat("h:m:s");
+      var dt3 = timeformate.parse(time.toString());
+      var dt4 = timeformate.parse(Breaklist[i].toString());
+       time = dt3.difference(dt4);
+      print('gggggggggggggggggg$time');
+
+      //   print(Breaklist[i]);
+    }
+    Breaklist.clear();
   }
 }
