@@ -618,9 +618,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                           setState(() {
                                             DialogStarttime();
-                                            workingStart =
-                                                DateTime.now().toString();
-                                            starttime.add(workingStart);
+                                         
                                             //  in_out = !in_out;
                                           });
                                         },
@@ -816,9 +814,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                                   setState(() {
                                                     DialogFininshTime();
-                                                    workingOff = DateTime.now()
-                                                        .toString();
-                                                    offtime.add(workingOff);
+                                                  
                                                   });
                                                 },
                                               ),
@@ -1673,6 +1669,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                             setState(() {
                               in_out = !in_out;
+                                 workingStart =
+                                                DateTime.now().toString();
+                                            starttime.add(workingStart);
                               Navigator.pop(context);
                             });
                           },
@@ -1795,6 +1794,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                             setState(() {
                               in_out = !in_out;
+                                workingOff = DateTime.now()
+                                                        .toString();
+                                                    offtime.add(workingOff);
 
                               //  WorkingHoursCalculate();
                               Navigator.pop(context);
