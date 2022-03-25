@@ -618,6 +618,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                           setState(() {
                                             DialogStarttime();
+                                            workingStart =
+                                                DateTime.now().toString();
+                                            starttime.add(workingStart);
                                             //  in_out = !in_out;
                                           });
                                         },
@@ -690,6 +693,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         breakstart =
                                                             DateTime.now()
                                                                 .toString();
+                                                        breakStartList
+                                                            .add(breakstart);
                                                         //  DialogFininshTime();
                                                       });
                                                     },
@@ -756,7 +761,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         breakoff =
                                                             DateTime.now()
                                                                 .toString();
-                                                        FunctionBreakCalculate();
+                                                        braeakEndList
+                                                            .add(breakoff);
+                                                        //   FunctionBreakCalculate();
                                                         //  DialogFininshTime();
                                                       });
                                                     },
@@ -809,6 +816,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                                   setState(() {
                                                     DialogFininshTime();
+                                                    workingOff = DateTime.now()
+                                                        .toString();
+                                                    offtime.add(workingOff);
                                                   });
                                                 },
                                               ),
@@ -933,13 +943,16 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             height: 10,
                                           ),
                                           for (int i = 0;
-                                              i < offtime.length;
+                                              i < totaltime.length;
                                               i++)
                                             Padding(
                                               padding: const EdgeInsets.only(
                                                   bottom: 9),
                                               child: Text(
-                                                totaltime[i].toString(),
+                                                totaltime[i].toString() != null
+                                                    ? totaltime[i].toString()
+                                                    : '',
+                                                // totaltime[i].toString(),
                                                 // totaltime[i].toString(),
                                                 /*  totaltime[i].toString() != null
                                                     ? totaltime[i]
@@ -1659,7 +1672,6 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                             //            MaterialPageRoute(builder: (context) => Profile()));
 
                             setState(() {
-                              workingStart = DateTime.now().toString();
                               in_out = !in_out;
                               Navigator.pop(context);
                             });
@@ -1783,8 +1795,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                             setState(() {
                               in_out = !in_out;
-                              workingOff = DateTime.now().toString();
-                              WorkingHoursCalculate();
+
+                              //  WorkingHoursCalculate();
                               Navigator.pop(context);
                             });
                           },
@@ -1799,7 +1811,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
         });
   }
 
-  FunctionBreakCalculate() {
+  /* FunctionBreakCalculate() {
     print('bbbbbbb$breakstart');
     print('bbbbbbb$breakoff');
     breakStartList.add(breakstart);
@@ -1840,5 +1852,5 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     //  braeakEndList.clear();
     // starttime.clear();
     // offtime.clear()
-  }
+  }*/
 }
