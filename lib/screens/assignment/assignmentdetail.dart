@@ -1135,7 +1135,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                   const EdgeInsets.fromLTRB(
                                                       0, 5, 0, 5),
                                               child: Text(
-                                                Breaklist[i].toString(),
+                                                Breaklist[i]
+                                                    .toString()
+                                                    .split('.')
+                                                    .first,
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   fontWeight: FontWeight.bold,
