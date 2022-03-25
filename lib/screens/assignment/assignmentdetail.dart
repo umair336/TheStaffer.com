@@ -29,6 +29,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var Breaklist = [];
   var breakStartList = [];
   var braeakEndList = [];
+  var starttime = [];
+  var offtime = [];
   var now = DateTime.now();
   //String showtimeStart = "";
   // String showtimeEnd = "";
@@ -839,22 +841,30 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: 10,
                                             ),
-                                            Text(
-                                              workingStart != null
-                                                  ? DateFormat('hh:mm:ss')
-                                                      .format(DateTime.parse(
-                                                          workingStart))
-                                                  : '',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.0,
-                                                color:
-                                                    Color.fromRGBO(0, 0, 0, 1),
+                                            for (int i = 0;
+                                                i < starttime.length;
+                                                i++)
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    bottom: 9),
+                                                child: Text(
+                                                  starttime[i] != null
+                                                      ? DateFormat('hh:mm:ss')
+                                                          .format(
+                                                              DateTime.parse(
+                                                                  starttime[i]))
+                                                      : '',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                ),
                                               ),
-                                            ),
                                           ],
                                         ),
                                       ),
@@ -876,20 +886,29 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: 5,
+                                            height: 10,
                                           ),
-                                          Text(
-                                            workingOff != null
-                                                ? DateFormat('hh:mm:ss').format(
-                                                    DateTime.parse(workingOff))
-                                                : '',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Color.fromRGBO(0, 0, 0, 1),
+                                          for (int i = 0;
+                                              i < offtime.length;
+                                              i++)
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  bottom: 9),
+                                              child: Text(
+                                                offtime[i] != null
+                                                    ? DateFormat('hh:mm:ss')
+                                                        .format(DateTime.parse(
+                                                            offtime[i]))
+                                                    : '',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
                                             ),
-                                          ),
                                         ],
                                       ),
                                     ),
@@ -928,7 +947,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 ),
                               ),
                               SizedBox(
-                                height: 25,
+                                height: 20,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -1740,7 +1759,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
   WorkingHoursCalculate() {
     print('ccccccccccc$workingStart');
+    starttime.add(workingStart);
     print('ccccccccccc$workingOff');
+    offtime.add(workingOff);
     DateTime dt1 = DateTime.parse(workingStart);
     DateTime dt2 = DateTime.parse(workingOff);
     time = dt1.difference(dt2);
@@ -1754,8 +1775,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
       //   print(Breaklist[i]);
     }
 
-  //  Breaklist.clear();
- //   breakStartList.clear();
- //  braeakEndList.clear();
+    //  Breaklist.clear();
+    //   breakStartList.clear();
+    //  braeakEndList.clear();
+    // starttime.clear();
+    // offtime.clear()
   }
 }
