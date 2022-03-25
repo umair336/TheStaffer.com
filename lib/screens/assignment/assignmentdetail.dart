@@ -761,6 +761,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                                 .toString();
                                                         braeakEndList
                                                             .add(breakoff);
+                                                        _FunctionBreakCalutate();
                                                         //   FunctionBreakCalculate();
                                                         //  DialogFininshTime();
                                                       });
@@ -974,7 +975,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 ),
                               ),
                               SizedBox(
-                                height: 20,
+                                height: 15,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
@@ -1004,7 +1005,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 ),
                               ),
                               SizedBox(
-                                height: 20,
+                                height: 10,
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(20, 0, 8, 0),
@@ -1799,6 +1800,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               if (break_start_end == false) {
                                 breakoff = DateTime.now().toString();
                                 braeakEndList.add(breakoff);
+                                DateTime v1 = DateTime.parse(breakstart);
+                                DateTime v2 = DateTime.parse(breakoff);
+                                breaks = v1.difference(v2);
+                                print(
+                                    'wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
+
+                                Breaklist.add(breaks);
                                 break_start_end = !break_start_end;
                               }
                               //  WorkingHoursCalculate();
@@ -1814,6 +1822,17 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
             ),
           );
         });
+  }
+
+  _FunctionBreakCalutate() {
+    print('bbbbbbb$breakstart');
+    print('bbbbbbb$breakoff');
+    DateTime v1 = DateTime.parse(breakstart);
+    DateTime v2 = DateTime.parse(breakoff);
+    breaks = v1.difference(v2);
+    print('wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
+
+    Breaklist.add(breaks);
   }
 
   /* FunctionBreakCalculate() {
