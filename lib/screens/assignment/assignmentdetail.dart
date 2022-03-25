@@ -25,6 +25,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   TimeOfDay _t;
   TimeOfDay _pp;
   var time;
+  var totaltime = [];
   var breaks;
   var Breaklist = [];
   var breakStartList = [];
@@ -929,17 +930,35 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: 5,
+                                            height: 10,
                                           ),
-                                          Text(
-                                            time.toString(),
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Color.fromRGBO(0, 0, 0, 1),
+                                          for (int i = 0;
+                                              i < offtime.length;
+                                              i++)
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  bottom: 9),
+                                              child: Text(
+                                                totaltime[i].toString(),
+                                                // totaltime[i].toString(),
+                                                /*  totaltime[i].toString() != null
+                                                    ? totaltime[i]
+                                                        .toString()
+                                                        .split('.')
+                                                        .first
+                                                        .padLeft(
+                                                          8,
+                                                        )
+                                                    : '00',*/
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
                                             ),
-                                          ),
                                         ],
                                       ),
                                     ),
@@ -980,64 +999,63 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 height: 20,
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(20, 0, 60, 0),
+                                padding: const EdgeInsets.fromLTRB(20, 0, 8, 0),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Container(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.baseline,
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: [
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                            'Start Time',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              //  fontWeight: FontWeight.bold,
-                                              fontSize: 10.0,
-                                              color: Color.fromRGBO(
-                                                  112, 112, 112, 1),
+                                    Expanded(
+                                      child: Container(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.baseline,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            SizedBox(
+                                              height: 5,
                                             ),
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          for (int i = 0;
-                                              i < breakStartList.length;
-                                              i++)
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      0, 5, 0, 5),
-                                              child: Text(
-                                                breakStartList[i] != null
-                                                    ? DateFormat('hh:mm:ss')
-                                                        .format(DateTime.parse(
-                                                            breakStartList[i]))
-                                                    : '---',
-                                                style: TextStyle(
-                                                  fontFamily: 'Nunito Sans',
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14.0,
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 1),
-                                                ),
+                                            Text(
+                                              'Start Time',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito Sans',
+                                                //  fontWeight: FontWeight.bold,
+                                                fontSize: 10.0,
+                                                color: Color.fromRGBO(
+                                                    112, 112, 112, 1),
                                               ),
                                             ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                        ],
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            for (int i = 0;
+                                                i < breakStartList.length;
+                                                i++)
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        0, 5, 0, 5),
+                                                child: Text(
+                                                  breakStartList[i] != null
+                                                      ? DateFormat('hh:mm:ss')
+                                                          .format(DateTime.parse(
+                                                              breakStartList[
+                                                                  i]))
+                                                      : '---',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                ),
+                                              ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(right: 52),
+                                    Expanded(
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.baseline,
@@ -1069,6 +1087,46 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         .format(DateTime.parse(
                                                             braeakEndList[i]))
                                                     : '---',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Text(
+                                            'Total Time',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          for (int i = 0;
+                                              i < Breaklist.length;
+                                              i++)
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 5, 0, 5),
+                                              child: Text(
+                                                Breaklist[i].toString(),
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   fontWeight: FontWeight.bold,
@@ -1772,6 +1830,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
       var dt4 = timeformate.parse(Breaklist[i].toString());
       time = dt3.difference(dt4);
       print('gggggggggggggggggg$time');
+      totaltime.add(time);
+
       //   print(Breaklist[i]);
     }
 
