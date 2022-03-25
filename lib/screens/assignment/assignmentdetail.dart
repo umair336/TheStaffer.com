@@ -618,7 +618,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                           setState(() {
                                             DialogStarttime();
-                                         
+
                                             //  in_out = !in_out;
                                           });
                                         },
@@ -814,7 +814,6 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                                   setState(() {
                                                     DialogFininshTime();
-                                                  
                                                   });
                                                 },
                                               ),
@@ -1669,9 +1668,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                             setState(() {
                               in_out = !in_out;
-                                 workingStart =
-                                                DateTime.now().toString();
-                                            starttime.add(workingStart);
+                              workingStart = DateTime.now().toString();
+                              starttime.add(workingStart);
                               Navigator.pop(context);
                             });
                           },
@@ -1794,10 +1792,15 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                             setState(() {
                               in_out = !in_out;
-                                workingOff = DateTime.now()
-                                                        .toString();
-                                                    offtime.add(workingOff);
-
+                              workingOff = DateTime.now().toString();
+                              offtime.add(workingOff);
+                              print(
+                                  'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$break_start_end');
+                              if (break_start_end == false) {
+                                breakoff = DateTime.now().toString();
+                                braeakEndList.add(breakoff);
+                                break_start_end = !break_start_end;
+                              }
                               //  WorkingHoursCalculate();
                               Navigator.pop(context);
                             });
