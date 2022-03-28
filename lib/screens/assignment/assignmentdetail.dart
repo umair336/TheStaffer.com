@@ -926,7 +926,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         textBaseline: TextBaseline.alphabetic,
                                         children: [
                                           Text(
-                                            'Total',
+                                            'Total Time',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               //  fontWeight: FontWeight.bold,
@@ -945,20 +945,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               padding: const EdgeInsets.only(
                                                   bottom: 9),
                                               child: Text(
-                                                totaltime[i].toString() != null
-                                                    ? totaltime[i].toString()
-                                                    : '',
-                                                // totaltime[i].toString(),
-                                                // totaltime[i].toString(),
-                                                /*  totaltime[i].toString() != null
-                                                    ? totaltime[i]
-                                                        .toString()
-                                                        .split('.')
-                                                        .first
-                                                        .padLeft(
-                                                          8,
-                                                        )
-                                                    : '00',*/
+                                                totaltime[i]
+                                                    .toString()
+                                                    .split('.')
+                                                    .first,
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   fontWeight: FontWeight.bold,
@@ -1812,6 +1802,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 Breaklist.add(breaks);
                                 break_start_end = !break_start_end;
                               }
+                              _FunctionStartOffCalcutlate();
                               //  WorkingHoursCalculate();
                               Navigator.pop(context);
                             });
@@ -1836,6 +1827,16 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     print('wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
 
     Breaklist.add(breaks);
+  }
+
+  _FunctionStartOffCalcutlate() {
+    var timeworking;
+    print('ccccc$workingStart');
+    print('cccc$workingOff');
+    DateTime work = DateTime.parse(workingStart);
+    DateTime finish = DateTime.parse(workingOff);
+    timeworking = work.difference(finish);
+    totaltime.add(timeworking);
   }
 
   /* FunctionBreakCalculate() {
