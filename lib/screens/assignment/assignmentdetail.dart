@@ -25,6 +25,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   TimeOfDay _t;
   TimeOfDay _pp;
   var time;
+  Duration breaktime;
   var totaltime = [];
   var breaks;
   var Breaklist = [];
@@ -1803,7 +1804,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 break_start_end = !break_start_end;
                               }
                               _FunctionStartOffCalcutlate();
-                              //  WorkingHoursCalculate();
+                              _FunctionTotalCalculate();
                               Navigator.pop(context);
                             });
                           },
@@ -1837,6 +1838,52 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     DateTime finish = DateTime.parse(workingOff);
     timeworking = work.difference(finish);
     totaltime.add(timeworking);
+  }
+
+  _FunctionTotalCalculate() {
+    int prevalue = 0;
+    int prevaluebreak = 0;
+    Duration workhours;
+    Duration total_breaks;
+    print('qqqqqqqqqqqqqq$totaltime');
+    print('qqqqqqqqqqqqqq$Breaklist');
+    for (int i = 0; i < totaltime.length; i++) {
+      print('ppppp${totaltime[i]}');
+      totaltime[i] = totaltime[i].toString().split('.').first;
+      print('aaaaaaaaaaaaaa${totaltime[i]}');
+    }
+    for (int i = 0; i < totaltime.length; i++) {
+      print('vvvvv${totaltime[i]}');
+      var totalwoking = totaltime[i].split(':');
+
+      workhours = new Duration(
+          hours: int.parse(totalwoking[0]),
+          minutes: int.parse(totalwoking[1]),
+          seconds: int.parse(totalwoking[2]) + prevalue);
+      prevalue = workhours.inSeconds;
+
+      print('sssssss${workhours} ssssssssssss$prevalue ssssssssssssss');
+    }
+    for (int i = 0; i < Breaklist.length; i++) {
+      print('ppppp${Breaklist[i]}');
+      Breaklist[i] = Breaklist[i].toString().split('.').first;
+      print('aaaaaaaaaaaaaa${Breaklist[i]}');
+    }
+
+    for (int i = 0; i < Breaklist.length; i++) {
+      var breakbrakdown = Breaklist[i].toString().split(':');
+      total_breaks = new Duration(
+          hours: int.parse(breakbrakdown[0]),
+          minutes: int.parse(breakbrakdown[1]),
+          seconds: int.parse(breakbrakdown[2]) + prevaluebreak);
+      prevaluebreak = total_breaks.inSeconds;
+      print('ooooooo$prevaluebreak');
+
+      print('/////////////////////////////////////////////////////');
+    }
+    print('jjjjjjjjjjj$workhours jjjjjjjjjjjjjjj$total_breaks');
+  
+   
   }
 
   /* FunctionBreakCalculate() {
