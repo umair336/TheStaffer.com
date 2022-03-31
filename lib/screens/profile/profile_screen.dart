@@ -1,12 +1,13 @@
 import 'dart:io';
 
+import 'package:avatar_view/avatar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
+import 'dialog_resetpassword.dart';
 import 'profileApi.dart';
-import './reset_password.dart';
 
 class ProfileScreen extends StatefulWidget {
   // const ProfileScreen({ Key? key }) : super(key: key);
@@ -15,7 +16,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  bool _showPassword = true;
   Future<Profile> futureData;
   @override
   void initState() {
@@ -111,21 +111,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: Row(
                                 children: [
                                   Container(
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.person_rounded,
-                                        color: Colors.white,
-                                        size: 40,
-                                      ),
-                                      onPressed: () {
-                                        //    Navigator.push(
-                                        //     context,
-                                        //    MaterialPageRoute(
-                                        //         builder: (context) =>
-                                        //         ProfileApi()));
-                                      },
+                                      child: AvatarView(
+                                    radius: 23,
+                                    //borderWidth: 8,
+                                    // borderColor: Colors.yellow,
+                                    avatarType: AvatarType.CIRCLE,
+                                    backgroundColor: Colors.red,
+                                    imagePath: snapshot.data.data.profilePic,
+                                    placeHolder: Image.network(
+                                      snapshot.data.data.profilePic,
+                                      width: 50,
+                                      height: 50,
+                                      //fit: BoxFit.cover,
                                     ),
-                                  ),
+                                  )),
                                   SizedBox(
                                     width: 7,
                                   ),
@@ -264,7 +263,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                       Padding(
                                         padding: EdgeInsets.only(left: 35),
-                                        child: Text(snapshot.data.data.email) ==
+                                        child: Text(snapshot.data.data.email) !=
                                                 null
                                             ? new Container(
                                                 child: Text(
@@ -489,269 +488,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         child: Container(
                                           child: InkWell(
                                             onTap: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Resetpassword()),
-                                              );
-                                              /*
-                                              showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) {
-                                                    return AlertDialog(
-                                                      content: Stack(
-                                                        //   alignment: Alignment.center,
-
-                                                        children: <Widget>[
-                                                          Container(
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height *
-                                                                0.30,
-                                                            child: Column(
-                                                              children: [
-                                                                Container(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .topLeft,
-                                                                  child: Text(
-                                                                    'Reset Password',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontFamily:
-                                                                          'Nunito Sans',
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      color: Color
-                                                                          .fromRGBO(
-                                                                              13,
-                                                                              91,
-                                                                              196,
-                                                                              1),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  height: 20,
-                                                                ),
-                                                                TextFormField(
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      color: Color
-                                                                          .fromRGBO(
-                                                                              83,
-                                                                              83,
-                                                                              83,
-                                                                              1)
-                                                                      // fontWeight: FontWeight.bold
-                                                                      ),
-                                                                  cursorColor:
-                                                                      Colors
-                                                                          .grey
-                                                                          .shade300,
-                                                                  decoration:
-                                                                      InputDecoration(
-                                                                    suffixIcon:
-                                                                        Icon(
-                                                                      Icons
-                                                                          .visibility_outlined,
-                                                                      color: Color.fromRGBO(
-                                                                          183,
-                                                                          14,
-                                                                          105,
-                                                                          1),
-                                                                    ),
-                                                                    enabledBorder: OutlineInputBorder(
-                                                                        borderSide: new BorderSide(
-                                                                            color: Colors
-                                                                                .grey.shade300),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0)),
-                                                                    focusedBorder: OutlineInputBorder(
-                                                                        borderSide: new BorderSide(
-                                                                            color: Colors
-                                                                                .grey.shade300),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0)),
-                                                                    contentPadding: EdgeInsets.only(
-                                                                        left:
-                                                                            10.0,
-                                                                        right:
-                                                                            10.0),
-                                                                    labelText:
-                                                                        "Password",
-                                                                    hintStyle: TextStyle(
-                                                                        fontSize:
-                                                                            12.0,
-                                                                        color: Color.fromRGBO(
-                                                                            83,
-                                                                            83,
-                                                                            83,
-                                                                            1),
-                                                                        fontWeight:
-                                                                            FontWeight.w500),
-                                                                    labelStyle: TextStyle(
-                                                                        fontSize:
-                                                                            12.0,
-                                                                        color: Color.fromRGBO(
-                                                                            83,
-                                                                            83,
-                                                                            83,
-                                                                            1),
-                                                                        fontWeight:
-                                                                            FontWeight.w500),
-                                                                  ),
-                                                                  autocorrect:
-                                                                      false,
-                                                                ),
-                                                                SizedBox(
-                                                                  height: 20.0,
-                                                                ),
-                                                                TextFormField(
-                                                                  obscureText:
-                                                                      _showPassword,
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          14.0,
-                                                                      color: Color
-                                                                          .fromRGBO(
-                                                                              83,
-                                                                              83,
-                                                                              83,
-                                                                              1),
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
-                                                                  cursorColor:
-                                                                      Colors
-                                                                          .grey
-                                                                          .shade300,
-                                                                  //   controller: _passwordController,
-                                                                  decoration:
-                                                                      InputDecoration(
-                                                                    fillColor: Colors
-                                                                        .grey
-                                                                        .shade300,
-                                                                    suffixIcon:
-                                                                        GestureDetector(
-                                                                      onTap:
-                                                                          _togglePasswordVisibility,
-                                                                      child: _showPassword
-                                                                          ? Icon(Icons.visibility_off_outlined,
-                                                                              color: Color.fromRGBO(183, 14, 105,
-                                                                                  1))
-                                                                          : Icon(
-                                                                              Icons.visibility_off,
-                                                                              color: Colors.red),
-                                                                    ),
-                                                                    enabledBorder: OutlineInputBorder(
-                                                                        borderSide: new BorderSide(
-                                                                            color: Colors
-                                                                                .grey.shade300),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0)),
-                                                                    focusedBorder: OutlineInputBorder(
-                                                                        borderSide: new BorderSide(
-                                                                            color: Colors
-                                                                                .grey.shade300),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5.0)),
-                                                                    contentPadding: EdgeInsets.only(
-                                                                        left:
-                                                                            10.0,
-                                                                        right:
-                                                                            10.0),
-                                                                    labelText:
-                                                                        "Confirm Password",
-                                                                    hintStyle: TextStyle(
-                                                                        fontSize:
-                                                                            12.0,
-                                                                        color: Color.fromRGBO(
-                                                                            83,
-                                                                            83,
-                                                                            83,
-                                                                            1),
-                                                                        fontWeight:
-                                                                            FontWeight.w500),
-                                                                    labelStyle: TextStyle(
-                                                                        fontSize:
-                                                                            12.0,
-                                                                        color: Color.fromRGBO(
-                                                                            83,
-                                                                            83,
-                                                                            83,
-                                                                            1),
-                                                                        fontWeight:
-                                                                            FontWeight.w500),
-                                                                  ),
-                                                                  autocorrect:
-                                                                      false,
-                                                                ),
-                                                                SizedBox(
-                                                                  height: 15,
-                                                                ),
-                                                                Container(
-                                                                  //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                                                                  //   color: Color.fromRGBO(23, 197, 204, 1),
-                                                                  width: 230,
-                                                                  child:
-                                                                      TextButton(
-                                                                    child: Text(
-                                                                      'Save',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        fontSize:
-                                                                            14.0,
-                                                                        color: Colors
-                                                                            .white,
-                                                                      ),
-                                                                    ),
-
-                                                                    style:
-                                                                        ButtonStyle(
-                                                                      backgroundColor: MaterialStateProperty.all<
-                                                                              Color>(
-                                                                          Color.fromRGBO(
-                                                                              13,
-                                                                              91,
-                                                                              196,
-                                                                              1)),
-                                                                      shape: MaterialStateProperty
-                                                                          .all<
-                                                                              RoundedRectangleBorder>(
-                                                                        RoundedRectangleBorder(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(10.0),
-
-                                                                          //   side: BorderSide(color: Colors.red.shade900),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    //      color: Colors.black,
-                                                                    //  textColor: Colors.white,
-                                                                    //     shape: RoundedRectangleBorder(
-                                                                    //borderRadius: BorderRadius.circular(30)),
-                                                                    onPressed:
-                                                                        () {
-                                                                      //          Navigator.push(context,
-                                                                      //            MaterialPageRoute(builder: (context) => Profile()));
-                                                                    },
-                                                                  ),
-                                                                )
-                                                              ],
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    );
-                                                  });
-                                                  */
+                                              setState(() {
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) {
+                                                      return MyDialog();
+                                                    });
+                                              });
                                             },
                                             child: Text(
                                               'Reset Password',
@@ -806,11 +549,5 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
-  }
-
-  void _togglePasswordVisibility() {
-    setState(() {
-      _showPassword = !_showPassword;
-    });
   }
 }

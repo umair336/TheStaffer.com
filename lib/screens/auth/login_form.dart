@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginForm extends StatefulWidget {
   final UserRepository userRepository;
@@ -39,7 +40,7 @@ class _LoginFormState extends State<LoginForm> {
         if (state is LoginFailure) {
           Scaffold.of(context).showSnackBar(
             SnackBar(
-              content: Text("Enter correct Credentials "),
+              content: Text("Please enter correct credentials"),
               backgroundColor: Colors.red.shade900,
             ),
           );
@@ -171,6 +172,24 @@ class _LoginFormState extends State<LoginForm> {
                           SizedBox(
                             height: 30.0,
                           ),
+                          Container(
+                            alignment: Alignment.centerRight,
+                            child: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  _launchURL();
+                                });
+                              },
+                              child: Text(
+                                'Forgot Your Password?',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: 'Nunito Sans',
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromRGBO(255, 255, 255, 1)),
+                              ),
+                            ),
+                          ),
                           Padding(
                             padding: EdgeInsets.only(top: 30.0, bottom: 20.0),
                             child: Column(
@@ -204,7 +223,7 @@ class _LoginFormState extends State<LoginForm> {
                                                     ),
                                                   )
                                                 ],
-                                              ))
+                                              )),
                                             ],
                                           )
                                         : RaisedButton(
@@ -242,5 +261,10 @@ class _LoginFormState extends State<LoginForm> {
     setState(() {
       _showPassword = !_showPassword;
     });
+  }
+
+  void _launchURL() async {
+    final String _url = 'https://dev2.thestaffer.com/login';
+    if (!await launch(_url)) throw 'Could not launch $_url';
   }
 }

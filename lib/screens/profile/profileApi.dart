@@ -53,6 +53,7 @@ class Profile {
 class Data {
   String employeeName;
   String jobPosition;
+  String profilePic;
   String phone;
   String email;
   String dob;
@@ -62,6 +63,7 @@ class Data {
   Data(
       {this.employeeName,
       this.jobPosition,
+      this.profilePic,
       this.phone,
       this.email,
       this.dob,
@@ -71,6 +73,7 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     employeeName = json['employee_name'];
     jobPosition = json['job_position'];
+    profilePic = json['profile_pic'];
     phone = json['phone'];
     email = json['email'];
     dob = json['dob'];
@@ -82,12 +85,12 @@ class Data {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['employee_name'] = this.employeeName;
     data['job_position'] = this.jobPosition;
+    data['profile_pic'] = this.profilePic;
     data['phone'] = this.phone;
     data['email'] = this.email;
     data['dob'] = this.dob;
     data['ssn'] = this.ssn;
     data['location'] = this.location;
-
     return data;
   }
 }
@@ -129,7 +132,6 @@ class _ProfileApiState extends State<ProfileApi> {
               future: futureData,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-           
                   return Column(
                     children: [
                       //

@@ -43,7 +43,10 @@ dependencies:
   intl: ^0.17.0
   carousel_slider: 4.0.0 
   http: ^0.13.4
-  
+  avatar_view: ^1.0.0+3
+  auto_size_text: ^2.1.0
+  url_launcher: ^6.0.20
+  slide_digital_clock: ^1.0.2
 dev_dependencies:
   flutter_app_name: ^0.1.1
   flutter_test:

@@ -7,8 +7,6 @@ import 'dart:convert';
 ///
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
-
-
 Future<TimeSheetData> timesheet(String dateStart, String dateEnd) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
@@ -40,49 +38,29 @@ Future<TimeSheetData> timesheet(String dateStart, String dateEnd) async {
 }
 
 class TimeSheetData {
-  Timesheet timesheet;
+  List<Timesheet> timesheet;
 
   TimeSheetData({this.timesheet});
 
   TimeSheetData.fromJson(Map<String, dynamic> json) {
-    timesheet = json['timesheet'] != null
-        ? new Timesheet.fromJson(json['timesheet'])
-        : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.timesheet != null) {
-      data['timesheet'] = this.timesheet.toJson();
-    }
-    return data;
-  }
-}
-
-class Timesheet {
-  List<Record> record;
-
-  Timesheet({this.record});
-
-  Timesheet.fromJson(Map<String, dynamic> json) {
-    if (json['record'] != null) {
-      record = <Record>[];
-      json['record'].forEach((v) {
-        record.add(new Record.fromJson(v));
+    if (json['timesheet'] != null) {
+      timesheet = <Timesheet>[];
+      json['timesheet'].forEach((v) {
+        timesheet.add(new Timesheet.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.record != null) {
-      data['record'] = this.record.map((v) => v.toJson()).toList();
+    if (this.timesheet != null) {
+      data['timesheet'] = this.timesheet.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Record {
+class Timesheet {
   int id;
   int parentId;
   int employeeJobId;
@@ -94,16 +72,16 @@ class Record {
   String updatedAt;
 
   int payrollStatus;
-
+  
   String overtimeHours;
   String regularHours;
   String timesheetType;
   String customerName;
-  int payRate;
+ 
   int overRate;
   String jobPosition;
 
-  Record(
+  Timesheet(
       {this.id,
       this.parentId,
       this.employeeJobId,
@@ -113,18 +91,18 @@ class Record {
       this.hoursForWeek,
       this.createdAt,
       this.updatedAt,
- 
+
       this.payrollStatus,
- 
+      
       this.overtimeHours,
       this.regularHours,
       this.timesheetType,
       this.customerName,
-      this.payRate,
+      
       this.overRate,
       this.jobPosition});
 
-  Record.fromJson(Map<String, dynamic> json) {
+  Timesheet.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     parentId = json['parent_id'];
     employeeJobId = json['employee_job_id'];
@@ -134,13 +112,14 @@ class Record {
     hoursForWeek = json['hours_for_week'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+   
     payrollStatus = json['payroll_status'];
    
     overtimeHours = json['overtime_hours'];
     regularHours = json['regular_hours'];
     timesheetType = json['timesheet_type'];
     customerName = json['customer_name'];
-    payRate = json['pay_rate'];
+   
     overRate = json['over_rate'];
     jobPosition = json['job_position'];
   }
@@ -158,12 +137,12 @@ class Record {
     data['updated_at'] = this.updatedAt;
    
     data['payroll_status'] = this.payrollStatus;
- 
+   
     data['overtime_hours'] = this.overtimeHours;
     data['regular_hours'] = this.regularHours;
     data['timesheet_type'] = this.timesheetType;
     data['customer_name'] = this.customerName;
-    data['pay_rate'] = this.payRate;
+
     data['over_rate'] = this.overRate;
     data['job_position'] = this.jobPosition;
     return data;

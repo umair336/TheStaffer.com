@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import './assignment_screen.dart';
 import './assignmentDetailApi.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
+import 'package:slide_digital_clock/slide_digital_clock.dart';
 
 class Assignmentdetail extends StatefulWidget {
   int jobid;
@@ -13,11 +15,33 @@ class Assignmentdetail extends StatefulWidget {
 
 class _AssignmentdetailState extends State<Assignmentdetail> {
   Future<Detailassignment> futureData;
+  bool timeount_false = false;
+  bool in_out = true;
+  bool break_start_end = true;
+  var workingStart;
+  var workingOff;
+  var breakstart;
+  var breakoff;
+  TimeOfDay _t;
+  TimeOfDay _pp;
+  var time;
+  var totaltime = [];
+  var breaks;
+  var Breaklist = [];
+  var breakStartList = [];
+  var braeakEndList = [];
+  var starttime = [];
+  var offtime = [];
+  var now = DateTime.now();
+  //String showtimeStart = "";
+  // String showtimeEnd = "";
 
   @override
   void initState() {
     super.initState();
     futureData = fetchAssignmentDetail(widget.jobid);
+    _t = TimeOfDay.now();
+    _pp = TimeOfDay.now();
   }
 
   @override
@@ -132,9 +156,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                     Container(
                                       child: IconButton(
                                         icon: Icon(
-                                          Icons.circle_outlined,
-                                          color: Colors.grey,
-                                          size: 45,
+                                          Icons.person_rounded,
+                                          color: Colors.black,
+                                          size: 35,
                                         ),
                                         onPressed: () {},
                                       ),
@@ -314,7 +338,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         ],
                                       ),
                                     ),
-                                    Container(
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 17),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.baseline,
@@ -515,72 +540,685 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         ),
                                       ),
                                     ),
-                                    /*
-                          Container(
-                            height: 30,
-                            //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                            //   color: Color.fromRGBO(23, 197, 204, 1),
-
-                            child: TextButton(
-                              child: Text(
-                                'Active',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10.0,
-                                    color: Color.fromRGBO(27, 185, 31, 1)),
-                              ),
-
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Color.fromRGBO(255, 255, 255, 1),),
-                                        shadowColor: MaterialStateProperty.all<Color>(Colors.green),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7.0),
-                                    side: BorderSide(
-                                        color: Color.fromRGBO(27, 185, 31, 1)),
-                                        
-                                  ),
-                                ),
-                              ),
-                              //      color: Colors.black,
-                              //  textColor: Colors.white,
-                              //     shape: RoundedRectangleBorder(
-                              //borderRadius: BorderRadius.circular(30)),
-                              onPressed: () {
-                                //          Navigator.push(context,
-                                //            MaterialPageRoute(builder: (context) => Profile()));
-                              },
-                            ),
-                          )
-                          */
                                   ],
                                 ),
                               ),
                               SizedBox(
                                 height: 25,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'Shift Details',
-                                        style: TextStyle(
-                                          fontFamily: 'Nunito Sans',
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14.0,
-                                          color: Color.fromRGBO(13, 91, 196, 1),
+
+                              /* Container(
+                                height: 150,
+                                width: 150,
+                                child: AnalogClock(
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 3.0, color: Colors.black),
+                                      color: Colors.black,
+                                      shape: BoxShape.circle),
+                                  width: 100.0,
+                                  isLive: true,
+                                  hourHandColor: Colors.white,
+                                  minuteHandColor: Colors.white,
+                                  showSecondHand: false,
+                                  numberColor: Colors.white,
+                                  showNumbers: true,
+                                  textScaleFactor: 1.5,
+                                  showTicks: true,
+                                  showDigitalClock: false,
+                                  digitalClockColor: Colors.white,
+                                  datetime: DateTime(
+                                      now.year,
+                                      now.month,
+                                      now.day,
+                                      now.hour,
+                                      now.minute,
+                                      now.second),
+                                ),
+                              ),*/
+                              in_out
+                                  ? Container(
+                                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                      //   color: Color.fromRGBO(23, 197, 204, 1),
+                                      height: 45,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.75,
+                                      child: ElevatedButton(
+                                        child: Text(
+                                          'Punch-In',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14.0,
+                                            color: Colors.white,
+                                          ),
                                         ),
+
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color.fromRGBO(
+                                                      13, 91, 196, 1)),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+
+                                              //   side: BorderSide(color: Colors.red.shade900),
+                                            ),
+                                          ),
+                                        ),
+                                        //      color: Colors.black,
+                                        //  textColor: Colors.white,
+                                        //     shape: RoundedRectangleBorder(
+                                        //borderRadius: BorderRadius.circular(30)),
+                                        onPressed: () {
+                                          //          Navigator.push(context,
+                                          //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                          setState(() {
+                                            DialogStarttime();
+
+                                            //  in_out = !in_out;
+                                          });
+                                        },
+                                      ),
+                                    )
+                                  : Padding(
+                                      padding:
+                                          EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                      child: Row(
+                                        children: [
+                                          break_start_end
+                                              ? Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.30,
+                                                  //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                                  //   color: Color.fromRGBO(23, 197, 204, 1),
+                                                  height: 45,
+
+                                                  child: TextButton(
+                                                    child: Text(
+                                                      'Break Start',
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            13, 91, 196, 1),
+                                                      ),
+                                                    ),
+
+                                                    style: ButtonStyle(
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all<Color>(
+                                                                  Colors.white),
+                                                      shape: MaterialStateProperty
+                                                          .all<
+                                                              RoundedRectangleBorder>(
+                                                        RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                          side: BorderSide(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      13,
+                                                                      91,
+                                                                      196,
+                                                                      1),
+                                                              width: 1),
+
+                                                          //   side: BorderSide(color: Colors.red.shade900),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    //      color: Colors.black,
+                                                    //  textColor: Colors.white,
+                                                    //     shape: RoundedRectangleBorder(
+                                                    //borderRadius: BorderRadius.circular(30)),
+                                                    onPressed: () {
+                                                      //          Navigator.push(context,
+                                                      //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                                      setState(() {
+                                                        break_start_end =
+                                                            !break_start_end;
+                                                        breakstart =
+                                                            DateTime.now()
+                                                                .toString();
+                                                        breakStartList
+                                                            .add(breakstart);
+                                                        //  DialogFininshTime();
+                                                      });
+                                                    },
+                                                  ),
+                                                )
+                                              : Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.30,
+                                                  //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                                  //   color: Color.fromRGBO(23, 197, 204, 1),
+                                                  height: 45,
+
+                                                  child: TextButton(
+                                                    child: Text(
+                                                      'Break End',
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            13, 91, 196, 1),
+                                                      ),
+                                                    ),
+
+                                                    style: ButtonStyle(
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all<Color>(
+                                                                  Colors.white),
+                                                      shape: MaterialStateProperty
+                                                          .all<
+                                                              RoundedRectangleBorder>(
+                                                        RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                          side: BorderSide(
+                                                              color: Color
+                                                                  .fromRGBO(
+                                                                      13,
+                                                                      91,
+                                                                      196,
+                                                                      1),
+                                                              width: 1),
+
+                                                          //   side: BorderSide(color: Colors.red.shade900),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    //      color: Colors.black,
+                                                    //  textColor: Colors.white,
+                                                    //     shape: RoundedRectangleBorder(
+                                                    //borderRadius: BorderRadius.circular(30)),
+                                                    onPressed: () {
+                                                      //          Navigator.push(context,
+                                                      //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                                      setState(() {
+                                                        break_start_end =
+                                                            !break_start_end;
+                                                        breakoff =
+                                                            DateTime.now()
+                                                                .toString();
+                                                        braeakEndList
+                                                            .add(breakoff);
+                                                        _FunctionBreakCalutate();
+                                                        //   FunctionBreakCalculate();
+                                                        //  DialogFininshTime();
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Expanded(
+                                            child: Container(
+                                              //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                              //   color: Color.fromRGBO(23, 197, 204, 1),
+                                              height: 45,
+
+                                              child: TextButton(
+                                                child: Text(
+                                                  'Punch-Out',
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+
+                                                style: ButtonStyle(
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all<
+                                                              Color>(
+                                                          Color.fromRGBO(
+                                                              13, 91, 196, 1)),
+                                                  shape:
+                                                      MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+
+                                                      //   side: BorderSide(color: Colors.red.shade900),
+                                                    ),
+                                                  ),
+                                                ),
+                                                //      color: Colors.black,
+                                                //  textColor: Colors.white,
+                                                //     shape: RoundedRectangleBorder(
+                                                //borderRadius: BorderRadius.circular(30)),
+                                                onPressed: () {
+                                                  //          Navigator.push(context,
+                                                  //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                                  setState(() {
+                                                    DialogFininshTime();
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.baseline,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            Text(
+                                              'Start Time',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito Sans',
+                                                //  fontWeight: FontWeight.bold,
+                                                fontSize: 10.0,
+                                                color: Color.fromRGBO(
+                                                    112, 112, 112, 1),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            for (int i = 0;
+                                                i < starttime.length;
+                                                i++)
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    bottom: 9),
+                                                child: Text(
+                                                  starttime[i] != null
+                                                      ? DateFormat('hh:mm:ss')
+                                                          .format(
+                                                              DateTime.parse(
+                                                                  starttime[i]))
+                                                      : '',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Text(
+                                            'End Time',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          for (int i = 0;
+                                              i < offtime.length;
+                                              i++)
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  bottom: 9),
+                                              child: Text(
+                                                offtime[i] != null
+                                                    ? DateFormat('hh:mm:ss')
+                                                        .format(DateTime.parse(
+                                                            offtime[i]))
+                                                    : '',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Text(
+                                            'Total Time',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          for (int i = 0;
+                                              i < totaltime.length;
+                                              i++)
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  bottom: 9),
+                                              child: Text(
+                                                totaltime[i]
+                                                    .toString()
+                                                    .split('.')
+                                                    .first,
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Breaks',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(
+                                                  13, 91, 196, 1),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(20, 0, 8, 0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.baseline,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              'Start Time',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito Sans',
+                                                //  fontWeight: FontWeight.bold,
+                                                fontSize: 10.0,
+                                                color: Color.fromRGBO(
+                                                    112, 112, 112, 1),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            for (int i = 0;
+                                                i < breakStartList.length;
+                                                i++)
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        0, 5, 0, 5),
+                                                child: Text(
+                                                  breakStartList[i] != null
+                                                      ? DateFormat('hh:mm:ss')
+                                                          .format(DateTime.parse(
+                                                              breakStartList[
+                                                                  i]))
+                                                      : '---',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                ),
+                                              ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Text(
+                                            'End Time',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          for (int i = 0;
+                                              i < braeakEndList.length;
+                                              i++)
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 5, 0, 5),
+                                              child: Text(
+                                                braeakEndList[i] != null
+                                                    ? DateFormat('hh:mm:ss')
+                                                        .format(DateTime.parse(
+                                                            braeakEndList[i]))
+                                                    : '---',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Text(
+                                            'Total Time',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          for (int i = 0;
+                                              i < Breaklist.length;
+                                              i++)
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 5, 0, 5),
+                                              child: Text(
+                                                Breaklist[i]
+                                                    .toString()
+                                                    .split('.')
+                                                    .first,
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              /* Column(
+                                children: [
+                                  Text(
+                                    time.toString(),
+                                    style: TextStyle(
+                                        fontFamily: 'Nunito Sans',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Colors.black),
+                                  ),
+                                  for (int i = 0; i < Breaklist.length; i++)
+                                    Text(Breaklist[i].toString())
+                                ],
+                              ),*/
+                              new Divider(
+                                height: 5,
+                                color: Colors.grey,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Shift Details',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(
+                                                  13, 91, 196, 1),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              /* TextButton(
+                                child:
+                                    cmbscritta ? Text("GeoOn") : Text("GeoOFF"),
+
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color.fromRGBO(13, 91, 196, 1)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+
+                                      //   side: BorderSide(color: Colors.red.shade900),
+                                    ),
+                                  ),
+                                ),
+
+                                //    style: TextStyle(fontSize: 14)
+
+                                onPressed: () {
+                                  setState(() => in_out = !in_out);
+                                  setState(() => cmbscritta = !cmbscritta);
+                                },
+                              ),*/
+
                               ListView.builder(
                                   shrinkWrap: true,
                                   itemCount: snapshot.data.detail.shifts.length,
@@ -785,6 +1423,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: 35,
+                  ),
                 ],
               );
             } else if (snapshot.hasError) {
@@ -815,4 +1456,429 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
       ),
     );
   }
+
+/* Future<void> _openTimePicker(BuildContext context) async {
+    final t = await showTimePicker(context: context, initialTime: _t);
+
+    if (t != null) {
+      setState(() {
+        _seletedTime = t.format(context);
+        _t = t;
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $t');
+
+        print(_seletedTime);
+        in_out = !in_out;
+
+        if (timeount_false == true) {
+          timecaluculat();
+          //  removeTrailingZeros();
+        }
+
+        timeount_false = true;
+      });
+    }
+  }
+
+  Future<void> _openTimePiker(BuildContext context) async {
+    final p = await showTimePicker(context: context, initialTime: _pp);
+
+    if (p != null) {
+      setState(() {
+        _seletTime = p.format(context);
+        _pp = p;
+        print('ccccccccccccccccccc');
+        print(_seletTime);
+        in_out = !in_out;
+        timecaluculat();
+      });
+    }
+  }
+*/
+  /*timecaluculat() {
+    print('jjjjjjjjj$_seletedTime');
+    print('hhhhhhhhhh$_seletTime');
+    var format = DateFormat("hh:mm a");
+    var starttime = format.parse(_seletedTime);
+    var endtime = format.parse(_seletTime);
+    print('bbbbbbbbbbbbbbbbbbbbbb$starttime and $endtime');
+    if (starttime.isAfter(endtime)) {
+      print('start is big');
+      time = starttime.difference(endtime).toString();
+      String x = "24:00";
+      var f = DateFormat("hh:mm");
+      var c = f.parse(x);
+      var b = f.parse(time);
+      print('fffffffffffffffffffff$c ffffffffffffff$b');
+      time = c.difference(b).toString();
+    } else if (starttime.isBefore(endtime)) {
+      print('end is big');
+      time = endtime.difference(starttime).toString();
+    } else {
+      print('difference === ${endtime.difference(starttime)}');
+      time = endtime.difference(starttime).toString();
+    }
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$time");
+    removeTrailingZeros(); // correct val}
+  }
+
+  removeTrailingZeros() {
+    time = time.replaceAll(RegExp(r"([.]*0+)(?!.*\d)"), "");
+    print('gggggggggggggggggggggg$time');
+    if (time.startsWith("-")) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Select accurate time "),
+        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+      ));
+    } else {
+      return time;
+    }
+  }
+*/
+  DialogStarttime() {
+    DateTime now = DateTime.now();
+    String showtimeStart = DateFormat('kk:mm').format(now);
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: Column(
+              children: [
+                SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  showtimeStart,
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                /* DigitalClock(
+                  digitAnimationStyle: Curves.elasticOut,
+                  is24HourTimeFormat: false,
+                  showSecondsDigit: false,
+                  areaDecoration: BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                  hourMinuteDigitTextStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 50,
+                  ),
+                  amPmDigitTextStyle: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),*/
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                        height: 35,
+
+                        child: TextButton(
+                          child: Text(
+                            '  Cancel  ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Color.fromRGBO(13, 91, 196, 1),
+                            ),
+                          ),
+
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(
+                                    color: Color.fromRGBO(13, 91, 196, 1),
+                                    width: 1),
+
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+
+                            setState(() {
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                        height: 35,
+
+                        child: TextButton(
+                          child: Text(
+                            '  Ok  ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Colors.white,
+                            ),
+                          ),
+
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromRGBO(13, 91, 196, 1)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+
+                            setState(() {
+                              in_out = !in_out;
+                              workingStart = DateTime.now().toString();
+                              starttime.add(workingStart);
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          );
+        });
+  }
+
+  DialogFininshTime() {
+    DateTime now = DateTime.now();
+    String showtimeEnd = DateFormat('kk:mm').format(now);
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: Column(
+              children: [
+                SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  showtimeEnd,
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                        height: 35,
+
+                        child: TextButton(
+                          child: Text(
+                            'Cancel',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Color.fromRGBO(13, 91, 196, 1),
+                            ),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                side: BorderSide(
+                                    color: Color.fromRGBO(13, 91, 196, 1),
+                                    width: 1),
+
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+
+                            setState(() {
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                        height: 35,
+
+                        child: TextButton(
+                          child: Text(
+                            'Ok',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Colors.white,
+                            ),
+                          ),
+
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromRGBO(13, 91, 196, 1)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+
+                            setState(() {
+                              in_out = !in_out;
+                              workingOff = DateTime.now().toString();
+                              offtime.add(workingOff);
+                              print(
+                                  'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$break_start_end');
+                              if (break_start_end == false) {
+                                breakoff = DateTime.now().toString();
+                                braeakEndList.add(breakoff);
+                                DateTime v1 = DateTime.parse(breakstart);
+                                DateTime v2 = DateTime.parse(breakoff);
+                                breaks = v1.difference(v2);
+                                print(
+                                    'wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
+
+                                Breaklist.add(breaks);
+                                break_start_end = !break_start_end;
+                              }
+                              _FunctionStartOffCalcutlate();
+                              //  WorkingHoursCalculate();
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          );
+        });
+  }
+
+  _FunctionBreakCalutate() {
+    print('bbbbbbb$breakstart');
+    print('bbbbbbb$breakoff');
+    DateTime v1 = DateTime.parse(breakstart);
+    DateTime v2 = DateTime.parse(breakoff);
+    breaks = v1.difference(v2);
+    print('wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
+
+    Breaklist.add(breaks);
+  }
+
+  _FunctionStartOffCalcutlate() {
+    var timeworking;
+    print('ccccc$workingStart');
+    print('cccc$workingOff');
+    DateTime work = DateTime.parse(workingStart);
+    DateTime finish = DateTime.parse(workingOff);
+    timeworking = work.difference(finish);
+    totaltime.add(timeworking);
+  }
+
+  /* FunctionBreakCalculate() {
+    print('bbbbbbb$breakstart');
+    print('bbbbbbb$breakoff');
+    breakStartList.add(breakstart);
+    braeakEndList.add(breakoff);
+    DateTime v1 = DateTime.parse(breakstart);
+    DateTime v2 = DateTime.parse(breakoff);
+    breaks = v1.difference(v2);
+    print('wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
+    Breaklist.add(breaks);
+
+    // print('ddddddddd${v1.toString()}');
+    // braaks = v1.difference(v2);
+    //print('ooooooooo$braaks');
+  }
+
+  WorkingHoursCalculate() {
+    print('ccccccccccc$workingStart');
+    starttime.add(workingStart);
+    print('ccccccccccc$workingOff');
+    offtime.add(workingOff);
+    DateTime dt1 = DateTime.parse(workingStart);
+    DateTime dt2 = DateTime.parse(workingOff);
+    time = dt1.difference(dt2);
+    print('sssssssssssssss$time sssssssss$Breaklist');
+    for (int i = 0; i < Breaklist.length; i++) {
+      var timeformate = DateFormat("h:m:s");
+      var dt3 = timeformate.parse(time.toString());
+      var dt4 = timeformate.parse(Breaklist[i].toString());
+      time = dt3.difference(dt4);
+      print('gggggggggggggggggg$time');
+      totaltime.add(time);
+
+      //   print(Breaklist[i]);
+    }
+
+    //  Breaklist.clear();
+    //   breakStartList.clear();
+    //  braeakEndList.clear();
+    // starttime.clear();
+    // offtime.clear()
+  }*/
 }

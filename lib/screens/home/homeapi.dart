@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -56,13 +58,20 @@ class Home {
 }
 
 class Data {
-  int totalWeeklyHours;
+  String totalWeeklyHours;
   String empName;
   String profilePic;
   List<Assignments> assignments;
-  int earnings;
-  int pending;
+  String earnings;
+  String prevearnings;
+  String pending;
   int shifts;
+  String startDate;
+  String endDate;
+  String previousStartDate;
+  String previousEndDate;
+  String currentDateFormat;
+  String currencyformat;
 
   Data(
       {this.totalWeeklyHours,
@@ -70,8 +79,15 @@ class Data {
       this.profilePic,
       this.assignments,
       this.earnings,
+      this.prevearnings,
       this.pending,
-      this.shifts});
+      this.shifts,
+      this.startDate,
+      this.endDate,
+      this.previousStartDate,
+      this.previousEndDate,
+      this.currentDateFormat,
+      this.currencyformat});
 
   Data.fromJson(Map<String, dynamic> json) {
     totalWeeklyHours = json['total_weekly_hours'];
@@ -83,9 +99,16 @@ class Data {
         assignments.add(new Assignments.fromJson(v));
       });
     }
-    earnings = json['earnings'];
-    pending = json['pending'];
+    earnings = json['earnings'].toString();
+    prevearnings = json['prev_earnings'].toString();
+    pending = json['pending'].toString();
     shifts = json['shifts'];
+    startDate = json['start_date'];
+    endDate = json['end_date'];
+    previousStartDate = json['prev_week_start'];
+    previousEndDate = json['prev_week_end'];
+    currentDateFormat = json['current_date_format'];
+    currencyformat = json['currencyformat'];
   }
 
   Map<String, dynamic> toJson() {
@@ -96,9 +119,14 @@ class Data {
     if (this.assignments != null) {
       data['assignments'] = this.assignments.map((v) => v.toJson()).toList();
     }
-    data['earnings'] = this.earnings;
-    data['pending'] = this.pending;
+    data['earnings'] = this.earnings.toString();
+    data['prev_earnings'] = this.prevearnings.toString();
+    data['pending'] = this.pending.toString();
     data['shifts'] = this.shifts;
+    data['start_date'] = this.startDate;
+    data['end_date'] = this.endDate;
+    data['current_date_format'] = this.currentDateFormat;
+    data['currencyformat'] = this.currencyformat;
     return data;
   }
 }
@@ -116,7 +144,7 @@ class Assignments {
   String agencyMargin;
   String customerPayRate;
   String customerOvertimePayRate;
-  String endDate;
+  Null endDate;
   String startDate;
   String createdAt;
   String updatedAt;
@@ -125,7 +153,7 @@ class Assignments {
   String jobTitle;
   String employeeName;
   int customer;
-  String cutomerName;
+  String customerName;
 
   Assignments(
       {this.number,
@@ -149,7 +177,7 @@ class Assignments {
       this.jobTitle,
       this.employeeName,
       this.customer,
-      this.cutomerName});
+      this.customerName});
 
   Assignments.fromJson(Map<String, dynamic> json) {
     number = json['number'];
@@ -173,7 +201,7 @@ class Assignments {
     jobTitle = json['job_title'];
     employeeName = json['employee_name'];
     customer = json['customer'];
-    cutomerName = json['customer_name'];
+    customerName = json['customer_name'];
   }
 
   Map<String, dynamic> toJson() {
@@ -199,7 +227,7 @@ class Assignments {
     data['job_title'] = this.jobTitle;
     data['employee_name'] = this.employeeName;
     data['customer'] = this.customer;
-    data['customer_name'] = this.cutomerName;
+    data['customer_name'] = this.customerName;
     return data;
   }
 }

@@ -1,3 +1,5 @@
+import 'package:TheStafferEmployee/constants/formate.dart';
+import 'package:avatar_view/avatar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -6,6 +8,7 @@ import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
 import './homeapi.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeScreen extends StatefulWidget {
   // const HomeScreen({ Key? key }) : super(key: key);
@@ -17,16 +20,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Future<Home> futureData;
-  String startDate = DateFormat('yyyy/M/d')
-      .format(DateTime.now().subtract(new Duration(days: 7)));
-  
+  Future<FormateApi> futureFormate;
+  // String startDate = DateFormat('yyyy/M/d').format(DateTime.now().subtract(new Duration(days: 7)));
+
   // String endDate = DateTime.now().parse().subtract(new Duration(days: 7)) as String;
-  String endDate = DateFormat('yyyy/M/d').format(DateTime.now());
 
   @override
   void initState() {
     super.initState();
     futureData = fetchhome();
+    futureFormate = fetchformate();
   }
 
   bool hours = true;
@@ -93,20 +96,25 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Positioned(
-                          top: 60,
-                          left: 20,
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.perm_identity_rounded,
-                              color: Color.fromRGBO(255, 255, 255, 1),
-                              size: 40,
-                            ),
-                            onPressed: () {},
-                          ),
-                        ),
+                            top: 65,
+                            left: 25,
+                            child: AvatarView(
+                              radius: 23,
+                              //borderWidth: 8,
+                              // borderColor: Colors.yellow,
+                              avatarType: AvatarType.CIRCLE,
+                              backgroundColor: Colors.red,
+                              imagePath: snapshot.data.data[0].profilePic,
+                              placeHolder: Image.network(
+                                snapshot.data.data[0].profilePic,
+                                width: 50,
+                                height: 50,
+                                //fit: BoxFit.cover,
+                              ),
+                            )),
                         Positioned(
                           top: 70,
-                          left: 70,
+                          left: 80,
                           child: Text(
                             'Welcome',
                             style: TextStyle(
@@ -118,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Positioned(
                           top: 90,
-                          left: 70,
+                          left: 80,
                           child: Text(
                             snapshot.data.data[0].empName,
                             style: TextStyle(
@@ -174,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Container(
                                               alignment: Alignment.topRight,
                                               child: Image.asset(
-                                                "images/Path 54457@2x.png",
+                                                "images/Path 52375@2x.png",
                                                 height: size.height * 0.02,
                                                 // fit: BoxFit.cover,
                                               ),
@@ -209,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Total Hours',
+                                                              'Total Hourss',
                                                               style: TextStyle(
                                                                   fontSize: 14,
                                                                   fontWeight:
@@ -230,7 +238,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  startDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .previousStartDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -270,7 +282,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                                  endDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .previousEndDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -302,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     textBaseline:
                                                         TextBaseline.alphabetic,
                                                     children: [
-                                                      Text(
+                                                      AutoSizeText(
                                                         snapshot.data.data[0]
                                                             .totalWeeklyHours
                                                             .toString(),
@@ -314,6 +330,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               'Nunito Sans',
                                                           //      color: Color.fromRGBO(255, 255, 255, 1)
                                                         ),
+                                                        maxFontSize: 23,
+                                                        minFontSize: 15,
+                                                        maxLines: 1,
                                                       ),
                                                       /*      Text(
                                                         '.50',
@@ -354,7 +373,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Container(
                                               alignment: Alignment.topRight,
                                               child: Image.asset(
-                                                "images/Path 52375@2x.png",
+                                                "images/Path 54457@2x.png",
 
                                                 height: size.height * 0.02,
                                                 // fit: BoxFit.cover,
@@ -427,7 +446,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  startDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .startDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -465,7 +488,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                                  endDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .endDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -496,7 +523,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     textBaseline:
                                                         TextBaseline.alphabetic,
                                                     children: [
-                                                      Text(
+                                                      AutoSizeText(
                                                         snapshot.data.data[0]
                                                             .totalWeeklyHours
                                                             .toString(),
@@ -508,6 +535,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               'Nunito Sans',
                                                           //      color: Color.fromRGBO(255, 255, 255, 1)
                                                         ),
+                                                        maxFontSize: 23,
+                                                        minFontSize: 15,
+                                                        maxLines: 1,
                                                       ),
                                                       /*   Text(
                                                         '.50',
@@ -536,7 +566,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                                 //Slider Container properties
                                 options: CarouselOptions(
-                                  reverse: true,
+                                  reverse: false,
                                   initialPage: 2,
                                   enlargeCenterPage: true,
                                   viewportFraction: 3.0,
@@ -581,7 +611,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Container(
                                               alignment: Alignment.topRight,
                                               child: Image.asset(
-                                                "images/Path 54457@2x.png",
+                                                "images/Path 52375@2x.png",
                                                 height: size.height * 0.02,
                                                 // fit: BoxFit.cover,
                                               ),
@@ -654,7 +684,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  startDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .previousStartDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -694,7 +728,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                                  endDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .previousEndDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -726,37 +764,82 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     textBaseline:
                                                         TextBaseline.alphabetic,
                                                     children: [
+                                                      FutureBuilder<FormateApi>(
+                                                          future: futureFormate,
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            if (snapshot
+                                                                .hasData) {
+                                                              return Text(snapshot
+                                                                          .data
+                                                                          .data[
+                                                                              0]
+                                                                          .currencyformat
+                                                                          .toString()) !=
+                                                                      null
+                                                                  ? Container(
+                                                                      child:
+                                                                          AutoSizeText(
+                                                                        snapshot
+                                                                            .data
+                                                                            .data[0]
+                                                                            .currencyformat
+                                                                            .toString(),
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              30,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontFamily:
+                                                                              'Nunito Sans',
+                                                                          //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                        ),
+                                                                        maxFontSize:
+                                                                            23,
+                                                                        minFontSize:
+                                                                            15,
+                                                                        maxLines:
+                                                                            1,
+                                                                      ),
+                                                                    )
+                                                                  : Container(
+                                                                      child: Text(
+                                                                          ' '));
+                                                            } else {
+                                                              return Text('');
+                                                            }
+                                                          }),
                                                       Text(
                                                                 snapshot
                                                                     .data
                                                                     .data[0]
                                                                     .earnings
                                                                     .toString(),
-                                                              ) ==
+                                                              ) !=
                                                               null
                                                           ? new Container(
-                                                              child: Text(
+                                                              child:
+                                                                  AutoSizeText(
                                                                 snapshot
                                                                     .data
                                                                     .data[0]
-                                                                    .earnings
+                                                                    .prevearnings
                                                                     .toString(),
                                                                 style:
                                                                     TextStyle(
-                                                                  fontFamily:
-                                                                      'Nunito Sans',
+                                                                  fontSize: 30,
+
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  color: Color
-                                                                      .fromRGBO(
-                                                                          83,
-                                                                          83,
-                                                                          83,
-                                                                          1),
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                 ),
+                                                                maxFontSize: 23,
+                                                                minFontSize: 15,
+                                                                maxLines: 1,
                                                               ),
                                                             )
                                                           : new Container(
@@ -811,7 +894,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Container(
                                               alignment: Alignment.topRight,
                                               child: Image.asset(
-                                                "images/Path 52375@2x.png",
+                                                "images/Path 54457@2x.png",
 
                                                 height: size.height * 0.02,
                                                 // fit: BoxFit.cover,
@@ -868,7 +951,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  startDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .startDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -906,7 +993,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   width: 7,
                                                                 ),
                                                                 Text(
-                                                                  endDate,
+                                                                  snapshot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .endDate
+                                                                      .toString(),
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           10,
@@ -937,16 +1028,63 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     textBaseline:
                                                         TextBaseline.alphabetic,
                                                     children: [
+                                                      FutureBuilder<FormateApi>(
+                                                          future: futureFormate,
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            if (snapshot
+                                                                .hasData) {
+                                                              return Text(snapshot
+                                                                          .data
+                                                                          .data[
+                                                                              0]
+                                                                          .currencyformat
+                                                                          .toString()) !=
+                                                                      null
+                                                                  ? Container(
+                                                                      child:
+                                                                          AutoSizeText(
+                                                                        snapshot
+                                                                            .data
+                                                                            .data[0]
+                                                                            .currencyformat
+                                                                            .toString(),
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              30,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontFamily:
+                                                                              'Nunito Sans',
+                                                                          //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                        ),
+                                                                        maxFontSize:
+                                                                            23,
+                                                                        minFontSize:
+                                                                            15,
+                                                                        maxLines:
+                                                                            1,
+                                                                      ),
+                                                                    )
+                                                                  : Container(
+                                                                      child: Text(
+                                                                          ' '));
+                                                            } else {
+                                                              return Text('');
+                                                            }
+                                                          }),
                                                       Text(
                                                                 snapshot
                                                                     .data
                                                                     .data[0]
                                                                     .earnings
                                                                     .toString(),
-                                                              ) ==
+                                                              ) !=
                                                               null
                                                           ? new Container(
-                                                              child: Text(
+                                                              child:
+                                                                  AutoSizeText(
                                                                 snapshot
                                                                     .data
                                                                     .data[0]
@@ -954,20 +1092,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     .toString(),
                                                                 style:
                                                                     TextStyle(
-                                                                  fontFamily:
-                                                                      'Nunito Sans',
+                                                                  fontSize: 30,
+
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  color: Color
-                                                                      .fromRGBO(
-                                                                          83,
-                                                                          83,
-                                                                          83,
-                                                                          1),
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
                                                                 ),
+                                                                maxFontSize: 23,
+                                                                minFontSize: 15,
+                                                                maxLines: 1,
                                                               ),
                                                             )
                                                           : new Container(
@@ -1009,7 +1145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                                 //Slider Container properties
                                 options: CarouselOptions(
-                                  reverse: true,
+                                  reverse: false,
                                   initialPage: 2,
                                   enlargeCenterPage: true,
                                   viewportFraction: 3.0,
@@ -1092,7 +1228,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               CrossAxisAlignment.baseline,
                                           textBaseline: TextBaseline.alphabetic,
                                           children: [
-                                            Text(
+                                            AutoSizeText(
                                               snapshot.data.data[0].shifts
                                                   .toString(),
                                               style: TextStyle(
@@ -1101,6 +1237,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 fontFamily: 'Nunito Sans',
                                                 //      color: Color.fromRGBO(255, 255, 255, 1)
                                               ),
+                                              maxFontSize: 23,
+                                              minFontSize: 15,
+                                              maxLines: 1,
                                             ),
                                             SizedBox(
                                               width: 18,
@@ -1165,7 +1304,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Container(
                                               child: Column(
                                                 children: [
-                                                  Text(
+                                                  AutoSizeText(
                                                     'Pending Balance',
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -1182,36 +1321,66 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ],
                                         ),
                                       ),
-                                      Container(
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.baseline,
-                                          textBaseline: TextBaseline.alphabetic,
-                                          children: [
-                                            Text(
-                                              snapshot.data.data[0].pending
-                                                  .toString(),
-                                              style: TextStyle(
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Nunito Sans',
-                                                //      color: Color.fromRGBO(255, 255, 255, 1)
-                                              ),
+                                      Row(
+                                        children: [
+                                          FutureBuilder<FormateApi>(
+                                              future: futureFormate,
+                                              builder: (context, snapshot) {
+                                                if (snapshot.hasData) {
+                                                  return Text(snapshot
+                                                              .data
+                                                              .data[0]
+                                                              .currencyformat
+                                                              .toString()) !=
+                                                          null
+                                                      ? Container(
+                                                          child: AutoSizeText(
+                                                            snapshot
+                                                                .data
+                                                                .data[0]
+                                                                .currencyformat
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                              fontSize: 30,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontFamily:
+                                                                  'Nunito Sans',
+                                                              //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                            ),
+                                                            maxFontSize: 23,
+                                                            minFontSize: 15,
+                                                            maxLines: 1,
+                                                          ),
+                                                        )
+                                                      : Container(
+                                                          child: Text(' '));
+                                                } else {
+                                                  return Text('');
+                                                }
+                                              }),
+                                          AutoSizeText(
+                                            // '123',
+                                            snapshot.data.data[0].pending
+                                                .toString(),
+                                            //    maxLines: 1,
+                                            style: TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold,
+                                              //  fontFamily: 'Nunito Sans',
+
+                                              //      color: Color.fromRGBO(255, 255, 255, 1)
                                             ),
-                                            /* Text(
-                                              '.50',
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Nunito Sans',
-                                                //      color: Color.fromRGBO(255, 255, 255, 1)
-                                              ),
-                                            ),*/
-                                            SizedBox(
-                                              width: 18,
-                                            )
-                                          ],
-                                        ),
+                                            maxFontSize: 23,
+                                            minFontSize: 15,
+                                            maxLines: 1,
+                                            //     overflow: TextOverflow.ellipsis,
+                                          ),
+                                          SizedBox(
+                                            width: 18,
+                                          )
+                                        ],
                                       )
                                     ],
                                   ),
@@ -1243,129 +1412,35 @@ class _HomeScreenState extends State<HomeScreen> {
                           right: 20,
                           child: Container(
                             height: 100.0,
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemCount:
-                                    snapshot.data.data[0].assignments.length,
-                                itemBuilder: (context, index) {
-                                  return Card(
-                                    elevation: 1.0,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.baseline,
-                                      textBaseline: TextBaseline.alphabetic,
-                                      children: [
-                                        //////////////////////
-                                        SizedBox(
-                                          height: 15,
-                                        ),
-                                        Container(
-                                          child: Row(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        20, 0, 120, 0),
-                                                child: Text(
-                                                  snapshot.data.data[0]
-                                                      .assignments[0].jobTitle,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontFamily: 'Nunito Sans',
-                                                      color: Color.fromRGBO(
-                                                          13, 91, 196, 1)),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 20,
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 7,
-                                        ),
-                                        Container(
-                                          padding:
-                                              const EdgeInsets.only(left: 20),
-                                          child: Text(
-                                            snapshot.data.data[0]
-                                                .assignments[index].cutomerName
-                                                .toString(),
-                                            style: TextStyle(
-                                                fontSize: 10,
-                                                fontFamily: 'Nunito Sans',
-                                                color: Color.fromRGBO(
-                                                    83, 83, 83, 1)),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 12,
-                                        ),
-
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 20),
-                                          child: Text(
-                                              snapshot
-                                                          .data
-                                                          .data[0]
-                                                          .assignments[0]
-                                                          .startDate !=
-                                                      null
-                                                  ? DateFormat('yyyy/M/d')
-                                                      .format(DateTime.parse(
-                                                          snapshot
-                                                              .data
-                                                              .data[0]
-                                                              .assignments[0]
-                                                              .startDate))
-                                                  : ' - - - ',
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Nunito Sans',
-                                                  color: Color.fromRGBO(
-                                                      31, 33, 38, 1))),
-
-                                          /* Text(
-                                            tiledate.toString(),
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Nunito Sans',
-                                                color: Color.fromRGBO(
-                                                    31, 33, 38, 1)),
-                                          ),*/
-                                        )
-                                      ],
+                            child: snapshot.data.data[0].assignments.length == 0
+                                ? Padding(
+                                    padding: EdgeInsets.only(top: 10),
+                                    child: Text(
+                                      'No Assignment',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Nunito Sans',
+                                          color:
+                                              Color.fromRGBO(112, 112, 112, 1)),
                                     ),
-                                  );
-                                }),
-                          ),
-                        ),
-                        /*   Positioned( 
-                        top: 570,
-                        left: 23,
-                        right: 20,
-                        child: state is HomePageLoadedState
-                            ? new Container(
-                                height: 100.0,
-                                child: new ListView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: state.assignments.length > 5
-                                      ? 5
-                                      : state.assignments.length,
-                                  itemBuilder: (context, index) {
-                                    return new Card(
-                                        elevation: 1.0,
+                                  )
+                                : ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: snapshot
+                                        .data.data[0].assignments.length,
+                                    itemBuilder: (context, index) {
+                                      return Card(
+                                        elevation: 4.0,
+                                        shadowColor:
+                                            Colors.grey.withOpacity(0.2),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.baseline,
                                           textBaseline: TextBaseline.alphabetic,
                                           children: [
+                                            //////////////////////
                                             SizedBox(
                                               height: 15,
                                             ),
@@ -1373,13 +1448,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                               child: Row(
                                                 children: [
                                                   Padding(
-                                                    padding:
-                                                        const EdgeInsets.fromLTRB(
-                                                            20, 0, 120, 0),
+                                                    padding: const EdgeInsets
+                                                            .fromLTRB(
+                                                        20, 0, 120, 0),
                                                     child: Text(
-                                                      state.assignments[index]
-                                                          ['job_position'],
+                                                      snapshot
+                                                          .data
+                                                          .data[0]
+                                                          .assignments[0]
+                                                          .jobTitle,
                                                       style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                           fontSize: 14,
                                                           fontFamily:
                                                               'Nunito Sans',
@@ -1394,65 +1474,73 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 10,
+                                              height: 11,
                                             ),
                                             Container(
-                                              padding:
-                                                  const EdgeInsets.only(left: 20),
+                                              padding: const EdgeInsets.only(
+                                                  left: 20),
                                               child: Text(
-                                                state.assignments[index]
-                                                    ['customer'],
+                                                snapshot
+                                                    .data
+                                                    .data[0]
+                                                    .assignments[index]
+                                                    .customerName
+                                                    .toString(),
                                                 style: TextStyle(
                                                     fontSize: 10,
+                                                    fontWeight: FontWeight.w600,
                                                     fontFamily: 'Nunito Sans',
                                                     color: Color.fromRGBO(
-                                                        83, 83, 83, 1)),
+                                                        112, 112, 112, 1)),
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 12,
+                                              height: 9,
                                             ),
+
                                             Padding(
-                                              padding:
-                                                  const EdgeInsets.only(left: 20),
+                                              padding: const EdgeInsets.only(
+                                                  left: 20),
                                               child: Text(
-                                                state.assignments[index]
-                                                    ['start_date'],
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: 'Nunito Sans',
-                                                    color: Color.fromRGBO(
-                                                        31, 33, 38, 1)),
-                                              ),
+                                                  snapshot
+                                                              .data
+                                                              .data[0]
+                                                              .assignments[0]
+                                                              .startDate !=
+                                                          null
+                                                      ? DateFormat('yyyy/M/d')
+                                                          .format(DateTime
+                                                              .parse(snapshot
+                                                                  .data
+                                                                  .data[0]
+                                                                  .assignments[
+                                                                      0]
+                                                                  .startDate))
+                                                      : ' - - - ',
+                                                  style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          31, 33, 38, 1))),
+
+                                              /* Text(
+                                            tiledate.toString(),
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Nunito Sans',
+                                                color: Color.fromRGBO(
+                                                    31, 33, 38, 1)),
+                                          ),*/
                                             )
                                           ],
-                                        ));
-                                  },
-                                ),
-                              )
-                            : Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Center(
-                                      child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 25.0,
-                                        width: 25.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              new AlwaysStoppedAnimation<Color>(
-                                                  Style.Colors.mainColor),
-                                          strokeWidth: 4.0,
                                         ),
-                                      )
-                                    ],
-                                  ))
-                                ],
-                              ))*/
+                                      );
+                                    }),
+                          ),
+                        ),
                       ],
                     ),
                   )

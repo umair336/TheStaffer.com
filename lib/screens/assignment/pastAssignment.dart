@@ -11,6 +11,7 @@ class PastAssignment extends StatefulWidget {
 
 class _PastAssignmentState extends State<PastAssignment> {
   Future<AssignmentApi> futureData;
+
   @override
   void initState() {
     super.initState();
@@ -169,6 +170,10 @@ class _PastAssignmentState extends State<PastAssignment> {
                         physics: ScrollPhysics(),
                         child: Column(
                           children: <Widget>[
+                            /*  for (int i = 0; i < snapshot.data.data.length; i++)
+                              if (snapshot.data.data[i].empStatus !=
+                                  'Completed')
+                                Text('ss'),*/
                             ListView.builder(
                                 physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
@@ -201,10 +206,8 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                         255, 255, 255, 1),
                                                     //   color: Colors.white60,
                                                     border: Border.all(
-                                                      color: Colors
-                                                          .blueAccent.shade700,
-                                                      width: 1,
-                                                    ),
+                                                        color: Color.fromRGBO(
+                                                            79, 171, 247, 1)),
                                                     borderRadius:
                                                         BorderRadius.all(
                                                             Radius.circular(
@@ -212,7 +215,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                 child: Column(
                                                   children: [
                                                     SizedBox(
-                                                      height: 10,
+                                                      height: 15,
                                                     ),
                                                     Padding(
                                                       padding: const EdgeInsets
@@ -256,7 +259,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                             ),
                                                           ),
                                                           Image.asset(
-                                                            "images/Path 58358.png",
+                                                            "images/Path 58358@2x.png",
                                                             height: 15,
                                                             // fit: BoxFit.cover,
                                                           ),
@@ -396,7 +399,8 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                               null
                                                                           ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
                                                                               .data
-                                                                              .data[index]
+                                                                              .data[
+                                                                                  index]
                                                                               .endDate))
                                                                           : DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
                                                                               .data
@@ -423,7 +427,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                             ))
                                     ],
                                   );
-                                })
+                                }),
                           ],
                         ),
                       );
@@ -449,7 +453,10 @@ class _PastAssignmentState extends State<PastAssignment> {
                       );
                     }
                   }),
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),
