@@ -549,8 +549,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       padding: EdgeInsets.only(right: 30),
                                       child: Text(
                                         //  '\OT Pay Rate',
-
-                                        time.toString(),
+                                        time == null ?'0:00:00':
+                                        time.toString().split('.').first,
                                         style: TextStyle(
                                           fontFamily: 'Nunito Sans',
                                           fontWeight: FontWeight.bold,
@@ -1900,13 +1900,17 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
       print('/////////////////////////////////////////////////////');
     }
     print('jjjjjjjjjjj$workhours jjjjjjjjjjjjjjj$total_breaks');
-
-    var v = workhours.toString().split('.').first;
-    var b = total_breaks.toString().split('.').first;
-    DateTime w = DateTime.parse(workingStart);
-    DateTime f = DateTime.parse(workingOff);
-    time = w.difference(f);
-    print('ssssssssss$time');
+    if (total_breaks == null) {
+      //var c = DateFormat('hh:mm:ss').parse(workhours.toString());
+      time = workhours.toString();
+      print('eeeeeeeeeee$time');
+    } else {
+      var a = DateFormat('hh:mm:ss').parse(workhours.toString());
+      var b = DateFormat('hh:mm:ss').parse(total_breaks.toString());
+      print('sssssss$a ssssssssssssss$b');
+      time = a.difference(b);
+      print('eeeeeeeeeee$time');
+    }
   }
 
   /* FunctionBreakCalculate() {
