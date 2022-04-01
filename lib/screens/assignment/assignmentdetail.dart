@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -498,6 +500,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
                                 child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(5.0),
@@ -538,6 +542,20 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 color: Color.fromRGBO(
                                                     27, 185, 31, 1)),
                                           ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 30),
+                                      child: Text(
+                                        //  '\OT Pay Rate',
+
+                                        time.toString(),
+                                        style: TextStyle(
+                                          fontFamily: 'Nunito Sans',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14.0,
+                                          color: Color.fromRGBO(0, 0, 0, 1),
                                         ),
                                       ),
                                     ),
@@ -1882,8 +1900,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
       print('/////////////////////////////////////////////////////');
     }
     print('jjjjjjjjjjj$workhours jjjjjjjjjjjjjjj$total_breaks');
-  
-   
+
+    var v = workhours.toString().split('.').first;
+    var b = total_breaks.toString().split('.').first;
+    DateTime w = DateTime.parse(workingStart);
+    DateTime f = DateTime.parse(workingOff);
+    time = w.difference(f);
+    print('ssssssssss$time');
   }
 
   /* FunctionBreakCalculate() {
