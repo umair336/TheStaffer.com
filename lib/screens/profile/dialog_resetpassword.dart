@@ -164,45 +164,101 @@ class _MyDialogState extends State<MyDialog> {
                 ),
               ),
               SizedBox(
-                height: 40,
+                height: 20,
               ),
-              Container(
-                //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
-                //   color: Color.fromRGBO(23, 197, 204, 1),
-                width: 230,
-                child: TextButton(
-                  child: Text(
-                    'Save',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14.0,
-                      color: Colors.white,
-                    ),
-                  ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
 
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromRGBO(13, 91, 196, 1)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        child: TextButton(
+                          child: Text(
+                            'Cancel',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Colors.white,
+                            ),
+                          ),
 
-                        //   side: BorderSide(color: Colors.red.shade900),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromRGBO(13, 91, 196, 1)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+
+                            setState(() {
+                              //functionChangepassword();
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                  //      color: Colors.black,
-                  //  textColor: Colors.white,
-                  //     shape: RoundedRectangleBorder(
-                  //borderRadius: BorderRadius.circular(30)),
-                  onPressed: () {
-                    //          Navigator.push(context,
-                    //            MaterialPageRoute(builder: (context) => Profile()));
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Expanded(
+                      child: Container(
+                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                        //        width: 230,
+                        child: TextButton(
+                          child: Text(
+                            'Save',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
+                              color: Colors.white,
+                            ),
+                          ),
 
-                    setState(() {
-                      functionChangepassword();
-                    });
-                  },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromRGBO(13, 91, 196, 1)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+
+                                //   side: BorderSide(color: Colors.red.shade900),
+                              ),
+                            ),
+                          ),
+                          //      color: Colors.black,
+                          //  textColor: Colors.white,
+                          //     shape: RoundedRectangleBorder(
+                          //borderRadius: BorderRadius.circular(30)),
+                          onPressed: () {
+                            //          Navigator.push(context,
+                            //            MaterialPageRoute(builder: (context) => Profile()));
+
+                            setState(() {
+                              functionChangepassword();
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(
