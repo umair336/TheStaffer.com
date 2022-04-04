@@ -27,6 +27,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   TimeOfDay _t;
   TimeOfDay _pp;
   var time;
+  var breaak;
   Duration breaktime;
   var totaltime = [];
   var breaks;
@@ -476,20 +477,24 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
-                                child: Column(
+                                child: Row(
                                   children: [
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        'Status',
-                                        style: TextStyle(
-                                          fontFamily: 'Nunito Sans',
-                                          //  fontWeight: FontWeight.bold,
-                                          fontSize: 10.0,
-                                          color:
-                                              Color.fromRGBO(112, 112, 112, 1),
+                                    Column(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Status',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -546,17 +551,81 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       ),
                                     ),
                                     Padding(
+                                      padding: EdgeInsets.only(right: 10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Break time ',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            //  '\OT Pay Rate',
+                                            breaak == null
+                                                ? '0:00:00'
+                                                : breaak
+                                                    .toString()
+                                                    .split('.')
+                                                    .first,
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(0, 0, 0, 1),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
                                       padding: EdgeInsets.only(right: 30),
-                                      child: Text(
-                                        //  '\OT Pay Rate',
-                                        time == null ?'0:00:00':
-                                        time.toString().split('.').first,
-                                        style: TextStyle(
-                                          fontFamily: 'Nunito Sans',
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14.0,
-                                          color: Color.fromRGBO(0, 0, 0, 1),
-                                        ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Total time ',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            //  '\OT Pay Rate',
+                                            time == null
+                                                ? '0:00:00'
+                                                : time
+                                                    .toString()
+                                                    .split('.')
+                                                    .first,
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                              color: Color.fromRGBO(0, 0, 0, 1),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
@@ -1905,6 +1974,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
       time = workhours.toString();
       print('eeeeeeeeeee$time');
     } else {
+      breaak = total_breaks.toString();
       var a = DateFormat('hh:mm:ss').parse(workhours.toString());
       var b = DateFormat('hh:mm:ss').parse(total_breaks.toString());
       print('sssssss$a ssssssssssssss$b');
