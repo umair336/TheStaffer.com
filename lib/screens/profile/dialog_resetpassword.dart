@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
+import 'package:another_flushbar/flushbar.dart';
 
 class MyDialog extends StatefulWidget {
   @override
@@ -287,20 +288,33 @@ class _MyDialogState extends State<MyDialog> {
         print('truen');
         postRequest(curentp, newp, confirmp);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        /*ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text("new and confirm password not match"),
           backgroundColor: Color.fromRGBO(183, 14, 105, 1),
-        ));
+        ));*/
+        Flushbar(
+          // title: 'Hey Ninja',
+          message: 'New and confirm password not match',
+          duration: Duration(seconds: 3),
+          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+        ).show(context);
 
         print('false');
       }
 
       // postRequest(curentp , newp , confirmp );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      /*  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Fill the required filled"),
         backgroundColor: Color.fromRGBO(183, 14, 105, 1),
-      ));
+      ));*/
+      Flushbar(
+        //   title: 'Hey Ninja',
+        message: 'Please fill the all required fields.',
+        duration: Duration(seconds: 3),
+        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+      ).show(context);
+
       print('wrong');
     }
   }
