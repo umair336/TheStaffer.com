@@ -294,7 +294,7 @@ class _MyDialogState extends State<MyDialog> {
         ));*/
         Flushbar(
           // title: 'Hey Ninja',
-          message: 'New and confirm password not match',
+          message: 'New and confirm password do not match.',
           duration: Duration(seconds: 3),
           backgroundColor: Color.fromRGBO(183, 14, 105, 1),
         ).show(context);
