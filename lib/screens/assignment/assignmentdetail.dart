@@ -271,21 +271,26 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          Text(
-                                            //'New York, NY',
+                                          Container(
+                                            //  height: 20,
+                                            width: 129,
+                                            child: Text(
+                                              //'New York, NY',
 
-                                            snapshot.data.detail.address
-                                                        .address !=
-                                                    null
-                                                ? snapshot
-                                                    .data.detail.address.address
-                                                : ' - - - ',
+                                              snapshot.data.detail.address
+                                                          .address !=
+                                                      null
+                                                  ? snapshot.data.detail.address
+                                                      .address
+                                                  : ' - - - ',
 
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 12.0,
-                                              color: Color.fromRGBO(0, 0, 0, 1),
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito Sans',
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 12.0,
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
+                                              ),
                                             ),
                                           ),
                                         ],
