@@ -375,7 +375,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         height: 6,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(left: 31),
+                                        padding:
+                                            EdgeInsets.fromLTRB(31, 0, 20, 0),
                                         child: Text(
                                           snapshot.data.data.ssn != null
                                               ? snapshot.data.data.ssn
@@ -511,10 +512,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 12),
+                                SizedBox(height: 15),
                               ],
                             ),
                           )),
+                      SizedBox(height: 20),
                     ],
                   ),
                 ],
