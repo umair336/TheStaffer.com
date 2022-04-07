@@ -187,7 +187,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     null
                                                 ? snapshot.data.detail.record
                                                     .positionName
-                                                : ' - - - ',
+                                                : '',
                                             style: TextStyle(
                                               fontSize: 16.0,
                                               fontWeight: FontWeight.bold,
@@ -205,7 +205,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     null
                                                 ? snapshot.data.detail.record
                                                     .departmentNames
-                                                : ' - - - ',
+                                                : '',
 
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
@@ -248,7 +248,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     null
                                                 ? snapshot.data.detail.record
                                                     .customerName
-                                                : ' - - - ',
+                                                : ' ',
                                             //  'Customer Name Here',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
@@ -282,7 +282,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                       null
                                                   ? snapshot.data.detail.address
                                                       .address
-                                                  : ' - - - ',
+                                                  : ' ',
 
                                               style: TextStyle(
                                                 fontFamily: 'Nunito Sans',
@@ -335,7 +335,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     null
                                                 ? snapshot.data.detail.record
                                                     .startDate
-                                                : ' - - - ',
+                                                : '  ',
 
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
@@ -375,7 +375,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     null
                                                 ? snapshot
                                                     .data.detail.record.endDate
-                                                : ' - - - ',
+                                                : ' ',
 
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
@@ -424,7 +424,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                             snapshot.data.detail.payRate != null
                                                 ? snapshot.data.detail.payRate
-                                                : ' - - - ',
+                                                : '  ',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               fontWeight: FontWeight.bold,
@@ -463,7 +463,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     null
                                                 ? snapshot
                                                     .data.detail.overtimePayRate
-                                                : ' - - - ',
+                                                : ' ',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               fontWeight: FontWeight.bold,
@@ -545,7 +545,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     null
                                                 ? snapshot
                                                     .data.detail.record.status
-                                                : ' - - - ',
+                                                : ' ',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 10.0,
@@ -1354,7 +1354,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         null
                                                     ? snapshot.data.detail
                                                         .shifts[index].name
-                                                    : ' - - - ',
+                                                    : ' ',
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   fontWeight: FontWeight.bold,
@@ -1394,7 +1394,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         null
                                                     ? snapshot.data.detail
                                                         .shifts[index].timeFrom
-                                                    : ' - - - ',
+                                                    : ' ',
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   fontWeight: FontWeight.bold,
@@ -1434,7 +1434,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         null
                                                     ? snapshot.data.detail
                                                         .shifts[index].timeTo
-                                                    : ' - - - ',
+                                                    : ' ',
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   fontWeight: FontWeight.bold,

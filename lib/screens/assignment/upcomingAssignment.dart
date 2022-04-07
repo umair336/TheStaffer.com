@@ -238,7 +238,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                         .data[
                                                                             index]
                                                                         .jobPosition
-                                                                    : ' - - - ',
+                                                                    : ' ',
                                                                 style: TextStyle(
                                                                     color: Colors
                                                                         .black,
@@ -298,7 +298,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                   .data
                                                                   .data[index]
                                                                   .customer
-                                                              : ' - - - ',
+                                                              : ' ',
                                                           style: TextStyle(
                                                               color: Color
                                                                   .fromRGBO(
@@ -361,7 +361,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                           .data[
                                                                               index]
                                                                           .startDate))
-                                                                      : ' - - - ',
+                                                                      : ' ',
                                                                   style:
                                                                       TextStyle(
                                                                           color: Color.fromRGBO(

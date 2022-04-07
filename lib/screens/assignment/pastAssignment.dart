@@ -240,7 +240,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                           .data[
                                                                               index]
                                                                           .jobPosition
-                                                                      : ' - - - ',
+                                                                      : ' ',
                                                                   style: TextStyle(
                                                                       color: Colors
                                                                           .black,
@@ -303,7 +303,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                     .data
                                                                     .data[index]
                                                                     .customer
-                                                                : ' - - - ',
+                                                                : '',
                                                             style: TextStyle(
                                                                 color: Color
                                                                     .fromRGBO(
@@ -361,7 +361,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                             .data
                                                                             .data[index]
                                                                             .startDate))
-                                                                        : ' - - - ',
+                                                                        : ' ',
                                                                     style: TextStyle(
                                                                         color: Color.fromRGBO(0, 0, 0, 1),
                                                                         //fontWeight: FontWeight.w600,
