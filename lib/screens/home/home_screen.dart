@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               left: 80,
                               child: Text(
                                 snapshot.data.data[0].empName != null
-                                    ? snapshot.data.data[0].empName.toString()
+                                    ? snapshot.data.data[0].empName
                                     : '',
                                 style: TextStyle(
                                   //fontWeight: FontWeight.bold,
@@ -269,12 +269,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           .previousStartDate),
                                                                     ),*/
                                                                     Text(
-                                                                      snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .previousStartDate
-                                                                          .toString(),
+                                                                      snapshot.data.data[0].previousStartDate.toString() !=
+                                                                              null
+                                                                          ? snapshot
+                                                                              .data
+                                                                              .data[0]
+                                                                              .previousStartDate
+                                                                          : '',
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               10,
@@ -310,12 +311,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       width: 7,
                                                                     ),
                                                                     Text(
-                                                                      snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .previousEndDate
-                                                                          .toString(),
+                                                                      snapshot.data.data[0].previousEndDate.toString() !=
+                                                                              null
+                                                                          ? snapshot
+                                                                              .data
+                                                                              .data[0]
+                                                                              .previousEndDate
+                                                                          : '',
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               10,
@@ -348,10 +350,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         children: [
                                                           AutoSizeText(
                                                             snapshot
-                                                                .data
-                                                                .data[0]
-                                                                .totalWeeklyHours
-                                                                .toString(),
+                                                                        .data
+                                                                        .data[0]
+                                                                        .totalWeeklyHours
+                                                                        .toString() !=
+                                                                    null
+                                                                ? snapshot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .totalWeeklyHours
+                                                                : '',
                                                             style: TextStyle(
                                                               fontSize: 30,
                                                               fontWeight:
@@ -481,12 +489,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 Row(
                                                                   children: [
                                                                     Text(
-                                                                      snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .startDate
-                                                                          .toString(),
+                                                                      snapshot.data.data[0].startDate.toString() !=
+                                                                              null
+                                                                          ? snapshot
+                                                                              .data
+                                                                              .data[0]
+                                                                              .startDate
+                                                                          : '',
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               10,
@@ -524,10 +533,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     Text(
                                                                       snapshot.data.data[0].endDate !=
                                                                               null
-                                                                          ? DateFormat(formatapi).format(DateTime.parse(snapshot
+                                                                          ? snapshot
                                                                               .data
                                                                               .data[0]
-                                                                              .endDate))
+                                                                              .endDate
                                                                           : ' - - - ',
                                                                       style: TextStyle(
                                                                           fontSize:
@@ -561,10 +570,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         children: [
                                                           AutoSizeText(
                                                             snapshot
-                                                                .data
-                                                                .data[0]
-                                                                .totalWeeklyHours
-                                                                .toString(),
+                                                                        .data
+                                                                        .data[0]
+                                                                        .totalWeeklyHours
+                                                                        .toString() !=
+                                                                    null
+                                                                ? snapshot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .totalWeeklyHours
+                                                                : '',
                                                             style: TextStyle(
                                                               fontSize: 30,
                                                               fontWeight:
@@ -727,12 +742,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 Row(
                                                                   children: [
                                                                     Text(
-                                                                      snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .previousStartDate
-                                                                          .toString(),
+                                                                      snapshot.data.data[0].previousStartDate.toString() !=
+                                                                              null
+                                                                          ? snapshot
+                                                                              .data
+                                                                              .data[0]
+                                                                              .previousStartDate
+                                                                          : '',
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               10,
@@ -768,12 +784,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       width: 7,
                                                                     ),
                                                                     Text(
-                                                                      snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .previousEndDate
-                                                                          .toString(),
+                                                                      snapshot.data.data[0].previousEndDate.toString() !=
+                                                                              null
+                                                                          ? snapshot
+                                                                              .data
+                                                                              .data[0]
+                                                                              .previousEndDate
+                                                                          : '',
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               10,
@@ -1510,10 +1527,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 20, 0, 120, 0),
                                                         child: Text(
                                                           snapshot
-                                                              .data
-                                                              .data[0]
-                                                              .assignments[0]
-                                                              .jobTitle,
+                                                                      .data
+                                                                      .data[0]
+                                                                      .assignments[
+                                                                          0]
+                                                                      .jobTitle
+                                                                      .toString() !=
+                                                                  null
+                                                              ? snapshot
+                                                                  .data
+                                                                  .data[0]
+                                                                  .assignments[
+                                                                      0]
+                                                                  .jobTitle
+                                                              : '',
                                                           style: TextStyle(
                                                               fontWeight:
                                                                   FontWeight
@@ -1544,11 +1571,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           left: 20),
                                                   child: Text(
                                                     snapshot
-                                                        .data
-                                                        .data[0]
-                                                        .assignments[index]
-                                                        .customerName
-                                                        .toString(),
+                                                                .data
+                                                                .data[0]
+                                                                .assignments[
+                                                                    index]
+                                                                .customerName !=
+                                                            null
+                                                        ? snapshot
+                                                            .data
+                                                            .data[0]
+                                                            .assignments[index]
+                                                            .customerName
+                                                        : '',
                                                     style: TextStyle(
                                                         fontSize: 10,
                                                         fontWeight:
