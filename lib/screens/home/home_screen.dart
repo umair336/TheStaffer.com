@@ -145,7 +145,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               top: 90,
                               left: 80,
                               child: Text(
-                                snapshot.data.data[0].empName,
+                                snapshot.data.data[0].empName != null
+                                    ? snapshot.data.data[0].empName.toString()
+                                    : '',
                                 style: TextStyle(
                                   //fontWeight: FontWeight.bold,
                                   fontSize: 18.0,
