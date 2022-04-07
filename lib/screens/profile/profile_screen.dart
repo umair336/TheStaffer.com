@@ -135,7 +135,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       textBaseline: TextBaseline.alphabetic,
                                       children: [
                                         Text(
-                                          snapshot.data.data.employeeName,
+                                          snapshot.data.data.employeeName !=
+                                                  null
+                                              ? snapshot.data.data.employeeName
+                                              : '',
                                           style: TextStyle(
                                               fontSize: 16.0,
                                               fontFamily: 'Nunito Sans',
@@ -147,7 +150,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           height: 5,
                                         ),
                                         Text(
-                                          snapshot.data.data.jobPosition,
+                                          snapshot.data.data.jobPosition != null
+                                              ? snapshot.data.data.jobPosition
+                                              : '',
                                           style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               // fontWeight: FontWeight.semibold,
@@ -213,7 +218,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       Padding(
                                         padding: EdgeInsets.only(left: 19),
                                         child: Text(
-                                          snapshot.data.data.phone,
+                                          snapshot.data.data.phone != null
+                                              ? snapshot.data.data.phone
+                                              : '',
                                           style: TextStyle(
                                               fontSize: 12,
                                               fontWeight: FontWeight.bold,
@@ -262,34 +269,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         height: 6,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(left: 35),
-                                        child: Text(snapshot.data.data.email) !=
-                                                null
-                                            ? new Container(
-                                                child: Text(
-                                                  snapshot.data.data.email,
-                                                  style: TextStyle(
-                                                    fontFamily: 'Nunito Sans',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 12.0,
-                                                    color: Color.fromRGBO(
-                                                        83, 83, 83, 1),
-                                                  ),
-                                                ),
-                                              )
-                                            : new Container(
-                                                child: Text('----')),
-
-                                        /*Text(
-                                          'Employeeemail@email.com',
+                                        padding: EdgeInsets.only(left: 34),
+                                        child: Text(
+                                          snapshot.data.data.email != null
+                                              ? snapshot.data.data.email
+                                              : '',
                                           style: TextStyle(
-                                            fontFamily: 'Nunito Sans',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 12.0,
-                                            color:
-                                                Color.fromRGBO(83, 83, 83, 1),
-                                          ),
-                                        ),*/
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Nunito Sans',
+                                              color: Color.fromRGBO(
+                                                  31, 33, 38, 1)),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -333,7 +324,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       Padding(
                                         padding: EdgeInsets.only(left: 26),
                                         child: Text(
-                                          snapshot.data.data.dob,
+                                          snapshot.data.data.dob != null
+                                              ? snapshot.data.data.dob
+                                              : '',
                                           style: TextStyle(
                                               fontSize: 12,
                                               fontWeight: FontWeight.bold,
@@ -384,7 +377,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       Padding(
                                         padding: EdgeInsets.only(left: 31),
                                         child: Text(
-                                          snapshot.data.data.ssn,
+                                          snapshot.data.data.ssn != null
+                                              ? snapshot.data.data.ssn
+                                              : '',
                                           style: TextStyle(
                                               fontSize: 12,
                                               fontWeight: FontWeight.bold,
@@ -435,7 +430,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       Padding(
                                         padding: EdgeInsets.only(left: 24),
                                         child: Text(
-                                          snapshot.data.data.location,
+                                          snapshot.data.data.location != null
+                                              ? snapshot.data.data.location
+                                              : '',
                                           style: TextStyle(
                                               fontSize: 12,
                                               fontWeight: FontWeight.bold,
