@@ -1606,7 +1606,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   .data
                                                                   .data[0]
                                                                   .assignments[
-                                                                      0]
+                                                                      index]
                                                                   .startDate !=
                                                               null
                                                           ? DateFormat(
@@ -1616,7 +1616,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       .data
                                                                       .data[0]
                                                                       .assignments[
-                                                                          0]
+                                                                          index]
                                                                       .startDate))
                                                           : ' - - - ',
                                                       style: TextStyle(
