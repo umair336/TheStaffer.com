@@ -867,7 +867,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     snapshot
                                                                         .data
                                                                         .data[0]
-                                                                        .earnings
+                                                                        .prevearnings
                                                                         .toString(),
                                                                   ) !=
                                                                   null
