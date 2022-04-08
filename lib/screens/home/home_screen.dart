@@ -1530,7 +1530,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       .data
                                                                       .data[0]
                                                                       .assignments[
-                                                                          0]
+                                                                          index]
                                                                       .jobTitle
                                                                       .toString() !=
                                                                   null
@@ -1538,7 +1538,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   .data
                                                                   .data[0]
                                                                   .assignments[
-                                                                      0]
+                                                                      index]
                                                                   .jobTitle
                                                               : '',
                                                           style: TextStyle(
