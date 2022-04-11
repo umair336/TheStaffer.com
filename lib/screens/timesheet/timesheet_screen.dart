@@ -15,7 +15,9 @@ class TimesheetScreen extends StatefulWidget {
 }
 
 class _TimesheetScreenState extends State<TimesheetScreen> {
-  Future<TimeSheetData> futureData;
+   /// Future<TimeSheetData> futureData;
+   Future<TimeSheetModel> showTimeSheetData;
+
   bool isExpanded = false;
   String start = "";
   String end = "";
@@ -44,15 +46,16 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
 
     initializeDateFormatting();
 
-    futureData = timesheet(startDate, endDate);
+    showTimeSheetData = timesheet(startDate, endDate);
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    futureData = timesheet(startDate, endDate);
+   // futureData = timesheet(startDate, endDate);
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +63,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
 
     return new Scaffold(
         body: SingleChildScrollView(
-            child: FutureBuilder<TimeSheetData>(
-                future: futureData,
+            child: FutureBuilder<TimeSheetModel>(
+                future: showTimeSheetData,
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.none:
@@ -1429,10 +1432,10 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
         startDate = DateFormat('yyyy/M/d').format(selected);
         print('rrrrrrrrrrrrrrrrrrrr');
 
-        // timesheet(startDate, endDate);
+        timesheet(startDate, endDate);
         var fre = timesheet(startDate, endDate);
         setState(() {
-          futureData = fre;
+          showTimeSheetData = fre;
         });
       });
   }
@@ -1463,7 +1466,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
 
         var fre = timesheet(startDate, endDate);
         setState(() {
-          futureData = fre;
+         showTimeSheetData = fre;
         });
         // timesheet(startDate, endDate);
 

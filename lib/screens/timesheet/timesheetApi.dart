@@ -7,14 +7,14 @@ import 'dart:convert';
 ///
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
-Future<TimeSheetData> timesheet(String dateStart, String dateEnd) async {
+Future<TimeSheetModel> timesheet(String dateStart, String dateEnd) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  String a = '2022/1/2';
+ /* String a = '2022/1/2';
   String b = '2022/2/11';
 
   var url =
-      'https://dev2.thestaffer.com/api/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd';
+      'https://dev2.thestaffer.com/api/admin/employee/timesheet/list?start_date=2022/3/10&end_date=2022/4/13';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');
@@ -34,15 +34,33 @@ Future<TimeSheetData> timesheet(String dateStart, String dateEnd) async {
     return TimeSheetData.fromJson(jsonDecode(response.body));
   } else {
     print('vvvvvvvvvvvvvvvvvvv');
-  }
-}
+  }*/
+   Map<String, String> header = {
+      "Accept": "application/json",
+      'Content-Type':'application/json',
+      'Authorization': 'Bearer ${token.toString()}'
+    };
 
-class TimeSheetData {
+    final response =
+    await http.get(Uri.parse( 'https://dev2.thestaffer.com/api/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd'),headers: header,);
+
+    print("response body: url hit good: ${response.body.toString()}");
+
+    if (response.statusCode == 200) {
+      final parsed = json.decode(response.body);
+       print("response body: url : ${parsed}");
+       return TimeSheetModel.fromJson(parsed);
+
+    } else {
+      throw Exception('Failed to load album');
+    }
+}
+class TimeSheetModel {
   List<Timesheet> timesheet;
 
-  TimeSheetData({this.timesheet});
+  TimeSheetModel({this.timesheet});
 
-  TimeSheetData.fromJson(Map<String, dynamic> json) {
+  TimeSheetModel.fromJson(Map<String, dynamic> json) {
     if (json['timesheet'] != null) {
       timesheet = <Timesheet>[];
       json['timesheet'].forEach((v) {
@@ -120,7 +138,7 @@ class Timesheet {
     timesheetType = json['timesheet_type'];
     customerName = json['customer_name'];
    
-    overRate = json['over_rate'];
+    // overRate = json['over_rate'];
     jobPosition = json['job_position'];
   }
 
@@ -143,7 +161,7 @@ class Timesheet {
     data['timesheet_type'] = this.timesheetType;
     data['customer_name'] = this.customerName;
 
-    data['over_rate'] = this.overRate;
+    // data['over_rate'] = this.overRate;
     data['job_position'] = this.jobPosition;
     return data;
   }
