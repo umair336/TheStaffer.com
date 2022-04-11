@@ -21,9 +21,24 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         super(LoginInitial()) {
     on<LoginButtonPressed>((event, emit) async {
       if (event is LoginButtonPressed) {
-      emit( LoginLoading());
+        emit(LoginLoading());
+        /////////
+        final token = await userRepository.login(
+          event.email,
+          event.password,
+        );
+        print('kkkkkkkkkkkkkk$token');
+        if (token != null) {
+          authenticationBloc.add(LoggedIn(token: token));
+          emit(LoginInitial());
+             print('oooo');
+        } else {
+          print('qqqqq');
+          emit (LoginFailure(error: 'error'));
+        }
 
-      try {
+/////////////
+        /* try {
         final token = await userRepository.login(
           event.email,
           event.password,
@@ -32,8 +47,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit( LoginInitial());
       } catch (error) {
         emit (LoginFailure(error: error.toString()));
+      }*/
       }
-    }
     });
   }
 
