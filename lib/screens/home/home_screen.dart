@@ -241,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       .start,
                                                               children: [
                                                                 Text(
-                                                                  'Total Hourss',
+                                                                  'Total Hours',
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           14,
@@ -352,13 +352,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             snapshot
                                                                         .data
                                                                         .data[0]
-                                                                        .totalWeeklyHours
+                                                                        .preWeeklyHours
                                                                         .toString() !=
                                                                     null
                                                                 ? snapshot
                                                                     .data
                                                                     .data[0]
-                                                                    .totalWeeklyHours
+                                                                    .preWeeklyHours
                                                                 : '',
                                                             style: TextStyle(
                                                               fontSize: 30,

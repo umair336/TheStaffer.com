@@ -59,6 +59,7 @@ class Home {
 
 class Data {
   String totalWeeklyHours;
+  String preWeeklyHours;
   String empName;
   String profilePic;
   List<Assignments> assignments;
@@ -75,6 +76,7 @@ class Data {
 
   Data(
       {this.totalWeeklyHours,
+      this.preWeeklyHours,
       this.empName,
       this.profilePic,
       this.assignments,
@@ -91,6 +93,7 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     totalWeeklyHours = json['total_weekly_hours'];
+    preWeeklyHours = json['prev_weekly_hours'];
     empName = json['emp_name'];
     profilePic = json['profile_pic'];
     if (json['assignments'] != null) {
@@ -114,6 +117,7 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['total_weekly_hours'] = this.totalWeeklyHours;
+    data['prev_weekly_hours'] = this.preWeeklyHours;
     data['emp_name'] = this.empName;
     data['profile_pic'] = this.profilePic;
     if (this.assignments != null) {
