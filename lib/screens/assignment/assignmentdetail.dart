@@ -38,6 +38,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var offtime = [];
   var now = DateTime.now();
   var payrate;
+  var otPayrate;
   //String showtimeStart = "";
   // String showtimeEnd = "";
 
@@ -425,8 +426,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             Column(
                                               children: [
                                                 Container(
-                                                  child: _Function(snapshot
-                                                      .data.detail.payRate),
+                                                  child: _FunctionPayrate(
+                                                      snapshot
+                                                          .data.detail.payRate),
                                                 ),
                                                 Text(
                                                   //  '\$00.00/hr',
@@ -457,7 +459,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(right: 17),
+                                      padding: EdgeInsets.only(right: 30),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.baseline,
@@ -476,7 +478,42 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           SizedBox(
                                             height: 5,
                                           ),
-                                          Text(
+                                          if (snapshot.data.detail
+                                                  .overtimePayRate !=
+                                              null)
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  child: _FunctionOtPayrate(
+                                                      snapshot.data.detail
+                                                          .overtimePayRate),
+                                                ),
+                                                Text(
+                                                  //  '\$00.00/hr',
+
+                                                  otPayrate,
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          else
+                                            Text(
+                                              '00',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito Sans',
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14.0,
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
+                                              ),
+                                            )
+                                          /*Text(
                                             //  '\OT Pay Rate',
 
                                             snapshot.data.detail
@@ -491,7 +528,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               fontSize: 14.0,
                                               color: Color.fromRGBO(0, 0, 0, 1),
                                             ),
-                                          ),
+                                          ),*/
                                         ],
                                       ),
                                     )
@@ -2051,11 +2088,19 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     // starttime.clear();
     // offtime.clear()
   }*/
-  _Function(var a) {
+  _FunctionPayrate(var a) {
     print('aaaaaaaaaaaaaaaaaaaaaaaa$a');
     //  double d = double.parse(a);
     payrate = double.parse(a).toStringAsFixed(2); // '2.35'
     //  double inDouble = double.parse(inString);
     print('dddddddddds$payrate');
+  }
+
+  _FunctionOtPayrate(var b) {
+    print('aaaaaaaaaaaaaaaaaaaaaaaa$b');
+    //  double d = double.parse(a);
+    otPayrate = double.parse(b).toStringAsFixed(2); // '2.35'
+    //  double inDouble = double.parse(inString);
+    print('dddddddddds$otPayrate');
   }
 }
