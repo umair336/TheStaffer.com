@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
+import '../assignment/assignmentdetail.dart';
 import './homeapi.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
@@ -1503,142 +1504,168 @@ class _HomeScreenState extends State<HomeScreen> {
                                         itemCount: snapshot
                                             .data.data[0].assignments.length,
                                         itemBuilder: (context, index) {
-                                          return Card(
-                                            elevation: 4.0,
-                                            shadowColor:
-                                                Colors.grey.withOpacity(0.2),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.baseline,
-                                              textBaseline:
-                                                  TextBaseline.alphabetic,
-                                              children: [
-                                                //////////////////////
-                                                SizedBox(
-                                                  height: 15,
-                                                ),
-                                                Container(
-                                                  child: Row(
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .fromLTRB(
-                                                                20, 0, 120, 0),
-                                                        child: Text(
-                                                          snapshot
-                                                                      .data
-                                                                      .data[0]
-                                                                      .assignments[
-                                                                          index]
-                                                                      .jobTitle
-                                                                      .toString() !=
-                                                                  null
-                                                              ? snapshot
-                                                                  .data
-                                                                  .data[0]
-                                                                  .assignments[
-                                                                      index]
-                                                                  .jobTitle
-                                                              : '',
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 14,
-                                                              fontFamily:
-                                                                  'Nunito Sans',
-                                                              color: Color
-                                                                  .fromRGBO(
-                                                                      13,
-                                                                      91,
-                                                                      196,
-                                                                      1)),
+                                          return InkWell(
+                                            onTap: (() {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            Assignmentdetail(
+                                                              jobid:    snapshot
+                                                                        .data
+                                                                        .data[0]
+                                                                        .assignments[
+                                                                            index].jobId
+                                                            )));
+                                            }),
+                                            child: Card(
+                                              elevation: 4.0,
+                                              shadowColor:
+                                                  Colors.grey.withOpacity(0.2),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.baseline,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  //////////////////////
+                                                  SizedBox(
+                                                    height: 15,
+                                                  ),
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  20,
+                                                                  0,
+                                                                  120,
+                                                                  0),
+                                                          child: Text(
+                                                            snapshot
+                                                                        .data
+                                                                        .data[0]
+                                                                        .assignments[
+                                                                            index]
+                                                                        .jobTitle
+                                                                        .toString() !=
+                                                                    null
+                                                                ? snapshot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .assignments[
+                                                                        index]
+                                                                    .jobTitle
+                                                                : '',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 14,
+                                                                fontFamily:
+                                                                    'Nunito Sans',
+                                                                color: Color
+                                                                    .fromRGBO(
+                                                                        13,
+                                                                        91,
+                                                                        196,
+                                                                        1)),
+                                                          ),
                                                         ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 20,
-                                                      )
-                                                    ],
+                                                        SizedBox(
+                                                          width: 20,
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  height: 11,
-                                                ),
-                                                Container(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 20),
-                                                  child: Text(
-                                                    snapshot
-                                                                .data
-                                                                .data[0]
-                                                                .assignments[
-                                                                    index]
-                                                                .customerName !=
-                                                            null
-                                                        ? snapshot
-                                                            .data
-                                                            .data[0]
-                                                            .assignments[index]
-                                                            .customerName
-                                                        : '',
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        fontFamily:
-                                                            'Nunito Sans',
-                                                        color: Color.fromRGBO(
-                                                            112, 112, 112, 1)),
+                                                  SizedBox(
+                                                    height: 11,
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  height: 9,
-                                                ),
-
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 20),
-                                                  child: Text(
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 20),
+                                                    child: Text(
                                                       snapshot
                                                                   .data
                                                                   .data[0]
                                                                   .assignments[
                                                                       index]
-                                                                  .startDate !=
+                                                                  .customerName !=
                                                               null
-                                                          ? DateFormat(
-                                                                  formatapi)
-                                                              .format(DateTime
-                                                                  .parse(snapshot
-                                                                      .data
-                                                                      .data[0]
-                                                                      .assignments[
-                                                                          index]
-                                                                      .startDate))
-                                                          : ' - - - ',
+                                                          ? snapshot
+                                                              .data
+                                                              .data[0]
+                                                              .assignments[
+                                                                  index]
+                                                              .customerName
+                                                          : '',
                                                       style: TextStyle(
-                                                          fontSize: 12,
+                                                          fontSize: 10,
                                                           fontWeight:
-                                                              FontWeight.bold,
+                                                              FontWeight.w600,
                                                           fontFamily:
                                                               'Nunito Sans',
                                                           color: Color.fromRGBO(
-                                                              31, 33, 38, 1))),
+                                                              112,
+                                                              112,
+                                                              112,
+                                                              1)),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 9,
+                                                  ),
 
-                                                  /* Text(
-                                                tiledate.toString(),
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: 'Nunito Sans',
-                                                    color: Color.fromRGBO(
-                                                        31, 33, 38, 1)),
-                                              ),*/
-                                                )
-                                              ],
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 20),
+                                                    child: Text(
+                                                        snapshot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .assignments[
+                                                                        index]
+                                                                    .startDate !=
+                                                                null
+                                                            ? DateFormat(
+                                                                    formatapi)
+                                                                .format(DateTime
+                                                                    .parse(snapshot
+                                                                        .data
+                                                                        .data[0]
+                                                                        .assignments[
+                                                                            index]
+                                                                        .startDate))
+                                                            : ' - - - ',
+                                                        style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Nunito Sans',
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    31,
+                                                                    33,
+                                                                    38,
+                                                                    1))),
+
+                                                    /* Text(
+                                                  tiledate.toString(),
+                                                  style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          31, 33, 38, 1)),
+                                                ),*/
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           );
                                         }),
