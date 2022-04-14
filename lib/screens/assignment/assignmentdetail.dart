@@ -37,6 +37,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var starttime = [];
   var offtime = [];
   var now = DateTime.now();
+  var payrate;
   //String showtimeStart = "";
   // String showtimeEnd = "";
 
@@ -419,19 +420,39 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           SizedBox(
                                             height: 5,
                                           ),
-                                          Text(
-                                            //  '\$00.00/hr',
+                                          if (snapshot.data.detail.payRate !=
+                                              null)
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  child: _Function(snapshot
+                                                      .data.detail.payRate),
+                                                ),
+                                                Text(
+                                                  //  '\$00.00/hr',
 
-                                            snapshot.data.detail.payRate != null
-                                                ? snapshot.data.detail.payRate
-                                                : '  ',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Color.fromRGBO(0, 0, 0, 1),
-                                            ),
-                                          ),
+                                                  payrate,
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          else
+                                            Text(
+                                              '00',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito Sans',
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14.0,
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
+                                              ),
+                                            )
                                         ],
                                       ),
                                     ),
@@ -2030,4 +2051,11 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     // starttime.clear();
     // offtime.clear()
   }*/
+  _Function(var a) {
+    print('aaaaaaaaaaaaaaaaaaaaaaaa$a');
+    //  double d = double.parse(a);
+    payrate = double.parse(a).toStringAsFixed(2); // '2.35'
+    //  double inDouble = double.parse(inString);
+    print('dddddddddds$payrate');
+  }
 }
