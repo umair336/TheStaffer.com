@@ -110,7 +110,7 @@ class _LoginFormState extends State<LoginForm> {
                                   borderRadius: BorderRadius.circular(5.0)),
                               contentPadding:
                                   EdgeInsets.only(left: 10.0, right: 10.0),
-                              labelText: "Email or User name",
+                              labelText: "User name",
                               hintStyle: TextStyle(
                                   fontSize: 12.0,
                                   color: Colors.white,
