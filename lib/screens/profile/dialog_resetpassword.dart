@@ -342,13 +342,15 @@ class _MyDialogState extends State<MyDialog> {
         body: body);
     print("${response.statusCode}");
     if (response.statusCode == 200) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Your password has been updated successfully"),
+      Flushbar(
+        //   title: 'Hey Ninja',
+        message: response.body.substring(11, response.body.length - 3),
+        duration: Duration(seconds: 3),
         backgroundColor: Color.fromRGBO(183, 14, 105, 1),
-      ));
+      ).show(context);
     }
     if (response.statusCode == 200) {
-      Navigator.pop(context);
+      // Navigator.pop(context);
     }
     print("${response.body}");
     return response;
