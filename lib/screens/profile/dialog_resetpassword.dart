@@ -286,7 +286,16 @@ class _MyDialogState extends State<MyDialog> {
       print('correct');
       if (newp == confirmp) {
         print('truen');
-        postRequest(curentp, newp, confirmp);
+        if (newp != confirmpassword) {
+          //  postRequest(curentp, newp, confirmp);
+        } else {
+          Flushbar(
+            // title: 'Hey Ninja',
+            message: 'Old and new password match .Write  another password',
+            duration: Duration(seconds: 3),
+            backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+          ).show(context);
+        }
       } else {
         /*ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text("new and confirm password not match"),
