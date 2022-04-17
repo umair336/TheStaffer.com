@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../constants/formate.dart';
 import './assignmentapi.dart';
 import 'assignmentdetail.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
@@ -11,11 +12,14 @@ class Upcomingassignment extends StatefulWidget {
 
 class _UpcomingassignmentState extends State<Upcomingassignment> {
   Future<AssignmentApi> futureData;
+  Future<FormateApi> futureFormate;
+
   bool show = false;
   @override
   void initState() {
     super.initState();
     futureData = fetchassignment();
+    futureFormate = fetchformate();
   }
 
   @override
@@ -351,29 +355,27 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                               SizedBox(
                                                                 height: 2,
                                                               ),
-
-                                                              //
-                                                              Text(
-                                                                  snapshot.data.data[index].startDate !=
-                                                                          null
-                                                                      ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              index]
-                                                                          .startDate))
-                                                                      : ' ',
-                                                                  style:
-                                                                      TextStyle(
-                                                                          color: Color.fromRGBO(
-                                                                              0,
-                                                                              0,
-                                                                              0,
-                                                                              1),
-                                                                          //fontWeight: FontWeight.w600,
-                                                                          fontWeight: FontWeight
-                                                                              .bold,
-                                                                          fontSize:
-                                                                              14.0)),
+                                                              Container(
+                                                                  child: FutureBuilder<
+                                                                          FormateApi>(
+                                                                      future:
+                                                                          futureFormate,
+                                                                      builder:
+                                                                          (context,
+                                                                              snapshoot) {
+                                                                        if (snapshoot
+                                                                            .hasData) {
+                                                                          return Text(
+                                                                              snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
+                                                                              style: TextStyle(
+                                                                                  color: Color.fromRGBO(0, 0, 0, 1),
+                                                                                  //fontWeight: FontWeight.w600,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontSize: 14.0));
+                                                                        } else {
+                                                                          return Container();
+                                                                        }
+                                                                      })),
                                                             ],
                                                           ),
                                                         ),
@@ -401,23 +403,68 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                 SizedBox(
                                                                   height: 2,
                                                                 ),
-                                                                Text(
-                                                                    snapshot.data.data[index].endDate !=
-                                                                            null
-                                                                        ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
+                                                                snapshot
                                                                             .data
                                                                             .data[
                                                                                 index]
-                                                                            .endDate))
-                                                                        : DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
-                                                                            .data
-                                                                            .data[index]
-                                                                            .jobEndDate)),
-                                                                    style: TextStyle(
-                                                                        color: Color.fromRGBO(0, 0, 0, 1),
-                                                                        //fontWeight: FontWeight.w600,
-                                                                        fontWeight: FontWeight.bold,
-                                                                        fontSize: 14.0)),
+                                                                            .endDate !=
+                                                                        null
+                                                                    ? Container(
+                                                                        child: FutureBuilder<
+                                                                                FormateApi>(
+                                                                            future:
+                                                                                futureFormate,
+                                                                            builder: (context,
+                                                                                snapshoot) {
+                                                                              if (snapshoot.hasData) {
+                                                                                return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].endDate)),
+                                                                                    //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
+                                                                                    style: TextStyle(
+                                                                                        color: Color.fromRGBO(0, 0, 0, 1),
+                                                                                        //fontWeight: FontWeight.w600,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                        fontSize: 14.0));
+                                                                              } else {
+                                                                                return Container();
+                                                                              }
+                                                                            }))
+                                                                    : Container(
+                                                                        child: FutureBuilder<
+                                                                                FormateApi>(
+                                                                            future:
+                                                                                futureFormate,
+                                                                            builder:
+                                                                                (context, snapshoot) {
+                                                                              if (snapshoot.hasData) {
+                                                                                return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].jobEndDate)),
+                                                                                    style: TextStyle(
+                                                                                        color: Color.fromRGBO(0, 0, 0, 1),
+                                                                                        //fontWeight: FontWeight.w600,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                        fontSize: 14.0));
+                                                                              } else {
+                                                                                return Container();
+                                                                              }
+                                                                            }))
+
+                                                                /*/
+                                                                  Text(
+                                                                      snapshot.data.data[index].endDate !=
+                                                                              null
+                                                                          ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
+                                                                              .data
+                                                                              .data[
+                                                                                  index]
+                                                                              .endDate))
+                                                                          : DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
+                                                                              .data
+                                                                              .data[index]
+                                                                              .jobEndDate)),
+                                                                      style: TextStyle(
+                                                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                                                          //fontWeight: FontWeight.w600,
+                                                                          fontWeight: FontWeight.bold,
+                                                                          fontSize: 14.0)),*/
                                                               ],
                                                             ),
                                                           ),

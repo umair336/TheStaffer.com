@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../constants/formate.dart';
 import './assignment_screen.dart';
 import './assignmentDetailApi.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
@@ -17,6 +18,7 @@ class Assignmentdetail extends StatefulWidget {
 
 class _AssignmentdetailState extends State<Assignmentdetail> {
   Future<Detailassignment> futureData;
+  Future<FormateApi> futureFormate;
   bool timeount_false = false;
   bool in_out = true;
   bool break_start_end = true;
@@ -48,11 +50,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     futureData = fetchAssignmentDetail(widget.jobid);
     _t = TimeOfDay.now();
     _pp = TimeOfDay.now();
+    futureFormate = fetchformate();
   }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: FutureBuilder<Detailassignment>(
@@ -306,7 +310,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.fromLTRB(20, 0, 60, 0),
+                                    const EdgeInsets.fromLTRB(20, 0, 30, 0),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -330,27 +334,50 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           SizedBox(
                                             height: 5,
                                           ),
-                                          Text(
-                                            //   'JAN 00,2000',
-                                            snapshot.data.detail.record
-                                                        .startDate !=
-                                                    null
-                                                ? snapshot.data.detail.record
-                                                    .startDate
-                                                : '  ',
-
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Color.fromRGBO(0, 0, 0, 1),
-                                            ),
-                                          ),
+                                          Container(
+                                              child: FutureBuilder<FormateApi>(
+                                                  future: futureFormate,
+                                                  builder:
+                                                      (context, snapshoot) {
+                                                    if (snapshoot.hasData) {
+                                                      return Text(
+                                                        snapshot
+                                                                    .data
+                                                                    .detail
+                                                                    .record
+                                                                    .startDate
+                                                                    .toString() !=
+                                                                null
+                                                            ? DateFormat(snapshoot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .currentDateFormat)
+                                                                .format(DateTime
+                                                                    .parse(snapshot
+                                                                        .data
+                                                                        .detail
+                                                                        .record
+                                                                        .startDate))
+                                                            : ' - - - ',
+                                                        style: TextStyle(
+                                                          fontFamily:
+                                                              'Nunito Sans',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14.0,
+                                                          color: Color.fromRGBO(
+                                                              0, 0, 0, 1),
+                                                        ),
+                                                      );
+                                                    } else {
+                                                      return Container();
+                                                    }
+                                                  })),
                                         ],
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(right: 17),
+                                      padding: EdgeInsets.only(right: 0),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.baseline,
@@ -369,23 +396,45 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           SizedBox(
                                             height: 5,
                                           ),
-                                          Text(
-                                            //   'JAN 00,2000',
-
-                                            snapshot.data.detail.record
-                                                        .endDate !=
-                                                    null
-                                                ? snapshot
-                                                    .data.detail.record.endDate
-                                                : ' ',
-
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Color.fromRGBO(0, 0, 0, 1),
-                                            ),
-                                          ),
+                                          Container(
+                                              child: FutureBuilder<FormateApi>(
+                                                  future: futureFormate,
+                                                  builder:
+                                                      (context, snapshoot) {
+                                                    if (snapshoot.hasData) {
+                                                      return Text(
+                                                        snapshot
+                                                                    .data
+                                                                    .detail
+                                                                    .record
+                                                                    .endDate
+                                                                    .toString() !=
+                                                                null
+                                                            ? DateFormat(snapshoot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .currentDateFormat)
+                                                                .format(DateTime
+                                                                    .parse(snapshot
+                                                                        .data
+                                                                        .detail
+                                                                        .record
+                                                                        .endDate))
+                                                            : ' - - - ',
+                                                        style: TextStyle(
+                                                          fontFamily:
+                                                              'Nunito Sans',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14.0,
+                                                          color: Color.fromRGBO(
+                                                              0, 0, 0, 1),
+                                                        ),
+                                                      );
+                                                    } else {
+                                                      return Container();
+                                                    }
+                                                  })),
                                         ],
                                       ),
                                     )
@@ -459,7 +508,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(right: 30),
+                                      padding: EdgeInsets.only(right: 32),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.baseline,

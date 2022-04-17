@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../constants/formate.dart';
 import './assignmentapi.dart';
 import 'assignmentdetail.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
@@ -11,11 +12,13 @@ class PastAssignment extends StatefulWidget {
 
 class _PastAssignmentState extends State<PastAssignment> {
   Future<AssignmentApi> futureData;
+ Future<FormateApi> futureFormate;
 
   @override
   void initState() {
     super.initState();
     futureData = fetchassignment();
+      futureFormate = fetchformate();
   }
 
   @override
@@ -327,7 +330,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                     SizedBox(
                                                       height: 15,
                                                     ),
-                                                    Padding(
+                                                       Padding(
                                                       padding: const EdgeInsets
                                                               .fromLTRB(
                                                           18, 0, 20, 0),
@@ -352,21 +355,26 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                 SizedBox(
                                                                   height: 2,
                                                                 ),
-
-                                                                //
-                                                                Text(
-                                                                    snapshot.data.data[index].startDate !=
-                                                                            null
-                                                                        ? DateFormat('yyyy/M/d').format(DateTime.parse(snapshot
-                                                                            .data
-                                                                            .data[index]
-                                                                            .startDate))
-                                                                        : ' ',
-                                                                    style: TextStyle(
-                                                                        color: Color.fromRGBO(0, 0, 0, 1),
-                                                                        //fontWeight: FontWeight.w600,
-                                                                        fontWeight: FontWeight.bold,
-                                                                        fontSize: 14.0)),
+                                                                Container(
+                                                                    child: FutureBuilder<
+                                                                            FormateApi>(
+                                                                        future:
+                                                                            futureFormate,
+                                                                        builder:
+                                                                            (context,
+                                                                                snapshoot) {
+                                                                          if (snapshoot
+                                                                              .hasData) {
+                                                                            return Text(snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
+                                                                                style: TextStyle(
+                                                                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                                                                    //fontWeight: FontWeight.w600,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontSize: 14.0));
+                                                                          } else {
+                                                                            return Container();
+                                                                          }
+                                                                        })),
                                                               ],
                                                             ),
                                                           ),
@@ -394,6 +402,60 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                   SizedBox(
                                                                     height: 2,
                                                                   ),
+                                                                  snapshot.data.data[index].endDate !=
+                                                                              null
+                                                                          ?Container(
+                                                                    child: FutureBuilder<
+                                                                            FormateApi>(
+                                                                        future:
+                                                                            futureFormate,
+                                                                        builder:
+                                                                            (context,
+                                                                                snapshoot) {
+                                                                          if (snapshoot
+                                                                              .hasData) {
+                                                                            return Text(
+                                                                               DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot
+                                                                              .data
+                                                                              .data[
+                                                                                  index]
+                                                                              .endDate)),
+                                                                              //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
+                                                                                style: TextStyle(
+                                                                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                                                                    //fontWeight: FontWeight.w600,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontSize: 14.0));
+                                                                          } else {
+                                                                            return Container();
+                                                                          }
+                                                                        }))        : Container(
+                                                                    child: FutureBuilder<
+                                                                            FormateApi>(
+                                                                        future:
+                                                                            futureFormate,
+                                                                        builder:
+                                                                            (context,
+                                                                                snapshoot) {
+                                                                          if (snapshoot
+                                                                              .hasData) {
+                                                                            return 
+                                                                            Text(  DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot
+                                                                              .data
+                                                                              .data[
+                                                                                  index]
+                                                                              .jobEndDate)),
+                                                                                style: TextStyle(
+                                                                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                                                                    //fontWeight: FontWeight.w600,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontSize: 14.0));
+                                                                          } else {
+                                                                            return Container();
+                                                                          }
+                                                                        }))
+
+                                                                  /*/
                                                                   Text(
                                                                       snapshot.data.data[index].endDate !=
                                                                               null
@@ -410,7 +472,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                           color: Color.fromRGBO(0, 0, 0, 1),
                                                                           //fontWeight: FontWeight.w600,
                                                                           fontWeight: FontWeight.bold,
-                                                                          fontSize: 14.0)),
+                                                                          fontSize: 14.0)),*/
                                                                 ],
                                                               ),
                                                             ),
