@@ -286,12 +286,13 @@ class _MyDialogState extends State<MyDialog> {
       print('correct');
       if (newp == confirmp) {
         print('truen');
-        if (newp != confirmpassword) {
-          //  postRequest(curentp, newp, confirmp);
+        if (newp != confirmp) {
+          Text('ddddddddddddd');
+           postRequest(curentp, newp, confirmp);
         } else {
           Flushbar(
             // title: 'Hey Ninja',
-            message: 'Old and new password match .Write  another password',
+            message: 'You used this password recently please choose a different one',
             duration: Duration(seconds: 3),
             backgroundColor: Color.fromRGBO(183, 14, 105, 1),
           ).show(context);
