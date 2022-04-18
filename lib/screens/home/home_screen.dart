@@ -42,6 +42,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return new Scaffold(
       backgroundColor: const Color(0xfffafafa),
       body: RefreshIndicator(
+        //   displacement: 250,
+        backgroundColor: Colors.white,
+        color: Color.fromRGBO(13, 91, 196, 1),
+        //  strokeWidth: 2,
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
         onRefresh: () {
           Navigator.pushReplacement(
               context,
