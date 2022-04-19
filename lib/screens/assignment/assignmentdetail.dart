@@ -322,7 +322,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         textBaseline: TextBaseline.alphabetic,
                                         children: [
                                           Text(
-                                            'Starting from',
+                                            'Start Date',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               //  fontWeight: FontWeight.bold,
@@ -384,7 +384,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         textBaseline: TextBaseline.alphabetic,
                                         children: [
                                           Text(
-                                            'Ending from',
+                                            'End Date',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               //  fontWeight: FontWeight.bold,
@@ -671,7 +671,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            'Break time ',
+                                            'Break Time ',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               //  fontWeight: FontWeight.bold,
@@ -710,7 +710,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            'Total time ',
+                                            'Total Time ',
                                             style: TextStyle(
                                               fontFamily: 'Nunito Sans',
                                               //  fontWeight: FontWeight.bold,
