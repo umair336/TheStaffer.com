@@ -157,6 +157,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                           child: Column(
                             children: [
                               SizedBox(height: 12),
+
                               Padding(
                                 padding:
                                     const EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -228,8 +229,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 ),
                               ),
                               SizedBox(
-                                height: 25,
+                                height: 20,
                               ),
+
                               Padding(
                                 padding:
                                     const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -279,7 +281,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           ),
                                           Container(
                                             //  height: 20,
-                                            width: 129,
+                                            width: 130,
                                             child: Text(
                                               //'New York, NY',
 
@@ -305,99 +307,109 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                   ],
                                 ),
                               ),
+
                               SizedBox(
-                                height: 25,
+                                height: 20,
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(20, 0, 30, 0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.baseline,
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: [
-                                          Text(
-                                            'Start Date',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              //  fontWeight: FontWeight.bold,
-                                              fontSize: 10.0,
-                                              color: Color.fromRGBO(
-                                                  112, 112, 112, 1),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                              child: FutureBuilder<FormateApi>(
-                                                  future: futureFormate,
-                                                  builder:
-                                                      (context, snapshoot) {
-                                                    if (snapshoot.hasData) {
-                                                      return Text(
-                                                        snapshot
-                                                                    .data
-                                                                    .detail
-                                                                    .record
-                                                                    .startDate
-                                                                    .toString() !=
-                                                                null
-                                                            ? DateFormat(snapshoot
-                                                                    .data
-                                                                    .data[0]
-                                                                    .currentDateFormat)
-                                                                .format(DateTime
-                                                                    .parse(snapshot
+
+                              Container(
+                                height: 50,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 0),
+                                  child: Stack(
+                                    alignment: AlignmentDirectional.center,
+                                    children: <Widget>[
+                                      /** Positioned WIdget **/
+                                      Positioned(
+                                        top: 0,
+                                        left: 20,
+                                        child: Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Text("Start Date ",
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    //  fontWeight: FontWeight.bold,
+                                                    fontSize: 10.0,
+                                                    color: Color.fromRGBO(
+                                                        112, 112, 112, 1),
+                                                  )),
+                                              SizedBox(
+                                                height: 2,
+                                              ),
+                                              Container(
+                                                  child: FutureBuilder<
+                                                          FormateApi>(
+                                                      future: futureFormate,
+                                                      builder:
+                                                          (context, snapshoot) {
+                                                        if (snapshoot.hasData) {
+                                                          return Text(
+                                                            snapshot
+                                                                        .data
+                                                                        .detail
+                                                                        .record
+                                                                        .startDate
+                                                                        .toString() !=
+                                                                    null
+                                                                ? DateFormat(snapshoot
+                                                                        .data
+                                                                        .data[0]
+                                                                        .currentDateFormat)
+                                                                    .format(DateTime.parse(snapshot
                                                                         .data
                                                                         .detail
                                                                         .record
                                                                         .startDate))
-                                                            : ' - - - ',
-                                                        style: TextStyle(
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 14.0,
-                                                          color: Color.fromRGBO(
-                                                              0, 0, 0, 1),
-                                                        ),
-                                                      );
-                                                    } else {
-                                                      return Container();
-                                                    }
-                                                  })),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(right: 0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.baseline,
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: [
-                                          Text(
-                                            'End Date',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              //  fontWeight: FontWeight.bold,
-                                              fontSize: 10.0,
-                                              color: Color.fromRGBO(
-                                                  112, 112, 112, 1),
-                                            ),
+                                                                : ' - - - ',
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  'Nunito Sans',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 14.0,
+                                                              color: Color
+                                                                  .fromRGBO(0,
+                                                                      0, 0, 1),
+                                                            ),
+                                                          );
+                                                        } else {
+                                                          return Container();
+                                                        }
+                                                      })),
+                                            ],
                                           ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Container(
-                                              child: FutureBuilder<FormateApi>(
+                                        ), //Icon
+                                      ), //Positioned
+                                      /** Positioned WIdget **/
+
+                                      Positioned(
+                                        top: 0,
+                                        left: 160,
+                                        child: Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Text("End Date ",
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    //  fontWeight: FontWeight.bold,
+                                                    fontSize: 10.0,
+                                                    color: Color.fromRGBO(
+                                                        112, 112, 112, 1),
+                                                  )),
+                                              SizedBox(
+                                                height: 2,
+                                              ),
+                                              FutureBuilder<FormateApi>(
                                                   future: futureFormate,
                                                   builder:
                                                       (context, snapshoot) {
@@ -434,55 +446,76 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     } else {
                                                       return Container();
                                                     }
-                                                  })),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                                  }),
+                                            ],
+                                          ),
+                                        ),
+                                      ), //Positioned
+                                    ], //<Widget>[]
+                                  ), //Stack
                                 ),
                               ),
-                              SizedBox(
-                                height: 25,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(20, 0, 60, 0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.baseline,
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: [
-                                          Text(
-                                            'Pay Rate',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              //  fontWeight: FontWeight.bold,
-                                              fontSize: 10.0,
-                                              color: Color.fromRGBO(
-                                                  112, 112, 112, 1),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          if (snapshot.data.detail.payRate !=
-                                              null)
-                                            Column(
-                                              children: [
-                                                Container(
-                                                  child: _FunctionPayrate(
-                                                      snapshot
-                                                          .data.detail.payRate),
+                              ///////////////////////////////
+                              Container(
+                                height: 50,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 0),
+                                  child: Stack(
+                                    alignment: AlignmentDirectional.center,
+                                    children: <Widget>[
+                                      /** Positioned WIdget **/
+                                      Positioned(
+                                        top: 0,
+                                        left: 20,
+                                        child: Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Text(
+                                                'Pay Rate',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  //  fontWeight: FontWeight.bold,
+                                                  fontSize: 10.0,
+                                                  color: Color.fromRGBO(
+                                                      112, 112, 112, 1),
                                                 ),
-                                                Text(
-                                                  //  '\$00.00/hr',
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              if (snapshot
+                                                      .data.detail.payRate !=
+                                                  null)
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      child: _FunctionPayrate(
+                                                          snapshot.data.detail
+                                                              .payRate),
+                                                    ),
+                                                    Text(
+                                                      //  '\$00.00/hr',
 
-                                                  payrate,
+                                                      payrate,
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            'Nunito Sans',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            0, 0, 0, 1),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
+                                              else
+                                                Text(
+                                                  '00',
                                                   style: TextStyle(
                                                     fontFamily: 'Nunito Sans',
                                                     fontWeight: FontWeight.bold,
@@ -490,57 +523,65 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     color: Color.fromRGBO(
                                                         0, 0, 0, 1),
                                                   ),
-                                                ),
-                                              ],
-                                            )
-                                          else
-                                            Text(
-                                              '00',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.0,
-                                                color:
-                                                    Color.fromRGBO(0, 0, 0, 1),
-                                              ),
-                                            )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(right: 32),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.baseline,
-                                        textBaseline: TextBaseline.alphabetic,
-                                        children: [
-                                          Text(
-                                            'OT Pay Rate',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              //  fontWeight: FontWeight.bold,
-                                              fontSize: 10.0,
-                                              color: Color.fromRGBO(
-                                                  112, 112, 112, 1),
-                                            ),
+                                                )
+                                            ],
                                           ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          if (snapshot.data.detail
-                                                  .overtimePayRate !=
-                                              null)
-                                            Column(
-                                              children: [
-                                                Container(
-                                                  child: _FunctionOtPayrate(
-                                                      snapshot.data.detail
-                                                          .overtimePayRate),
-                                                ),
-                                                Text(
-                                                  //  '\$00.00/hr',
+                                        ), //Icon
+                                      ), //Positioned
+                                      /** Positioned WIdget **/
 
-                                                  otPayrate,
+                                      Positioned(
+                                        top: 0,
+                                        left: 160,
+                                        child: Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Text(
+                                                'OT Pay Rate',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  //  fontWeight: FontWeight.bold,
+                                                  fontSize: 10.0,
+                                                  color: Color.fromRGBO(
+                                                      112, 112, 112, 1),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              if (snapshot.data.detail
+                                                      .overtimePayRate !=
+                                                  null)
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      child: _FunctionOtPayrate(
+                                                          snapshot.data.detail
+                                                              .overtimePayRate),
+                                                    ),
+                                                    Text(
+                                                      //  '\$00.00/hr',
+
+                                                      otPayrate,
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            'Nunito Sans',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            0, 0, 0, 1),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
+                                              else
+                                                Text(
+                                                  '00',
                                                   style: TextStyle(
                                                     fontFamily: 'Nunito Sans',
                                                     fontWeight: FontWeight.bold,
@@ -548,45 +589,21 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     color: Color.fromRGBO(
                                                         0, 0, 0, 1),
                                                   ),
-                                                ),
-                                              ],
-                                            )
-                                          else
-                                            Text(
-                                              '00',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.0,
-                                                color:
-                                                    Color.fromRGBO(0, 0, 0, 1),
-                                              ),
-                                            )
-                                          /*Text(
-                                            //  '\OT Pay Rate',
-
-                                            snapshot.data.detail
-                                                        .overtimePayRate !=
-                                                    null
-                                                ? snapshot
-                                                    .data.detail.overtimePayRate
-                                                : ' ',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14.0,
-                                              color: Color.fromRGBO(0, 0, 0, 1),
-                                            ),
-                                          ),*/
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                                )
+                                            ],
+                                          ),
+                                        ),
+                                      ), //Positioned
+                                    ], //<Widget>[]
+                                  ), //Stack
                                 ),
                               ),
+
+                              ///////////////////////////////////////////////////////////////////////////////////
                               SizedBox(
-                                height: 25,
+                                height: 3,
                               ),
+
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
                                 child: Row(
