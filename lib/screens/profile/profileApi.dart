@@ -31,7 +31,6 @@ Future<Profile> fetchprofile() async {
     print('vvvvvvvvvvvvvvvvvvv');
   }
 }
-
 class Profile {
   Data data;
 
@@ -52,7 +51,7 @@ class Profile {
 
 class Data {
   String employeeName;
-  String jobPosition;
+  List<JobPosition> jobPosition;
   String profilePic;
   String phone;
   String email;
@@ -72,7 +71,12 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     employeeName = json['employee_name'];
-    jobPosition = json['job_position'];
+    if (json['job_position'] != null) {
+      jobPosition = <JobPosition>[];
+      json['job_position'].forEach((v) {
+        jobPosition.add(new JobPosition.fromJson(v));
+      });
+    }
     profilePic = json['profile_pic'];
     phone = json['phone'];
     email = json['email'];
@@ -84,7 +88,9 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['employee_name'] = this.employeeName;
-    data['job_position'] = this.jobPosition;
+    if (this.jobPosition != null) {
+      data['job_position'] = this.jobPosition.map((v) => v.toJson()).toList();
+    }
     data['profile_pic'] = this.profilePic;
     data['phone'] = this.phone;
     data['email'] = this.email;
@@ -95,6 +101,25 @@ class Data {
   }
 }
 
+class JobPosition {
+  String label;
+  String value;
+
+  JobPosition({this.label, this.value});
+
+  JobPosition.fromJson(Map<String, dynamic> json) {
+    label = json['label'];
+    value = json['value'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['label'] = this.label;
+    data['value'] = this.value;
+    return data;
+  }
+}
+/*
 class ProfileApi extends StatefulWidget {
   @override
   _ProfileApiState createState() => _ProfileApiState();
@@ -167,4 +192,6 @@ class _ProfileApiState extends State<ProfileApi> {
       ),
     );
   }
+  
 }
+*/

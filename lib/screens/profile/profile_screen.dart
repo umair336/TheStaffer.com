@@ -28,19 +28,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return new Scaffold(
-      body:  RefreshIndicator(
+      body: RefreshIndicator(
         //   displacement: 250,
         backgroundColor: Colors.white,
         color: Color.fromRGBO(13, 91, 196, 1),
         //  strokeWidth: 2,
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
         onRefresh: () {
-          Navigator.pushReplacement(
+          /*  Navigator.pushReplacement(
               context,
               PageRouteBuilder(
                   pageBuilder: (a, b, c) => ProfileScreen(),
                   transitionDuration: Duration(seconds: 0)));
-          return Future.value(false);
+          return Future.value(false);*/
         },
         child: SingleChildScrollView(
           child: FutureBuilder<Profile>(
@@ -164,7 +164,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           SizedBox(
                                             height: 5,
                                           ),
-                                          Text(
+                                          for (int i = 0;
+                                              i <
+                                                  snapshot.data.data.jobPosition
+                                                      .length;
+                                              i++)
+                                            Container(
+                                              child: Text(
+                                                snapshot.data.data
+                                                    .jobPosition[i].label,
+                                                style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    // fontWeight: FontWeight.semibold,
+                                                    fontSize: 10.0,
+                                                    color: Colors.white),
+                                              ),
+                                            )
+
+                                          /*  Text(
                                             snapshot.data.data.jobPosition !=
                                                     null
                                                 ? snapshot.data.data.jobPosition
@@ -174,7 +191,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 // fontWeight: FontWeight.semibold,
                                                 fontSize: 10.0,
                                                 color: Colors.white),
-                                          ),
+                                          ),*/
                                         ],
                                       ),
                                     )
