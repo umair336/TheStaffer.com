@@ -415,7 +415,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               EdgeInsets.fromLTRB(31, 0, 20, 0),
                                           child: Text(
                                             snapshot.data.data.ssn != null
-                                                ? snapshot.data.data.ssn
+                                                ? '**** **** **** ${snapshot.data.data.ssn.substring(snapshot.data.data.ssn.length - 4, snapshot.data.data.ssn.length)}'
                                                 : '',
                                             style: TextStyle(
                                                 fontSize: 12,
