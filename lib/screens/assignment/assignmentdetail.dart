@@ -116,11 +116,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       size: 20,
                                     ),
                                     onPressed: () {
-                                      Navigator.push(
+                                      Navigator.of(context).pop();
+                                     /* Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  AssignmentScreen()));
+                                                  AssignmentScreen()));*/
                                     },
                                   ),
                                   SizedBox(
