@@ -345,7 +345,7 @@ class _MyDialogState extends State<MyDialog> {
     if (response.statusCode == 200) {
       Flushbar(
         //   title: 'Hey Ninja',
-        message: response.body.substring(11, response.body.length - 3),
+        message: response.body.substring(11, response.body.length - 2),
         duration: Duration(seconds: 3),
         backgroundColor: Color.fromRGBO(183, 14, 105, 1),
       ).show(context);

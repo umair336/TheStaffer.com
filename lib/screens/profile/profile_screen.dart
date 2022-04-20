@@ -164,22 +164,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           SizedBox(
                                             height: 5,
                                           ),
-                                          for (int i = 0;
-                                              i <
-                                                  snapshot.data.data.jobPosition
-                                                      .length;
-                                              i++)
-                                            Container(
-                                              child: Text(
-                                                snapshot.data.data
-                                                    .jobPosition[i].label,
-                                                style: TextStyle(
-                                                    fontFamily: 'Nunito Sans',
-                                                    // fontWeight: FontWeight.semibold,
-                                                    fontSize: 10.0,
-                                                    color: Colors.white),
+                                          if (snapshot.data.data.jobPosition
+                                                  .length >=
+                                              1)
+                                            for (int i = 0;
+                                                i <
+                                                    snapshot.data.data
+                                                        .jobPosition.length;
+                                                i++)
+                                              Container(
+                                                child: Text(
+                                                  snapshot.data.data
+                                                      .jobPosition[i].label,
+                                                  style: TextStyle(
+                                                      fontFamily: 'Nunito Sans',
+                                                      // fontWeight: FontWeight.semibold,
+                                                      fontSize: 10.0,
+                                                      color: Colors.white),
+                                                ),
                                               ),
-                                            )
 
                                           /*  Text(
                                             snapshot.data.data.jobPosition !=
