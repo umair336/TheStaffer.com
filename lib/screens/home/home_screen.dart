@@ -1535,7 +1535,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           ),
                                                         ),
                                                         SizedBox(
-                                                          height: 11,
+                                                          height: 8,
                                                         ),
                                                         Container(
                                                           padding:
@@ -1573,7 +1573,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           ),
                                                         ),
                                                         SizedBox(
-                                                          height: 9,
+                                                          height: 12,
                                                         ),
                                                         Container(
                                                             child: FutureBuilder<
