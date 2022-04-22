@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:another_flushbar/flushbar.dart';
 import 'package:avatar_view/avatar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -8,6 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'dialog_resetpassword.dart';
 import 'profileApi.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 class ProfileScreen extends StatefulWidget {
   // const ProfileScreen({ Key? key }) : super(key: key);
@@ -17,6 +21,9 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   Future<Profile> futureData;
+  final password = TextEditingController();
+  bool correct = false;
+
   @override
   void initState() {
     super.initState();
@@ -164,8 +171,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           SizedBox(
                                             height: 5,
                                           ),
-                                          if (snapshot.data.data.jobPosition
-                                                !=
+                                          if (snapshot.data.data.jobPosition !=
                                               null)
                                             for (int i = 0;
                                                 i <
@@ -380,54 +386,180 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     thickness: 1,
                                   ),
                                   SizedBox(height: 12),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 40),
-                                    child: Column(
-                                      //  mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Image.asset(
-                                              "images/Union 7@2x.png",
-                                              height: size.height * 0.02,
-                                              // fit: BoxFit.cover,
+                                  correct == false
+                                      ? InkWell(
+                                          onTap: () {
+                                            _showMyDialog();
+                                          },
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 40),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Column(
+                                                  //  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Image.asset(
+                                                          "images/Union 7@2x.png",
+                                                          height: size.height *
+                                                              0.02,
+                                                          // fit: BoxFit.cover,
+                                                        ),
+                                                        SizedBox(width: 12),
+                                                        Text(
+                                                          'SSN',
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'Nunito Sans',
+                                                            // fontWeight: FontWeight.semibold,
+                                                            fontSize: 10.0,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    83,
+                                                                    83,
+                                                                    83,
+                                                                    1),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 6,
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsets.fromLTRB(
+                                                              31, 0, 20, 0),
+                                                      child: Text(
+                                                        snapshot.data.data
+                                                                    .ssn !=
+                                                                null
+                                                            ? '***_**_${snapshot.data.data.ssn.substring(snapshot.data.data.ssn.length - 4, snapshot.data.data.ssn.length)}'
+                                                            : '',
+                                                        style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Nunito Sans',
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    31,
+                                                                    33,
+                                                                    38,
+                                                                    1)),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      right: 15),
+                                                  child: Icon(
+                                                    Icons
+                                                        .visibility_off_outlined,
+                                                    color: Color.fromRGBO(
+                                                        183, 14, 105, 1),
+                                                    size: 20,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            SizedBox(width: 12),
-                                            Text(
-                                              'SSN',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                // fontWeight: FontWeight.semibold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    83, 83, 83, 1),
-                                              ),
+                                          ),
+                                        )
+                                      : InkWell(
+                                          onTap: () {
+                                            _showMyDialog();
+                                          },
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 40),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Column(
+                                                  //  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Image.asset(
+                                                          "images/Union 7@2x.png",
+                                                          height: size.height *
+                                                              0.02,
+                                                          // fit: BoxFit.cover,
+                                                        ),
+                                                        SizedBox(width: 12),
+                                                        Text(
+                                                          'SSN',
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'Nunito Sans',
+                                                            // fontWeight: FontWeight.semibold,
+                                                            fontSize: 10.0,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    83,
+                                                                    83,
+                                                                    83,
+                                                                    1),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 6,
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsets.fromLTRB(
+                                                              31, 0, 20, 0),
+                                                      child: Text(
+                                                        snapshot.data.data
+                                                                    .ssn !=
+                                                                null
+                                                            ? '${snapshot.data.data.ssn}'
+                                                            : '',
+                                                        style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Nunito Sans',
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    31,
+                                                                    33,
+                                                                    38,
+                                                                    1)),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      right: 15),
+                                                  child: Icon(
+                                                    Icons.visibility_outlined,
+                                                    color: Color.fromRGBO(
+                                                        183, 14, 105, 1),
+                                                    size: 20,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 6,
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(31, 0, 20, 0),
-                                          child: Text(
-                                            snapshot.data.data.ssn != null
-                                                ? '**** **** **** ${snapshot.data.data.ssn.substring(snapshot.data.data.ssn.length - 4, snapshot.data.data.ssn.length)}'
-                                                : '',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Nunito Sans',
-                                                color: Color.fromRGBO(
-                                                    31, 33, 38, 1)),
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
                                   SizedBox(height: 3),
                                   Divider(
                                     color: Colors.grey.shade200,
@@ -585,5 +717,232 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          //   title: Text('AlertDialog '),
+          content: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(14),
+                  child: TextFormField(
+                    controller: password,
+                    style: TextStyle(
+                        fontSize: 14.0, color: Color.fromRGBO(83, 83, 83, 1)
+                        // fontWeight: FontWeight.bold
+                        ),
+                    cursorColor: Colors.grey.shade500,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              new BorderSide(color: Colors.grey.shade300),
+                          borderRadius: BorderRadius.circular(5.0)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              new BorderSide(color: Colors.grey.shade300),
+                          borderRadius: BorderRadius.circular(5.0)),
+                      contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      labelText: "Current Password",
+                      hintStyle: TextStyle(
+                          fontSize: 12.0,
+                          color: Color.fromRGBO(83, 83, 83, 1),
+                          fontWeight: FontWeight.w500),
+                      labelStyle: TextStyle(
+                          fontSize: 12.0,
+                          color: Color.fromRGBO(83, 83, 83, 1),
+                          fontWeight: FontWeight.w500),
+                    ),
+                    obscureText: true,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            /*  TextButton(
+              child: Text('Confirm'),
+              onPressed: () {
+                print('Confirmed');
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),*/
+            Padding(
+              padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                      //   color: Color.fromRGBO(23, 197, 204, 1),
+
+                      child: TextButton(
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.white,
+                          ),
+                        ),
+
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromRGBO(13, 91, 196, 1)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+
+                              //   side: BorderSide(color: Colors.red.shade900),
+                            ),
+                          ),
+                        ),
+                        //      color: Colors.black,
+                        //  textColor: Colors.white,
+                        //     shape: RoundedRectangleBorder(
+                        //borderRadius: BorderRadius.circular(30)),
+                        onPressed: () {
+                          //          Navigator.push(context,
+                          //            MaterialPageRoute(builder: (context) => Profile()));
+
+                          setState(() {
+                            //functionChangepassword();
+                            Navigator.pop(context);
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Expanded(
+                    child: Container(
+                      //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                      //   color: Color.fromRGBO(23, 197, 204, 1),
+                      //        width: 230,
+                      child: TextButton(
+                        child: Text(
+                          'Save',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.white,
+                          ),
+                        ),
+
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromRGBO(13, 91, 196, 1)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+
+                              //   side: BorderSide(color: Colors.red.shade900),
+                            ),
+                          ),
+                        ),
+                        //      color: Colors.black,
+                        //  textColor: Colors.white,
+                        //     shape: RoundedRectangleBorder(
+                        //borderRadius: BorderRadius.circular(30)),
+                        onPressed: () {
+                          //          Navigator.push(context,
+                          //            MaterialPageRoute(builder: (context) => Profile()));
+
+                          functionShowSSN();
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  functionShowSSN() {
+    print('dddddddddddd${password.text}');
+    String curentpassword = password.text;
+    if (curentpassword != '') {
+      print('aaaaaaaaaaaaaaaaaaaaaaaaa');
+      postRequestSSn(curentpassword);
+    } else {
+      Flushbar(
+        //   title: 'Hey Ninja',
+        message: 'Enter a password',
+        duration: Duration(seconds: 3),
+        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+      ).show(context);
+    }
+  }
+
+  Future<http.Response> postRequestSSn(String curentp) async {
+    print('ssssssssssssssssssssssssssss$curentp');
+    final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
+    final String token = await storage.read(key: 'token');
+    String authorization = token;
+    var urll = 'https://dev2.thestaffer.com/api/admin/get_employee_ssn';
+
+    Map data = {
+      'password': curentp,
+    };
+    //encode Map to JSON
+    var body = json.encode(data);
+
+    var response = await http.post(Uri.parse(urll),
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $authorization'
+        },
+        body: body);
+    print("${response.statusCode}");
+    if (response.statusCode == 200) {
+      if (response.body.contains('true')) {
+        print('uuuuuuuuuuuuuuuuuuuuuu');
+        Flushbar(
+          //   title: 'Hey Ninja',
+          message: 'Thank u',
+          duration: Duration(seconds: 3),
+          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+        ).show(context);
+        setState(() {
+          correct = true;
+        });
+      }
+      if (response.body.contains('false')) {
+        print('uuuuuuuuuuuuuuuuuuuuuu');
+        Flushbar(
+          //   title: 'Hey Ninja',
+          message: 'Password not match',
+          duration: Duration(seconds: 3),
+          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+        ).show(context);
+        // Navigator.pop(context);
+      }
+    }
+    // print(response);
+
+    print("${response.body}");
+    return response;
   }
 }
