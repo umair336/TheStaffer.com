@@ -165,8 +165,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             height: 5,
                                           ),
                                           if (snapshot.data.data.jobPosition
-                                                  .length >=
-                                              1)
+                                                !=
+                                              null)
                                             for (int i = 0;
                                                 i <
                                                     snapshot.data.data
