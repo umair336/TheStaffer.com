@@ -463,8 +463,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   padding: EdgeInsets.only(
                                                       right: 15),
                                                   child: Icon(
+                                                  
                                                     Icons
-                                                        .visibility_off_outlined,
+                                                        .visibility_outlined
+                                                       ,
                                                     color: Color.fromRGBO(
                                                         183, 14, 105, 1),
                                                     size: 20,
@@ -550,7 +552,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   padding: EdgeInsets.only(
                                                       right: 15),
                                                   child: Icon(
-                                                    Icons.visibility_outlined,
+                                                    Icons. visibility_off_outlined,
                                                     color: Color.fromRGBO(
                                                         183, 14, 105, 1),
                                                     size: 20,
@@ -926,6 +928,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           backgroundColor: Color.fromRGBO(183, 14, 105, 1),
         ).show(context);
         setState(() {
+          
           correct = true;
         });
       }
