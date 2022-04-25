@@ -148,7 +148,7 @@ class Assignments {
   String agencyMargin;
   String customerPayRate;
   String customerOvertimePayRate;
-  Null endDate;
+  String endDate;
   String startDate;
   String createdAt;
   String updatedAt;
