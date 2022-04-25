@@ -475,7 +475,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         )
                                       : InkWell(
                                           onTap: () {
-                                            _showMyDialog();
+                                            //   _showMyDialog();
+                                            setState(() {
+                                              correct =false;
+                                            });
                                           },
                                           child: Padding(
                                             padding:
@@ -751,7 +754,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               new BorderSide(color: Colors.grey.shade300),
                           borderRadius: BorderRadius.circular(5.0)),
                       contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
-                      labelText: "Current Password",
+                      labelText: "Password",
                       hintStyle: TextStyle(
                           fontSize: 12.0,
                           color: Color.fromRGBO(83, 83, 83, 1),
@@ -889,7 +892,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } else {
       Flushbar(
         //   title: 'Hey Ninja',
-        message: 'Enter a password',
+        message: 'Enter password',
         duration: Duration(seconds: 3),
         backgroundColor: Color.fromRGBO(183, 14, 105, 1),
       ).show(context);
@@ -920,12 +923,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       if (response.body.contains('true')) {
         Navigator.pop(context);
         print('uuuuuuuuuuuuuuuuuuuuuu');
-        Flushbar(
+        /* Flushbar(
           //   title: 'Hey Ninja',
           message: 'Thank u',
           duration: Duration(seconds: 3),
           backgroundColor: Color.fromRGBO(183, 14, 105, 1),
-        ).show(context);
+        ).show(context);*/
         setState(() {
           correct = true;
         });
@@ -934,7 +937,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         print('uuuuuuuuuuuuuuuuuuuuuu');
         Flushbar(
           //   title: 'Hey Ninja',
-          message: 'Password not match',
+          message: 'Invalid Password',
           duration: Duration(seconds: 3),
           backgroundColor: Color.fromRGBO(183, 14, 105, 1),
         ).show(context);
