@@ -477,7 +477,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           onTap: () {
                                             //   _showMyDialog();
                                             setState(() {
-                                              correct =false;
+                                              correct = false;
                                             });
                                           },
                                           child: Padding(
@@ -888,6 +888,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     String curentpassword = password.text;
     if (curentpassword != '') {
       print('aaaaaaaaaaaaaaaaaaaaaaaaa');
+      password.clear();
       postRequestSSn(curentpassword);
     } else {
       Flushbar(
