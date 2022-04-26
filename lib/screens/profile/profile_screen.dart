@@ -8,6 +8,8 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
+import 'package:intl/intl.dart';
+import '../../constants/formate.dart';
 import 'dialog_resetpassword.dart';
 import 'profileApi.dart';
 import 'package:http/http.dart' as http;
@@ -21,6 +23,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   Future<Profile> futureData;
+    Future<FormateApi> futureFormate;
   final password = TextEditingController();
   bool correct = false;
 
@@ -28,7 +31,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     futureData = fetchprofile();
+      futureFormate = fetchformate();
     print('aaaaaaaaaaaaaaaaaa$futureData');
+    
   }
 
   @override
@@ -365,17 +370,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         ),
                                         Padding(
                                           padding: EdgeInsets.only(left: 26),
-                                          child: Text(
-                                            snapshot.data.data.dob != null
-                                                ? snapshot.data.data.dob
-                                                : '',
-                                            style: TextStyle(
+                                          child:    Container(
+                                                                          child: FutureBuilder<FormateApi>(
+                                                                              future: futureFormate,
+                                                                              builder: (context, snapshoot) {
+                                                                                if (snapshoot.hasData) {
+                                                                                  return Text(
+                                                                                     snapshot.data.data.dob.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse( snapshot.data.data.dob)) : ' - - - ',
+                                                                                 style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: 'Nunito Sans',
                                                 color: Color.fromRGBO(
-                                                    31, 33, 38, 1)),
-                                          ),
+                                                    31, 33, 38, 1)),   );
+                                                                                } else {
+                                                                                  return Container();
+                                                                                }
+                                                                              })),
+                                        
                                         ),
                                       ],
                                     ),
