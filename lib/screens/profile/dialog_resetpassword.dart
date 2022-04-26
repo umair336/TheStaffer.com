@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 import 'package:another_flushbar/flushbar.dart';
+import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyDialog extends StatefulWidget {
   @override
@@ -343,6 +345,16 @@ class _MyDialogState extends State<MyDialog> {
         body: body);
     print("${response.statusCode}");
     if (response.statusCode == 200) {
+      print('ssssssssssssssssssssssss${response.body}');
+      if(response.body.contains('successfully')){
+          BlocProvider.of<AuthenticationBloc>(
+                                                  context)
+                                              .add(
+                                            LoggedOut(),
+                                          );
+                                          Navigator.pop(context);
+      }
+      else
       Flushbar(
         //   title: 'Hey Ninja',
         message: response.body.substring(11, response.body.length - 2),
@@ -350,9 +362,9 @@ class _MyDialogState extends State<MyDialog> {
         backgroundColor: Color.fromRGBO(183, 14, 105, 1),
       ).show(context);
     }
-    if (response.statusCode == 200) {
+    /* if (response.statusCode == 200) {
       // Navigator.pop(context);
-    }
+    }*/
     print("${response.body}");
     return response;
   }
