@@ -117,7 +117,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                     ),
                                     onPressed: () {
                                       Navigator.of(context).pop();
-                                     /* Navigator.push(
+                                      /* Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
@@ -410,44 +410,54 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               SizedBox(
                                                 height: 2,
                                               ),
-                                              FutureBuilder<FormateApi>(
-                                                  future: futureFormate,
-                                                  builder:
-                                                      (context, snapshoot) {
-                                                    if (snapshoot.hasData) {
-                                                      return Text(
-                                                        snapshot
-                                                                    .data
-                                                                    .detail
-                                                                    .record
-                                                                    .endDate
-                                                                    .toString() !=
-                                                                null
-                                                            ? DateFormat(snapshoot
-                                                                    .data
-                                                                    .data[0]
-                                                                    .currentDateFormat)
-                                                                .format(DateTime
-                                                                    .parse(snapshot
-                                                                        .data
-                                                                        .detail
-                                                                        .record
-                                                                        .endDate))
-                                                            : ' - - - ',
-                                                        style: TextStyle(
-                                                          fontFamily:
-                                                              'Nunito Sans',
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 14.0,
-                                                          color: Color.fromRGBO(
-                                                              0, 0, 0, 1),
-                                                        ),
-                                                      );
-                                                    } else {
-                                                      return Container();
-                                                    }
-                                                  }),
+                                              if (snapshot.data.detail.record
+                                                          .endDate ==
+                                                      null ||
+                                                  snapshot.data.detail.record
+                                                          .endDate ==
+                                                      "")
+                                                Text('')
+                                              else
+                                              
+                                            FutureBuilder<FormateApi>(
+                                                    future: futureFormate,
+                                                    builder:
+                                                        (context, snapshoot) {
+                                                      if (snapshoot.hasData) {
+                                                        return Text(
+                                                          snapshot
+                                                                      .data
+                                                                      .detail
+                                                                      .record
+                                                                      .endDate
+                                                                      .toString() !=
+                                                                  null
+                                                              ? DateFormat(snapshoot
+                                                                      .data
+                                                                      .data[0]
+                                                                      .currentDateFormat)
+                                                                  .format(DateTime
+                                                                      .parse(snapshot
+                                                                          .data
+                                                                          .detail
+                                                                          .record
+                                                                          .endDate))
+                                                              : ' - - - ',
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'Nunito Sans',
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 14.0,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    0, 0, 0, 1),
+                                                          ),
+                                                        );
+                                                      } else {
+                                                        return Container();
+                                                      }
+                                                    })
                                             ],
                                           ),
                                         ),
