@@ -733,10 +733,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Padding(
-                  padding: EdgeInsets.all(14),
+                  padding: EdgeInsets.fromLTRB(14, 0, 14, 0),
                   child: TextFormField(
                     controller: password,
                     style: TextStyle(
