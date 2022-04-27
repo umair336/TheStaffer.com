@@ -174,6 +174,16 @@ class _PastAssignmentState extends State<PastAssignment> {
                         physics: ScrollPhysics(),
                         child: Column(
                           children: <Widget>[
+                               if (snapshot.data.data.length==0)
+                             Padding(
+                               padding: EdgeInsets.only(top: 50),
+                               child: Text('No Finished Assignment', style: TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          112, 112, 112, 1)),),
+                             ),
                             /*  for (int i = 0; i < snapshot.data.data.length; i++)
                               if (snapshot.data.data[i].empStatus !=
                                   'Completed')
@@ -482,7 +492,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                   );
                                 }),
                             valueexist == ''
-                                ? Text('No Past Assignment', style: TextStyle(
+                                ? Text('No Finished Assignment', style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.bold,
                                                     fontFamily: 'Nunito Sans',
