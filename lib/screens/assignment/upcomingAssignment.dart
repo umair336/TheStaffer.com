@@ -13,6 +13,7 @@ class Upcomingassignment extends StatefulWidget {
 class _UpcomingassignmentState extends State<Upcomingassignment> {
   Future<AssignmentApi> futureData;
   Future<FormateApi> futureFormate;
+  String valueexist = "";
 
   bool show = false;
   @override
@@ -174,6 +175,15 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                         physics: ScrollPhysics(),
                         child: Column(
                           children: <Widget>[
+                            // if(snapshot.data.data.length>=1)
+                         
+                            for (int i = 0; i < snapshot.data.data.length; i++)
+                              Container(
+                                child: _checkexist(
+                                    snapshot.data.data[i].empStatus,
+                                    snapshot.data.data[i].jobId),
+                              ),
+                           
                             ListView.builder(
                                 physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
@@ -483,6 +493,13 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                     ],
                                   );
                                 }),
+                            valueexist == '' ?  Text('No Upcoming Assignment', style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        112, 112, 112, 1)),)
+                                : Text('')
                           ],
                         ),
                       );
@@ -516,5 +533,16 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
         ),
       ),
     );
+  }
+
+  _checkexist(var value, var value2) {
+    print('yyyyyyyyyyyyyy$value yyyyyyyyy $value2');
+    // valueexist
+    if (value == "Upcoming") {
+      print('aaaaaaaaaaaa');
+      valueexist = "qqqqqq".toString();
+    } else {
+      print('vvvvvvvvvv');
+    }
   }
 }

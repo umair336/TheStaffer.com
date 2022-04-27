@@ -13,6 +13,7 @@ class Activeassignment extends StatefulWidget {
 class _ActiveassignmentState extends State<Activeassignment> {
   Future<AssignmentApi> futureData;
   Future<FormateApi> futureFormate;
+  String valueexist = "";
 
   @override
   void initState() {
@@ -173,6 +174,14 @@ class _ActiveassignmentState extends State<Activeassignment> {
                         physics: ScrollPhysics(),
                         child: Column(
                           children: <Widget>[
+                            if(snapshot.data.data.length>=1)
+                            for (int i = 0; i < snapshot.data.data.length; i++)
+                              //          Text( 'ssllllllllllllllllllllsssss${snapshot.data.data[i].empStatus}'),
+                              Container(
+                                child: _checkexist(
+                                    snapshot.data.data[i].empStatus,
+                                    snapshot.data.data[i].jobId),
+                              ),
                             ListView.builder(
                                 physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
@@ -399,58 +408,40 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                                   SizedBox(
                                                                     height: 2,
                                                                   ),
-                                                                  snapshot.data.data[index].endDate !=
-                                                                              null
-                                                                          ?Container(
-                                                                    child: FutureBuilder<
-                                                                            FormateApi>(
-                                                                        future:
-                                                                            futureFormate,
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshoot) {
-                                                                          if (snapshoot
-                                                                              .hasData) {
-                                                                            return Text(
-                                                                               DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot
-                                                                              .data
-                                                                              .data[
-                                                                                  index]
-                                                                              .endDate)),
-                                                                              //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
-                                                                                style: TextStyle(
-                                                                                    color: Color.fromRGBO(0, 0, 0, 1),
-                                                                                    //fontWeight: FontWeight.w600,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    fontSize: 14.0));
-                                                                          } else {
-                                                                            return Container();
-                                                                          }
-                                                                        }))        : Container(
-                                                                    child: FutureBuilder<
-                                                                            FormateApi>(
-                                                                        future:
-                                                                            futureFormate,
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshoot) {
-                                                                          if (snapshoot
-                                                                              .hasData) {
-                                                                            return 
-                                                                            Text(  DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot
-                                                                              .data
-                                                                              .data[
-                                                                                  index]
-                                                                              .jobEndDate)),
-                                                                                style: TextStyle(
-                                                                                    color: Color.fromRGBO(0, 0, 0, 1),
-                                                                                    //fontWeight: FontWeight.w600,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    fontSize: 14.0));
-                                                                          } else {
-                                                                            return Container();
-                                                                          }
-                                                                        }))
+                                                                  snapshot.data.data[index]
+                                                                              .endDate !=
+                                                                          null
+                                                                      ? Container(
+                                                                          child: FutureBuilder<FormateApi>(
+                                                                              future: futureFormate,
+                                                                              builder: (context, snapshoot) {
+                                                                                if (snapshoot.hasData) {
+                                                                                  return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].endDate)),
+                                                                                      //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
+                                                                                      style: TextStyle(
+                                                                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                                                                          //fontWeight: FontWeight.w600,
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          fontSize: 14.0));
+                                                                                } else {
+                                                                                  return Container();
+                                                                                }
+                                                                              }))
+                                                                      : Container(
+                                                                          child: FutureBuilder<FormateApi>(
+                                                                              future: futureFormate,
+                                                                              builder: (context, snapshoot) {
+                                                                                if (snapshoot.hasData) {
+                                                                                  return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].jobEndDate)),
+                                                                                      style: TextStyle(
+                                                                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                                                                          //fontWeight: FontWeight.w600,
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                          fontSize: 14.0));
+                                                                                } else {
+                                                                                  return Container();
+                                                                                }
+                                                                              }))
 
                                                                   /*/
                                                                   Text(
@@ -490,6 +481,13 @@ class _ActiveassignmentState extends State<Activeassignment> {
                             SizedBox(
                               height: 20,
                             ),
+                            valueexist == '' ?  Text('No Active Assignment', style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Nunito Sans',
+                                                    color: Color.fromRGBO(
+                                                        112, 112, 112, 1)),)
+                                : Text('')
                           ],
                         ),
                       );
@@ -519,5 +517,16 @@ class _ActiveassignmentState extends State<Activeassignment> {
         ),
       ),
     );
+  }
+
+  _checkexist(var value, var value2) {
+    print('yyyyyyyyyyyyyy$value yyyyyyyyy $value2');
+    // valueexist
+    if (value == "Active") {
+      print('aaaaaaaaaaaa');
+      valueexist = "qqqqqq".toString();
+    } else {
+      print('vvvvvvvvvv');
+    }
   }
 }
