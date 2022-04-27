@@ -149,43 +149,42 @@ class Record {
   String customerName;
   String departmentNames;
   String positionName;
-  String totalPosition;
-  String positionCount;
 
-  Record(
-      {this.id,
-      this.number,
-      this.organizationId,
-      this.customerId,
-      this.departmentId,
-      this.worksiteId,
-      this.jobPositionId,
-      this.jobOrderId,
-      this.startDate,
-      this.endDate,
-      this.status,
-      this.shiftNotes,
-      this.dressCode,
-      this.noOfPosition,
-      this.shiftTimings,
-      this.customerPayRate,
-      this.customerOvertimePayRate,
-      this.cusStreetAdress1,
-      this.cusStreetAdress2,
-      this.cusZcode,
-      this.cusCountry,
-      this.cusState,
-      this.cusCity,
-      this.createdAt,
-      this.updatedAt,
-      this.rateUpdatedAt,
-      this.experience,
-      this.createdBy,
-      this.customerName,
-      this.departmentNames,
-      this.positionName,
-      this.totalPosition,
-      this.positionCount});
+  
+
+  Record({
+    this.id,
+    this.number,
+    this.organizationId,
+    this.customerId,
+    this.departmentId,
+    this.worksiteId,
+    this.jobPositionId,
+    this.jobOrderId,
+    this.startDate,
+    this.endDate,
+    this.status,
+    this.shiftNotes,
+    this.dressCode,
+    this.noOfPosition,
+    this.shiftTimings,
+    this.customerPayRate,
+    this.customerOvertimePayRate,
+    this.cusStreetAdress1,
+    this.cusStreetAdress2,
+    this.cusZcode,
+    this.cusCountry,
+    this.cusState,
+    this.cusCity,
+    this.createdAt,
+    this.updatedAt,
+    this.rateUpdatedAt,
+    this.experience,
+    this.createdBy,
+    this.customerName,
+    this.departmentNames,
+    this.positionName,
+  });
 
   Record.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -221,8 +220,6 @@ class Record {
     customerName = json['customer_name'];
     departmentNames = json['department_names'];
     positionName = json['position_name'];
-    totalPosition = json['total_position'];
-    positionCount = json['position_count'];
   }
 
   Map<String, dynamic> toJson() {
@@ -260,8 +257,7 @@ class Record {
     data['customer_name'] = this.customerName;
     data['department_names'] = this.departmentNames;
     data['position_name'] = this.positionName;
-    data['total_position'] = this.totalPosition;
-    data['position_count'] = this.positionCount;
+
     return data;
   }
 }
