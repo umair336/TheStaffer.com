@@ -766,7 +766,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               new BorderSide(color: Colors.grey.shade300),
                           borderRadius: BorderRadius.circular(5.0)),
                       contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
-                      labelText: "Password",
+                      labelText: "Enter Password",
                       hintStyle: TextStyle(
                           fontSize: 12.0,
                           color: Color.fromRGBO(83, 83, 83, 1),
