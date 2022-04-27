@@ -5,7 +5,6 @@ import './upcomingAssignment.dart';
 import './pastAssignment.dart';
 import './assignmentapi.dart';
 
-
 class AssignmentScreen extends StatefulWidget {
   // const AssignmentScreen({ Key? key }) : super(key: key);
 
@@ -59,7 +58,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
               tabs: [
                 Tab(text: 'Active'),
                 Tab(text: 'Upcoming'),
-                Tab(text: 'Past'),
+                Tab(text: 'Finished'),
               ],
             ),
           ),

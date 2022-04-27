@@ -418,8 +418,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                       "")
                                                 Text('')
                                               else
-                                              
-                                            FutureBuilder<FormateApi>(
+                                                FutureBuilder<FormateApi>(
                                                     future: futureFormate,
                                                     builder:
                                                         (context, snapshoot) {
@@ -673,20 +672,26 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             ),
                                           ],
                                         ),
+
                                         child: Center(
-                                          child: Text(
-                                            snapshot.data.detail.record
-                                                        .status !=
-                                                    null
-                                                ? snapshot
-                                                    .data.detail.record.status
-                                                : ' ',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    27, 185, 31, 1)),
-                                          ),
+                                          child: snapshot.data.detail.record
+                                                      .status !=
+                                                  null
+                                              ? Text(
+                                                  snapshot.data.detail.record
+                                                              .status ==
+                                                          "Completed"
+                                                      ? "Finished"
+                                                      : snapshot.data.detail
+                                                          .record.status,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 10.0,
+                                                      color: Color.fromRGBO(
+                                                          27, 185, 31, 1)),
+                                                )
+                                              : Container(),
                                         ),
                                       ),
                                     ),
