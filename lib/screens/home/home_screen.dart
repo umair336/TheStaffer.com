@@ -287,7 +287,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                               })),
                                                                       SizedBox(
                                                                         width:
-                                                                            7,
+                                                                            3,
                                                                       ),
                                                                       Text(
                                                                         'to',
@@ -306,7 +306,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       ),
                                                                       SizedBox(
                                                                         width:
-                                                                            7,
+                                                                            3,
                                                                       ),
                                                                       Container(
                                                                           child: FutureBuilder<FormateApi>(
@@ -330,55 +330,62 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         ),
                                                       ),
                                                       Container(
-                                                        child: Row(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .baseline,
-                                                          textBaseline:
-                                                              TextBaseline
-                                                                  .alphabetic,
-                                                          children: [
-                                                            AutoSizeText(
-                                                              snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .preWeeklyHours
-                                                                          .toString() !=
-                                                                      null
-                                                                  ? snapshot
-                                                                      .data
-                                                                      .data[0]
-                                                                      .preWeeklyHours
-                                                                  : '',
-                                                              style: TextStyle(
-                                                                fontSize: 30,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontFamily:
-                                                                    'Nunito Sans',
-                                                                //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        width: 120,
+                                                        height: 20,
+                                                        child: FittedBox(
+                                                          child: Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .baseline,
+                                                            textBaseline:
+                                                                TextBaseline
+                                                                    .alphabetic,
+                                                            children: [
+                                                              AutoSizeText(
+                                                                snapshot
+                                                                            .data
+                                                                            .data[
+                                                                                0]
+                                                                            .preWeeklyHours
+                                                                            .toString() !=
+                                                                        null
+                                                                    ? snapshot
+                                                                        .data
+                                                                        .data[0]
+                                                                        .preWeeklyHours
+                                                                    : '',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 30,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                ),
+                                                                maxFontSize: 23,
+                                                                minFontSize: 15,
+                                                                maxLines: 1,
                                                               ),
-                                                              maxFontSize: 23,
-                                                              minFontSize: 15,
-                                                              maxLines: 1,
-                                                            ),
-                                                            /*      Text(
-                                                              '.50',
-                                                              style: TextStyle(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    FontWeight.bold,
-                                                                fontFamily:
-                                                                    'Nunito Sans',
-                                                                //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                              ),
-                                                            ),*/
-                                                            SizedBox(
-                                                              width: 18,
-                                                            )
-                                                          ],
+                                                              /*      Text(
+                                                                '.50',
+                                                                style: TextStyle(
+                                                                  fontSize: 15,
+                                                                  fontWeight:
+                                                                      FontWeight.bold,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                ),
+                                                              ),*/
+                                                              SizedBox(
+                                                                width: 18,
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
                                                       )
                                                     ],
@@ -496,7 +503,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                               })),
                                                                       SizedBox(
                                                                         width:
-                                                                            7,
+                                                                            3,
                                                                       ),
                                                                       Text(
                                                                         'to',
@@ -515,7 +522,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       ),
                                                                       SizedBox(
                                                                         width:
-                                                                            7,
+                                                                            3,
                                                                       ),
                                                                       Container(
                                                                           child: FutureBuilder<FormateApi>(
@@ -539,55 +546,62 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         ),
                                                       ),
                                                       Container(
-                                                        child: Row(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .baseline,
-                                                          textBaseline:
-                                                              TextBaseline
-                                                                  .alphabetic,
-                                                          children: [
-                                                            AutoSizeText(
-                                                              snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .totalWeeklyHours
-                                                                          .toString() !=
-                                                                      null
-                                                                  ? snapshot
-                                                                      .data
-                                                                      .data[0]
-                                                                      .totalWeeklyHours
-                                                                  : '',
-                                                              style: TextStyle(
-                                                                fontSize: 30,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontFamily:
-                                                                    'Nunito Sans',
-                                                                //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        width: 120,
+                                                        height: 20,
+                                                        child: FittedBox(
+                                                          child: Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .baseline,
+                                                            textBaseline:
+                                                                TextBaseline
+                                                                    .alphabetic,
+                                                            children: [
+                                                              AutoSizeText(
+                                                                snapshot
+                                                                            .data
+                                                                            .data[
+                                                                                0]
+                                                                            .totalWeeklyHours
+                                                                            .toString() !=
+                                                                        null
+                                                                    ? snapshot
+                                                                        .data
+                                                                        .data[0]
+                                                                        .totalWeeklyHours
+                                                                    : '',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 30,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                ),
+                                                                maxFontSize: 23,
+                                                                minFontSize: 15,
+                                                                maxLines: 1,
                                                               ),
-                                                              maxFontSize: 23,
-                                                              minFontSize: 15,
-                                                              maxLines: 1,
-                                                            ),
-                                                            /*   Text(
-                                                              '.50',
-                                                              style: TextStyle(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    FontWeight.bold,
-                                                                fontFamily:
-                                                                    'Nunito Sans',
-                                                                //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                              ),
-                                                            ),*/
-                                                            SizedBox(
-                                                              width: 18,
-                                                            )
-                                                          ],
+                                                              /*   Text(
+                                                                '.50',
+                                                                style: TextStyle(
+                                                                  fontSize: 15,
+                                                                  fontWeight:
+                                                                      FontWeight.bold,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                ),
+                                                              ),*/
+                                                              SizedBox(
+                                                                width: 18,
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
                                                       )
                                                     ],
@@ -738,7 +752,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                               })),
                                                                       SizedBox(
                                                                         width:
-                                                                            7,
+                                                                            3,
                                                                       ),
                                                                       Text(
                                                                         'to',
@@ -757,7 +771,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       ),
                                                                       SizedBox(
                                                                         width:
-                                                                            7,
+                                                                            3,
                                                                       ),
                                                                       Container(
                                                                           child: FutureBuilder<FormateApi>(
@@ -781,112 +795,114 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         ),
                                                       ),
                                                       Container(
-                                                        child: Row(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .baseline,
-                                                          textBaseline:
-                                                              TextBaseline
-                                                                  .alphabetic,
-                                                          children: [
-                                                            FutureBuilder<
-                                                                    FormateApi>(
-                                                                future:
-                                                                    futureFormate,
-                                                                builder: (context,
-                                                                    snapshot) {
-                                                                  if (snapshot
-                                                                      .hasData) {
-                                                                    return Text(snapshot.data.data[0].currencyformat.toString()) !=
-                                                                            null
-                                                                        ? Container(
-                                                                            child:
-                                                                                AutoSizeText(
-                                                                              snapshot.data.data[0].currencyformat.toString(),
-                                                                              style: TextStyle(
-                                                                                fontSize: 30,
-                                                                                fontWeight: FontWeight.bold,
-                                                                                fontFamily: 'Nunito Sans',
-                                                                                //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        width: 120,
+                                                        height: 20,
+                                                        child: FittedBox(
+                                                          child: Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .baseline,
+                                                            textBaseline:
+                                                                TextBaseline
+                                                                    .alphabetic,
+                                                            children: [
+                                                              FutureBuilder<
+                                                                      FormateApi>(
+                                                                  future:
+                                                                      futureFormate,
+                                                                  builder: (context,
+                                                                      snapshot) {
+                                                                    if (snapshot
+                                                                        .hasData) {
+                                                                      return Text(snapshot.data.data[0].currencyformat.toString()) !=
+                                                                              null
+                                                                          ? Container(
+                                                                              child: AutoSizeText(
+                                                                                snapshot.data.data[0].currencyformat.toString(),
+                                                                                style: TextStyle(
+                                                                                  fontSize: 30,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontFamily: 'Nunito Sans',
+                                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                                ),
+                                                                                maxFontSize: 23,
+                                                                                minFontSize: 15,
+                                                                                maxLines: 1,
                                                                               ),
-                                                                              maxFontSize: 23,
-                                                                              minFontSize: 15,
-                                                                              maxLines: 1,
-                                                                            ),
-                                                                          )
-                                                                        : Container(
-                                                                            child:
-                                                                                Text(' '));
-                                                                  } else {
-                                                                    return Text(
-                                                                        '');
-                                                                  }
-                                                                }),
-                                                            Text(
-                                                                      snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .prevearnings
-                                                                          .toString(),
-                                                                    ) !=
-                                                                    null
-                                                                ? new Container(
-                                                                    child:
-                                                                        AutoSizeText(
-                                                                      snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .prevearnings
-                                                                          .toString(),
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            30,
-
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        fontFamily:
-                                                                            'Nunito Sans',
-                                                                        //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                                      ),
-                                                                      maxFontSize:
-                                                                          23,
-                                                                      minFontSize:
-                                                                          15,
-                                                                      maxLines:
-                                                                          1,
-                                                                    ),
-                                                                  )
-                                                                : new Container(
-                                                                    child: Text(
-                                                                        '0',
+                                                                            )
+                                                                          : Container(
+                                                                              child: Text(' '));
+                                                                    } else {
+                                                                      return Text(
+                                                                          '');
+                                                                    }
+                                                                  }),
+                                                              Text(
+                                                                        snapshot
+                                                                            .data
+                                                                            .data[0]
+                                                                            .prevearnings
+                                                                            .toString(),
+                                                                      ) !=
+                                                                      null
+                                                                  ? new Container(
+                                                                      child:
+                                                                          AutoSizeText(
+                                                                        snapshot
+                                                                            .data
+                                                                            .data[0]
+                                                                            .prevearnings
+                                                                            .toString(),
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
                                                                               30,
+
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                           fontFamily:
                                                                               'Nunito Sans',
-                                                                        ))),
+                                                                          //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                        ),
+                                                                        maxFontSize:
+                                                                            23,
+                                                                        minFontSize:
+                                                                            15,
+                                                                        maxLines:
+                                                                            1,
+                                                                      ),
+                                                                    )
+                                                                  : new Container(
+                                                                      child: Text(
+                                                                          '0',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                30,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            fontFamily:
+                                                                                'Nunito Sans',
+                                                                          ))),
 
-                                                            /*   Text(
-                                                              '.50',
-                                                              style: TextStyle(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    FontWeight.bold,
-                                                                fontFamily:
-                                                                    'Nunito Sans',
-                                                                //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                              ),
-                                                            ),*/
-                                                            SizedBox(
-                                                              width: 18,
-                                                            )
-                                                          ],
+                                                              /*   Text(
+                                                                '.50',
+                                                                style: TextStyle(
+                                                                  fontSize: 15,
+                                                                  fontWeight:
+                                                                      FontWeight.bold,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                ),
+                                                              ),*/
+                                                              SizedBox(
+                                                                width: 18,
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
                                                       )
                                                     ],
@@ -988,7 +1004,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                               })),
                                                                       SizedBox(
                                                                         width:
-                                                                            7,
+                                                                            3,
                                                                       ),
                                                                       Text(
                                                                         'to',
@@ -1007,7 +1023,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       ),
                                                                       SizedBox(
                                                                         width:
-                                                                            7,
+                                                                            3,
                                                                       ),
                                                                       Container(
                                                                           child: FutureBuilder<FormateApi>(
@@ -1035,111 +1051,113 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         ),
                                                       ),
                                                       Container(
-                                                        child: Row(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .baseline,
-                                                          textBaseline:
-                                                              TextBaseline
-                                                                  .alphabetic,
-                                                          children: [
-                                                            FutureBuilder<
-                                                                    FormateApi>(
-                                                                future:
-                                                                    futureFormate,
-                                                                builder: (context,
-                                                                    snapshot) {
-                                                                  if (snapshot
-                                                                      .hasData) {
-                                                                    return Text(snapshot.data.data[0].currencyformat.toString()) !=
-                                                                            null
-                                                                        ? Container(
-                                                                            child:
-                                                                                AutoSizeText(
-                                                                              snapshot.data.data[0].currencyformat.toString(),
-                                                                              style: TextStyle(
-                                                                                fontSize: 30,
-                                                                                fontWeight: FontWeight.bold,
-                                                                                fontFamily: 'Nunito Sans',
-                                                                                //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                        alignment: Alignment
+                                                            .centerRight,
+                                                        width: 120,
+                                                        height: 20,
+                                                        child: FittedBox(
+                                                          child: Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .baseline,
+                                                            textBaseline:
+                                                                TextBaseline
+                                                                    .alphabetic,
+                                                            children: [
+                                                              FutureBuilder<
+                                                                      FormateApi>(
+                                                                  future:
+                                                                      futureFormate,
+                                                                  builder: (context,
+                                                                      snapshot) {
+                                                                    if (snapshot
+                                                                        .hasData) {
+                                                                      return Text(snapshot.data.data[0].currencyformat.toString()) !=
+                                                                              null
+                                                                          ? Container(
+                                                                              child: AutoSizeText(
+                                                                                snapshot.data.data[0].currencyformat.toString(),
+                                                                                style: TextStyle(
+                                                                                  fontSize: 30,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontFamily: 'Nunito Sans',
+                                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                                ),
+                                                                                maxFontSize: 23,
+                                                                                minFontSize: 15,
+                                                                                maxLines: 1,
                                                                               ),
-                                                                              maxFontSize: 23,
-                                                                              minFontSize: 15,
-                                                                              maxLines: 1,
-                                                                            ),
-                                                                          )
-                                                                        : Container(
-                                                                            child:
-                                                                                Text(' '));
-                                                                  } else {
-                                                                    return Text(
-                                                                        '');
-                                                                  }
-                                                                }),
-                                                            Text(
-                                                                      snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .earnings
-                                                                          .toString(),
-                                                                    ) !=
-                                                                    null
-                                                                ? new Container(
-                                                                    child:
-                                                                        AutoSizeText(
-                                                                      snapshot
-                                                                          .data
-                                                                          .data[
-                                                                              0]
-                                                                          .earnings
-                                                                          .toString(),
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            30,
-
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        fontFamily:
-                                                                            'Nunito Sans',
-                                                                        //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                                      ),
-                                                                      maxFontSize:
-                                                                          23,
-                                                                      minFontSize:
-                                                                          15,
-                                                                      maxLines:
-                                                                          1,
-                                                                    ),
-                                                                  )
-                                                                : new Container(
-                                                                    child: Text(
-                                                                        '0',
+                                                                            )
+                                                                          : Container(
+                                                                              child: Text(' '));
+                                                                    } else {
+                                                                      return Text(
+                                                                          '');
+                                                                    }
+                                                                  }),
+                                                              Text(
+                                                                        snapshot
+                                                                            .data
+                                                                            .data[0]
+                                                                            .earnings
+                                                                            .toString(),
+                                                                      ) !=
+                                                                      null
+                                                                  ? new Container(
+                                                                      child:
+                                                                          AutoSizeText(
+                                                                        snapshot
+                                                                            .data
+                                                                            .data[0]
+                                                                            .earnings
+                                                                            .toString(),
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
                                                                               30,
+
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                           fontFamily:
                                                                               'Nunito Sans',
-                                                                        ))),
-                                                            /*   Text(
-                                                              '.50',
-                                                              style: TextStyle(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    FontWeight.bold,
-                                                                fontFamily:
-                                                                    'Nunito Sans',
-                                                                //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                              ),
-                                                            ),*/
-                                                            SizedBox(
-                                                              width: 18,
-                                                            )
-                                                          ],
+                                                                          //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                        ),
+                                                                        maxFontSize:
+                                                                            23,
+                                                                        minFontSize:
+                                                                            15,
+                                                                        maxLines:
+                                                                            1,
+                                                                      ),
+                                                                    )
+                                                                  : new Container(
+                                                                      child: Text(
+                                                                          '0',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                30,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            fontFamily:
+                                                                                'Nunito Sans',
+                                                                          ))),
+                                                              /*   Text(
+                                                                '.50',
+                                                                style: TextStyle(
+                                                                  fontSize: 15,
+                                                                  fontWeight:
+                                                                      FontWeight.bold,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                ),
+                                                              ),*/
+                                                              SizedBox(
+                                                                width: 18,
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
                                                       )
                                                     ],
@@ -1235,30 +1253,38 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                             ),
                                             Container(
-                                              child: Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.baseline,
-                                                textBaseline:
-                                                    TextBaseline.alphabetic,
-                                                children: [
-                                                  AutoSizeText(
-                                                    snapshot.data.data[0].shifts
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                      fontSize: 30,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontFamily: 'Nunito Sans',
-                                                      //      color: Color.fromRGBO(255, 255, 255, 1)
+                                              alignment: Alignment.centerRight,
+                                              width: 120,
+                                              height: 20,
+                                              child: FittedBox(
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .baseline,
+                                                  textBaseline:
+                                                      TextBaseline.alphabetic,
+                                                  children: [
+                                                    AutoSizeText(
+                                                      snapshot
+                                                          .data.data[0].shifts
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                        fontSize: 30,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontFamily:
+                                                            'Nunito Sans',
+                                                        //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                      ),
+                                                      maxFontSize: 23,
+                                                      minFontSize: 15,
+                                                      maxLines: 1,
                                                     ),
-                                                    maxFontSize: 23,
-                                                    minFontSize: 15,
-                                                    maxLines: 1,
-                                                  ),
-                                                  SizedBox(
-                                                    width: 18,
-                                                  )
-                                                ],
+                                                    SizedBox(
+                                                      width: 18,
+                                                    )
+                                                  ],
+                                                ),
                                               ),
                                             )
                                           ],
@@ -1340,73 +1366,84 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ],
                                               ),
                                             ),
-                                            Row(
-                                              children: [
-                                                FutureBuilder<FormateApi>(
-                                                    future: futureFormate,
-                                                    builder:
-                                                        (context, snapshot) {
-                                                      if (snapshot.hasData) {
-                                                        return Text(snapshot
-                                                                    .data
-                                                                    .data[0]
-                                                                    .currencyformat
-                                                                    .toString()) !=
-                                                                null
-                                                            ? Container(
-                                                                child:
-                                                                    AutoSizeText(
-                                                                  snapshot
-                                                                      .data
-                                                                      .data[0]
-                                                                      .currencyformat
-                                                                      .toString(),
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        30,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    fontFamily:
-                                                                        'Nunito Sans',
-                                                                    //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                                  ),
-                                                                  maxFontSize:
-                                                                      23,
-                                                                  minFontSize:
-                                                                      15,
-                                                                  maxLines: 1,
-                                                                ),
-                                                              )
-                                                            : Container(
-                                                                child:
-                                                                    Text(' '));
-                                                      } else {
-                                                        return Text('');
-                                                      }
-                                                    }),
-                                                AutoSizeText(
-                                                  // '123',
-                                                  snapshot.data.data[0].pending
-                                                      .toString(),
-                                                  //    maxLines: 1,
-                                                  style: TextStyle(
-                                                    fontSize: 30,
-                                                    fontWeight: FontWeight.bold,
-                                                    //  fontFamily: 'Nunito Sans',
+                                            Container(
+                                              alignment: Alignment.centerRight,
+                                              width: 120,
+                                              height: 20,
+                                              child: FittedBox(
+                                                child: Row(
+                                                  children: [
+                                                    FutureBuilder<FormateApi>(
+                                                        future: futureFormate,
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          if (snapshot
+                                                              .hasData) {
+                                                            return Text(snapshot
+                                                                        .data
+                                                                        .data[0]
+                                                                        .currencyformat
+                                                                        .toString()) !=
+                                                                    null
+                                                                ? Container(
+                                                                    child:
+                                                                        AutoSizeText(
+                                                                      snapshot
+                                                                          .data
+                                                                          .data[
+                                                                              0]
+                                                                          .currencyformat
+                                                                          .toString(),
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            30,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontFamily:
+                                                                            'Nunito Sans',
+                                                                        //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                      ),
+                                                                      maxFontSize:
+                                                                          23,
+                                                                      minFontSize:
+                                                                          15,
+                                                                      maxLines:
+                                                                          1,
+                                                                    ),
+                                                                  )
+                                                                : Container(
+                                                                    child: Text(
+                                                                        ' '));
+                                                          } else {
+                                                            return Text('');
+                                                          }
+                                                        }),
+                                                    AutoSizeText(
+                                                      // '123',
+                                                      snapshot
+                                                          .data.data[0].pending
+                                                          .toString(),
+                                                      //    maxLines: 1,
+                                                      style: TextStyle(
+                                                        fontSize: 30,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        //  fontFamily: 'Nunito Sans',
 
-                                                    //      color: Color.fromRGBO(255, 255, 255, 1)
-                                                  ),
-                                                  maxFontSize: 23,
-                                                  minFontSize: 15,
-                                                  maxLines: 1,
-                                                  //     overflow: TextOverflow.ellipsis,
+                                                        //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                      ),
+                                                      maxFontSize: 23,
+                                                      minFontSize: 15,
+                                                      maxLines: 1,
+                                                      //     overflow: TextOverflow.ellipsis,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 18,
+                                                    )
+                                                  ],
                                                 ),
-                                                SizedBox(
-                                                  width: 18,
-                                                )
-                                              ],
+                                              ),
                                             )
                                           ],
                                         ),
