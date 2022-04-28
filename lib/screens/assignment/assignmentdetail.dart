@@ -165,16 +165,16 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    /* Container(
                                       child: IconButton(
                                         icon: Icon(
-                                          Icons.person_rounded,
+                                          Icons.person,
                                           color: Colors.black,
                                           size: 35,
                                         ),
                                         onPressed: () {},
                                       ),
-                                    ),
+                                    ),*/
                                     SizedBox(
                                       width: 10,
                                     ),
@@ -617,40 +617,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
                                 child: Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Container(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            'Status',
-                                            style: TextStyle(
-                                              fontFamily: 'Nunito Sans',
-                                              //  fontWeight: FontWeight.bold,
-                                              fontSize: 10.0,
-                                              color: Color.fromRGBO(
-                                                  112, 112, 112, 1),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 7,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    ClipRRect(
+                                    /*  ClipRRect(
                                       borderRadius: BorderRadius.circular(5.0),
                                       child: Container(
-                                        height: 30,
+                                        height: 20,
                                         width: 70,
                                         margin: const EdgeInsets.only(
                                             left:
@@ -693,6 +666,90 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 )
                                               : Container(),
                                         ),
+                                      ),
+                                    ),*/
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Status',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito Sans',
+                                              //  fontWeight: FontWeight.bold,
+                                              fontSize: 10.0,
+                                              color: Color.fromRGBO(
+                                                  112, 112, 112, 1),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            child: Container(
+                                              height: 20,
+                                              width: 70,
+                                              margin: const EdgeInsets.only(
+                                                  left:
+                                                      6.0), //Same as `blurRadius` i guess
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                                color: Colors.white,
+                                                border: Border.all(
+                                                    color: Color.fromRGBO(
+                                                        27, 185, 31, 1)),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Color.fromRGBO(
+                                                        27, 185, 31, 1),
+                                                    offset: Offset(
+                                                        0.0, 0.9), //(x,y)
+                                                    blurRadius: 12.0,
+                                                    spreadRadius: 5,
+                                                  ),
+                                                ],
+                                              ),
+
+                                              child: Center(
+                                                child: snapshot.data.detail
+                                                            .record.status !=
+                                                        null
+                                                    ? Text(
+                                                        snapshot
+                                                                    .data
+                                                                    .detail
+                                                                    .record
+                                                                    .status ==
+                                                                "Completed"
+                                                            ? "Finished"
+                                                            : snapshot
+                                                                .data
+                                                                .detail
+                                                                .record
+                                                                .status,
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 10.0,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    27,
+                                                                    185,
+                                                                    31,
+                                                                    1)),
+                                                      )
+                                                    : Container(),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     Padding(
