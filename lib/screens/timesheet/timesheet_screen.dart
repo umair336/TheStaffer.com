@@ -452,8 +452,15 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                       ),
                                                       Text(
                                                         month_reg.inMinutes
-                                                            .remainder(60)
-                                                            .toString(),
+                                                                    .remainder(
+                                                                        60)
+                                                                    .toString() ==
+                                                                '0'
+                                                            ? '00'
+                                                            : month_reg
+                                                                .inMinutes
+                                                                .remainder(60)
+                                                                .toString(),
                                                         style: TextStyle(
                                                           fontSize: 14.0,
                                                           fontFamily:
@@ -531,8 +538,15 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                       ),
                                                       Text(
                                                         month_over.inMinutes
-                                                            .remainder(60)
-                                                            .toString(),
+                                                                    .remainder(
+                                                                        60)
+                                                                    .toString() ==
+                                                                '0'
+                                                            ? '00'
+                                                            : month_over
+                                                                .inMinutes
+                                                                .remainder(60)
+                                                                .toString(),
                                                         style: TextStyle(
                                                           fontSize: 14.0,
                                                           fontFamily:
@@ -601,8 +615,15 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                       ),
                                                       Text(
                                                         month_toal.inMinutes
-                                                            .remainder(60)
-                                                            .toString(),
+                                                                    .remainder(
+                                                                        60)
+                                                                    .toString() ==
+                                                                '0'
+                                                            ? '00'
+                                                            : month_toal
+                                                                .inMinutes
+                                                                .remainder(60)
+                                                                .toString(),
                                                         style: TextStyle(
                                                           fontSize: 14.0,
                                                           fontFamily:
@@ -995,7 +1016,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                                   ),
                                                                                 ),
                                                                                 Text(
-                                                                                  totalweek.inMinutes.remainder(60).toString(),
+                                                                                  totalweek.inMinutes.remainder(60).toString() == '0' ? '00' : totalweek.inMinutes.remainder(60).toString(),
                                                                                   style: TextStyle(
                                                                                     fontFamily: 'Nunito Sans',
                                                                                     fontSize: 12.0,
