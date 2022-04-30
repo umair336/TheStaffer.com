@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -8,6 +9,8 @@ import './assignment_screen.dart';
 import './assignmentDetailApi.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'package:slide_digital_clock/slide_digital_clock.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 class Assignmentdetail extends StatefulWidget {
   int jobid;
@@ -41,6 +44,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var now = DateTime.now();
   var payrate;
   var otPayrate;
+  int jobid;
+
   //String showtimeStart = "";
   // String showtimeEnd = "";
 
@@ -907,6 +912,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           //            MaterialPageRoute(builder: (context) => Profile()));
 
                                           setState(() {
+                                            jobid = snapshot
+                                                .data.detail.record.jobid;
+                                            print(
+                                                'eeeeeeeeeeeeeeeeeeeeeeeeeee$jobid');
                                             DialogStarttime();
 
                                             //  in_out = !in_out;
@@ -981,8 +990,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         breakstart =
                                                             DateTime.now()
                                                                 .toString();
+
                                                         breakStartList
                                                             .add(breakstart);
+
                                                         //  DialogFininshTime();
                                                       });
                                                     },
@@ -1051,7 +1062,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                                 .toString();
                                                         braeakEndList
                                                             .add(breakoff);
+
                                                         _FunctionBreakCalutate();
+
                                                         //   FunctionBreakCalculate();
                                                         //  DialogFininshTime();
                                                       });
@@ -1954,6 +1967,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               in_out = !in_out;
                               workingStart = DateTime.now().toString();
                               starttime.add(workingStart);
+
+                              StartEndTimeRequest(
+                                workingStart,
+                                workingOff,
+                                jobid,
+                              );
                               Navigator.pop(context);
                             });
                           },
@@ -2094,6 +2113,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               }
                               _FunctionStartOffCalcutlate();
                               _FunctionTotalCalculate();
+                              StartEndTimeRequest(
+                                  workingStart, workingOff, jobid);
                               Navigator.pop(context);
                             });
                           },
@@ -2242,4 +2263,66 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     //  double inDouble = double.parse(inString);
     print('dddddddddds$otPayrate');
   }
+
+  Future<http.Response> StartEndTimeRequest(
+      var stime, var etime, int idjob) async {
+            stime= DateFormat('kk:mm').format(stime);
+               etime= DateFormat('kk:mm').format(etime);
+    final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
+    final String token = await storage.read(key: 'token');
+    String authorization = token;
+    var urll =
+        'https://dev2.thestaffer.com/api/admin/employee/timesheet/add-timesheet';
+
+    Map data = {
+      'assignement_id': idjob,
+      'start_time': stime,
+      'end_time': etime
+    };
+    //encode Map to JSON
+    var body = json.encode(data);
+
+    var response = await http.post(Uri.parse(urll),
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $authorization'
+        },
+        body: body);
+    print("${response.statusCode}");
+    if (response.statusCode == 200) {
+      print("${response.body}");
+    } else {
+      print('no response');
+    }
+    return response;
+  }
+/*
+  Future<http.Response> BreakStartEndTimeRequest(var BStime, var BEtime) async {
+    final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
+    final String token = await storage.read(key: 'token');
+    String authorization = token;
+    var urll =
+        'https://dev2.thestaffer.com/api/admin/employee/timesheet/add-timesheet';
+
+    Map data = {'assignement_id': 78, 'start_time': BStime, 'end_time': BEtime};
+    //encode Map to JSON
+    var body = json.encode(data);
+
+    var response = await http.post(Uri.parse(urll),
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer $authorization'
+        },
+        body: body);
+    print("${response.statusCode}");
+    if (response.statusCode == 200) {
+      print("${response.body}");
+    } else {
+      print('no response');
+    }
+    return response;
+  }
+  
+  
+  */
 }

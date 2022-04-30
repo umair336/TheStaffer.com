@@ -149,42 +149,41 @@ class Record {
   String customerName;
   String departmentNames;
   String positionName;
+  int jobid;
 
-  
-
-  Record({
-    this.id,
-    this.number,
-    this.organizationId,
-    this.customerId,
-    this.departmentId,
-    this.worksiteId,
-    this.jobPositionId,
-    this.jobOrderId,
-    this.startDate,
-    this.endDate,
-    this.status,
-    this.shiftNotes,
-    this.dressCode,
-    this.noOfPosition,
-    this.shiftTimings,
-    this.customerPayRate,
-    this.customerOvertimePayRate,
-    this.cusStreetAdress1,
-    this.cusStreetAdress2,
-    this.cusZcode,
-    this.cusCountry,
-    this.cusState,
-    this.cusCity,
-    this.createdAt,
-    this.updatedAt,
-    this.rateUpdatedAt,
-    this.experience,
-    this.createdBy,
-    this.customerName,
-    this.departmentNames,
-    this.positionName,
-  });
+  Record(
+      {this.id,
+      this.number,
+      this.organizationId,
+      this.customerId,
+      this.departmentId,
+      this.worksiteId,
+      this.jobPositionId,
+      this.jobOrderId,
+      this.startDate,
+      this.endDate,
+      this.status,
+      this.shiftNotes,
+      this.dressCode,
+      this.noOfPosition,
+      this.shiftTimings,
+      this.customerPayRate,
+      this.customerOvertimePayRate,
+      this.cusStreetAdress1,
+      this.cusStreetAdress2,
+      this.cusZcode,
+      this.cusCountry,
+      this.cusState,
+      this.cusCity,
+      this.createdAt,
+      this.updatedAt,
+      this.rateUpdatedAt,
+      this.experience,
+      this.createdBy,
+      this.customerName,
+      this.departmentNames,
+      this.positionName,
+      this.jobid});
 
   Record.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -220,6 +219,7 @@ class Record {
     customerName = json['customer_name'];
     departmentNames = json['department_names'];
     positionName = json['position_name'];
+    jobid = json['job_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -257,7 +257,7 @@ class Record {
     data['customer_name'] = this.customerName;
     data['department_names'] = this.departmentNames;
     data['position_name'] = this.positionName;
-
+    data['job_id'] = this.jobid;
     return data;
   }
 }
