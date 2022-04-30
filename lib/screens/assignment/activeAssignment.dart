@@ -174,24 +174,28 @@ class _ActiveassignmentState extends State<Activeassignment> {
                         physics: ScrollPhysics(),
                         child: Column(
                           children: <Widget>[
-                               if (snapshot.data.data.length==0)
-                             Padding(
-                            padding: EdgeInsets.only(top: 50),
-                               child: Text('No Active Assignment', style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontFamily: 'Nunito Sans',
-                                                      color: Color.fromRGBO(
-                                                          112, 112, 112, 1)),),
-                             ),
-                            if(snapshot.data.data.length>=1)
-                            for (int i = 0; i < snapshot.data.data.length; i++)
-                              //          Text( 'ssllllllllllllllllllllsssss${snapshot.data.data[i].empStatus}'),
-                              Container(
-                                child: _checkexist(
-                                    snapshot.data.data[i].empStatus,
-                                    snapshot.data.data[i].jobId),
+                            if (snapshot.data.data.length == 0)
+                              Padding(
+                                padding: EdgeInsets.only(top: 50),
+                                child: Text(
+                                  'No Active Assignment',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Nunito Sans',
+                                      color: Color.fromRGBO(112, 112, 112, 1)),
+                                ),
                               ),
+                            if (snapshot.data.data.length >= 1)
+                              for (int i = 0;
+                                  i < snapshot.data.data.length;
+                                  i++)
+                                //          Text( 'ssllllllllllllllllllllsssss${snapshot.data.data[i].empStatus}'),
+                                Container(
+                                  child: _checkexist(
+                                      snapshot.data.data[i].empStatus,
+                                      snapshot.data.data[i].jobId),
+                                ),
                             ListView.builder(
                                 physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
@@ -438,7 +442,7 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                                                 }
                                                                               }))
                                                                       : Container(
-                                                                          child: FutureBuilder<FormateApi>(
+                                                                          /*child: FutureBuilder<FormateApi>(
                                                                               future: futureFormate,
                                                                               builder: (context, snapshoot) {
                                                                                 if (snapshoot.hasData) {
@@ -451,7 +455,8 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                                                                 } else {
                                                                                   return Container();
                                                                                 }
-                                                                              }))
+                                                                              })*/
+                                                                          )
 
                                                                   /*/
                                                                   Text(
@@ -491,12 +496,16 @@ class _ActiveassignmentState extends State<Activeassignment> {
                             SizedBox(
                               height: 20,
                             ),
-                            valueexist == '' ?  Text('No Active Assignment', style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: 'Nunito Sans',
-                                                    color: Color.fromRGBO(
-                                                        112, 112, 112, 1)),)
+                            valueexist == ''
+                                ? Text(
+                                    'No Active Assignment',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Nunito Sans',
+                                        color:
+                                            Color.fromRGBO(112, 112, 112, 1)),
+                                  )
                                 : Text('')
                           ],
                         ),
