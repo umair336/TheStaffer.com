@@ -1138,6 +1138,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                                 child: Row(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.baseline,
+                                  textBaseline: TextBaseline.alphabetic,
                                   children: [
                                     Expanded(
                                       child: Container(
@@ -1309,6 +1312,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(20, 0, 8, 0),
                                 child: Row(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.baseline,
+                                  textBaseline: TextBaseline.alphabetic,
                                   children: [
                                     Expanded(
                                       child: Container(
