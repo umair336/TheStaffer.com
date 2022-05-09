@@ -9,7 +9,23 @@ import 'package:TheStafferEmployee/screens/profile/profile_screen.dart';
 import 'package:TheStafferEmployee/screens/timesheet/timesheet_screen.dart';
 import 'package:adobe_xd/pinned.dart';
 
+class MainScreen extends StatefulWidget {
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
 
+class _MainScreenState extends State<MainScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+    );
+  }
+}
+
+
+/*
 class MainScreen extends StatefulWidget {
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -85,4 +101,4 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-}
+}*/

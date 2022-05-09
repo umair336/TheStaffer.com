@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:TheStafferEmployee/screens/home/home_screen.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:avatar_view/avatar_view.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'package:intl/intl.dart';
 import '../../constants/formate.dart';
+import '../assignment/assignment_screen.dart';
+import '../timesheet/timesheet_screen.dart';
 import 'dialog_resetpassword.dart';
 import 'profileApi.dart';
 import 'package:http/http.dart' as http;
@@ -23,23 +26,84 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   Future<Profile> futureData;
-    Future<FormateApi> futureFormate;
+  Future<FormateApi> futureFormate;
   final password = TextEditingController();
   bool correct = false;
+  int _selectedIndex = 3;
+
+  void _onItemTapped(int index) {
+    //  _selectedIndex = index;
+    print('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq$index');
+    if (index == 0) {
+      setState(() {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      });
+    } else if (index == 1) {
+      setState(() {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => TimesheetScreen()));
+      });
+    } else if (index == 2) {
+      setState(() {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AssignmentScreen(),
+            ));
+      });
+    } else if (index == 3) {
+      setState(() {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+      });
+    }
+  }
 
   @override
   void initState() {
     super.initState();
     futureData = fetchprofile();
-      futureFormate = fetchformate();
+    futureFormate = fetchformate();
     print('aaaaaaaaaaaaaaaaaa$futureData');
-    
   }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return new Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+                backgroundColor: Colors.white),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.lock_clock),
+                label: 'Time Sheet',
+                backgroundColor: Style.Colors.mainColor),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.business),
+                label: 'Assignment',
+                backgroundColor: Style.Colors.mainColor),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+                backgroundColor: Style.Colors.mainColor),
+          ],
+          type: BottomNavigationBarType.fixed,
+          // backgroundColor: Style.Colors.mainColor,
+          // iconSize: 30,
+          // selectedFontSize: 10,
+          // unselectedFontSize: 8,
+          unselectedItemColor: Color.fromRGBO(83, 83, 83, 1),
+          selectedItemColor: Color.fromRGBO(183, 14, 105, 1),
+          //   type: BottomNavigationBarType.shifting,
+          currentIndex: _selectedIndex,
+          //   selectedItemColor: Colors.black,
+          iconSize: 25,
+          onTap: _onItemTapped,
+          elevation: 4),
       body: RefreshIndicator(
         //   displacement: 250,
         backgroundColor: Colors.white,
@@ -47,12 +111,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         //  strokeWidth: 2,
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
         onRefresh: () {
-          /*  Navigator.pushReplacement(
+          Navigator.pushReplacement(
               context,
               PageRouteBuilder(
                   pageBuilder: (a, b, c) => ProfileScreen(),
                   transitionDuration: Duration(seconds: 0)));
-          return Future.value(false);*/
+          return Future.value(false);
         },
         child: SingleChildScrollView(
           child: FutureBuilder<Profile>(
@@ -370,24 +434,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         ),
                                         Padding(
                                           padding: EdgeInsets.only(left: 26),
-                                          child:    Container(
-                                                                          child: FutureBuilder<FormateApi>(
-                                                                              future: futureFormate,
-                                                                              builder: (context, snapshoot) {
-                                                                                if (snapshoot.hasData) {
-                                                                                  return Text(
-                                                                                     snapshot.data.data.dob.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse( snapshot.data.data.dob)) : ' - - - ',
-                                                                                 style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Nunito Sans',
-                                                color: Color.fromRGBO(
-                                                    31, 33, 38, 1)),   );
-                                                                                } else {
-                                                                                  return Container();
-                                                                                }
-                                                                              })),
-                                        
+                                          child: Container(
+                                              child: FutureBuilder<FormateApi>(
+                                                  future: futureFormate,
+                                                  builder:
+                                                      (context, snapshoot) {
+                                                    if (snapshoot.hasData) {
+                                                      return Text(
+                                                        snapshot.data.data.dob
+                                                                    .toString() !=
+                                                                null
+                                                            ? DateFormat(snapshoot
+                                                                    .data
+                                                                    .data[0]
+                                                                    .currentDateFormat)
+                                                                .format(DateTime
+                                                                    .parse(snapshot
+                                                                        .data
+                                                                        .data
+                                                                        .dob))
+                                                            : ' - - - ',
+                                                        style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                'Nunito Sans',
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    31,
+                                                                    33,
+                                                                    38,
+                                                                    1)),
+                                                      );
+                                                    } else {
+                                                      return Container();
+                                                    }
+                                                  })),
                                         ),
                                       ],
                                     ),

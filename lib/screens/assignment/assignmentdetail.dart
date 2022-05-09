@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../constants/formate.dart';
+import '../home/home_screen.dart';
+import '../profile/profile_screen.dart';
+import '../timesheet/timesheet_screen.dart';
 import './assignment_screen.dart';
 import './assignmentDetailApi.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
@@ -45,6 +48,36 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var payrate;
   var otPayrate;
   int jobid;
+  int _selectedIndex = 2;
+
+  void _onItemTapped(int index) {
+    //  _selectedIndex = index;
+    print('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq$index');
+    if (index == 0) {
+      setState(() {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      });
+    } else if (index == 1) {
+      setState(() {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => TimesheetScreen()));
+      });
+    } else if (index == 2) {
+      setState(() {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AssignmentScreen(),
+            ));
+      });
+    } else if (index == 3) {
+      setState(() {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+      });
+    }
+  }
 
   //String showtimeStart = "";
   // String showtimeEnd = "";
@@ -63,6 +96,38 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+                backgroundColor: Colors.white),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.lock_clock),
+                label: 'Time Sheet',
+                backgroundColor: Style.Colors.mainColor),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.business),
+                label: 'Assignment',
+                backgroundColor: Style.Colors.mainColor),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+                backgroundColor: Style.Colors.mainColor),
+          ],
+          type: BottomNavigationBarType.fixed,
+          // backgroundColor: Style.Colors.mainColor,
+          // iconSize: 30,
+          // selectedFontSize: 10,
+          // unselectedFontSize: 8,
+          unselectedItemColor: Color.fromRGBO(83, 83, 83, 1),
+          selectedItemColor: Color.fromRGBO(183, 14, 105, 1),
+          //   type: BottomNavigationBarType.shifting,
+          currentIndex: _selectedIndex,
+          //   selectedItemColor: Colors.black,
+          iconSize: 25,
+          onTap: _onItemTapped,
+          elevation: 4),
       body: SingleChildScrollView(
         child: FutureBuilder<Detailassignment>(
           future: futureData,

@@ -1,5 +1,7 @@
 import 'package:TheStafferEmployee/constants/formate.dart';
 import 'package:TheStafferEmployee/screens/main_screen/main_screen.dart';
+import 'package:TheStafferEmployee/screens/profile/profile_screen.dart';
+import 'package:TheStafferEmployee/screens/timesheet/timesheet_screen.dart';
 import 'package:avatar_view/avatar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
+import '../assignment/assignment_screen.dart';
 import '../assignment/assignmentdetail.dart';
 import './homeapi.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -20,6 +23,37 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    //  _selectedIndex = index;
+    print('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq$index');
+    if (index == 0) {
+      setState(() {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      });
+    } else if (index == 1) {
+      setState(() {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => TimesheetScreen()));
+      });
+    } else if (index == 2) {
+      setState(() {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AssignmentScreen(),
+            ));
+      });
+    } else if (index == 3) {
+      setState(() {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+      });
+    }
+  }
+
   @override
   Future<Home> futureData;
   Future<FormateApi> futureFormate;
@@ -41,6 +75,38 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return new Scaffold(
       backgroundColor: const Color(0xfffafafa),
+      bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+                backgroundColor: Colors.white),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.lock_clock),
+                label: 'Time Sheet',
+                backgroundColor: Style.Colors.mainColor),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.business),
+                label: 'Assignment',
+                backgroundColor: Style.Colors.mainColor),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+                backgroundColor: Style.Colors.mainColor),
+          ],
+          type: BottomNavigationBarType.fixed,
+          // backgroundColor: Style.Colors.mainColor,
+          // iconSize: 30,
+          // selectedFontSize: 10,
+          // unselectedFontSize: 8,
+          unselectedItemColor: Color.fromRGBO(83, 83, 83, 1),
+          selectedItemColor: Color.fromRGBO(183, 14, 105, 1),
+          //   type: BottomNavigationBarType.shifting,
+          currentIndex: _selectedIndex,
+          //   selectedItemColor: Colors.black,
+          iconSize: 25,
+          onTap: _onItemTapped,
+          elevation: 4),
       body: RefreshIndicator(
         //   displacement: 250,
         backgroundColor: Colors.white,
