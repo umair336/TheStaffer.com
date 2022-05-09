@@ -137,8 +137,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Text(
                                   'Welcome',
                                   style: TextStyle(
-                                    //fontWeight: FontWeight.bold,
-                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 15.0,
                                     color: Color.fromRGBO(255, 255, 255, 1),
                                   ),
                                 ),

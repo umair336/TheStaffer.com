@@ -170,7 +170,7 @@ class _LoginFormState extends State<LoginForm> {
                             autocorrect: false,
                           ),
                           SizedBox(
-                            height: 30.0,
+                            height: 16.0,
                           ),
                           Container(
                             alignment: Alignment.centerRight,
@@ -181,7 +181,7 @@ class _LoginFormState extends State<LoginForm> {
                                 });
                               },
                               child: Text(
-                                'Forgot Your Password?',
+                                'Forgot Password?',
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Nunito Sans',
