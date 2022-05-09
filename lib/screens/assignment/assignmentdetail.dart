@@ -993,7 +993,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                                         breakStartList
                                                             .add(breakstart);
-
+                                                        BreakStartEndTimeRequest(
+                                                            breakstart,
+                                                            breakoff,
+                                                            jobid);
                                                         //  DialogFininshTime();
                                                       });
                                                     },
@@ -1062,7 +1065,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                                 .toString();
                                                         braeakEndList
                                                             .add(breakoff);
-
+                                                        BreakStartEndTimeRequest(
+                                                            breakstart,
+                                                            breakoff,
+                                                            jobid);
                                                         _FunctionBreakCalutate();
 
                                                         //   FunctionBreakCalculate();
@@ -2266,8 +2272,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
   Future<http.Response> StartEndTimeRequest(
       var stime, var etime, int idjob) async {
-            stime= DateFormat('kk:mm').format(stime);
-               etime= DateFormat('kk:mm').format(etime);
+    //   stime= DateFormat('kk:mm').format(stime);
+    //       etime= DateFormat('kk:mm').format(etime);
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
     final String token = await storage.read(key: 'token');
     String authorization = token;
@@ -2296,15 +2302,20 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     }
     return response;
   }
-/*
-  Future<http.Response> BreakStartEndTimeRequest(var BStime, var BEtime) async {
+
+  Future<http.Response> BreakStartEndTimeRequest(
+      var BStime, var BEtime, int idjob) async {
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
     final String token = await storage.read(key: 'token');
     String authorization = token;
     var urll =
         'https://dev2.thestaffer.com/api/admin/employee/timesheet/add-timesheet';
 
-    Map data = {'assignement_id': 78, 'start_time': BStime, 'end_time': BEtime};
+    Map data = {
+      'assignement_id': idjob,
+      'start_time': BStime,
+      'end_time': BEtime
+    };
     //encode Map to JSON
     var body = json.encode(data);
 
@@ -2322,7 +2333,4 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     }
     return response;
   }
-  
-  
-  */
 }
