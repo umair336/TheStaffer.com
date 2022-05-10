@@ -174,7 +174,7 @@ class _ActiveassignmentState extends State<Activeassignment> {
                         physics: ScrollPhysics(),
                         child: Column(
                           children: <Widget>[
-                            if (snapshot.data.data.length == 0)
+                            /*   if (snapshot.data.data.length == 0)
                               Padding(
                                 padding: EdgeInsets.only(top: 50),
                                 child: Text(
@@ -185,7 +185,7 @@ class _ActiveassignmentState extends State<Activeassignment> {
                                       fontFamily: 'Nunito Sans',
                                       color: Color.fromRGBO(112, 112, 112, 1)),
                                 ),
-                              ),
+                              ),*/
                             if (snapshot.data.data.length >= 1)
                               for (int i = 0;
                                   i < snapshot.data.data.length;

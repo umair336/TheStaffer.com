@@ -175,7 +175,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                         physics: ScrollPhysics(),
                         child: Column(
                           children: <Widget>[
-                             if (snapshot.data.data.length==0)
+                            /*   if (snapshot.data.data.length==0)
                              Padding(
                                padding: EdgeInsets.only(top: 50),
                                child: Text('No Upcoming Assignment', style: TextStyle(
@@ -184,17 +184,17 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                       fontFamily: 'Nunito Sans',
                                                       color: Color.fromRGBO(
                                                           112, 112, 112, 1)),),
-                             ),
-                                   
-                             if(snapshot.data.data.length >= 1)
-                              for (int i = 0; i < snapshot.data.data.length; i++)
-                              Container(
-                                child: _checkexist(
-                                    snapshot.data.data[i].empStatus,
-                                    snapshot.data.data[i].jobId),
-                              ),
-                        
-                           
+                             ),*/
+
+                            if (snapshot.data.data.length >= 1)
+                              for (int i = 0;
+                                  i < snapshot.data.data.length;
+                                  i++)
+                                Container(
+                                  child: _checkexist(
+                                      snapshot.data.data[i].empStatus,
+                                      snapshot.data.data[i].jobId),
+                                ),
                             ListView.builder(
                                 physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
@@ -435,8 +435,8 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                                 FormateApi>(
                                                                             future:
                                                                                 futureFormate,
-                                                                            builder: (context,
-                                                                                snapshoot) {
+                                                                            builder:
+                                                                                (context, snapshoot) {
                                                                               if (snapshoot.hasData) {
                                                                                 return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].endDate)),
                                                                                     //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
@@ -450,7 +450,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                               }
                                                                             }))
                                                                     : Container(
-                                                                     /*   child: FutureBuilder<
+                                                                        /*   child: FutureBuilder<
                                                                                 FormateApi>(
                                                                             future:
                                                                                 futureFormate,
@@ -466,7 +466,8 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                               } else {
                                                                                 return Container();
                                                                               }
-                                                                            })*/)
+                                                                            })*/
+                                                                        )
 
                                                                 /*/
                                                                   Text(
@@ -504,12 +505,19 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                     ],
                                   );
                                 }),
-                            valueexist == '' ?  Text('No Upcoming Assignment', style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: 'Nunito Sans',
-                                                    color: Color.fromRGBO(
-                                                        112, 112, 112, 1)),)
+                            SizedBox(
+                              height: 20,
+                            ),
+                            valueexist == ''
+                                ? Text(
+                                    'No Upcoming Assignment',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Nunito Sans',
+                                        color:
+                                            Color.fromRGBO(112, 112, 112, 1)),
+                                  )
                                 : Text('')
                           ],
                         ),
