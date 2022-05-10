@@ -26,9 +26,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   bool isExpanded = false;
   String start = "";
   String end = "";
-  String startDate = DateFormat('yyyy/M/d')
+  String startDate = DateFormat('MMMM d,yyyy')
       .format(DateTime.now().subtract(new Duration(days: 30)));
-  String endDate = DateFormat('yyyy/M/d').format(DateTime.now());
+  String endDate = DateFormat('MMMM d,yyyy').format(DateTime.now());
   // String weekstrart = "";
   // String weekend = "";
   var rugular = "";
@@ -2065,7 +2065,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   _selectStart(BuildContext context) async {
     final selected = await showDatePicker(
       context: context,
-      initialDate: new DateFormat('yyyy/M/d').parse(startDate),
+      initialDate: new DateFormat('MMMM d,yyyy').parse(startDate),
       firstDate: DateTime(1970),
       lastDate: DateTime(2025),
       builder: (BuildContext context, Widget child) {
@@ -2082,7 +2082,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     );
     if (selected != null)
       setState(() {
-        startDate = DateFormat('yyyy/M/d').format(selected);
+        startDate = DateFormat('MMMM d,yyyy').format(selected);
         print('rrrrrrrrrrrrrrrrrrrr');
 
         timesheet(startDate, endDate);
@@ -2096,7 +2096,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   _selectEnd(BuildContext context) async {
     final selected = await showDatePicker(
       context: context,
-      initialDate: new DateFormat('yyyy/M/d').parse(endDate),
+      initialDate: new DateFormat('MMMM d,yyyy').parse(endDate),
       firstDate: DateTime(2010),
       lastDate: DateTime(2025),
       builder: (BuildContext context, Widget child) {
@@ -2114,7 +2114,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     );
     if (selected != null)
       setState(() {
-        endDate = DateFormat('yyyy/M/d').format(selected);
+        endDate = DateFormat('MMMM d,yyyy').format(selected);
         print(endDate);
 
         var fre = timesheet(startDate, endDate);
