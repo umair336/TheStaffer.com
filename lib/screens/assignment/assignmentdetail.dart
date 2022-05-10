@@ -129,7 +129,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
           onTap: _onItemTapped,
           elevation: 4),
       body: RefreshIndicator(
-           backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         color: Color.fromRGBO(13, 91, 196, 1),
         //  strokeWidth: 2,
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
@@ -137,7 +137,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
           Navigator.pushReplacement(
               context,
               PageRouteBuilder(
-                  pageBuilder: (a, b, c) => Assignmentdetail(jobid: widget.jobid,),
+                  pageBuilder: (a, b, c) => Assignmentdetail(
+                        jobid: widget.jobid,
+                      ),
                   transitionDuration: Duration(seconds: 0)));
           return Future.value(false);
         },
@@ -149,7 +151,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                 return Column(
                   children: [
                     //
-      
+
                     /*   Text(snapshot.data.data.jobPosition),
                         Text(snapshot.data.data.phone),
                         Text(snapshot.data.data.dob),
@@ -241,12 +243,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                             child: Column(
                               children: [
                                 SizedBox(height: 12),
-      
+
                                 Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(10, 0, 10, 0),
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       /* Container(
                                         child: IconButton(
@@ -272,7 +275,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             ),
                                             Text(
                                               // 'Job Title will come here',
-      
+
                                               snapshot.data.detail.record
                                                           .positionName !=
                                                       null
@@ -297,13 +300,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                   ? snapshot.data.detail.record
                                                       .departmentNames
                                                   : '',
-      
+
                                               style: TextStyle(
                                                 fontFamily: 'Nunito Sans',
                                                 // fontWeight: FontWeight.semibold,
                                                 fontSize: 10.0,
-                                                color:
-                                                    Color.fromRGBO(83, 83, 83, 1),
+                                                color: Color.fromRGBO(
+                                                    83, 83, 83, 1),
                                               ),
                                             ),
                                           ],
@@ -315,7 +318,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 SizedBox(
                                   height: 20,
                                 ),
-      
+
                                 Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -346,7 +349,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 fontFamily: 'Nunito Sans',
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 12.0,
-                                                color: Color.fromRGBO(0, 0, 0, 1),
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
                                               ),
                                             ),
                                           ],
@@ -368,20 +372,20 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               width: 130,
                                               child: Text(
                                                 //'New York, NY',
-      
+
                                                 snapshot.data.detail.address
                                                             .address !=
                                                         null
-                                                    ? snapshot.data.detail.address
-                                                        .address
+                                                    ? snapshot.data.detail
+                                                        .address.address
                                                     : ' ',
-      
+
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 12.0,
-                                                  color:
-                                                      Color.fromRGBO(0, 0, 0, 1),
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
                                                 ),
                                               ),
                                             ),
@@ -391,11 +395,11 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                     ],
                                   ),
                                 ),
-      
+
                                 SizedBox(
                                   height: 20,
                                 ),
-      
+
                                 Container(
                                   height: 50,
                                   child: Padding(
@@ -426,52 +430,53 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                   height: 2,
                                                 ),
                                                 Container(
-                                                    child: FutureBuilder<
-                                                            FormateApi>(
-                                                        future: futureFormate,
-                                                        builder:
-                                                            (context, snapshoot) {
-                                                          if (snapshoot.hasData) {
-                                                            return Text(
-                                                              snapshot
-                                                                          .data
-                                                                          .detail
-                                                                          .record
-                                                                          .startDate
-                                                                          .toString() !=
-                                                                      null
-                                                                  ? DateFormat(snapshoot
-                                                                          .data
-                                                                          .data[0]
-                                                                          .currentDateFormat)
-                                                                      .format(DateTime.parse(snapshot
+                                                    child:
+                                                        FutureBuilder<
+                                                                FormateApi>(
+                                                            future:
+                                                                futureFormate,
+                                                            builder: (context,
+                                                                snapshoot) {
+                                                              if (snapshoot
+                                                                  .hasData) {
+                                                                return Text(
+                                                                  snapshot.data.detail.record
+                                                                              .startDate
+                                                                              .toString() !=
+                                                                          null
+                                                                      ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot
                                                                           .data
                                                                           .detail
                                                                           .record
                                                                           .startDate))
-                                                                  : ' - - - ',
-                                                              style: TextStyle(
-                                                                fontFamily:
-                                                                    'Nunito Sans',
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: 14.0,
-                                                                color: Color
-                                                                    .fromRGBO(0,
-                                                                        0, 0, 1),
-                                                              ),
-                                                            );
-                                                          } else {
-                                                            return Container();
-                                                          }
-                                                        })),
+                                                                      : ' - - - ',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontFamily:
+                                                                        'Nunito Sans',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        14.0,
+                                                                    color: Color
+                                                                        .fromRGBO(
+                                                                            0,
+                                                                            0,
+                                                                            0,
+                                                                            1),
+                                                                  ),
+                                                                );
+                                                              } else {
+                                                                return Container();
+                                                              }
+                                                            })),
                                               ],
                                             ),
                                           ), //Icon
                                         ), //Positioned
                                         /** Positioned WIdget **/
-      
+
                                         Positioned(
                                           top: 0,
                                           left: 160,
@@ -518,22 +523,22 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                                         .data
                                                                         .data[0]
                                                                         .currentDateFormat)
-                                                                    .format(DateTime
-                                                                        .parse(snapshot
-                                                                            .data
-                                                                            .detail
-                                                                            .record
-                                                                            .endDate))
+                                                                    .format(DateTime.parse(snapshot
+                                                                        .data
+                                                                        .detail
+                                                                        .record
+                                                                        .endDate))
                                                                 : ' - - - ',
                                                             style: TextStyle(
                                                               fontFamily:
                                                                   'Nunito Sans',
                                                               fontWeight:
-                                                                  FontWeight.bold,
+                                                                  FontWeight
+                                                                      .bold,
                                                               fontSize: 14.0,
-                                                              color:
-                                                                  Color.fromRGBO(
-                                                                      0, 0, 0, 1),
+                                                              color: Color
+                                                                  .fromRGBO(0,
+                                                                      0, 0, 1),
                                                             ),
                                                           );
                                                         } else {
@@ -592,7 +597,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                       ),
                                                       Text(
                                                         //  '\$00.00/hr',
-      
+
                                                         payrate,
                                                         style: TextStyle(
                                                           fontFamily:
@@ -611,7 +616,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     '00',
                                                     style: TextStyle(
                                                       fontFamily: 'Nunito Sans',
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 14.0,
                                                       color: Color.fromRGBO(
                                                           0, 0, 0, 1),
@@ -622,7 +628,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           ), //Icon
                                         ), //Positioned
                                         /** Positioned WIdget **/
-      
+
                                         Positioned(
                                           top: 0,
                                           left: 160,
@@ -658,7 +664,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                       ),
                                                       Text(
                                                         //  '\$00.00/hr',
-      
+
                                                         otPayrate,
                                                         style: TextStyle(
                                                           fontFamily:
@@ -677,7 +683,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     '00',
                                                     style: TextStyle(
                                                       fontFamily: 'Nunito Sans',
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 14.0,
                                                       color: Color.fromRGBO(
                                                           0, 0, 0, 1),
@@ -691,12 +698,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                     ), //Stack
                                   ),
                                 ),
-      
+
                                 ///////////////////////////////////////////////////////////////////////////////////
                                 SizedBox(
                                   height: 3,
                                 ),
-      
+
                                 Padding(
                                   padding: const EdgeInsets.only(left: 20),
                                   child: Row(
@@ -783,7 +790,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         6.0), //Same as `blurRadius` i guess
                                                 decoration: BoxDecoration(
                                                   borderRadius:
-                                                      BorderRadius.circular(5.0),
+                                                      BorderRadius.circular(
+                                                          5.0),
                                                   color: Colors.white,
                                                   border: Border.all(
                                                       color: Color.fromRGBO(
@@ -799,7 +807,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     ),
                                                   ],
                                                 ),
-      
+
                                                 child: Center(
                                                   child: snapshot.data.detail
                                                               .record.status !=
@@ -819,10 +827,11 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                                   .status,
                                                           style: TextStyle(
                                                               fontWeight:
-                                                                  FontWeight.bold,
+                                                                  FontWeight
+                                                                      .bold,
                                                               fontSize: 10.0,
-                                                              color:
-                                                                  Color.fromRGBO(
+                                                              color: Color
+                                                                  .fromRGBO(
                                                                       27,
                                                                       185,
                                                                       31,
@@ -839,12 +848,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         padding: EdgeInsets.only(right: 10),
                                         child: Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                              CrossAxisAlignment.start,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                              MainAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Break Time ',
+                                              'Total Break Time',
                                               style: TextStyle(
                                                 fontFamily: 'Nunito Sans',
                                                 //  fontWeight: FontWeight.bold,
@@ -868,7 +877,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 fontFamily: 'Nunito Sans',
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 14.0,
-                                                color: Color.fromRGBO(0, 0, 0, 1),
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
                                               ),
                                             ),
                                           ],
@@ -878,12 +888,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         padding: EdgeInsets.only(right: 30),
                                         child: Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                              CrossAxisAlignment.start,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                              MainAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Total Time ',
+                                              'Total Work Time',
                                               style: TextStyle(
                                                 fontFamily: 'Nunito Sans',
                                                 //  fontWeight: FontWeight.bold,
@@ -907,7 +917,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 fontFamily: 'Nunito Sans',
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 14.0,
-                                                color: Color.fromRGBO(0, 0, 0, 1),
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
                                               ),
                                             ),
                                           ],
@@ -919,7 +930,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 SizedBox(
                                   height: 25,
                                 ),
-      
+
                                 /* Container(
                                   height: 150,
                                   width: 150,
@@ -954,8 +965,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
                                         //   color: Color.fromRGBO(23, 197, 204, 1),
                                         height: 45,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.75,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.75,
                                         child: ElevatedButton(
                                           child: Text(
                                             'Punch-In',
@@ -965,18 +977,18 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               color: Colors.white,
                                             ),
                                           ),
-      
+
                                           style: ButtonStyle(
                                             backgroundColor:
-                                                MaterialStateProperty.all<Color>(
-                                                    Color.fromRGBO(
+                                                MaterialStateProperty
+                                                    .all<Color>(Color.fromRGBO(
                                                         13, 91, 196, 1)),
                                             shape: MaterialStateProperty.all<
                                                 RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(10.0),
-      
+
                                                 //   side: BorderSide(color: Colors.red.shade900),
                                               ),
                                             ),
@@ -988,14 +1000,14 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           onPressed: () {
                                             //          Navigator.push(context,
                                             //            MaterialPageRoute(builder: (context) => Profile()));
-      
+
                                             setState(() {
                                               jobid = snapshot
                                                   .data.detail.record.jobid;
                                               print(
                                                   'eeeeeeeeeeeeeeeeeeeeeeeeeee$jobid');
                                               DialogStarttime();
-      
+
                                               //  in_out = !in_out;
                                             });
                                           },
@@ -1008,14 +1020,15 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           children: [
                                             break_start_end
                                                 ? Container(
-                                                    width: MediaQuery.of(context)
-                                                            .size
-                                                            .width *
-                                                        0.30,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.30,
                                                     //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
                                                     //   color: Color.fromRGBO(23, 197, 204, 1),
                                                     height: 45,
-      
+
                                                     child: TextButton(
                                                       child: Text(
                                                         'Break Start',
@@ -1027,12 +1040,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                               13, 91, 196, 1),
                                                         ),
                                                       ),
-      
+
                                                       style: ButtonStyle(
                                                         backgroundColor:
                                                             MaterialStateProperty
                                                                 .all<Color>(
-                                                                    Colors.white),
+                                                                    Colors
+                                                                        .white),
                                                         shape: MaterialStateProperty
                                                             .all<
                                                                 RoundedRectangleBorder>(
@@ -1049,7 +1063,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                                         196,
                                                                         1),
                                                                 width: 1),
-      
+
                                                             //   side: BorderSide(color: Colors.red.shade900),
                                                           ),
                                                         ),
@@ -1061,14 +1075,14 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                       onPressed: () {
                                                         //          Navigator.push(context,
                                                         //            MaterialPageRoute(builder: (context) => Profile()));
-      
+
                                                         setState(() {
                                                           break_start_end =
                                                               !break_start_end;
                                                           breakstart =
                                                               DateTime.now()
                                                                   .toString();
-      
+
                                                           breakStartList
                                                               .add(breakstart);
                                                           BreakStartEndTimeRequest(
@@ -1081,14 +1095,15 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     ),
                                                   )
                                                 : Container(
-                                                    width: MediaQuery.of(context)
-                                                            .size
-                                                            .width *
-                                                        0.30,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.30,
                                                     //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
                                                     //   color: Color.fromRGBO(23, 197, 204, 1),
                                                     height: 45,
-      
+
                                                     child: TextButton(
                                                       child: Text(
                                                         'Break End',
@@ -1100,12 +1115,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                               13, 91, 196, 1),
                                                         ),
                                                       ),
-      
+
                                                       style: ButtonStyle(
                                                         backgroundColor:
                                                             MaterialStateProperty
                                                                 .all<Color>(
-                                                                    Colors.white),
+                                                                    Colors
+                                                                        .white),
                                                         shape: MaterialStateProperty
                                                             .all<
                                                                 RoundedRectangleBorder>(
@@ -1122,7 +1138,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                                         196,
                                                                         1),
                                                                 width: 1),
-      
+
                                                             //   side: BorderSide(color: Colors.red.shade900),
                                                           ),
                                                         ),
@@ -1134,7 +1150,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                       onPressed: () {
                                                         //          Navigator.push(context,
                                                         //            MaterialPageRoute(builder: (context) => Profile()));
-      
+
                                                         setState(() {
                                                           break_start_end =
                                                               !break_start_end;
@@ -1148,7 +1164,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                               breakoff,
                                                               jobid);
                                                           _FunctionBreakCalutate();
-      
+
                                                           //   FunctionBreakCalculate();
                                                           //  DialogFininshTime();
                                                         });
@@ -1163,31 +1179,35 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
                                                 //   color: Color.fromRGBO(23, 197, 204, 1),
                                                 height: 45,
-      
+
                                                 child: TextButton(
                                                   child: Text(
                                                     'Punch-Out',
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 14.0,
                                                       color: Colors.white,
                                                     ),
                                                   ),
-      
+
                                                   style: ButtonStyle(
                                                     backgroundColor:
-                                                        MaterialStateProperty.all<
-                                                                Color>(
-                                                            Color.fromRGBO(
-                                                                13, 91, 196, 1)),
-                                                    shape:
-                                                        MaterialStateProperty.all<
+                                                        MaterialStateProperty
+                                                            .all<Color>(
+                                                                Color.fromRGBO(
+                                                                    13,
+                                                                    91,
+                                                                    196,
+                                                                    1)),
+                                                    shape: MaterialStateProperty
+                                                        .all<
                                                             RoundedRectangleBorder>(
                                                       RoundedRectangleBorder(
                                                         borderRadius:
-                                                            BorderRadius.circular(
-                                                                10.0),
-      
+                                                            BorderRadius
+                                                                .circular(10.0),
+
                                                         //   side: BorderSide(color: Colors.red.shade900),
                                                       ),
                                                     ),
@@ -1199,7 +1219,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                   onPressed: () {
                                                     //          Navigator.push(context,
                                                     //            MaterialPageRoute(builder: (context) => Profile()));
-      
+
                                                     setState(() {
                                                       DialogFininshTime();
                                                     });
@@ -1214,7 +1234,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                   height: 25,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(20, 0, 0, 0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.baseline,
@@ -1225,7 +1246,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.baseline,
-                                            textBaseline: TextBaseline.alphabetic,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
                                             children: [
                                               Text(
                                                 'Start Time',
@@ -1244,18 +1266,21 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                   i < starttime.length;
                                                   i++)
                                                 Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      bottom: 9),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 9),
                                                   child: Text(
                                                     starttime[i] != null
                                                         ? DateFormat('hh:mm:ss')
                                                             .format(
                                                                 DateTime.parse(
-                                                                    starttime[i]))
+                                                                    starttime[
+                                                                        i]))
                                                         : '',
                                                     style: TextStyle(
                                                       fontFamily: 'Nunito Sans',
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 14.0,
                                                       color: Color.fromRGBO(
                                                           0, 0, 0, 1),
@@ -1294,8 +1319,9 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 child: Text(
                                                   offtime[i] != null
                                                       ? DateFormat('hh:mm:ss')
-                                                          .format(DateTime.parse(
-                                                              offtime[i]))
+                                                          .format(
+                                                              DateTime.parse(
+                                                                  offtime[i]))
                                                       : '',
                                                   style: TextStyle(
                                                     fontFamily: 'Nunito Sans',
@@ -1388,7 +1414,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                   height: 10,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.fromLTRB(20, 0, 8, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(20, 0, 8, 0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.baseline,
@@ -1399,7 +1426,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.baseline,
-                                            textBaseline: TextBaseline.alphabetic,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
                                             children: [
                                               SizedBox(
                                                 height: 5,
@@ -1433,7 +1461,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         : '---',
                                                     style: TextStyle(
                                                       fontFamily: 'Nunito Sans',
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 14.0,
                                                       color: Color.fromRGBO(
                                                           0, 0, 0, 1),
@@ -1476,8 +1505,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 child: Text(
                                                   braeakEndList[i] != null
                                                       ? DateFormat('hh:mm:ss')
-                                                          .format(DateTime.parse(
-                                                              braeakEndList[i]))
+                                                          .format(
+                                                              DateTime.parse(
+                                                                  braeakEndList[
+                                                                      i]))
                                                       : '---',
                                                   style: TextStyle(
                                                     fontFamily: 'Nunito Sans',
@@ -1585,7 +1616,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                     ],
                                   ),
                                 ),
-      
+
                                 /* TextButton(
                                   child:
                                       cmbscritta ? Text("GeoOn") : Text("GeoOFF"),
@@ -1611,14 +1642,16 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                     setState(() => cmbscritta = !cmbscritta);
                                   },
                                 ),*/
-      
+
                                 ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: snapshot.data.detail.shifts.length,
+                                    itemCount:
+                                        snapshot.data.detail.shifts.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return Padding(
-                                        padding: const EdgeInsets.only(left: 20),
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
                                         child: Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.baseline,
@@ -1692,8 +1725,11 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                               .shifts[index]
                                                               .timeFrom !=
                                                           null
-                                                      ? snapshot.data.detail
-                                                          .shifts[index].timeFrom
+                                                      ? snapshot
+                                                          .data
+                                                          .detail
+                                                          .shifts[index]
+                                                          .timeFrom
                                                       : ' ',
                                                   style: TextStyle(
                                                     fontFamily: 'Nunito Sans',
@@ -1767,12 +1803,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             fontFamily: 'Nunito Sans',
                                             //  fontWeight: FontWeight.bold,
                                             fontSize: 10.0,
-                                            color:
-                                                Color.fromRGBO(112, 112, 112, 1),
+                                            color: Color.fromRGBO(
+                                                112, 112, 112, 1),
                                           ),
                                         ),
                                       ),
-      
+
                                       /*  Text(
                                         'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.',
                                         //  snapshot.data.detail.record.shiftNotes    .toString(),
@@ -1842,7 +1878,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                   ),
                 );
               }
-      
+
               // By default, show a loading spinner.
             },
           ),
