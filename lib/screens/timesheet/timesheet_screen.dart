@@ -837,7 +837,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                             //
                                             //  rugular = snapshot.data    .timesheet[index].regularHours;
                                             //    over = snapshot.data  .timesheet[index].overtimeHours;
-                                           // Container(child: DateCalculte());
+                                            // Container(child: DateCalculte());
                                             return new Column(
                                               children: <Widget>[
                                                 Padding(
@@ -2128,7 +2128,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       });
   }
 
- /* DateCalculte() {
+  /* DateCalculte() {
     // print('ccccccccccc$week_start_date');
     week_start_date = DateFormat("yyyy/M/d").format(week_start_date);
     print('ddddddddddddddddddddddddddddddd$week_start_date');
@@ -2179,8 +2179,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       val_month_reg = true;
     } else {
       month_reg = new Duration(
-          hours: int.parse(m_reg[0]) + int.parse(month_reg.inHours.toString()),
-          minutes: int.parse(m_reg[1]),
+          hours: int.parse(m_reg[0]),
+          minutes:
+              int.parse(m_reg[1]) + int.parse(month_reg.inMinutes.toString()),
           seconds: 0);
     }
     print('dddddddddddddddddddddd$month_reg');
