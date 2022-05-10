@@ -837,7 +837,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                             //
                                             //  rugular = snapshot.data    .timesheet[index].regularHours;
                                             //    over = snapshot.data  .timesheet[index].overtimeHours;
-                                            Container(child: DateCalculte());
+                                           // Container(child: DateCalculte());
                                             return new Column(
                                               children: <Widget>[
                                                 Padding(
@@ -950,7 +950,8 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                                 (context, snapshoot) {
                                                                               if (snapshoot.hasData) {
                                                                                 return Text(
-                                                                                  snapshot.data.timesheet[index].hoursForWeek != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(week_end_date).subtract(new Duration(days: 7))) : ' ',
+                                                                                  //  DateTime.parse(snapshot.data.timesheet[index].hoursForWeek.toString()).subtract(new Duration(days: 7)).toString(),
+                                                                                  snapshot.data.timesheet[index].hoursForWeek.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.timesheet[index].hoursForWeek.toString()).subtract(new Duration(days: 7))) : ' ',
                                                                                   style: TextStyle(
                                                                                     fontWeight: FontWeight.bold,
                                                                                     fontSize: 16.0,
@@ -2127,11 +2128,11 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       });
   }
 
-  DateCalculte() {
+ /* DateCalculte() {
     // print('ccccccccccc$week_start_date');
     week_start_date = DateFormat("yyyy/M/d").format(week_start_date);
     print('ddddddddddddddddddddddddddddddd$week_start_date');
-  }
+  }*/
 
   Weektotal() {
     print('ccccccccccc$rugular cccccccccccccc$over');
