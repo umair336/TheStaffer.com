@@ -40,9 +40,18 @@ class _LoginFormState extends State<LoginForm> {
         if (state is LoginFailure) {
           if (_usernameController.text.isEmpty ||
               _passwordController.text.isEmpty)
+               if (_usernameController.text.isEmpty)
+                Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Please enter Username"),
+                backgroundColor: Colors.red.shade900,
+              ),
+            );
+
+               else
             Scaffold.of(context).showSnackBar(
               SnackBar(
-                content: Text("Please enter credentials"),
+                content: Text("Please enter Password"),
                 backgroundColor: Colors.red.shade900,
               ),
             );
