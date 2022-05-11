@@ -38,12 +38,21 @@ class _LoginFormState extends State<LoginForm> {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginFailure) {
-          Scaffold.of(context).showSnackBar(
-            SnackBar(
-              content: Text("Please enter correct credentials"),
-              backgroundColor: Colors.red.shade900,
-            ),
-          );
+          if (_usernameController.text.isEmpty ||
+              _passwordController.text.isEmpty)
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Please enter credentials"),
+                backgroundColor: Colors.red.shade900,
+              ),
+            );
+          else
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Please enter correct credentials"),
+                backgroundColor: Colors.red.shade900,
+              ),
+            );
         }
       },
       child: BlocBuilder<LoginBloc, LoginState>(
