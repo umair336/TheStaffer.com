@@ -1828,10 +1828,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         child: Text(
                                           snapshot.data.detail.record
                                                       .shiftNotes !=
-                                                  null
+                                                  ' '
                                               ? snapshot
                                                   .data.detail.record.shiftNotes
-                                              : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.',
+                                              : 'No Note',
                                           style: TextStyle(
                                             fontFamily: 'Nunito Sans',
                                             fontWeight: FontWeight.bold,
