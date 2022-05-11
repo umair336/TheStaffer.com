@@ -1262,31 +1262,45 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               SizedBox(
                                                 height: 10,
                                               ),
-                                              for (int i = 0;
-                                                  i < starttime.length;
-                                                  i++)
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          bottom: 9),
-                                                  child: Text(
-                                                    starttime[i] != null
-                                                        ? DateFormat('hh:mm:ss')
-                                                            .format(
-                                                                DateTime.parse(
-                                                                    starttime[
-                                                                        i]))
-                                                        : '',
-                                                    style: TextStyle(
-                                                      fontFamily: 'Nunito Sans',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14.0,
-                                                      color: Color.fromRGBO(
-                                                          0, 0, 0, 1),
+                                              if (starttime.length >= 1)
+                                                for (int i = 0;
+                                                    i < starttime.length;
+                                                    i++)
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            bottom: 9),
+                                                    child: Text(
+                                                      starttime[i] != null
+                                                          ? DateFormat(
+                                                                  'hh:mm:ss')
+                                                              .format(DateTime
+                                                                  .parse(
+                                                                      starttime[
+                                                                          i]))
+                                                          : '',
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            'Nunito Sans',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            0, 0, 0, 1),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
+                                              if (starttime.length == 0)
+                                                Text(
+                                                  '0:00:00',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                )
                                             ],
                                           ),
                                         ),
@@ -1310,28 +1324,42 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             SizedBox(
                                               height: 10,
                                             ),
-                                            for (int i = 0;
-                                                i < offtime.length;
-                                                i++)
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    bottom: 9),
-                                                child: Text(
-                                                  offtime[i] != null
-                                                      ? DateFormat('hh:mm:ss')
-                                                          .format(
-                                                              DateTime.parse(
-                                                                  offtime[i]))
-                                                      : '',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Nunito Sans',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14.0,
-                                                    color: Color.fromRGBO(
-                                                        0, 0, 0, 1),
+                                            if (offtime.length >= 1)
+                                              for (int i = 0;
+                                                  i < offtime.length;
+                                                  i++)
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 9),
+                                                  child: Text(
+                                                    offtime[i] != null
+                                                        ? DateFormat('hh:mm:ss')
+                                                            .format(
+                                                                DateTime.parse(
+                                                                    offtime[i]))
+                                                        : '',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Nunito Sans',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14.0,
+                                                      color: Color.fromRGBO(
+                                                          0, 0, 0, 1),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
+                                            if (offtime.length == 0)
+                                              Text(
+                                                '0:00:00',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              )
                                           ],
                                         ),
                                       ),
@@ -1374,6 +1402,17 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                   ),
                                                 ),
                                               ),
+                                            if (totaltime.length == 0)
+                                              Text(
+                                                '0:00:00',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              )
                                           ],
                                         ),
                                       ),
@@ -1445,28 +1484,42 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               SizedBox(
                                                 height: 5,
                                               ),
-                                              for (int i = 0;
-                                                  i < breakStartList.length;
-                                                  i++)
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          0, 5, 0, 5),
-                                                  child: Text(
-                                                    breakStartList[i] != null
-                                                        ? DateFormat('hh:mm:ss')
-                                                            .format(DateTime.parse(
-                                                                breakStartList[
-                                                                    i]))
-                                                        : '---',
-                                                    style: TextStyle(
-                                                      fontFamily: 'Nunito Sans',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14.0,
-                                                      color: Color.fromRGBO(
-                                                          0, 0, 0, 1),
+                                              if (breakStartList.length >= 1)
+                                                for (int i = 0;
+                                                    i < breakStartList.length;
+                                                    i++)
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 5, 0, 5),
+                                                    child: Text(
+                                                      breakStartList[i] != null
+                                                          ? DateFormat(
+                                                                  'hh:mm:ss')
+                                                              .format(DateTime
+                                                                  .parse(
+                                                                      breakStartList[
+                                                                          i]))
+                                                          : '---',
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            'Nunito Sans',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            0, 0, 0, 1),
+                                                      ),
                                                     ),
+                                                  ),
+                                              if (breakStartList.length == 0)
+                                                Text(
+                                                  '0:00:00',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
                                                   ),
                                                 ),
                                               SizedBox(
@@ -1495,30 +1548,43 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             SizedBox(
                                               height: 5,
                                             ),
-                                            for (int i = 0;
-                                                i < braeakEndList.length;
-                                                i++)
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        0, 5, 0, 5),
-                                                child: Text(
-                                                  braeakEndList[i] != null
-                                                      ? DateFormat('hh:mm:ss')
-                                                          .format(
-                                                              DateTime.parse(
-                                                                  braeakEndList[
-                                                                      i]))
-                                                      : '---',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Nunito Sans',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14.0,
-                                                    color: Color.fromRGBO(
-                                                        0, 0, 0, 1),
+                                            if (braeakEndList.length >= 1)
+                                              for (int i = 0;
+                                                  i < braeakEndList.length;
+                                                  i++)
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 5, 0, 5),
+                                                  child: Text(
+                                                    braeakEndList[i] != null
+                                                        ? DateFormat('hh:mm:ss')
+                                                            .format(
+                                                                DateTime.parse(
+                                                                    braeakEndList[
+                                                                        i]))
+                                                        : '---',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Nunito Sans',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14.0,
+                                                      color: Color.fromRGBO(
+                                                          0, 0, 0, 1),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
+                                            if (braeakEndList.length == 0)
+                                              Text(
+                                                '0:00:00',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              )
                                           ],
                                         ),
                                       ),
@@ -1541,25 +1607,38 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             SizedBox(
                                               height: 5,
                                             ),
-                                            for (int i = 0;
-                                                i < Breaklist.length;
-                                                i++)
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        0, 5, 0, 5),
-                                                child: Text(
-                                                  Breaklist[i]
-                                                      .toString()
-                                                      .split('.')
-                                                      .first,
-                                                  style: TextStyle(
-                                                    fontFamily: 'Nunito Sans',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14.0,
-                                                    color: Color.fromRGBO(
-                                                        0, 0, 0, 1),
+                                            if (Breaklist.length >= 1)
+                                              for (int i = 0;
+                                                  i < Breaklist.length;
+                                                  i++)
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          0, 5, 0, 5),
+                                                  child: Text(
+                                                    Breaklist[i]
+                                                        .toString()
+                                                        .split('.')
+                                                        .first,
+                                                    style: TextStyle(
+                                                      fontFamily: 'Nunito Sans',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14.0,
+                                                      color: Color.fromRGBO(
+                                                          0, 0, 0, 1),
+                                                    ),
                                                   ),
+                                                ),
+                                            if (Breaklist.length == 0)
+                                              Text(
+                                                '0:00:00',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
                                                 ),
                                               ),
                                           ],
