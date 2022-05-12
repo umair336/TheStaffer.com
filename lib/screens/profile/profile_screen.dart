@@ -484,7 +484,265 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   correct == false
                                       ? InkWell(
                                           onTap: () {
-                                            _showMyDialog();
+                                            setState(() {
+                                              showDialog<void>(
+                                                  context: context,
+                                                  barrierDismissible:
+                                                      false, // user must tap button!
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return AlertDialog(
+                                                        actions: <Widget>[
+                                                          Column(
+                                                            children: [
+                                                              SizedBox(
+                                                                height: 15,
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .fromLTRB(
+                                                                            14,
+                                                                            0,
+                                                                            14,
+                                                                            0),
+                                                                child:
+                                                                    TextFormField(
+                                                                  controller:
+                                                                      password,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          14.0,
+                                                                      color: Color
+                                                                          .fromRGBO(
+                                                                              83,
+                                                                              83,
+                                                                              83,
+                                                                              1)
+                                                                      // fontWeight: FontWeight.bold
+                                                                      ),
+                                                                  cursorColor:
+                                                                      Colors
+                                                                          .grey
+                                                                          .shade500,
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    enabledBorder: OutlineInputBorder(
+                                                                        borderSide: new BorderSide(
+                                                                            color: Colors
+                                                                                .grey.shade300),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5.0)),
+                                                                    focusedBorder: OutlineInputBorder(
+                                                                        borderSide: new BorderSide(
+                                                                            color: Colors
+                                                                                .grey.shade300),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5.0)),
+                                                                    contentPadding: EdgeInsets.only(
+                                                                        left:
+                                                                            10.0,
+                                                                        right:
+                                                                            10.0),
+                                                                    labelText:
+                                                                        "Enter Password",
+                                                                    hintStyle: TextStyle(
+                                                                        fontSize:
+                                                                            12.0,
+                                                                        color: Color.fromRGBO(
+                                                                            83,
+                                                                            83,
+                                                                            83,
+                                                                            1),
+                                                                        fontWeight:
+                                                                            FontWeight.w500),
+                                                                    labelStyle: TextStyle(
+                                                                        fontSize:
+                                                                            12.0,
+                                                                        color: Color.fromRGBO(
+                                                                            83,
+                                                                            83,
+                                                                            83,
+                                                                            1),
+                                                                        fontWeight:
+                                                                            FontWeight.w500),
+                                                                  ),
+                                                                  obscureText:
+                                                                      true,
+                                                                ),
+                                                              ),
+                                                              SizedBox(
+                                                                height: 15,
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .fromLTRB(
+                                                                            12,
+                                                                            0,
+                                                                            12,
+                                                                            0),
+                                                                child: Row(
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Container(
+                                                                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                                                        //   color: Color.fromRGBO(23, 197, 204, 1),
+
+                                                                        child:
+                                                                            TextButton(
+                                                                          child:
+                                                                              Text(
+                                                                            'Cancel',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 14.0,
+                                                                              color: Colors.white,
+                                                                            ),
+                                                                          ),
+
+                                                                          style:
+                                                                              ButtonStyle(
+                                                                            backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(
+                                                                                13,
+                                                                                91,
+                                                                                196,
+                                                                                1)),
+                                                                            shape:
+                                                                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                              RoundedRectangleBorder(
+                                                                                borderRadius: BorderRadius.circular(10.0),
+
+                                                                                //   side: BorderSide(color: Colors.red.shade900),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          //      color: Colors.black,
+                                                                          //  textColor: Colors.white,
+                                                                          //     shape: RoundedRectangleBorder(
+                                                                          //borderRadius: BorderRadius.circular(30)),
+                                                                          onPressed:
+                                                                              () {
+                                                                            //          Navigator.push(context,
+                                                                            //            MaterialPageRoute(builder: (context) => Profile()));
+
+                                                                            setState(() {
+                                                                              //functionChangepassword();
+                                                                              Navigator.pop(context);
+                                                                            });
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      width: 5,
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Container(
+                                                                        //    margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 14),
+                                                                        //   color: Color.fromRGBO(23, 197, 204, 1),
+                                                                        //        width: 230,
+                                                                        child: TextButton(
+                                                                            child: Text(
+                                                                              'Save',
+                                                                              style: TextStyle(
+                                                                                fontWeight: FontWeight.bold,
+                                                                                fontSize: 14.0,
+                                                                                color: Colors.white,
+                                                                              ),
+                                                                            ),
+                                                                            style: ButtonStyle(
+                                                                              backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(13, 91, 196, 1)),
+                                                                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                                                RoundedRectangleBorder(
+                                                                                  borderRadius: BorderRadius.circular(10.0),
+
+                                                                                  //   side: BorderSide(color: Colors.red.shade900),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            //      color: Colors.black,
+                                                                            //  textColor: Colors.white,
+                                                                            //     shape: RoundedRectangleBorder(
+                                                                            //borderRadius: BorderRadius.circular(30)),
+                                                                            onPressed: () async {
+                                                                              print('dddddddddddd${password.text}');
+                                                                              String curentpassword = password.text;
+                                                                              if (curentpassword != '') {
+                                                                                print('aaaaaaaaaaaaaaaaaaaaaaaaa');
+
+                                                                                password.clear();
+                                                                                // postRequestSSn(curentpassword);
+                                                                                final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
+                                                                                final String token = await storage.read(key: 'token');
+                                                                                String authorization = token;
+                                                                                var urll = 'https://dev2.thestaffer.com/api/admin/get_employee_ssn';
+
+                                                                                Map data = {
+                                                                                  'password': curentpassword,
+                                                                                };
+                                                                                //encode Map to JSON
+                                                                                var body = json.encode(data);
+
+                                                                                var response = await http.post(Uri.parse(urll),
+                                                                                    headers: {
+                                                                                      "Content-Type": "application/json",
+                                                                                      'Authorization': 'Bearer $authorization'
+                                                                                    },
+                                                                                    body: body);
+                                                                                print("${response.statusCode}");
+                                                                                if (response.statusCode == 200) {
+                                                                                  if (response.body.contains('true')) {
+                                                                                    Navigator.pop(context);
+                                                                                    print('uuuuuuuuuuuuuuuuuuuuuu');
+                                                                                    /* Flushbar(
+          //   title: 'Hey Ninja',
+          message: 'Thank u',
+          duration: Duration(seconds: 3),
+          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+        ).show(context);*/
+                                                                                    setState(() {
+                                                                                      correct = true;
+                                                                                    });
+                                                                                  }
+                                                                                  if (response.body.contains('false')) {
+                                                                                    print('uuuuuuuuuuuuuuuuuuuuuu');
+                                                                                    Flushbar(
+                                                                                      //   title: 'Hey Ninja',
+                                                                                      message: 'Invalid Password',
+                                                                                      duration: Duration(seconds: 3),
+                                                                                      backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+                                                                                    ).show(context);
+                                                                                    // Navigator.pop(context);
+                                                                                  }
+                                                                                }
+                                                                                // print(response);
+
+                                                                                print("${response.body}");
+                                                                                return response;
+                                                                              }
+                                                                              if (curentpassword == '') {
+                                                                                Flushbar(
+                                                                                  //   title: 'Hey Ninja',
+                                                                                  message: 'Enter Password',
+                                                                                  duration: Duration(seconds: 3),
+                                                                                  backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+                                                                                ).show(context);
+                                                                              }
+                                                                            }),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ]);
+                                                  });
+                                            });
                                           },
                                           child: Padding(
                                             padding:
