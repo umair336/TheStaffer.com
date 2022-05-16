@@ -11,6 +11,8 @@ import 'bloc/auth_bloc/auth_bloc.dart';
 import 'repositories/repositories.dart';
 import 'screens/auth/intro_screen.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
+
+import 'screens/auth/login_screen.dart';
 /*
 class SimpleBlocDelegate extends BlocDelegate {
   @override
@@ -71,6 +73,11 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           if (state is AuthenticationAuthenticated) {
             return MainScreen();
+          }
+          if (state is AuthenticationUninitialized) {
+            return LoginScreen(
+              userRepository: userRepository,
+            );
           }
           if (state is AuthenticationUnauthenticated) {
             return IntroPage(userRepository: userRepository);

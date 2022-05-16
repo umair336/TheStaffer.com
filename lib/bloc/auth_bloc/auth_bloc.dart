@@ -46,7 +46,8 @@ class AuthenticationBloc
     if (event is LoggedOut) {
       emit(AuthenticationLoading());
       await userRepository.deleteToken();
-      emit(AuthenticationUnauthenticated());
+      //emit(AuthenticationUnauthenticated());
+      emit(AuthenticationUninitialized());
     }
   }
 
