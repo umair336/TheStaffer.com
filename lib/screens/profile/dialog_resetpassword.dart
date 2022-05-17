@@ -313,7 +313,7 @@ class _MyDialogState extends State<MyDialog> {
       ));*/
       Flushbar(
         //   title: 'Hey Ninja',
-        message: 'Fill all fields.',
+        message: 'Fill all the fields.',
         duration: Duration(seconds: 3),
         backgroundColor: Color.fromRGBO(183, 14, 105, 1),
       ).show(context);
