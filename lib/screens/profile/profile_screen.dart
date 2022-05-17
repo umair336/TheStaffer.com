@@ -202,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     Container(
                                         child: AvatarView(
-                                      radius: 23,
+                                      radius: 33,
                                       //borderWidth: 8,
                                       // borderColor: Colors.yellow,
                                       avatarType: AvatarType.CIRCLE,
@@ -216,7 +216,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                     )),
                                     SizedBox(
-                                      width: 7,
+                                      width: 12,
                                     ),
                                     Container(
                                       child: Column(
@@ -231,7 +231,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     .data.data.employeeName
                                                 : '',
                                             style: TextStyle(
-                                                fontSize: 16.0,
+                                                fontSize: 18.0,
+                                                fontWeight: FontWeight.bold,
                                                 fontFamily: 'Nunito Sans',
                                                 color: Colors.white
                                                 //       color: Color.fromRGBO(13, 91, 196, 1),
