@@ -13,6 +13,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import '../assignment/assignment_screen.dart';
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class TimesheetScreen extends StatefulWidget {
   @override
@@ -335,7 +336,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                             _selectStart(
                                                                 context);
                                                           },
-                                                          child: Text(
+                                                          child: AutoSizeText(
                                                             startDate,
                                                             style: TextStyle(
                                                               //  fontWeight: FontWeight.bold,
@@ -391,7 +392,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           onPressed: () {
                                                             _selectEnd(context);
                                                           },
-                                                          child: Text(
+                                                          child: AutoSizeText(
                                                             endDate,
                                                             style: TextStyle(
                                                               //  fontWeight: FontWeight.bold,
