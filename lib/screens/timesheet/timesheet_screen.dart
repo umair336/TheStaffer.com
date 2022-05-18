@@ -148,6 +148,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
           child: SingleChildScrollView(
               child: FutureBuilder<TimeSheetModel>(
                   future: showTimeSheetData,
+                  // ignore: missing_return
                   builder: (context, snapshot) {
                     switch (snapshot.connectionState) {
                       case ConnectionState.none:
@@ -353,7 +354,11 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                       255,
                                                                       1),
                                                             ),
-                                                          )),
+                                                              maxFontSize: 16,
+                                                                minFontSize: 8,
+                                                                maxLines: 1,
+                                                          )
+                                                          ),
                                                     ),
                                                   ),
                                                 ),
@@ -409,6 +414,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                       255,
                                                                       1),
                                                             ),
+                                                              maxFontSize: 16,
+                                                                minFontSize: 8,
+                                                                maxLines: 1,
                                                           )),
                                                     ),
                                                   ),
@@ -1694,7 +1702,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                       onPressed: () {
                                                         _selectStart(context);
                                                       },
-                                                      child: Text(
+                                                      child: AutoSizeText(
                                                         startDate,
                                                         style: TextStyle(
                                                           //  fontWeight: FontWeight.bold,
@@ -1706,6 +1714,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           color: Color.fromRGBO(
                                                               255, 255, 255, 1),
                                                         ),
+                                                          maxFontSize: 15,
+                                                                minFontSize: 8,
+                                                                maxLines: 1,
                                                       )),
                                                 ),
                                               ),
@@ -1741,7 +1752,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                       onPressed: () {
                                                         _selectEnd(context);
                                                       },
-                                                      child: Text(
+                                                      child: AutoSizeText(
                                                         endDate,
                                                         style: TextStyle(
                                                           //  fontWeight: FontWeight.bold,
@@ -1753,6 +1764,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           color: Color.fromRGBO(
                                                               255, 255, 255, 1),
                                                         ),
+                                                          maxFontSize: 16,
+                                                                minFontSize: 8,
+                                                                maxLines: 1,
                                                       )),
                                                 ),
                                               ),
