@@ -2336,6 +2336,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   }
 
   _FunctionBreakCalutate() {
+    int prevaluebreak = 0;
+      Duration total_breaks;
     print('bbbbbbb$breakstart');
     print('bbbbbbb$breakoff');
     DateTime v1 = DateTime.parse(breakstart);
@@ -2344,6 +2346,23 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     print('wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
 
     Breaklist.add(breaks);
+        for (int i = 0; i < Breaklist.length; i++) {
+      print('ppppp${Breaklist[i]}');
+      Breaklist[i] = Breaklist[i].toString().split('.').first;
+      print('aaaaaaaaaaaaaa${Breaklist[i]}');
+    }
+
+    for (int i = 0; i < Breaklist.length; i++) {
+      var breakbrakdown = Breaklist[i].toString().split(':');
+      total_breaks = new Duration(
+          hours: int.parse(breakbrakdown[0]),
+          minutes: int.parse(breakbrakdown[1]),
+          seconds: int.parse(breakbrakdown[2]) + prevaluebreak);
+      prevaluebreak = total_breaks.inSeconds;
+      print('ooooooo$prevaluebreak');
+breaak = total_breaks.toString();
+      print('/////////////////////////////////////////////////////');
+    }
   }
 
   _FunctionStartOffCalcutlate() {
