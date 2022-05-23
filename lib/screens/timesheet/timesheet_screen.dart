@@ -146,6 +146,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
             return Future.value(false);
           },
           child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
               child: FutureBuilder<TimeSheetModel>(
                   future: showTimeSheetData,
                   // ignore: missing_return
@@ -354,11 +355,10 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                       255,
                                                                       1),
                                                             ),
-                                                              maxFontSize: 16,
-                                                                minFontSize: 8,
-                                                                maxLines: 1,
-                                                          )
-                                                          ),
+                                                            maxFontSize: 16,
+                                                            minFontSize: 8,
+                                                            maxLines: 1,
+                                                          )),
                                                     ),
                                                   ),
                                                 ),
@@ -414,9 +414,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                       255,
                                                                       1),
                                                             ),
-                                                              maxFontSize: 16,
-                                                                minFontSize: 8,
-                                                                maxLines: 1,
+                                                            maxFontSize: 16,
+                                                            minFontSize: 8,
+                                                            maxLines: 1,
                                                           )),
                                                     ),
                                                   ),
@@ -1714,9 +1714,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           color: Color.fromRGBO(
                                                               255, 255, 255, 1),
                                                         ),
-                                                          maxFontSize: 15,
-                                                                minFontSize: 8,
-                                                                maxLines: 1,
+                                                        maxFontSize: 15,
+                                                        minFontSize: 8,
+                                                        maxLines: 1,
                                                       )),
                                                 ),
                                               ),
@@ -1764,9 +1764,9 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                           color: Color.fromRGBO(
                                                               255, 255, 255, 1),
                                                         ),
-                                                          maxFontSize: 16,
-                                                                minFontSize: 8,
-                                                                maxLines: 1,
+                                                        maxFontSize: 16,
+                                                        minFontSize: 8,
+                                                        maxLines: 1,
                                                       )),
                                                 ),
                                               ),
