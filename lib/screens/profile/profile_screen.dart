@@ -53,10 +53,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ));
       });
     } else if (index == 3) {
-      setState(() {
+     /* setState(() {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => ProfileScreen()));
-      });
+      });*/
     }
   }
 

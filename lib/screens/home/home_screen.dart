@@ -29,10 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
     //  _selectedIndex = index;
     print('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq$index');
     if (index == 0) {
-      setState(() {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
-      });
+    /*  setState(() {
+         Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      });*/
     } else if (index == 1) {
       setState(() {
         Navigator.push(context,

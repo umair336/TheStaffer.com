@@ -38,13 +38,13 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
             MaterialPageRoute(builder: (context) => TimesheetScreen()));
       });
     } else if (index == 2) {
-      setState(() {
+    /*  setState(() {
         Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => AssignmentScreen(),
             ));
-      });
+      });*/
     } else if (index == 3) {
       setState(() {
         Navigator.push(
