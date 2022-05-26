@@ -2494,8 +2494,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     print(
         'ZZZZZZZZZZZZZZZZZZZ $stime ZZZZZZZZZZZZZZZZZZZz $etime ZZZZZZZZZZZZZZZZZ $idjob');
     stime = stime.toString().split('.').first.toString();
-        etime = etime.toString().split('.').first.toString();
-          print(
+    etime = etime.toString().split('.').first.toString();
+    print(
         'ZZZZZZZZZZZZZZZZZZZ $stime ZZZZZZZZZZZZZZZZZZZz $etime ZZZZZZZZZZZZZZZZZ $idjob');
     //   stime= DateFormat('kk:mm').format(stime);
     //       etime= DateFormat('kk:mm').format(etime);
@@ -2530,6 +2530,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
   Future<http.Response> BreakStartEndTimeRequest(
       var BStime, var BEtime, int idjob) async {
+    print(
+        'ZZZZZZZZZZZZZZZZZZZ $BStime ZZZZZZZZZZZZZZZZZZZz $BEtime ZZZZZZZZZZZZZZZZZ $idjob');
+    BStime = BStime.toString().split('.').first.toString();
+    BEtime = BEtime.toString().split('.').first.toString();
+    print(
+        'ZZZZZZZZZZZZZZZZZZZ $BStime ZZZZZZZZZZZZZZZZZZZz $BEtime ZZZZZZZZZZZZZZZZZ $idjob');
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
     final String token = await storage.read(key: 'token');
     String authorization = token;
