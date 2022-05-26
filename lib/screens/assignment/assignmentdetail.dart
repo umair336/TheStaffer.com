@@ -2337,7 +2337,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
   _FunctionBreakCalutate() {
     int prevaluebreak = 0;
-      Duration total_breaks;
+    Duration total_breaks;
     print('bbbbbbb$breakstart');
     print('bbbbbbb$breakoff');
     DateTime v1 = DateTime.parse(breakstart);
@@ -2346,7 +2346,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     print('wwwwwwwww$v1 wwwwwwwwww$v2 wwwwwwwwwwwww$breaks');
 
     Breaklist.add(breaks);
-        for (int i = 0; i < Breaklist.length; i++) {
+    for (int i = 0; i < Breaklist.length; i++) {
       print('ppppp${Breaklist[i]}');
       Breaklist[i] = Breaklist[i].toString().split('.').first;
       print('aaaaaaaaaaaaaa${Breaklist[i]}');
@@ -2360,7 +2360,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
           seconds: int.parse(breakbrakdown[2]) + prevaluebreak);
       prevaluebreak = total_breaks.inSeconds;
       print('ooooooo$prevaluebreak');
-breaak = total_breaks.toString();
+      breaak = total_breaks.toString();
       print('/////////////////////////////////////////////////////');
     }
   }
@@ -2491,6 +2491,12 @@ breaak = total_breaks.toString();
 
   Future<http.Response> StartEndTimeRequest(
       var stime, var etime, int idjob) async {
+    print(
+        'ZZZZZZZZZZZZZZZZZZZ $stime ZZZZZZZZZZZZZZZZZZZz $etime ZZZZZZZZZZZZZZZZZ $idjob');
+    stime = stime.toString().split('.').first.toString();
+        etime = etime.toString().split('.').first.toString();
+          print(
+        'ZZZZZZZZZZZZZZZZZZZ $stime ZZZZZZZZZZZZZZZZZZZz $etime ZZZZZZZZZZZZZZZZZ $idjob');
     //   stime= DateFormat('kk:mm').format(stime);
     //       etime= DateFormat('kk:mm').format(etime);
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
