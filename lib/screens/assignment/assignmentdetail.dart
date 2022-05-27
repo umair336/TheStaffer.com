@@ -2321,6 +2321,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                               _FunctionTotalCalculate();
                               StartEndTimeRequest(
                                   workingStart, workingOff, jobid);
+                              workingOff = '';
                               Navigator.pop(context);
                             });
                           },
@@ -2363,6 +2364,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
       breaak = total_breaks.toString();
       print('/////////////////////////////////////////////////////');
     }
+    breakoff = '';
   }
 
   _FunctionStartOffCalcutlate() {
