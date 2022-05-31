@@ -670,13 +670,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                         print('dddddddddddd${password.text}');
                                                                                         String curentpassword = password.text;
                                                                                         if (curentpassword != '') {
-                                                                                          print('aaaaaaaaaaaaaaaaaaaaaaaaa');
+                                                                                         // print('aaaaaaaaaaaaaaaaaaaaaaaaa');
 
                                                                                           password.clear();
                                                                                           // postRequestSSn(curentpassword);
                                                                                           final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
                                                                                           final String token = await storage.read(key: 'token');
-                                                                                          String authorization = token;
+                                                                                      
                                                                                           var urll = 'https://dev2.thestaffer.com/api/admin/get_employee_ssn';
 
                                                                                           Map data = {
@@ -688,14 +688,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                           var response = await http.post(Uri.parse(urll),
                                                                                               headers: {
                                                                                                 "Content-Type": "application/json",
-                                                                                                'Authorization': 'Bearer $authorization'
+                                                                                                'Authorization': 'Bearer $token'
                                                                                               },
                                                                                               body: body);
                                                                                           print("${response.statusCode}");
                                                                                           if (response.statusCode == 200) {
                                                                                             if (response.body.contains('true')) {
                                                                                               Navigator.pop(context);
-                                                                                              print('uuuuuuuuuuuuuuuuuuuuuu');
+                                                                                            //  print('uuuuuuuuuuuuuuuuuuuuuu');
                                                                                               /* Flushbar(
           //   title: 'Hey Ninja',
           message: 'Thank u',
@@ -707,7 +707,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                               });
                                                                                             }
                                                                                             if (response.body.contains('false')) {
-                                                                                              print('uuuuuuuuuuuuuuuuuuuuuu');
+                                                                                           //   print('uuuuuuuuuuuuuuuuuuuuuu');
                                                                                               Flushbar(
                                                                                                 //   title: 'Hey Ninja',
                                                                                                 message: 'Invalid Password',
