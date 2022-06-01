@@ -11,7 +11,7 @@ import 'bloc/auth_bloc/auth_bloc.dart';
 import 'repositories/repositories.dart';
 import 'screens/auth/intro_screen.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/auth/login_screen.dart';
 /*
 class SimpleBlocDelegate extends BlocDelegate {
@@ -55,10 +55,38 @@ Future<void> main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   final UserRepository userRepository;
 
   MyApp({Key key, @required this.userRepository}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _seen;
+  Future checkFirstSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _seen = (prefs.getBool('seen') ?? false);
+
+    if (_seen) {
+      print('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX$_seen');
+      //   t = _seen.toString();
+      return _seen;
+    } else {
+      await prefs.setBool('seen', true);
+      print('XXXXXXXXXXXXXXXXXXXX$_seen');
+      //   t = _seen.toString();
+      return _seen;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkFirstSeen();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,10 +104,108 @@ class MyApp extends StatelessWidget {
           }
           if (state is AuthenticationUninitialized) {
             return LoginScreen(
+              userRepository: widget.userRepository,
+            );
+          }
+          if (state is AuthenticationUnauthenticated) {
+            print("YYYYYYYYYYYYYYYYYYYYYYY$_seen");
+
+            if (_seen == false) {
+              print("aaaaaaaaaaaaaaaaa");
+                 return IntroPage(userRepository: widget.userRepository);
+            } else {
+              print('bbbbbbbbbbbbbbb');
+                 return LoginScreen(userRepository: widget.userRepository);
+            }
+
+         
+
+            // return IntroPage(userRepository: widget.userRepository);
+          }
+          if (state is AuthenticationLoading) {
+            return Scaffold(
+              body: Container(
+                color: Colors.white,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 25.0,
+                      width: 25.0,
+                      child: CircularProgressIndicator(
+                        valueColor: new AlwaysStoppedAnimation<Color>(
+                            Style.Colors.mainColor),
+                        strokeWidth: 4.0,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }
+
+          return MainScreen();
+          return Scaffold(
+            body: Container(
+                //     color: Colors.white,
+                //     width: MediaQuery.of(context).size.width,
+                //     child: Column(
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: <Widget>[
+                //         SizedBox(
+                //           height: 25.0,
+                //           width: 25.0,
+                //           child: CircularProgressIndicator(
+                //             valueColor: new AlwaysStoppedAnimation<Color>(
+                //                 Style.Colors.mainColor),
+                //             strokeWidth: 4.0,
+                //           ),
+                //         )
+                //       ],
+                //     ),
+                ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+/*
+class MyApp extends StatelessWidget {
+  final UserRepository userRepository;
+
+  MyApp({Key key, @required this.userRepository}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      locale: const Locale('mn', 'MN'),
+      theme: ThemeData(
+        fontFamily: 'Rubik',
+        primarySwatch: Colors.blueGrey,
+      ),
+      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          if (state is AuthenticationAuthenticated) {
+            print("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+            return MainScreen();
+          }
+          if (state is AuthenticationUninitialized) {
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            return LoginScreen(
               userRepository: userRepository,
             );
           }
           if (state is AuthenticationUnauthenticated) {
+            print("YYYYYYYYYYYYYYYYYYYYYYY");
+            
+
             return IntroPage(userRepository: userRepository);
           }
           if (state is AuthenticationLoading) {
@@ -133,3 +259,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+*/
