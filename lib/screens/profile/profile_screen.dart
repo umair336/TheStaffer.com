@@ -53,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ));
       });
     } else if (index == 3) {
-     /* setState(() {
+      /* setState(() {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => ProfileScreen()));
       });*/
@@ -601,7 +601,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                                                                                   child: TextButton(
                                                                                     child: Text(
-                                                                                      'Cancel',
+                                                                                      'Close',
                                                                                       style: TextStyle(
                                                                                         fontWeight: FontWeight.bold,
                                                                                         fontSize: 14.0,
@@ -645,7 +645,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                   //        width: 230,
                                                                                   child: TextButton(
                                                                                       child: Text(
-                                                                                        'Save',
+                                                                                        'Submit',
                                                                                         style: TextStyle(
                                                                                           fontWeight: FontWeight.bold,
                                                                                           fontSize: 14.0,
@@ -670,13 +670,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                         print('dddddddddddd${password.text}');
                                                                                         String curentpassword = password.text;
                                                                                         if (curentpassword != '') {
-                                                                                         // print('aaaaaaaaaaaaaaaaaaaaaaaaa');
+                                                                                          // print('aaaaaaaaaaaaaaaaaaaaaaaaa');
 
                                                                                           password.clear();
                                                                                           // postRequestSSn(curentpassword);
                                                                                           final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
                                                                                           final String token = await storage.read(key: 'token');
-                                                                                      
+
                                                                                           var urll = 'https://dev2.thestaffer.com/api/admin/get_employee_ssn';
 
                                                                                           Map data = {
@@ -695,7 +695,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                           if (response.statusCode == 200) {
                                                                                             if (response.body.contains('true')) {
                                                                                               Navigator.pop(context);
-                                                                                            //  print('uuuuuuuuuuuuuuuuuuuuuu');
+                                                                                              //  print('uuuuuuuuuuuuuuuuuuuuuu');
                                                                                               /* Flushbar(
           //   title: 'Hey Ninja',
           message: 'Thank u',
@@ -707,7 +707,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                               });
                                                                                             }
                                                                                             if (response.body.contains('false')) {
-                                                                                           //   print('uuuuuuuuuuuuuuuuuuuuuu');
+                                                                                              //   print('uuuuuuuuuuuuuuuuuuuuuu');
                                                                                               Flushbar(
                                                                                                 //   title: 'Hey Ninja',
                                                                                                 message: 'Invalid Password',
