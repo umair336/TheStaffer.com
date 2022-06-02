@@ -39,16 +39,15 @@ class _LoginFormState extends State<LoginForm> {
       listener: (context, state) {
         if (state is LoginFailure) {
           if (_usernameController.text.isEmpty ||
-              _passwordController.text.isEmpty)
-               if (_usernameController.text.isEmpty)
-                Scaffold.of(context).showSnackBar(
+              _passwordController
+                  .text.isEmpty) if (_usernameController.text.isEmpty)
+            Scaffold.of(context).showSnackBar(
               SnackBar(
                 content: Text("Please enter Username"),
                 backgroundColor: Colors.red.shade900,
               ),
             );
-
-               else
+          else
             Scaffold.of(context).showSnackBar(
               SnackBar(
                 content: Text("Please enter Password"),
@@ -128,7 +127,7 @@ class _LoginFormState extends State<LoginForm> {
                                   borderRadius: BorderRadius.circular(5.0)),
                               contentPadding:
                                   EdgeInsets.only(left: 10.0, right: 10.0),
-                              labelText: "User name",
+                              labelText: "Username",
                               hintStyle: TextStyle(
                                   fontSize: 12.0,
                                   color: Colors.white,
