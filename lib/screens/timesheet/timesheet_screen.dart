@@ -57,7 +57,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
             context, MaterialPageRoute(builder: (context) => HomeScreen()));
       });
     } else if (index == 1) {
-    /*  setState(() {
+      /*  setState(() {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => TimesheetScreen()));
       });*/
@@ -262,7 +262,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                       width: 12,
                                                     ),
                                                     Text(
-                                                      'Time Sheet',
+                                                      'TimeSheet',
                                                       style: TextStyle(
                                                         fontSize: 18.0,
                                                         color: Color.fromRGBO(

@@ -844,89 +844,94 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           ],
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Total Break Time',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                //  fontWeight: FontWeight.bold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1),
+                                      if (snapshot.data.detail.record.status !=
+                                          'Upcoming')
+                                        Padding(
+                                          padding: EdgeInsets.only(right: 10),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Total Break Time',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  //  fontWeight: FontWeight.bold,
+                                                  fontSize: 10.0,
+                                                  color: Color.fromRGBO(
+                                                      112, 112, 112, 1),
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              //  '\OT Pay Rate',
-                                              breaak == null
-                                                  ? '0:00:00'
-                                                  : breaak
-                                                      .toString()
-                                                      .split('.')
-                                                      .first,
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.0,
-                                                color:
-                                                    Color.fromRGBO(0, 0, 0, 1),
+                                              SizedBox(
+                                                height: 5,
                                               ),
-                                            ),
-                                          ],
+                                              Text(
+                                                //  '\OT Pay Rate',
+                                                breaak == null
+                                                    ? '0:00:00'
+                                                    : breaak
+                                                        .toString()
+                                                        .split('.')
+                                                        .first,
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 30),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Total Work Time',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                //  fontWeight: FontWeight.bold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1),
+                                      if (snapshot.data.detail.record.status !=
+                                          'Upcoming')
+                                        Padding(
+                                          padding: EdgeInsets.only(right: 30),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Total Work Time',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  //  fontWeight: FontWeight.bold,
+                                                  fontSize: 10.0,
+                                                  color: Color.fromRGBO(
+                                                      112, 112, 112, 1),
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              //  '\OT Pay Rate',
-                                              time == null
-                                                  ? '0:00:00'
-                                                  : time
-                                                      .toString()
-                                                      .split('.')
-                                                      .first,
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.0,
-                                                color:
-                                                    Color.fromRGBO(0, 0, 0, 1),
+                                              SizedBox(
+                                                height: 5,
                                               ),
-                                            ),
-                                          ],
+                                              Text(
+                                                //  '\OT Pay Rate',
+                                                time == null
+                                                    ? '0:00:00'
+                                                    : time
+                                                        .toString()
+                                                        .split('.')
+                                                        .first,
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.0,
+                                                  color: Color.fromRGBO(
+                                                      0, 0, 0, 1),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
                                     ],
                                   ),
                                 ),
+
                                 SizedBox(
                                   height: 25,
                                 ),
@@ -1252,16 +1257,82 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       height: 25,
                                     )
                                   ]),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.baseline,
-                                    textBaseline: TextBaseline.alphabetic,
-                                    children: [
-                                      Expanded(
-                                        child: Container(
+                                if (snapshot.data.detail.record.status !=
+                                    'Upcoming')
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.baseline,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.baseline,
+                                              textBaseline:
+                                                  TextBaseline.alphabetic,
+                                              children: [
+                                                Text(
+                                                  'Start Time',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    //  fontWeight: FontWeight.bold,
+                                                    fontSize: 10.0,
+                                                    color: Color.fromRGBO(
+                                                        112, 112, 112, 1),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                if (starttime.length >= 1)
+                                                  for (int i = 0;
+                                                      i < starttime.length;
+                                                      i++)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              bottom: 9),
+                                                      child: Text(
+                                                        starttime[i] != null
+                                                            ? DateFormat(
+                                                                    'hh:mm:ss')
+                                                                .format(DateTime
+                                                                    .parse(
+                                                                        starttime[
+                                                                            i]))
+                                                            : '',
+                                                        style: TextStyle(
+                                                          fontFamily:
+                                                              'Nunito Sans',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14.0,
+                                                          color: Color.fromRGBO(
+                                                              0, 0, 0, 1),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                if (starttime.length == 0)
+                                                  Text(
+                                                    '0:00:00',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Nunito Sans',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14.0,
+                                                      color: Color.fromRGBO(
+                                                          0, 0, 0, 1),
+                                                    ),
+                                                  )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.baseline,
@@ -1269,7 +1340,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 TextBaseline.alphabetic,
                                             children: [
                                               Text(
-                                                'Start Time',
+                                                'End Time',
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   //  fontWeight: FontWeight.bold,
@@ -1281,21 +1352,21 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               SizedBox(
                                                 height: 10,
                                               ),
-                                              if (starttime.length >= 1)
+                                              if (offtime.length >= 1)
                                                 for (int i = 0;
-                                                    i < starttime.length;
+                                                    i < offtime.length;
                                                     i++)
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets.only(
                                                             bottom: 9),
                                                     child: Text(
-                                                      starttime[i] != null
+                                                      offtime[i] != null
                                                           ? DateFormat(
                                                                   'hh:mm:ss')
                                                               .format(DateTime
                                                                   .parse(
-                                                                      starttime[
+                                                                      offtime[
                                                                           i]))
                                                           : '',
                                                       style: TextStyle(
@@ -1309,7 +1380,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                       ),
                                                     ),
                                                   ),
-                                              if (starttime.length == 0)
+                                              if (offtime.length == 0)
                                                 Text(
                                                   '0:00:00',
                                                   style: TextStyle(
@@ -1323,175 +1394,15 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             ],
                                           ),
                                         ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.baseline,
-                                          textBaseline: TextBaseline.alphabetic,
-                                          children: [
-                                            Text(
-                                              'End Time',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                //  fontWeight: FontWeight.bold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 10,
-                                            ),
-                                            if (offtime.length >= 1)
-                                              for (int i = 0;
-                                                  i < offtime.length;
-                                                  i++)
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          bottom: 9),
-                                                  child: Text(
-                                                    offtime[i] != null
-                                                        ? DateFormat('hh:mm:ss')
-                                                            .format(
-                                                                DateTime.parse(
-                                                                    offtime[i]))
-                                                        : '',
-                                                    style: TextStyle(
-                                                      fontFamily: 'Nunito Sans',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14.0,
-                                                      color: Color.fromRGBO(
-                                                          0, 0, 0, 1),
-                                                    ),
-                                                  ),
-                                                ),
-                                            if (offtime.length == 0)
-                                              Text(
-                                                '0:00:00',
-                                                style: TextStyle(
-                                                  fontFamily: 'Nunito Sans',
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14.0,
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 1),
-                                                ),
-                                              )
-                                          ],
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.baseline,
-                                          textBaseline: TextBaseline.alphabetic,
-                                          children: [
-                                            Text(
-                                              'Total Time',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                //  fontWeight: FontWeight.bold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 10,
-                                            ),
-                                            for (int i = 0;
-                                                i < totaltime.length;
-                                                i++)
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    bottom: 9),
-                                                child: Text(
-                                                  totaltime[i]
-                                                      .toString()
-                                                      .split('.')
-                                                      .first,
-                                                  style: TextStyle(
-                                                    fontFamily: 'Nunito Sans',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14.0,
-                                                    color: Color.fromRGBO(
-                                                        0, 0, 0, 1),
-                                                  ),
-                                                ),
-                                              ),
-                                            if (totaltime.length == 0)
-                                              Text(
-                                                '0:00:00',
-                                                style: TextStyle(
-                                                  fontFamily: 'Nunito Sans',
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14.0,
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 1),
-                                                ),
-                                              )
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              'Breaks',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14.0,
-                                                color: Color.fromRGBO(
-                                                    13, 91, 196, 1),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(20, 0, 8, 0),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.baseline,
-                                    textBaseline: TextBaseline.alphabetic,
-                                    children: [
-                                      Expanded(
-                                        child: Container(
+                                        Expanded(
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.baseline,
                                             textBaseline:
                                                 TextBaseline.alphabetic,
                                             children: [
-                                              SizedBox(
-                                                height: 5,
-                                              ),
                                               Text(
-                                                'Start Time',
+                                                'Total Time',
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   //  fontWeight: FontWeight.bold,
@@ -1501,141 +1412,17 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 ),
                                               ),
                                               SizedBox(
-                                                height: 5,
+                                                height: 10,
                                               ),
-                                              if (breakStartList.length >= 1)
-                                                for (int i = 0;
-                                                    i < breakStartList.length;
-                                                    i++)
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .fromLTRB(0, 5, 0, 5),
-                                                    child: Text(
-                                                      breakStartList[i] != null
-                                                          ? DateFormat(
-                                                                  'hh:mm:ss')
-                                                              .format(DateTime
-                                                                  .parse(
-                                                                      breakStartList[
-                                                                          i]))
-                                                          : '---',
-                                                      style: TextStyle(
-                                                        fontFamily:
-                                                            'Nunito Sans',
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 14.0,
-                                                        color: Color.fromRGBO(
-                                                            0, 0, 0, 1),
-                                                      ),
-                                                    ),
-                                                  ),
-                                              if (breakStartList.length == 0)
-                                                Text(
-                                                  '0:00:00',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Nunito Sans',
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14.0,
-                                                    color: Color.fromRGBO(
-                                                        0, 0, 0, 1),
-                                                  ),
-                                                ),
-                                              SizedBox(
-                                                height: 5,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.baseline,
-                                          textBaseline: TextBaseline.alphabetic,
-                                          children: [
-                                            Text(
-                                              'End Time',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                //  fontWeight: FontWeight.bold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            if (braeakEndList.length >= 1)
                                               for (int i = 0;
-                                                  i < braeakEndList.length;
+                                                  i < totaltime.length;
                                                   i++)
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          0, 5, 0, 5),
+                                                      const EdgeInsets.only(
+                                                          bottom: 9),
                                                   child: Text(
-                                                    braeakEndList[i] != null
-                                                        ? DateFormat('hh:mm:ss')
-                                                            .format(
-                                                                DateTime.parse(
-                                                                    braeakEndList[
-                                                                        i]))
-                                                        : '---',
-                                                    style: TextStyle(
-                                                      fontFamily: 'Nunito Sans',
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14.0,
-                                                      color: Color.fromRGBO(
-                                                          0, 0, 0, 1),
-                                                    ),
-                                                  ),
-                                                ),
-                                            if (braeakEndList.length == 0)
-                                              Text(
-                                                '0:00:00',
-                                                style: TextStyle(
-                                                  fontFamily: 'Nunito Sans',
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14.0,
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 1),
-                                                ),
-                                              )
-                                          ],
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.baseline,
-                                          textBaseline: TextBaseline.alphabetic,
-                                          children: [
-                                            Text(
-                                              'Total Time',
-                                              style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                //  fontWeight: FontWeight.bold,
-                                                fontSize: 10.0,
-                                                color: Color.fromRGBO(
-                                                    112, 112, 112, 1),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            if (Breaklist.length >= 1)
-                                              for (int i = 0;
-                                                  i < Breaklist.length;
-                                                  i++)
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          0, 5, 0, 5),
-                                                  child: Text(
-                                                    Breaklist[i]
+                                                    totaltime[i]
                                                         .toString()
                                                         .split('.')
                                                         .first,
@@ -1649,23 +1436,264 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                     ),
                                                   ),
                                                 ),
-                                            if (Breaklist.length == 0)
-                                              Text(
-                                                '0:00:00',
+                                              if (totaltime.length == 0)
+                                                Text(
+                                                  '0:00:00',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                if (snapshot.data.detail.record.status !=
+                                    'Upcoming')
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                if (snapshot.data.detail.record.status !=
+                                    'Upcoming')
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                'Breaks',
                                                 style: TextStyle(
                                                   fontFamily: 'Nunito Sans',
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 14.0,
                                                   color: Color.fromRGBO(
-                                                      0, 0, 0, 1),
+                                                      13, 91, 196, 1),
                                                 ),
                                               ),
+                                            ),
+                                            SizedBox(
+                                              width: 15,
+                                            ),
                                           ],
                                         ),
-                                      )
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
+                                if (snapshot.data.detail.record.status !=
+                                    'Upcoming')
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                if (snapshot.data.detail.record.status !=
+                                    'Upcoming')
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 0, 8, 0),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.baseline,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.baseline,
+                                              textBaseline:
+                                                  TextBaseline.alphabetic,
+                                              children: [
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(
+                                                  'Start Time',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    //  fontWeight: FontWeight.bold,
+                                                    fontSize: 10.0,
+                                                    color: Color.fromRGBO(
+                                                        112, 112, 112, 1),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                if (breakStartList.length >= 1)
+                                                  for (int i = 0;
+                                                      i < breakStartList.length;
+                                                      i++)
+                                                    Padding(
+                                                      padding: const EdgeInsets
+                                                          .fromLTRB(0, 5, 0, 5),
+                                                      child: Text(
+                                                        breakStartList[i] !=
+                                                                null
+                                                            ? DateFormat(
+                                                                    'hh:mm:ss')
+                                                                .format(DateTime
+                                                                    .parse(
+                                                                        breakStartList[
+                                                                            i]))
+                                                            : '---',
+                                                        style: TextStyle(
+                                                          fontFamily:
+                                                              'Nunito Sans',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14.0,
+                                                          color: Color.fromRGBO(
+                                                              0, 0, 0, 1),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                if (breakStartList.length == 0)
+                                                  Text(
+                                                    '0:00:00',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Nunito Sans',
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14.0,
+                                                      color: Color.fromRGBO(
+                                                          0, 0, 0, 1),
+                                                    ),
+                                                  ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Text(
+                                                'End Time',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  //  fontWeight: FontWeight.bold,
+                                                  fontSize: 10.0,
+                                                  color: Color.fromRGBO(
+                                                      112, 112, 112, 1),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              if (braeakEndList.length >= 1)
+                                                for (int i = 0;
+                                                    i < braeakEndList.length;
+                                                    i++)
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 5, 0, 5),
+                                                    child: Text(
+                                                      braeakEndList[i] != null
+                                                          ? DateFormat(
+                                                                  'hh:mm:ss')
+                                                              .format(DateTime
+                                                                  .parse(
+                                                                      braeakEndList[
+                                                                          i]))
+                                                          : '---',
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            'Nunito Sans',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            0, 0, 0, 1),
+                                                      ),
+                                                    ),
+                                                  ),
+                                              if (braeakEndList.length == 0)
+                                                Text(
+                                                  '0:00:00',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                )
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.baseline,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Text(
+                                                'Total Time',
+                                                style: TextStyle(
+                                                  fontFamily: 'Nunito Sans',
+                                                  //  fontWeight: FontWeight.bold,
+                                                  fontSize: 10.0,
+                                                  color: Color.fromRGBO(
+                                                      112, 112, 112, 1),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              if (Breaklist.length >= 1)
+                                                for (int i = 0;
+                                                    i < Breaklist.length;
+                                                    i++)
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 5, 0, 5),
+                                                    child: Text(
+                                                      Breaklist[i]
+                                                          .toString()
+                                                          .split('.')
+                                                          .first,
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            'Nunito Sans',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14.0,
+                                                        color: Color.fromRGBO(
+                                                            0, 0, 0, 1),
+                                                      ),
+                                                    ),
+                                                  ),
+                                              if (Breaklist.length == 0)
+                                                Text(
+                                                  '0:00:00',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Nunito Sans',
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14.0,
+                                                    color: Color.fromRGBO(
+                                                        0, 0, 0, 1),
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 /* Column(
                                   children: [
                                     Text(
@@ -1680,10 +1708,22 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       Text(Breaklist[i].toString())
                                   ],
                                 ),*/
-                                new Divider(
-                                  height: 5,
-                                  color: Colors.grey,
-                                ),
+                                if (snapshot.data.detail.record.status !=
+                                    'Upcoming')
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                if (snapshot.data.detail.record.status !=
+                                    'Upcoming')
+                                  new Divider(
+                                    height: 5,
+                                    color: Colors.grey,
+                                  ),
+                                if (snapshot.data.detail.record.status !=
+                                    'Upcoming')
+                                  SizedBox(
+                                    height: 10,
+                                  ),
                                 SizedBox(
                                   height: 10,
                                 ),

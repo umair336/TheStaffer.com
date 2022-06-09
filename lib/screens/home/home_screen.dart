@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             //     Text(snapshot.data.completed.toString()),
                             Container(
                               child: Stack(
-                                overflow: Overflow.visible,
+                               // overflow: Overflow.visible,
                                 children: [
                                   Container(
                                       height:
