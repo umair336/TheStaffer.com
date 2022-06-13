@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //  _selectedIndex = index;
     print('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq$index');
     if (index == 0) {
-    /*  setState(() {
+      /*  setState(() {
          Navigator.push(
               context, MaterialPageRoute(builder: (context) => HomeScreen()));
       });*/
@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             //     Text(snapshot.data.completed.toString()),
                             Container(
                               child: Stack(
-                               // overflow: Overflow.visible,
+                                // overflow: Overflow.visible,
                                 children: [
                                   Container(
                                       height:
@@ -303,7 +303,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   "images/002-schedule@2x.png",
                                                                   height:
                                                                       size.height *
-                                                                          0.05,
+                                                                          0.04,
 
                                                                   // fit: BoxFit.cover,
                                                                 ),
@@ -502,7 +502,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   "images/002-schedule@2x.png",
                                                                   height:
                                                                       size.height *
-                                                                          0.05,
+                                                                          0.04,
 
                                                                   // fit: BoxFit.cover,
                                                                 ),
@@ -744,7 +744,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   "images/Group 12117@2x.png",
                                                                   height:
                                                                       size.height *
-                                                                          0.05,
+                                                                          0.04,
 
                                                                   // fit: BoxFit.cover,
                                                                 ),
@@ -991,7 +991,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   "images/Group 12117@2x.png",
                                                                   height:
                                                                       size.height *
-                                                                          0.05,
+                                                                          0.04,
 
                                                                   // fit: BoxFit.cover,
                                                                 ),
