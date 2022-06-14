@@ -1635,7 +1635,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                   width: 12,
                                                 ),
                                                 Text(
-                                                  'Time Sheet',
+                                                  'TimeSheet',
                                                   style: TextStyle(
                                                     fontSize: 18.0,
                                                     color: Color.fromRGBO(
