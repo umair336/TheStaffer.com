@@ -262,7 +262,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                       width: 12,
                                                     ),
                                                     Text(
-                                                      'TimeSheet',
+                                                      'Time Sheet',
                                                       style: TextStyle(
                                                         fontSize: 18.0,
                                                         color: Color.fromRGBO(
@@ -1635,7 +1635,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                   width: 12,
                                                 ),
                                                 Text(
-                                                  'TimeSheet',
+                                                  'Time Sheet',
                                                   style: TextStyle(
                                                     fontSize: 18.0,
                                                     color: Color.fromRGBO(
@@ -2062,7 +2062,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                             Padding(
                               padding: EdgeInsets.only(top: 50),
                               child: Text(
-                                'No Timesheet',
+                                'No Time Sheet',
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
