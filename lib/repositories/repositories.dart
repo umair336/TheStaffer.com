@@ -50,7 +50,7 @@ class UserRepository {
 
   Future<void> deleteToken() async {
     storage.delete(key: 'token');
-    storage.deleteAll();
+   // storage.deleteAll();
   }
 
   Future<String> login(String phone, String password) async {
@@ -72,5 +72,18 @@ class UserRepository {
         .toString(); // toString of Response's body is assigned to jsonDataString
     var _data = jsonDecode(jsonsDataString);
     return _data['token'];
+  }
+  /////////////////////////////////////////////////
+  
+  Future<void> first(String val) async {
+    await storage.write(key: 'firsttime', value: val);
+  }
+   Future<bool> hasfirsr() async {
+    var va = await storage.read(key: 'firsttime');
+    if (va != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

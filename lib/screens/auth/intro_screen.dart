@@ -5,6 +5,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
 
 import 'login_screen.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 class IntroPage extends StatefulWidget {
   final UserRepository userRepository;
@@ -15,6 +16,11 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> {
+  final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
+  Future<void> first(String val) async {
+    await storage.write(key: 'firsttime', value: val);
+  }
+
   final UserRepository userRepository;
   _IntroPageState(this.userRepository);
   bool clicked = false;
@@ -161,9 +167,11 @@ class _IntroPageState extends State<IntroPage> {
             globalBackgroundColor: Color.fromRGBO(97, 29, 165, 1),
             pages: pages,
             onDone: () {
+              first('kk');
               afterIntroComplete();
             },
             onSkip: () {
+              first('kk');
               afterIntroComplete();
             },
             showSkipButton: true,

@@ -11,8 +11,8 @@ import 'bloc/auth_bloc/auth_bloc.dart';
 import 'repositories/repositories.dart';
 import 'screens/auth/intro_screen.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/auth/login_screen.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 /*
 class SimpleBlocDelegate extends BlocDelegate {
   @override
@@ -65,7 +65,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _seen;
+  final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
+  var introskip;
+
+  /*bool _seen;
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _seen = (prefs.getBool('seen') ?? false);
@@ -81,11 +84,30 @@ class _MyAppState extends State<MyApp> {
       return _seen;
     }
   }
+*/
+  Future check() async {
+    final String v = await storage.read(key: 'firsttime');
+
+    print("asssssssssssss$v");
+    introskip = v.toString();
+    print("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV$introskip");
+  }
+
+  Future<void> first(String val) async {
+    await storage.write(key: 'firsttime', value: val);
+  }
+/*
+  Future<void> deleteToken() async {
+    storage.delete(key: 'firsttime');
+    //   storage.deleteAll();
+  }*/
 
   @override
   void initState() {
     super.initState();
-    checkFirstSeen();
+    check();
+
+    // checkFirstSeen();
   }
 
   @override
@@ -100,15 +122,31 @@ class _MyAppState extends State<MyApp> {
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is AuthenticationAuthenticated) {
+            print("AAAAAAAAAAAAAAAAAAAAAAA");
             return MainScreen();
           }
           if (state is AuthenticationUninitialized) {
+            //      check();
+            print("BBBBBBBBBBBBBBBBBBB$introskip");
+
             return LoginScreen(
               userRepository: widget.userRepository,
             );
           }
           if (state is AuthenticationUnauthenticated) {
-            print("YYYYYYYYYYYYYYYYYYYYYYY$_seen");
+            print("CCCCCCCCCCCCCCCCCCCCCCCCCCC$introskip");
+            if (introskip == 'null') {
+              print('qqq');
+              return IntroPage(userRepository: widget.userRepository);
+            } else {
+              print('vvv');
+              return LoginScreen(userRepository: widget.userRepository);
+            }
+            //deleteToken();
+            // first('KKKKKKKKKKKK');
+            //     check();
+
+            /* print("YYYYYYYYYYYYYYYYYYYYYYY$_seen");
 
             if (_seen == false) {
               print("aaaaaaaaaaaaaaaaa");
@@ -119,10 +157,11 @@ class _MyAppState extends State<MyApp> {
             }
 
          
-
-            // return IntroPage(userRepository: widget.userRepository);
+*/
+            return IntroPage(userRepository: widget.userRepository);
           }
           if (state is AuthenticationLoading) {
+            print("DDDDDDDDDDDDDDDD");
             return Scaffold(
               body: Container(
                 color: Colors.white,
