@@ -76,28 +76,25 @@ class UserRepository {
         ),
       );
       if (response.statusCode == 200) {
-      print("GGGGGGGGGGGGGGGGGGGGGGG${response.data['data']['token']}");
-      return response.data['data']['token'];
-      // var _data = jsonDecode(response.data['data']['token']);
+        print("GGGGGGGGGGGGGGGGGGGGGGG${response.data['data']['token']}");
+        return response.data['data']['token'];
+        // var _data = jsonDecode(response.data['data']['token']);
 
-    } 
-    
-    else {
-     Text('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
+      } else {
+        Text('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
+      }
+    } on DioError catch (error) {
+      var statusCode = error.response.statusMessage;
+      print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj$statusCode');
+
+      //  print('KKKKKKKKKKKKKKKKKKKKKKKKKKKKK${response.statusMessage }');
+      // toString of Response's body is assigned to jsonDataString
+
+      // print(response);
+      // var _data = jsonDecode(jsonsDataString);
+
+      //  return _data['token'];
     }
-    } on DioError catch (e) {
-      print("message....: ${e.message}");
-    }
-
-    //  print('KKKKKKKKKKKKKKKKKKKKKKKKKKKKK${response.statusMessage }');
-    // toString of Response's body is assigned to jsonDataString
-    print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDD$response");
-    
-
-    // print(response);
-    // var _data = jsonDecode(jsonsDataString);
-
-    //  return _data['token'];
   }
   /////////////////////////////////////////////////
 
