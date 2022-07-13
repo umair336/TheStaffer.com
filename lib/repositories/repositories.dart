@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:another_flushbar/flushbar.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 import 'package:TheStafferEmployee/models/models.dart';
@@ -58,8 +59,9 @@ class UserRepository {
   }
 
   Future<String> login(String phone, String password) async {
+    Response response;
     try {
-      Response response = await _dio.post(
+      response = await _dio.post(
         loginUrl,
         data: {
           "email": phone,
@@ -73,19 +75,25 @@ class UserRepository {
           },
         ),
       );
-      //  print('KKKKKKKKKKKKKKKKKKKKKKKKKKKKK${response.statusMessage }');
-      // toString of Response's body is assigned to jsonDataString
       if (response.statusCode == 200) {
-        print("GGGGGGGGGGGGGGGGGGGGGGG${response.data['data']['token']}");
-        return response.data['data']['token'];
-        // var _data = jsonDecode(response.data['data']['token']);
+      print("GGGGGGGGGGGGGGGGGGGGGGG${response.data['data']['token']}");
+      return response.data['data']['token'];
+      // var _data = jsonDecode(response.data['data']['token']);
 
-      } else {
-        return "request failed";
-      }
-    } catch (e) {
-      print('sssssssssssssssss${e}');
+    } 
+    
+    else {
+     Text('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
     }
+    } on DioError catch (e) {
+      print("message....: ${e.message}");
+    }
+
+    //  print('KKKKKKKKKKKKKKKKKKKKKKKKKKKKK${response.statusMessage }');
+    // toString of Response's body is assigned to jsonDataString
+    print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDD$response");
+    
+
     // print(response);
     // var _data = jsonDecode(jsonsDataString);
 
