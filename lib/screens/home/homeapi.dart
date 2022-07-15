@@ -11,7 +11,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 Future<Home> fetchhome() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  final url = 'https://dev2.thestaffer.com/api/admin/home';
+  final url = 'https://dev2.thestaffer.com/v1/user/dashboard';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');
@@ -33,25 +33,28 @@ Future<Home> fetchhome() async {
     print('vvvvvvvvvvvvvvvvvvv');
   }
 }
-
 class Home {
-  List<Data> data;
+  String message;
+  bool error;
+  int code;
+  Data data;
 
-  Home({this.data});
+  Home({this.message, this.error, this.code, this.data});
 
   Home.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
-      });
-    }
+    message = json['message'];
+    error = json['error'];
+    code = json['code'];
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['message'] = this.message;
+    data['error'] = this.error;
+    data['code'] = this.code;
     if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
+      data['data'] = this.data.toJson();
     }
     return data;
   }
@@ -59,42 +62,42 @@ class Home {
 
 class Data {
   String totalWeeklyHours;
-  String preWeeklyHours;
-  String empName;
+  String prevWeeklyHours;
+  String employeeName;
   String profilePic;
   List<Assignments> assignments;
   String earnings;
-  String prevearnings;
-  String pending;
-  int shifts;
+  String prevEarnings;
+  String pendingBalance;
+  int totalShifts;
   String startDate;
   String endDate;
-  String previousStartDate;
-  String previousEndDate;
+  String prevWeekStart;
+  String prevWeekEnd;
   String currentDateFormat;
-  String currencyformat;
+  String currencyFormat;
 
   Data(
       {this.totalWeeklyHours,
-      this.preWeeklyHours,
-      this.empName,
+      this.prevWeeklyHours,
+      this.employeeName,
       this.profilePic,
       this.assignments,
       this.earnings,
-      this.prevearnings,
-      this.pending,
-      this.shifts,
+      this.prevEarnings,
+      this.pendingBalance,
+      this.totalShifts,
       this.startDate,
       this.endDate,
-      this.previousStartDate,
-      this.previousEndDate,
+      this.prevWeekStart,
+      this.prevWeekEnd,
       this.currentDateFormat,
-      this.currencyformat});
+      this.currencyFormat});
 
   Data.fromJson(Map<String, dynamic> json) {
     totalWeeklyHours = json['total_weekly_hours'];
-    preWeeklyHours = json['prev_weekly_hours'];
-    empName = json['emp_name'];
+    prevWeeklyHours = json['prev_weekly_hours'];
+    employeeName = json['employee_name'];
     profilePic = json['profile_pic'];
     if (json['assignments'] != null) {
       assignments = <Assignments>[];
@@ -102,35 +105,37 @@ class Data {
         assignments.add(new Assignments.fromJson(v));
       });
     }
-    earnings = json['earnings'].toString();
-    prevearnings = json['prev_earnings'].toString();
-    pending = json['pending'].toString();
-    shifts = json['shifts'];
+    earnings = json['earnings'];
+    prevEarnings = json['prev_earnings'];
+    pendingBalance = json['pending_balance'];
+    totalShifts = json['total_shifts'];
     startDate = json['start_date'];
     endDate = json['end_date'];
-    previousStartDate = json['prev_week_start'];
-    previousEndDate = json['prev_week_end'];
+    prevWeekStart = json['prev_week_start'];
+    prevWeekEnd = json['prev_week_end'];
     currentDateFormat = json['current_date_format'];
-    currencyformat = json['currencyformat'];
+    currencyFormat = json['currency_format'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['total_weekly_hours'] = this.totalWeeklyHours;
-    data['prev_weekly_hours'] = this.preWeeklyHours;
-    data['emp_name'] = this.empName;
+    data['prev_weekly_hours'] = this.prevWeeklyHours;
+    data['employee_name'] = this.employeeName;
     data['profile_pic'] = this.profilePic;
     if (this.assignments != null) {
       data['assignments'] = this.assignments.map((v) => v.toJson()).toList();
     }
-    data['earnings'] = this.earnings.toString();
-    data['prev_earnings'] = this.prevearnings.toString();
-    data['pending'] = this.pending.toString();
-    data['shifts'] = this.shifts;
+    data['earnings'] = this.earnings;
+    data['prev_earnings'] = this.prevEarnings;
+    data['pending_balance'] = this.pendingBalance;
+    data['total_shifts'] = this.totalShifts;
     data['start_date'] = this.startDate;
     data['end_date'] = this.endDate;
+    data['prev_week_start'] = this.prevWeekStart;
+    data['prev_week_end'] = this.prevWeekEnd;
     data['current_date_format'] = this.currentDateFormat;
-    data['currencyformat'] = this.currencyformat;
+    data['currency_format'] = this.currencyFormat;
     return data;
   }
 }
@@ -235,7 +240,6 @@ class Assignments {
     return data;
   }
 }
-
 class Homeapi extends StatefulWidget {
   @override
   _HomeapiState createState() => _HomeapiState();
@@ -276,9 +280,7 @@ class _HomeapiState extends State<Homeapi> {
                   return Column(
                     children: [
                       //
-                      Text(snapshot.data.data[0].empName),
-                      Text(
-                          snapshot.data.data[0].assignments[0].jobId.toString())
+
                       /*   Text(snapshot.data.data.jobPosition),
                       Text(snapshot.data.data.phone),
                       Text(snapshot.data.data.dob),

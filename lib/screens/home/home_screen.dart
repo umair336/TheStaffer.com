@@ -192,9 +192,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         avatarType: AvatarType.CIRCLE,
                                         backgroundColor: Colors.red,
                                         imagePath:
-                                            snapshot.data.data[0].profilePic,
+                                            snapshot.data.data.profilePic,
                                         placeHolder: Image.network(
-                                          snapshot.data.data[0].profilePic,
+                                          snapshot.data.data.profilePic,
                                           width: 50,
                                           height: 50,
                                           //fit: BoxFit.cover,
@@ -216,8 +216,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     top: 90,
                                     left: 80,
                                     child: Text(
-                                      snapshot.data.data[0].empName != null
-                                          ? snapshot.data.data[0].empName
+                                      snapshot.data.data.employeeName != null
+                                          ? snapshot.data.data.employeeName
                                           : '',
                                       style: TextStyle(
                                         //fontWeight: FontWeight.bold,
@@ -350,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                   builder: (context, snapshoot) {
                                                                                     if (snapshoot.hasData) {
                                                                                       return Text(
-                                                                                        snapshot.data.data[0].previousStartDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[0].previousStartDate)) : ' - - - ',
+                                                                                        snapshot.data.data.prevWeekStart.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.prevWeekStart)) : ' - - - ',
                                                                                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1)),
                                                                                       );
                                                                                     } else {
@@ -379,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                   builder: (context, snapshoot) {
                                                                                     if (snapshoot.hasData) {
                                                                                       return Text(
-                                                                                        snapshot.data.data[0].previousEndDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[0].previousEndDate)) : ' - - - ',
+                                                                                        snapshot.data.data.prevWeekEnd.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.prevWeekStart)) : ' - - - ',
                                                                                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1)),
                                                                                       );
                                                                                     } else {
@@ -409,12 +409,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                         .alphabetic,
                                                                 children: [
                                                                   AutoSizeText(
-                                                                    snapshot.data.data[0].preWeeklyHours.toString() !=
+                                                                    snapshot.data.data.prevWeeklyHours.toString() !=
                                                                             null
                                                                         ? snapshot
                                                                             .data
-                                                                            .data[0]
-                                                                            .preWeeklyHours
+                                                                            .data
+                                                                            .prevWeeklyHours
                                                                         : '',
                                                                     style:
                                                                         TextStyle(
@@ -558,7 +558,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                   builder: (context, snapshoot) {
                                                                                     if (snapshoot.hasData) {
                                                                                       return Text(
-                                                                                        snapshot.data.data[0].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[0].startDate)) : ' - - - ',
+                                                                                        snapshot.data.data.startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.startDate)) : ' - - - ',
                                                                                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(13, 91, 196, 1)),
                                                                                       );
                                                                                     } else {
@@ -587,7 +587,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                   builder: (context, snapshoot) {
                                                                                     if (snapshoot.hasData) {
                                                                                       return Text(
-                                                                                        snapshot.data.data[0].endDate != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[0].endDate)) : ' - - - ',
+                                                                                        snapshot.data.data.endDate != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.endDate)) : ' - - - ',
                                                                                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(13, 91, 196, 1)),
                                                                                       );
                                                                                     } else {
@@ -617,11 +617,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                         .alphabetic,
                                                                 children: [
                                                                   AutoSizeText(
-                                                                    snapshot.data.data[0].totalWeeklyHours.toString() !=
+                                                                    snapshot.data.data.totalWeeklyHours.toString() !=
                                                                             null
                                                                         ? snapshot
                                                                             .data
-                                                                            .data[0]
+                                                                            .data
                                                                             .totalWeeklyHours
                                                                         : '',
                                                                     style:
@@ -801,7 +801,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                   builder: (context, snapshoot) {
                                                                                     if (snapshoot.hasData) {
                                                                                       return Text(
-                                                                                        snapshot.data.data[0].previousStartDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[0].previousStartDate)) : ' - - - ',
+                                                                                        snapshot.data.data.prevWeekStart.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.prevWeekStart)) : ' - - - ',
                                                                                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1)),
                                                                                       );
                                                                                     } else {
@@ -830,7 +830,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                   builder: (context, snapshoot) {
                                                                                     if (snapshoot.hasData) {
                                                                                       return Text(
-                                                                                        snapshot.data.data[0].previousEndDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[0].previousEndDate)) : ' - - - ',
+                                                                                        snapshot.data.data.prevWeekEnd.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.prevWeekEnd)) : ' - - - ',
                                                                                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1)),
                                                                                       );
                                                                                     } else {
@@ -890,13 +890,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                         }
                                                                       }),
                                                                   Text(
-                                                                            snapshot.data.data[0].prevearnings.toString(),
+                                                                            snapshot.data.data.prevEarnings.toString(),
                                                                           ) !=
                                                                           null
                                                                       ? new Container(
                                                                           child:
                                                                               AutoSizeText(
-                                                                            snapshot.data.data[0].prevearnings.toString(),
+                                                                            snapshot.data.data.prevEarnings.toString(),
                                                                             style:
                                                                                 TextStyle(
                                                                               fontSize: 30,
@@ -1031,7 +1031,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                   builder: (context, snapshoot) {
                                                                                     if (snapshoot.hasData) {
                                                                                       return Text(
-                                                                                        snapshot.data.data[0].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[0].startDate)) : ' - - - ',
+                                                                                        snapshot.data.data.startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.startDate)) : ' - - - ',
                                                                                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(13, 91, 196, 1)),
                                                                                       );
                                                                                     } else {
@@ -1060,9 +1060,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                   builder: (context, snapshoot) {
                                                                                     if (snapshoot.hasData) {
                                                                                       return Text(
-                                                                                        snapshot.data.data[0].endDate.toString() != null
+                                                                                        snapshot.data.data.endDate.toString() != null
                                                                                             ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(
-                                                                                                snapshot.data.data[0].endDate.toString(),
+                                                                                                snapshot.data.data.endDate.toString(),
                                                                                               ))
                                                                                             : ' - - - ',
                                                                                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(13, 91, 196, 1)),
@@ -1124,13 +1124,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                         }
                                                                       }),
                                                                   Text(
-                                                                            snapshot.data.data[0].earnings.toString(),
+                                                                            snapshot.data.data.earnings.toString(),
                                                                           ) !=
                                                                           null
                                                                       ? new Container(
                                                                           child:
                                                                               AutoSizeText(
-                                                                            snapshot.data.data[0].earnings.toString(),
+                                                                            snapshot.data.data.earnings.toString(),
                                                                             style:
                                                                                 TextStyle(
                                                                               fontSize: 30,
@@ -1283,8 +1283,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           .alphabetic,
                                                       children: [
                                                         AutoSizeText(
-                                                          snapshot.data.data[0]
-                                                              .shifts
+                                                          snapshot.data.data
+                                                              .totalShifts
                                                               .toString(),
                                                           style: TextStyle(
                                                             fontSize: 30,
@@ -1446,8 +1446,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             }),
                                                         AutoSizeText(
                                                           // '123',
-                                                          snapshot.data.data[0]
-                                                              .pending
+                                                          snapshot.data.data
+                                                              .pendingBalance
                                                               .toString(),
                                                           //    maxLines: 1,
                                                           style: TextStyle(
@@ -1502,7 +1502,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: Container(
                                       height: 100.0,
                                       child:
-                                          snapshot.data.data[0].assignments
+                                          snapshot.data.data.assignments
                                                       .length ==
                                                   0
                                               ? Padding(
@@ -1524,11 +1524,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   shrinkWrap: true,
                                                   scrollDirection:
                                                       Axis.horizontal,
-                                                  itemCount: snapshot
-                                                      .data
-                                                      .data[0]
-                                                      .assignments
-                                                      .length,
+                                                  itemCount: snapshot.data.data
+                                                      .assignments.length,
                                                   itemBuilder:
                                                       (context, index) {
                                                     return InkWell(
@@ -1539,7 +1536,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 builder: (context) => Assignmentdetail(
                                                                     jobid: snapshot
                                                                         .data
-                                                                        .data[0]
+                                                                        .data
                                                                         .assignments[
                                                                             index]
                                                                         .jobId)));
@@ -1571,11 +1568,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                             120,
                                                                             0),
                                                                     child: Text(
-                                                                      snapshot.data.data[0].assignments[index].jobTitle.toString() !=
+                                                                      snapshot.data.data.assignments[index].jobTitle.toString() !=
                                                                               null
                                                                           ? snapshot
                                                                               .data
-                                                                              .data[0]
+                                                                              .data
                                                                               .assignments[index]
                                                                               .jobTitle
                                                                           : '',
@@ -1610,15 +1607,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               child: Text(
                                                                 snapshot
                                                                             .data
-                                                                            .data[
-                                                                                0]
+                                                                            .data
                                                                             .assignments[
                                                                                 index]
                                                                             .customerName !=
                                                                         null
                                                                     ? snapshot
                                                                         .data
-                                                                        .data[0]
+                                                                        .data
                                                                         .assignments[
                                                                             index]
                                                                         .customerName
@@ -1656,7 +1652,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           padding:
                                                                               const EdgeInsets.only(left: 20),
                                                                           child: Text(
-                                                                              snapshot.data.data[0].assignments[index].startDate != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[0].assignments[index].startDate)) : ' - - - ',
+                                                                              snapshot.data.data.assignments[index].startDate != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.assignments[index].startDate)) : ' - - - ',
                                                                               style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1))),
                                                                         );
                                                                       } else {
