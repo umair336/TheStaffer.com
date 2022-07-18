@@ -84,8 +84,8 @@ class UserRepository {
         Text('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
       }
     } on DioError catch (error) {
-      var statusCode = error.response.statusMessage;
-      print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj$statusCode');
+      var apiresponse = error.response.data['message'];
+      print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj$apiresponse');
 
       //  print('KKKKKKKKKKKKKKKKKKKKKKKKKKKKK${response.statusMessage }');
       // toString of Response's body is assigned to jsonDataString
