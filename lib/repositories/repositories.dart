@@ -86,6 +86,7 @@ class UserRepository {
     } on DioError catch (error) {
       var apiresponse = error.response.data['message'];
       print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj$apiresponse');
+      LoginAddMeesage(apiresponse);
 
       //  print('KKKKKKKKKKKKKKKKKKKKKKKKKKKKK${response.statusMessage }');
       // toString of Response's body is assigned to jsonDataString
@@ -109,6 +110,19 @@ class UserRepository {
     } else {
       return false;
     }
+  }
+
+  ////////////////// GetLogin Issue /////////////////
+
+  Future<void> LoginAddMeesage(String val) async {
+    print('aaaaaaaaaaaaaaaaaaaaaaaaaaa$val');
+    await storage.write(key: 'LoginError', value: val);
+  }
+
+  Future<void> LoginMessageShow() async {
+    var va = await storage.read(key: 'LoginError');
+    print('JJJJJJJJJJJJJJJ$va');
+    return va;
   }
 }
 

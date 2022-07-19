@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:TheStafferEmployee/style/theme.dart' as Style;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 class LoginForm extends StatefulWidget {
   final UserRepository userRepository;
@@ -18,11 +19,33 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  var valueexist;
+  final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
+  Future<void> LoginMessageShow() async {
+    valueexist = await storage.read(key: 'LoginError');
+    print('JJJJJJJJJJJJJJJ$valueexist');
+    //await storage.delete(key: 'LoginError');
+   print('###############################$valueexist');
+          Scaffold.of(context).showSnackBar(
+            SnackBar(
+              content: Text(valueexist),
+              backgroundColor: Colors.red.shade900,
+            ),
+          );
+  }
+
+  var userlogin = UserRepository();
   final UserRepository userRepository;
   _LoginFormState(this.userRepository);
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _showPassword = true;
+  @override
+  void initState() {
+    super.initState();
+
+    // checkFirstSeen();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,29 +61,8 @@ class _LoginFormState extends State<LoginForm> {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginFailure) {
-          if (_usernameController.text.isEmpty ||
-              _passwordController
-                  .text.isEmpty) if (_usernameController.text.isEmpty)
-            Scaffold.of(context).showSnackBar(
-              SnackBar(
-                content: Text("Please enter Username"),
-                backgroundColor: Colors.red.shade900,
-              ),
-            );
-          else
-            Scaffold.of(context).showSnackBar(
-              SnackBar(
-                content: Text("Please enter Password"),
-                backgroundColor: Colors.red.shade900,
-              ),
-            );
-          else
-            Scaffold.of(context).showSnackBar(
-              SnackBar(
-                content: Text("Please enter correct credentials"),
-                backgroundColor: Colors.red.shade900,
-              ),
-            );
+          LoginMessageShow();
+         
         }
       },
       child: BlocBuilder<LoginBloc, LoginState>(
