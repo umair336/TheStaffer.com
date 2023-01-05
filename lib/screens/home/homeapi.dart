@@ -11,7 +11,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 Future<Home> fetchhome() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  final url = 'https://dev2.thestaffer.com/v1/user/dashboard';
+  final url = 'https://dev5.thestaffer.com/v1/dashboard';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');
@@ -67,8 +67,8 @@ class Data {
   String profilePic;
   List<Assignments> assignments;
   String earnings;
-  String prevEarnings;
-  String pendingBalance;
+  int prevEarnings;
+  int pendingBalance;
   int totalShifts;
   String startDate;
   String endDate;

@@ -14,7 +14,7 @@ class UserRepository {
   //static String mainUrl = "http://127.0.0.1:8000/api";
   static String mainUrl = "https://dev2.thestaffer.com/api";
   //var loginUrl = '$mainUrl/login';
-  var loginUrl = "https://dev2.thestaffer.com/v1/user/login";
+  var loginUrl = "https://dev5.thestaffer.com/v1/login";
 
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final Dio _dio = Dio();
