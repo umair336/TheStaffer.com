@@ -9,8 +9,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 Future<AssignmentApi> fetchassignment() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
- // final url = 'https://dev2.thestaffer.com/api/admin/employees/assignments/list';
- final url ='https://dev2.thestaffer.com/api/admin/employee/assignment/list';
+  // final url = 'https://dev2.thestaffer.com/api/admin/employees/assignments/list';
+  final url = 'https://dev5.thestaffer.com/v1/admin/employee/assignment/list';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');

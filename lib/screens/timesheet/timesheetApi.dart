@@ -10,9 +10,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 Future<TimeSheetModel> timesheet(String dateStart, String dateEnd) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-   String a = '2022/1/2';
+  String a = '2022/1/2';
   String b = '2022/1/11';
- /* String a = '2022/1/2';
+  /* String a = '2022/1/2';
   String b = '2022/2/11';
 
   var url =
@@ -37,26 +37,29 @@ Future<TimeSheetModel> timesheet(String dateStart, String dateEnd) async {
   } else {
     print('vvvvvvvvvvvvvvvvvvv');
   }*/
-   Map<String, String> header = {
-      "Accept": "application/json",
-      'Content-Type':'application/json',
-      'Authorization': 'Bearer ${token.toString()}'
-    };
+  Map<String, String> header = {
+    "Accept": "application/json",
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ${token.toString()}'
+  };
 
-    final response =
-    await http.get(Uri.parse( 'https://dev2.thestaffer.com/api/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd'),headers: header,);
+  final response = await http.get(
+    Uri.parse(
+        'https://dev5.thestaffer.com/api/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd'),
+    headers: header,
+  );
 
-    print("response body: url hit good: ${response.body.toString()}");
+  print("response body: url hit good: ${response.body.toString()}");
 
-    if (response.statusCode == 200) {
-      final parsed = json.decode(response.body);
-       print("response body: url : ${parsed}");
-       return TimeSheetModel.fromJson(parsed);
-
-    } else {
-      throw Exception('Failed to load album');
-    }
+  if (response.statusCode == 200) {
+    final parsed = json.decode(response.body);
+    print("response body: url : ${parsed}");
+    return TimeSheetModel.fromJson(parsed);
+  } else {
+    throw Exception('Failed to load album');
+  }
 }
+
 class TimeSheetModel {
   List<Timesheet> timesheet;
 
@@ -92,12 +95,12 @@ class Timesheet {
   String updatedAt;
 
   int payrollStatus;
-  
+
   String overtimeHours;
   String regularHours;
   String timesheetType;
   String customerName;
- 
+
   int overRate;
   String jobPosition;
 
@@ -111,14 +114,11 @@ class Timesheet {
       this.hoursForWeek,
       this.createdAt,
       this.updatedAt,
-
       this.payrollStatus,
-      
       this.overtimeHours,
       this.regularHours,
       this.timesheetType,
       this.customerName,
-      
       this.overRate,
       this.jobPosition});
 
@@ -132,14 +132,14 @@ class Timesheet {
     hoursForWeek = json['hours_for_week'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-   
+
     payrollStatus = json['payroll_status'];
-   
+
     overtimeHours = json['overtime_hours'];
     regularHours = json['regular_hours'];
     timesheetType = json['timesheet_type'];
     customerName = json['customer_name'];
-   
+
     // overRate = json['over_rate'];
     jobPosition = json['job_position'];
   }
@@ -155,9 +155,9 @@ class Timesheet {
     data['hours_for_week'] = this.hoursForWeek;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-   
+
     data['payroll_status'] = this.payrollStatus;
-   
+
     data['overtime_hours'] = this.overtimeHours;
     data['regular_hours'] = this.regularHours;
     data['timesheet_type'] = this.timesheetType;

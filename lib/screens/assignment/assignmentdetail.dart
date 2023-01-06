@@ -1015,7 +1015,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                                 setState(() {
                                                   jobid = snapshot
-                                                      .data.detail.record.jobid;
+                                                      .data.detail.shifts[0].jobId;
                                                   print(
                                                       'eeeeeeeeeeeeeeeeeeeeeeeeeee$jobid');
                                                   DialogStarttime();
@@ -2564,7 +2564,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     final String token = await storage.read(key: 'token');
     String authorization = token;
     var urll =
-        'https://dev2.thestaffer.com/api/admin/employee/timesheet/add-timesheet';
+        'https://dev5.thestaffer.com/v1/admin/employee/timesheet/create';
 
     Map data = {
       'assignement_id': idjob,
@@ -2601,7 +2601,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     final String token = await storage.read(key: 'token');
     String authorization = token;
     var urll =
-        'https://dev2.thestaffer.com/api/admin/employee/timesheet/add-timesheet';
+        'https://dev5.thestaffer.com/v1/admin/employee/timesheet/create';
 
     Map data = {
       'assignement_id': idjob,

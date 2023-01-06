@@ -327,7 +327,7 @@ class _MyDialogState extends State<MyDialog> {
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
     final String token = await storage.read(key: 'token');
     String authorization = token;
-    var urll = 'https://dev2.thestaffer.com/api/admin/reset-password';
+    var urll = 'https://dev5.thestaffer.com/v1/admin/reset-password';
 
     Map data = {
       'password': curentp,
@@ -346,21 +346,18 @@ class _MyDialogState extends State<MyDialog> {
     print("${response.statusCode}");
     if (response.statusCode == 200) {
       print('ssssssssssssssssssssssss${response.body}');
-      if(response.body.contains('successfully')){
-          BlocProvider.of<AuthenticationBloc>(
-                                                  context)
-                                              .add(
-                                            LoggedOut(),
-                                          );
-                                          Navigator.pop(context);
-      }
-      else
-      Flushbar(
-        //   title: 'Hey Ninja',
-        message: response.body.substring(11, response.body.length - 2),
-        duration: Duration(seconds: 3),
-        backgroundColor: Color.fromRGBO(183, 14, 105, 1),
-      ).show(context);
+      if (response.body.contains('successfully')) {
+        BlocProvider.of<AuthenticationBloc>(context).add(
+          LoggedOut(),
+        );
+        Navigator.pop(context);
+      } else
+        Flushbar(
+          //   title: 'Hey Ninja',
+          message: response.body.substring(11, response.body.length - 2),
+          duration: Duration(seconds: 3),
+          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+        ).show(context);
     }
     /* if (response.statusCode == 200) {
       // Navigator.pop(context);

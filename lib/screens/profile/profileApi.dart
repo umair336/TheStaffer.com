@@ -9,7 +9,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 Future<Profile> fetchprofile() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  final url = 'https://dev2.thestaffer.com/api/admin/get-profile-data';
+  final url = 'https://dev5.thestaffer.com/v1/admin/get-profile-data';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');
@@ -51,7 +51,7 @@ class Profile {
 
 class Data {
   String employeeName;
-  List<JobPosition> jobPosition;
+  String jobPosition;
   String profilePic;
   String phone;
   String email;
@@ -71,12 +71,7 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     employeeName = json['employee_name'];
-    if (json['job_position'] != null) {
-      jobPosition = <JobPosition>[];
-      json['job_position'].forEach((v) {
-        jobPosition.add(new JobPosition.fromJson(v));
-      });
-    }
+    jobPosition = json['job_position'];
     profilePic = json['profile_pic'];
     phone = json['phone'];
     email = json['email'];
@@ -88,34 +83,13 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['employee_name'] = this.employeeName;
-    if (this.jobPosition != null) {
-      data['job_position'] = this.jobPosition.map((v) => v.toJson()).toList();
-    }
+    data['job_position'] = this.jobPosition;
     data['profile_pic'] = this.profilePic;
     data['phone'] = this.phone;
     data['email'] = this.email;
     data['dob'] = this.dob;
     data['ssn'] = this.ssn;
     data['location'] = this.location;
-    return data;
-  }
-}
-
-class JobPosition {
-  String label;
-  String value;
-
-  JobPosition({this.label, this.value});
-
-  JobPosition.fromJson(Map<String, dynamic> json) {
-    label = json['label'];
-    value = json['value'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['label'] = this.label;
-    data['value'] = this.value;
     return data;
   }
 }

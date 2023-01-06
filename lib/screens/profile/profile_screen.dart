@@ -176,7 +176,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                //    token.toString()
                                                 'Profile',
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
@@ -256,45 +255,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     SizedBox(
                                                       height: 5,
                                                     ),
-                                                    if (snapshot.data.data
-                                                            .jobPosition !=
-                                                        null)
-                                                      for (int i = 0;
-                                                          i <
-                                                              snapshot
-                                                                  .data
-                                                                  .data
-                                                                  .jobPosition
-                                                                  .length;
-                                                          i++)
-                                                        Container(
-                                                          child: Text(
-                                                            snapshot
-                                                                .data
-                                                                .data
-                                                                .jobPosition[i]
-                                                                .label,
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    'Nunito Sans',
-                                                                // fontWeight: FontWeight.semibold,
-                                                                fontSize: 10.0,
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                        ),
-
-                                                    /*  Text(
-                                            snapshot.data.data.jobPosition !=
-                                                    null
-                                                ? snapshot.data.data.jobPosition
-                                                : '',
-                                            style: TextStyle(
-                                                fontFamily: 'Nunito Sans',
-                                                // fontWeight: FontWeight.semibold,
-                                                fontSize: 10.0,
-                                                color: Colors.white),
-                                          ),*/
+                                                    Text(
+                                                      snapshot.data.data
+                                                                  .jobPosition !=
+                                                              null
+                                                          ? snapshot.data.data
+                                                              .jobPosition
+                                                          : '',
+                                                      style: TextStyle(
+                                                          fontFamily:
+                                                              'Nunito Sans',
+                                                          // fontWeight: FontWeight.semibold,
+                                                          fontSize: 10.0,
+                                                          color: Colors.white),
+                                                    ),
                                                   ],
                                                 ),
                                               )
@@ -697,11 +671,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                               Navigator.pop(context);
                                                                                               //  print('uuuuuuuuuuuuuuuuuuuuuu');
                                                                                               /* Flushbar(
-          //   title: 'Hey Ninja',
-          message: 'Thank u',
-          duration: Duration(seconds: 3),
-          backgroundColor: Color.fromRGBO(183, 14, 105, 1),
-        ).show(context);*/
+                                              //   title: 'Hey Ninja',
+                                              message: 'Thank u',
+                                              duration: Duration(seconds: 3),
+                                              backgroundColor: Color.fromRGBO(183, 14, 105, 1),
+                                            ).show(context);*/
                                                                                               setState(() {
                                                                                                 correct = true;
                                                                                               });
@@ -803,7 +777,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                   snapshot.data.data
                                                                               .ssn !=
                                                                           null
-                                                                      ? '***_**_${snapshot.data.data.ssn.substring(snapshot.data.data.ssn.length - 4, snapshot.data.data.ssn.length)}'
+                                                                      ? '***_**_${snapshot.data.data.ssn}'
                                                                       : '',
                                                                   style: TextStyle(
                                                                       fontSize:
@@ -1318,7 +1292,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
     final String token = await storage.read(key: 'token');
     String authorization = token;
-    var urll = 'https://dev2.thestaffer.com/api/admin/get_employee_ssn';
+    var urll = 'https://dev5.thestaffer.com/v1/admin/get_employee_ssn';
 
     Map data = {
       'password': curentp,
@@ -1364,15 +1338,5 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return response;
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 ///////////////////////////////////////////////////

@@ -33,6 +33,7 @@ Future<Home> fetchhome() async {
     print('vvvvvvvvvvvvvvvvvvv');
   }
 }
+
 class Home {
   String message;
   bool error;
@@ -240,6 +241,114 @@ class Assignments {
     return data;
   }
 }
+
+// class Home {
+//   String message;
+//   bool error;
+//   int code;
+//   Data data;
+
+//   Home({this.message, this.error, this.code, this.data});
+
+//   Home.fromJson(Map<String, dynamic> json) {
+//     message = json['message'];
+//     error = json['error'];
+//     code = json['code'];
+//     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+//   }
+
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = new Map<String, dynamic>();
+//     data['message'] = this.message;
+//     data['error'] = this.error;
+//     data['code'] = this.code;
+//     if (this.data != null) {
+//       data['data'] = this.data.toJson();
+//     }
+//     return data;
+//   }
+// }
+
+
+// class Data {
+//   int totalWeeklyHours;
+//   int prevWeeklyHours;
+//   String employeeName;
+//   String profilePic;
+//   // List<Null>? assignments;
+//   int earnings;
+//   int prevEarnings;
+//   int pendingBalance;
+//   int totalShifts;
+//   String startDate;
+//   String endDate;
+//   String prevWeekStart;
+//   String prevWeekEnd;
+//   String currentDateFormat;
+//   String currencyFormat;
+
+//   Data(
+//       {this.totalWeeklyHours,
+//       this.prevWeeklyHours,
+//       this.employeeName,
+//       this.profilePic,
+//       this.earnings,
+//       this.prevEarnings,
+//       this.pendingBalance,
+//       this.totalShifts,
+//       this.startDate,
+//       this.endDate,
+//       this.prevWeekStart,
+//       this.prevWeekEnd,
+//       this.currentDateFormat,
+//       this.currencyFormat});
+
+//   Data.fromJson(Map<String, dynamic> json) {
+//     totalWeeklyHours = json['total_weekly_hours'];
+//     prevWeeklyHours = json['prev_weekly_hours'];
+//     employeeName = json['employee_name'];
+//     profilePic = json['profile_pic'];
+//     // if (json['assignments'] != null) {
+//     //   assignments = <Null>[];
+//     //   json['assignments'].forEach((v) {
+//     //     assignments!.add(new Null.fromJson(v));
+//     //   });
+//     // }
+//     earnings = json['earnings'];
+//     prevEarnings = json['prev_earnings'];
+//     pendingBalance = json['pending_balance'];
+//     totalShifts = json['total_shifts'];
+//     startDate = json['start_date'];
+//     endDate = json['end_date'];
+//     prevWeekStart = json['prev_week_start'];
+//     prevWeekEnd = json['prev_week_end'];
+//     currentDateFormat = json['current_date_format'];
+//     currencyFormat = json['currency_format'];
+//   }
+
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = new Map<String, dynamic>();
+//     data['total_weekly_hours'] = this.totalWeeklyHours;
+//     data['prev_weekly_hours'] = this.prevWeeklyHours;
+//     data['employee_name'] = this.employeeName;
+//     data['profile_pic'] = this.profilePic;
+//     // if (this.assignments != null) {
+//     //   data['assignments'] = this.assignments!.map((v) => v.toJson()).toList();
+//     // }
+//     data['earnings'] = this.earnings;
+//     data['prev_earnings'] = this.prevEarnings;
+//     data['pending_balance'] = this.pendingBalance;
+//     data['total_shifts'] = this.totalShifts;
+//     data['start_date'] = this.startDate;
+//     data['end_date'] = this.endDate;
+//     data['prev_week_start'] = this.prevWeekStart;
+//     data['prev_week_end'] = this.prevWeekEnd;
+//     data['current_date_format'] = this.currentDateFormat;
+//     data['currency_format'] = this.currencyFormat;
+//     return data;
+//   }
+// }
+
 class Homeapi extends StatefulWidget {
   @override
   _HomeapiState createState() => _HomeapiState();
