@@ -12,31 +12,7 @@ Future<TimeSheetModel> timesheet(String dateStart, String dateEnd) async {
   final String token = await storage.read(key: 'token');
   String a = '2022/1/2';
   String b = '2022/1/11';
-  /* String a = '2022/1/2';
-  String b = '2022/2/11';
 
-  var url =
-      'https://dev2.thestaffer.com/api/admin/employee/timesheet/list?start_date=2022/3/10&end_date=2022/4/13';
-  print('dddddddddddddddddddd$token');
-  String authorization = token;
-  print('sssssssssssssssssssss$authorization');
-  final response = await http.get(Uri.parse(url), headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': 'Bearer $authorization'
-  });
-  print('Token : ${authorization}');
-
-  print('aaaaaaaaaaaaaaaaaaaaaaaaa${response.statusCode}');
-  if (response.statusCode == 200) {
-    // print('iiiiiiiiiiiiiiiiiiiiiiiiiiii${response.statusCode}');
-    print('cccccccccccccccccccccccccccccccc${jsonDecode(response.body)}');
-    //  setReceivedText(response.body);
-
-    return TimeSheetData.fromJson(jsonDecode(response.body));
-  } else {
-    print('vvvvvvvvvvvvvvvvvvv');
-  }*/
   Map<String, String> header = {
     "Accept": "application/json",
     'Content-Type': 'application/json',
@@ -45,15 +21,17 @@ Future<TimeSheetModel> timesheet(String dateStart, String dateEnd) async {
 
   final response = await http.get(
     Uri.parse(
-        'https://dev5.thestaffer.com/api/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd'),
+      'https://dev5.thestaffer.com/v1/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd',
+      //   'https://dev5.thestaffer.com/api/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd'
+    ),
     headers: header,
   );
-
-  print("response body: url hit good: ${response.body.toString()}");
+  print('zzzzzzzzzzzzzzz$response');
+  print("response body: url hit good: ${response.statusCode}");
 
   if (response.statusCode == 200) {
     final parsed = json.decode(response.body);
-    print("response body: url : ${parsed}");
+    // print("response body: url : ${response.statusCode}");
     return TimeSheetModel.fromJson(parsed);
   } else {
     throw Exception('Failed to load album');
