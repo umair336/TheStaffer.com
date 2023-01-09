@@ -8,6 +8,8 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../repositories/repositories.dart';
+
 class MyDialog extends StatefulWidget {
   @override
   _MyDialogState createState() => new _MyDialogState();
@@ -327,7 +329,10 @@ class _MyDialogState extends State<MyDialog> {
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
     final String token = await storage.read(key: 'token');
     String authorization = token;
-    var urll = 'https://dev5.thestaffer.com/v1/admin/reset-password';
+  //  var urll = 'https://dev5.thestaffer.com/v1/admin/reset-password';
+     UserRepository request = UserRepository();
+ 
+  final url =request.mainUrl +'/v1/admin/reset-password';
 
     Map data = {
       'password': curentp,
@@ -337,7 +342,7 @@ class _MyDialogState extends State<MyDialog> {
     //encode Map to JSON
     var body = json.encode(data);
 
-    var response = await http.post(Uri.parse(urll),
+    var response = await http.post(Uri.parse(url),
         headers: {
           "Content-Type": "application/json",
           'Authorization': 'Bearer $authorization'

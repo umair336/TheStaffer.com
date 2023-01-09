@@ -7,9 +7,14 @@ import 'dart:convert';
 ///
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
+import '../../repositories/repositories.dart';
+
 Future<TimeSheetModel> timesheet(String dateStart, String dateEnd) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
+   UserRepository request = UserRepository();
+ 
+  final url =request.mainUrl +'/v1/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd';
   String a = '2022/1/2';
   String b = '2022/1/11';
 
@@ -21,12 +26,12 @@ Future<TimeSheetModel> timesheet(String dateStart, String dateEnd) async {
 
   final response = await http.get(
     Uri.parse(
-      'https://dev5.thestaffer.com/v1/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd',
+      url,
+    //  'https://dev5.thestaffer.com/v1/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd',
       //   'https://dev5.thestaffer.com/api/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd'
     ),
     headers: header,
   );
-  print('zzzzzzzzzzzzzzz$response');
   print("response body: url hit good: ${response.statusCode}");
 
   if (response.statusCode == 200) {

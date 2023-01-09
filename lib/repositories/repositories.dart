@@ -12,9 +12,10 @@ import 'auth.dart';
 
 class UserRepository {
   //static String mainUrl = "http://127.0.0.1:8000/api";
-  static String mainUrl = "https://dev5.thestaffer.com/api";
+ // static String mainUrl = "https://dev5.thestaffer.com/api";
+  var mainUrl = "https://dev5.thestaffer.com";
   //var loginUrl = '$mainUrl/login';
-  var loginUrl = "https://dev5.thestaffer.com/v1/login";
+ 
 
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final Dio _dio = Dio();
@@ -59,6 +60,8 @@ class UserRepository {
   }
 
   Future<String> login(String phone, String password) async {
+    // var loginUrl =   "https://dev5.thestaffer.com/v1/login";
+      var loginUrl =  mainUrl+ "/v1/login";
     Response response;
     try {
       response = await _dio.post(

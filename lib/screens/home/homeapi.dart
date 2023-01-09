@@ -8,13 +8,20 @@ import 'dart:convert';
 ///import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
+import '../../repositories/repositories.dart';
+
 Future<Home> fetchhome() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  final url = 'https://dev5.thestaffer.com/v1/dashboard';
+  // UserRepository UserRepository;
+  UserRepository request = UserRepository();
+  // final url = 'https://dev5.thestaffer.com/v1/dashboard';
+  final url =request.mainUrl +'/v1/dashboard';
+
+  print('dddddddddddddddddddd$url');
   print('dddddddddddddddddddd$token');
   String authorization = token;
-  print('sssssssssssssssssssss$authorization');
+  print('sssssssssssssssssssss$url');
   final response = await http.get(Uri.parse(url), headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -66,7 +73,7 @@ class Data {
   var prevWeeklyHours;
   var employeeName;
   var profilePic;
- List<Assignments> assignments;
+  List<Assignments> assignments;
   var earnings;
   var prevEarnings;
   var pendingBalance;
@@ -83,7 +90,7 @@ class Data {
       this.prevWeeklyHours,
       this.employeeName,
       this.profilePic,
-     this.assignments,
+      this.assignments,
       this.earnings,
       this.prevEarnings,
       this.pendingBalance,

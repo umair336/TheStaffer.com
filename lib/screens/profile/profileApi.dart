@@ -6,10 +6,15 @@ import 'dart:convert';
 ///import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
+import '../../repositories/repositories.dart';
+
 Future<Profile> fetchprofile() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
-  final url = 'https://dev5.thestaffer.com/v1/admin/get-profile-data';
+  //final url = 'https://dev5.thestaffer.com/v1/admin/get-profile-data';
+   UserRepository request = UserRepository();
+ 
+  final url =request.mainUrl +'/v1/admin/get-profile-data';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');

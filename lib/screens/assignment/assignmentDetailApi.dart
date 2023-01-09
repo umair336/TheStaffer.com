@@ -5,12 +5,16 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 import 'package:http/http.dart' as http;
 
+import '../../repositories/repositories.dart';
+
 Future<Detailassignment> fetchAssignmentDetail(int id) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   final String token = await storage.read(key: 'token');
   print('hhhhhhhhhhhhhhhhhhhhhh$id');
-  final url =
-      'https://dev5.thestaffer.com/v1/admin/employee/assignment/detail/$id';
+ // final url = 'https://dev5.thestaffer.com/v1/admin/employee/assignment/detail/$id';
+  UserRepository request = UserRepository();
+ 
+  final url =request.mainUrl +'/v1/admin/employee/assignment/detail/$id';
   print('dddddddddddddddddddd$token');
   String authorization = token;
   print('sssssssssssssssssssss$authorization');

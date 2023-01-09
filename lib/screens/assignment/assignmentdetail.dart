@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../constants/formate.dart';
+import '../../repositories/repositories.dart';
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
 import '../timesheet/timesheet_screen.dart';
@@ -2563,9 +2564,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
     final String token = await storage.read(key: 'token');
     String authorization = token;
-    var urll =
-        'https://dev5.thestaffer.com/v1/admin/employee/timesheet/create';
-
+  //  var urll = 'https://dev5.thestaffer.com/v1/admin/employee/timesheet/create';
+UserRepository request = UserRepository();
+ 
+  final url =request.mainUrl +'/v1/admin/employee/timesheet/create';
     Map data = {
       'assignement_id': idjob,
       'start_time': stime,
@@ -2574,7 +2576,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     //encode Map to JSON
     var body = json.encode(data);
 
-    var response = await http.post(Uri.parse(urll),
+    var response = await http.post(Uri.parse(url),
         headers: {
           "Content-Type": "application/json",
           'Authorization': 'Bearer $authorization'
@@ -2600,8 +2602,11 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
     final String token = await storage.read(key: 'token');
     String authorization = token;
-    var urll =
-        'https://dev5.thestaffer.com/v1/admin/employee/timesheet/create';
+
+   // var urll = 'https://dev5.thestaffer.com/v1/admin/employee/timesheet/create';
+   UserRepository request = UserRepository();
+ 
+  final url =request.mainUrl +'/v1/admin/employee/timesheet/create';
 
     Map data = {
       'assignement_id': idjob,
@@ -2611,7 +2616,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     //encode Map to JSON
     var body = json.encode(data);
 
-    var response = await http.post(Uri.parse(urll),
+    var response = await http.post(Uri.parse(url),
         headers: {
           "Content-Type": "application/json",
           'Authorization': 'Bearer $authorization'
