@@ -176,23 +176,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                         )),
                                   ),
                                 ),
-                                Positioned(
-                                    top: 65,
-                                    left: 25,
-                                    child: AvatarView(
-                                      radius: 23,
-                                      //borderWidth: 8,
-                                      // borderColor: Colors.yellow,
-                                      avatarType: AvatarType.CIRCLE,
-                                      backgroundColor: Colors.red,
-                                      imagePath: snapshot.data.data.profilePic,
-                                      placeHolder: Image.network(
-                                        snapshot.data.data.profilePic,
-                                        width: 50,
-                                        height: 50,
-                                        //fit: BoxFit.cover,
-                                      ),
-                                    )),
+                                // Positioned(
+                                //     top: 65,
+                                //     left: 25,
+                                //     child: AvatarView(
+                                //       radius: 23,
+                                //       //borderWidth: 8,
+                                //       // borderColor: Colors.yellow,
+                                //       avatarType: AvatarType.CIRCLE,
+                                //       backgroundColor: Colors.red,
+                                //       imagePath: snapshot.data.data.profilePic,
+                                //       placeHolder: Image.network(
+                                //         snapshot.data.data.profilePic,
+                                //         width: 50,
+                                //         height: 50,
+                                //         //fit: BoxFit.cover,
+                                //       ),
+                                //     )),
                                 Positioned(
                                   top: 70,
                                   left: 80,
@@ -1435,177 +1435,176 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 Color.fromRGBO(13, 91, 196, 1)),
                                       ),
                                     )),
-                                // Positioned(
-                                //   top: 570,
-                                //   left: 23,
-                                //   right: 20,
-                                //   child: Container(
-                                //     height: 100.0,
-                                //     child:
-                                //         snapshot.data.data.assignments
-                                //                     .length ==
-                                //                 0
-                                //             ? Padding(
-                                //                 padding:
-                                //                     EdgeInsets.only(top: 10),
-                                //                 child: Text(
-                                //                   'No Assignment',
-                                //                   style: TextStyle(
-                                //                       fontSize: 14,
-                                //                       fontWeight:
-                                //                           FontWeight.bold,
-                                //                       fontFamily:
-                                //                           'Nunito Sans',
-                                //                       color: Color.fromRGBO(
-                                //                           112, 112, 112, 1)),
-                                //                 ),
-                                //               )
-                                //             : ListView.builder(
-                                //                 shrinkWrap: true,
-                                //                 scrollDirection:
-                                //                     Axis.horizontal,
-                                //                 itemCount: snapshot.data.data
-                                //                     .assignments.length,
-                                //                 itemBuilder:
-                                //                     (context, index) {
-                                //                   return InkWell(
-                                //                     onTap: (() {
-                                //                       Navigator.push(
-                                //                           context,
-                                //                           MaterialPageRoute(
-                                //                               builder: (context) => Assignmentdetail(
-                                //                                   jobid: snapshot
-                                //                                       .data
-                                //                                       .data
-                                //                                       .assignments[
-                                //                                           index]
-                                //                                       .jobId)));
-                                //                     }),
-                                //                     child: Card(
-                                //                       elevation: 4.0,
-                                //                       shadowColor: Colors.grey
-                                //                           .withOpacity(0.2),
-                                //                       child: Column(
-                                //                         crossAxisAlignment:
-                                //                             CrossAxisAlignment
-                                //                                 .baseline,
-                                //                         textBaseline:
-                                //                             TextBaseline
-                                //                                 .alphabetic,
-                                //                         children: [
-                                //                           //////////////////////
-                                //                           SizedBox(
-                                //                             height: 15,
-                                //                           ),
-                                //                           Container(
-                                //                             child: Row(
-                                //                               children: [
-                                //                                 Padding(
-                                //                                   padding:
-                                //                                       const EdgeInsets.fromLTRB(
-                                //                                           20,
-                                //                                           0,
-                                //                                           120,
-                                //                                           0),
-                                //                                   child: Text(
-                                //                                     snapshot.data.data.assignments[index].jobTitle.toString() !=
-                                //                                             null
-                                //                                         ? snapshot
-                                //                                             .data
-                                //                                             .data
-                                //                                             .assignments[index]
-                                //                                             .jobTitle
-                                //                                         : '',
-                                //                                     style: TextStyle(
-                                //                                         fontWeight: FontWeight
-                                //                                             .bold,
-                                //                                         fontSize:
-                                //                                             14,
-                                //                                         fontFamily:
-                                //                                             'Nunito Sans',
-                                //                                         color: Color.fromRGBO(
-                                //                                             13,
-                                //                                             91,
-                                //                                             196,
-                                //                                             1)),
-                                //                                   ),
-                                //                                 ),
-                                //                                 SizedBox(
-                                //                                   width: 20,
-                                //                                 )
-                                //                               ],
-                                //                             ),
-                                //                           ),
-                                //                           SizedBox(
-                                //                             height: 8,
-                                //                           ),
-                                //                           Container(
-                                //                             padding:
-                                //                                 const EdgeInsets
-                                //                                         .only(
-                                //                                     left: 20),
-                                //                             child: Text(
-                                //                               snapshot
-                                //                                           .data
-                                //                                           .data
-                                //                                           .assignments[
-                                //                                               index]
-                                //                                           .customerName !=
-                                //                                       null
-                                //                                   ? snapshot
-                                //                                       .data
-                                //                                       .data
-                                //                                       .assignments[
-                                //                                           index]
-                                //                                       .customerName
-                                //                                   : '',
-                                //                               style: TextStyle(
-                                //                                   fontSize:
-                                //                                       10,
-                                //                                   fontWeight:
-                                //                                       FontWeight
-                                //                                           .w600,
-                                //                                   fontFamily:
-                                //                                       'Nunito Sans',
-                                //                                   color: Color
-                                //                                       .fromRGBO(
-                                //                                           112,
-                                //                                           112,
-                                //                                           112,
-                                //                                           1)),
-                                //                             ),
-                                //                           ),
-                                //                           SizedBox(
-                                //                             height: 12,
-                                //                           ),
-                                //                           Container(
-                                //                               child: FutureBuilder<
-                                //                                       FormateApi>(
-                                //                                   future:
-                                //                                       futureFormate,
-                                //                                   builder:
-                                //                                       (context,
-                                //                                           snapshoot) {
-                                //                                     if (snapshoot
-                                //                                         .hasData) {
-                                //                                       return Padding(
-                                //                                         padding:
-                                //                                             const EdgeInsets.only(left: 20),
-                                //                                         child: Text(
-                                //                                             snapshot.data.data.assignments[index].startDate != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.assignments[index].startDate)) : ' - - - ',
-                                //                                             style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1))),
-                                //                                       );
-                                //                                     } else {
-                                //                                       return Container();
-                                //                                     }
-                                //                                   })),
-                                //                         ],
-                                //                       ),
-                                //                     ),
-                                //                   );
-                                //                 }),
-                                //   ),
-                                // ),
+                                Positioned(
+                                  top: 570,
+                                  left: 23,
+                                  right: 20,
+                                  child: Container(
+                                    height: 100.0,
+                                    child:
+                                        snapshot.data.data.assignments.length ==
+                                                0
+                                            ? Padding(
+                                                padding:
+                                                    EdgeInsets.only(top: 10),
+                                                child: Text(
+                                                  'No Assignment',
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: Color.fromRGBO(
+                                                          112, 112, 112, 1)),
+                                                ),
+                                              )
+                                            : ListView.builder(
+                                                shrinkWrap: true,
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount: snapshot.data.data
+                                                    .assignments.length,
+                                                itemBuilder: (context, index) {
+                                                  return InkWell(
+                                                    onTap: (() {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) => Assignmentdetail(
+                                                                  jobid: snapshot
+                                                                      .data
+                                                                      .data
+                                                                      .assignments[
+                                                                          index]
+                                                                      .jobId)));
+                                                    }),
+                                                    child: Card(
+                                                      elevation: 4.0,
+                                                      shadowColor: Colors.grey
+                                                          .withOpacity(0.2),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .baseline,
+                                                        textBaseline:
+                                                            TextBaseline
+                                                                .alphabetic,
+                                                        children: [
+                                                          //////////////////////
+                                                          SizedBox(
+                                                            height: 15,
+                                                          ),
+                                                          Container(
+                                                            child: Row(
+                                                              children: [
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .fromLTRB(
+                                                                          20,
+                                                                          0,
+                                                                          120,
+                                                                          0),
+                                                                  child: Text(
+                                                                    snapshot.data.data.assignments[index].jobTitle.toString() !=
+                                                                            null
+                                                                        ? snapshot
+                                                                            .data
+                                                                            .data
+                                                                            .assignments[index]
+                                                                            .jobTitle
+                                                                        : '',
+                                                                    style: TextStyle(
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .bold,
+                                                                        fontSize:
+                                                                            14,
+                                                                        fontFamily:
+                                                                            'Nunito Sans',
+                                                                        color: Color.fromRGBO(
+                                                                            13,
+                                                                            91,
+                                                                            196,
+                                                                            1)),
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 20,
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 8,
+                                                          ),
+                                                          Container(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 20),
+                                                            child: Text(
+                                                              snapshot
+                                                                          .data
+                                                                          .data
+                                                                          .assignments[
+                                                                              index]
+                                                                          .customerName !=
+                                                                      null
+                                                                  ? snapshot
+                                                                      .data
+                                                                      .data
+                                                                      .assignments[
+                                                                          index]
+                                                                      .customerName
+                                                                  : '',
+                                                              style: TextStyle(
+                                                                  fontSize: 10,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontFamily:
+                                                                      'Nunito Sans',
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          112,
+                                                                          112,
+                                                                          112,
+                                                                          1)),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 12,
+                                                          ),
+                                                          Container(
+                                                              child: FutureBuilder<
+                                                                      FormateApi>(
+                                                                  future:
+                                                                      futureFormate,
+                                                                  builder: (context,
+                                                                      snapshoot) {
+                                                                    if (snapshoot
+                                                                        .hasData) {
+                                                                      return Padding(
+                                                                        padding:
+                                                                            const EdgeInsets.only(left: 20),
+                                                                        child: Text(
+                                                                            snapshot.data.data.assignments[index].startDate != null
+                                                                                ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.assignments[index].startDate))
+                                                                                : ' - - - ',
+                                                                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1))),
+                                                                      );
+                                                                    } else {
+                                                                      return Container();
+                                                                    }
+                                                                  })),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  );
+                                                }),
+                                  ),
+                                ),
                               ],
                             ),
                           )
