@@ -457,44 +457,61 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   Padding(
                                                     padding: EdgeInsets.only(
                                                         left: 26),
-                                                    child: Container(
-                                                        child: FutureBuilder<
-                                                                FormateApi>(
-                                                            future:
-                                                                futureFormate,
-                                                            builder: (context,
-                                                                snapshoot) {
-                                                              if (snapshoot
-                                                                  .hasData) {
-                                                                return Text(
-                                                                  snapshot.data.data
-                                                                              .dob
-                                                                              .toString() !=
-                                                                          null
-                                                                      ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot
-                                                                          .data
-                                                                          .data
-                                                                          .dob))
-                                                                      : ' - - - ',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          12,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontFamily:
-                                                                          'Nunito Sans',
-                                                                      color: Color
-                                                                          .fromRGBO(
-                                                                              31,
-                                                                              33,
-                                                                              38,
-                                                                              1)),
-                                                                );
-                                                              } else {
-                                                                return Container();
-                                                              }
-                                                            })),
+                                                    child: Text(
+                                                      snapshot.data.data.dob
+                                                                  .toString() !=
+                                                              null
+                                                          ? snapshot
+                                                              .data.data.dob
+                                                              .toString()
+                                                          : ' - - - ',
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily:
+                                                              'Nunito Sans',
+                                                          color: Color.fromRGBO(
+                                                              31, 33, 38, 1)),
+                                                    ),
+                                                    // child: Container(
+                                                    //     child: FutureBuilder<
+                                                    //             FormateApi>(
+                                                    //         future:
+                                                    //             futureFormate,
+                                                    //         builder: (context,
+                                                    //             snapshoot) {
+                                                    //           if (snapshoot
+                                                    //               .hasData) {
+                                                    //             return Text(
+                                                    //               snapshot.data.data
+                                                    //                           .dob
+                                                    //                           .toString() !=
+                                                    //                       null
+                                                    //                   ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot
+                                                    //                       .data
+                                                    //                       .data
+                                                    //                       .dob))
+                                                    //                   : ' - - - ',
+                                                    //               style: TextStyle(
+                                                    //                   fontSize:
+                                                    //                       12,
+                                                    //                   fontWeight:
+                                                    //                       FontWeight
+                                                    //                           .bold,
+                                                    //                   fontFamily:
+                                                    //                       'Nunito Sans',
+                                                    //                   color: Color
+                                                    //                       .fromRGBO(
+                                                    //                           31,
+                                                    //                           33,
+                                                    //                           38,
+                                                    //                           1)),
+                                                    //             );
+                                                    //           } else {
+                                                    //             return Container();
+                                                    //           }
+                                                    //         })),
                                                   ),
                                                 ],
                                               ),
