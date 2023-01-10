@@ -435,8 +435,8 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                                 FormateApi>(
                                                                             future:
                                                                                 futureFormate,
-                                                                            builder:
-                                                                                (context, snapshoot) {
+                                                                            builder: (context,
+                                                                                snapshoot) {
                                                                               if (snapshoot.hasData) {
                                                                                 return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].endDate)),
                                                                                     //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
@@ -450,7 +450,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                               }
                                                                             }))
                                                                     : Container(
-                                                                        /*   child: FutureBuilder<
+                                                                        child: FutureBuilder<
                                                                                 FormateApi>(
                                                                             future:
                                                                                 futureFormate,
@@ -458,6 +458,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                                 (context, snapshoot) {
                                                                               if (snapshoot.hasData) {
                                                                                 return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].jobEndDate)),
+                                                                                    //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
                                                                                     style: TextStyle(
                                                                                         color: Color.fromRGBO(0, 0, 0, 1),
                                                                                         //fontWeight: FontWeight.w600,
@@ -466,8 +467,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                               } else {
                                                                                 return Container();
                                                                               }
-                                                                            })*/
-                                                                        )
+                                                                            }))
 
                                                                 /*/
                                                                   Text(

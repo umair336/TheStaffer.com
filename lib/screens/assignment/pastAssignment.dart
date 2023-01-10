@@ -445,11 +445,12 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                                 }
                                                                               }))
                                                                       : Container(
-                                                                          /* child: FutureBuilder<FormateApi>(
+                                                                          child: FutureBuilder<FormateApi>(
                                                                               future: futureFormate,
                                                                               builder: (context, snapshoot) {
                                                                                 if (snapshoot.hasData) {
                                                                                   return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].jobEndDate)),
+                                                                                      //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
                                                                                       style: TextStyle(
                                                                                           color: Color.fromRGBO(0, 0, 0, 1),
                                                                                           //fontWeight: FontWeight.w600,
@@ -458,10 +459,7 @@ class _PastAssignmentState extends State<PastAssignment> {
                                                                                 } else {
                                                                                   return Container();
                                                                                 }
-                                                                              })
-                                                                */
-                                                                          )
-
+                                                                              }))
                                                                   /*/
                                                                   Text(
                                                                       snapshot.data.data[index].endDate !=

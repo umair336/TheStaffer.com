@@ -176,23 +176,37 @@ class _HomeScreenState extends State<HomeScreen> {
                                         )),
                                   ),
                                 ),
-                                // Positioned(
-                                //     top: 65,
-                                //     left: 25,
-                                //     child: AvatarView(
-                                //       radius: 23,
-                                //       //borderWidth: 8,
-                                //       // borderColor: Colors.yellow,
-                                //       avatarType: AvatarType.CIRCLE,
-                                //       backgroundColor: Colors.red,
-                                //       imagePath: snapshot.data.data.profilePic,
-                                //       placeHolder: Image.network(
-                                //         snapshot.data.data.profilePic,
-                                //         width: 50,
-                                //         height: 50,
-                                //         //fit: BoxFit.cover,
-                                //       ),
-                                //     )),
+                                snapshot.data.data.profilePic == null
+                                    ? Positioned(
+                                        top: 65,
+                                        left: 25,
+                                        child: Container(
+                                          width: 50,
+                                          height: 50,
+                                          child: Icon(
+                                            EvaIcons.person,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      )
+                                    : Positioned(
+                                        top: 65,
+                                        left: 25,
+                                        child: AvatarView(
+                                          radius: 23,
+                                          //borderWidth: 8,
+                                          // borderColor: Colors.yellow,
+                                          avatarType: AvatarType.CIRCLE,
+                                          backgroundColor: Colors.red,
+                                          imagePath:
+                                              snapshot.data.data.profilePic,
+                                          placeHolder: Image.network(
+                                            snapshot.data.data.profilePic,
+                                            width: 50,
+                                            height: 50,
+                                            //fit: BoxFit.cover,
+                                          ),
+                                        )),
                                 Positioned(
                                   top: 70,
                                   left: 80,
@@ -326,48 +340,48 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                     ),
                                                                     Row(
                                                                       children: [
-                                                                        // Container(
-                                                                        //     child: FutureBuilder<FormateApi>(
-                                                                        //         future: futureFormate,
-                                                                        //         builder: (context, snapshoot) {
-                                                                        //           if (snapshoot.hasData) {
-                                                                        //             return Text(
-                                                                        //               snapshot.data.data.prevWeekStart.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.prevWeekStart)) : ' - - - ',
-                                                                        //               style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1)),
-                                                                        //             );
-                                                                        //           } else {
-                                                                        //             return Container();
-                                                                        //           }
-                                                                        //         })),
-                                                                        // SizedBox(
-                                                                        //   width:
-                                                                        //       3,
-                                                                        // ),
-                                                                        // Text(
-                                                                        //   'to',
-                                                                        //   style: TextStyle(
-                                                                        //       fontSize: 10,
-                                                                        //       fontWeight: FontWeight.bold,
-                                                                        //       fontFamily: 'Nunito Sans',
-                                                                        //       color: Color.fromRGBO(31, 33, 38, 1)),
-                                                                        // ),
-                                                                        // SizedBox(
-                                                                        //   width:
-                                                                        //       3,
-                                                                        // ),
-                                                                        // Container(
-                                                                        //     child: FutureBuilder<FormateApi>(
-                                                                        //         future: futureFormate,
-                                                                        //         builder: (context, snapshoot) {
-                                                                        //           if (snapshoot.hasData) {
-                                                                        //             return Text(
-                                                                        //               snapshot.data.data.prevWeekEnd.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.prevWeekStart)) : ' - - - ',
-                                                                        //               style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1)),
-                                                                        //             );
-                                                                        //           } else {
-                                                                        //             return Container();
-                                                                        //           }
-                                                                        //         })),
+                                                                        Container(
+                                                                            child: FutureBuilder<FormateApi>(
+                                                                                future: futureFormate,
+                                                                                builder: (context, snapshoot) {
+                                                                                  if (snapshoot.hasData) {
+                                                                                    return Text(
+                                                                                      snapshot.data.data.prevWeekStart.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.prevWeekStart)) : ' - - - ',
+                                                                                      style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1)),
+                                                                                    );
+                                                                                  } else {
+                                                                                    return Container();
+                                                                                  }
+                                                                                })),
+                                                                        SizedBox(
+                                                                          width:
+                                                                              3,
+                                                                        ),
+                                                                        Text(
+                                                                          'to',
+                                                                          style: TextStyle(
+                                                                              fontSize: 10,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontFamily: 'Nunito Sans',
+                                                                              color: Color.fromRGBO(31, 33, 38, 1)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width:
+                                                                              3,
+                                                                        ),
+                                                                        Container(
+                                                                            child: FutureBuilder<FormateApi>(
+                                                                                future: futureFormate,
+                                                                                builder: (context, snapshoot) {
+                                                                                  if (snapshoot.hasData) {
+                                                                                    return Text(
+                                                                                      snapshot.data.data.prevWeekEnd.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data.prevWeekEnd)) : ' - - - ',
+                                                                                      style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Nunito Sans', color: Color.fromRGBO(31, 33, 38, 1)),
+                                                                                    );
+                                                                                  } else {
+                                                                                    return Container();
+                                                                                  }
+                                                                                })),
                                                                       ],
                                                                     )
                                                                   ],
