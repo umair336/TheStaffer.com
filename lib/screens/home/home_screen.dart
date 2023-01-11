@@ -358,7 +358,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                               3,
                                                                         ),
                                                                         Text(
-                                                                          'to',
+                                                                          'to00',
                                                                           style: TextStyle(
                                                                               fontSize: 10,
                                                                               fontWeight: FontWeight.bold,
@@ -390,47 +390,49 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             ],
                                                           ),
                                                         ),
-                                                        Container(
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          width: 120,
-                                                          height: 20,
-                                                          child: FittedBox(
-                                                            child: Row(
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .baseline,
-                                                              textBaseline:
-                                                                  TextBaseline
-                                                                      .alphabetic,
-                                                              children: [
-                                                                AutoSizeText(
-                                                                  snapshot
-                                                                      .data
-                                                                      .data
-                                                                      .prevWeeklyHours
-                                                                      .toString(),
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        30,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    fontFamily:
-                                                                        'Nunito Sans',
-                                                                    //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                        Expanded(
+                                                          child: Container(
+                                                            alignment: Alignment
+                                                                .centerRight,
+                                                            width: 120,
+                                                            height: 20,
+                                                            child: FittedBox(
+                                                              child: Row(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .baseline,
+                                                                textBaseline:
+                                                                    TextBaseline
+                                                                        .alphabetic,
+                                                                children: [
+                                                                  AutoSizeText(
+                                                                    snapshot
+                                                                        .data
+                                                                        .data
+                                                                        .prevWeeklyHours
+                                                                        .toString(),
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          30,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontFamily:
+                                                                          'Nunito Sans',
+                                                                      //      color: Color.fromRGBO(255, 255, 255, 1)
+                                                                    ),
+                                                                    maxFontSize:
+                                                                        23,
+                                                                    minFontSize:
+                                                                        15,
+                                                                    maxLines: 1,
                                                                   ),
-                                                                  maxFontSize:
-                                                                      23,
-                                                                  minFontSize:
-                                                                      15,
-                                                                  maxLines: 1,
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 18,
-                                                                )
-                                                              ],
+                                                                  SizedBox(
+                                                                    width: 18,
+                                                                  )
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                         )
