@@ -950,28 +950,30 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                         0),
                                                                 child: Row(
                                                                   children: [
-                                                                    Container(
-                                                                        child: FutureBuilder<
-                                                                                FormateApi>(
-                                                                            future:
-                                                                                futureFormate,
-                                                                            builder:
-                                                                                (context, snapshoot) {
-                                                                              if (snapshoot.hasData) {
-                                                                                return Text(
-                                                                                  //  DateTime.parse(snapshot.data.timesheet[index].hoursForWeek.toString()).subtract(new Duration(days: 7)).toString(),
-                                                                                  snapshot.data.timesheet[index].hoursForWeek.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.timesheet[index].hoursForWeek.toString()).subtract(new Duration(days: 7))) : ' ',
-                                                                                  style: TextStyle(
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    fontSize: 16.0,
-                                                                                    fontFamily: 'Nunito Sans',
-                                                                                    color: Color.fromRGBO(31, 33, 38, 1),
-                                                                                  ),
-                                                                                );
-                                                                              } else {
-                                                                                return Container();
-                                                                              }
-                                                                            })),
+                                                                    Expanded(
+                                                                      child: Container(
+                                                                          child: FutureBuilder<
+                                                                                  FormateApi>(
+                                                                              future:
+                                                                                  futureFormate,
+                                                                              builder:
+                                                                                  (context, snapshoot) {
+                                                                                if (snapshoot.hasData) {
+                                                                                  return Text(
+                                                                                    //  DateTime.parse(snapshot.data.timesheet[index].hoursForWeek.toString()).subtract(new Duration(days: 7)).toString(),
+                                                                                    snapshot.data.timesheet[index].hoursForWeek.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.timesheet[index].hoursForWeek.toString()).subtract(new Duration(days: 7))) : ' ',
+                                                                                    style: TextStyle(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontSize: 16.0,
+                                                                                      fontFamily: 'Nunito Sans',
+                                                                                      color: Color.fromRGBO(31, 33, 38, 1),
+                                                                                    ),
+                                                                                  );
+                                                                                } else {
+                                                                                  return Container();
+                                                                                }
+                                                                              })),
+                                                                    ),
 
                                                                     Text(
                                                                       '  to  ',
@@ -989,27 +991,29 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                             1),
                                                                       ),
                                                                     ),
-                                                                    Container(
-                                                                        child: FutureBuilder<
-                                                                                FormateApi>(
-                                                                            future:
-                                                                                futureFormate,
-                                                                            builder:
-                                                                                (context, snapshoot) {
-                                                                              if (snapshoot.hasData) {
-                                                                                return Text(
-                                                                                  snapshot.data.timesheet[index].hoursForWeek != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.timesheet[index].hoursForWeek)) : ' ',
-                                                                                  style: TextStyle(
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    fontSize: 16.0,
-                                                                                    fontFamily: 'Nunito Sans',
-                                                                                    color: Color.fromRGBO(31, 33, 38, 1),
-                                                                                  ),
-                                                                                );
-                                                                              } else {
-                                                                                return Container();
-                                                                              }
-                                                                            })),
+                                                                    Expanded(
+                                                                      child: Container(
+                                                                          child: FutureBuilder<
+                                                                                  FormateApi>(
+                                                                              future:
+                                                                                  futureFormate,
+                                                                              builder:
+                                                                                  (context, snapshoot) {
+                                                                                if (snapshoot.hasData) {
+                                                                                  return Text(
+                                                                                    snapshot.data.timesheet[index].hoursForWeek != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.timesheet[index].hoursForWeek)) : ' ',
+                                                                                    style: TextStyle(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontSize: 16.0,
+                                                                                      fontFamily: 'Nunito Sans',
+                                                                                      color: Color.fromRGBO(31, 33, 38, 1),
+                                                                                    ),
+                                                                                  );
+                                                                                } else {
+                                                                                  return Container();
+                                                                                }
+                                                                              })),
+                                                                    ),
 
                                                                     //          Container(
                                                                     //  child: weekDifference(weekstrart),
