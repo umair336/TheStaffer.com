@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'dart:ffi';
 ///import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 import 'package:http/http.dart' as http;
@@ -9,14 +9,14 @@ import '../../repositories/repositories.dart';
 
 Future<Detailassignment> fetchAssignmentDetail(int id) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-  final String token = await storage.read(key: 'token');
+  final String? token = await storage.read(key: 'token');
   print('hhhhhhhhhhhhhhhhhhhhhh$id');
  // final url = 'https://dev5.thestaffer.com/v1/admin/employee/assignment/detail/$id';
   UserRepository request = UserRepository();
  
   final url =request.mainUrl +'/v1/admin/employee/assignment/detail/$id';
   print('dddddddddddddddddddd$token');
-  String authorization = token;
+  String? authorization = token;
   print('sssssssssssssssssssss$authorization');
   final response = await http.get(Uri.parse(url), headers: {
     'Content-Type': 'application/json',
@@ -33,7 +33,8 @@ Future<Detailassignment> fetchAssignmentDetail(int id) async {
 
     return Detailassignment.fromJson(jsonDecode(response.body));
   } else {
-    print('vvvvvvvvvvvvvvvvvvv');
+    // Throw an exception or return a default Profile in case of an error
+    throw Exception('Failed to fetch assignment details: ${response.statusCode}');
   }
 
   /*
@@ -344,13 +345,13 @@ Future<Detailassignment> fetchAssignmentDetail(int id) async {
 
 
 class Detailassignment {
-  Detail detail;
+ late Detail detail;
 
-  Detailassignment({this.detail});
+  Detailassignment({required this.detail});
 
   Detailassignment.fromJson(Map<String, dynamic> json) {
     detail =
-        json['Detail'] != null ? new Detail.fromJson(json['Detail']) : null;
+        (json['Detail'] != null ? new Detail.fromJson(json['Detail']) : null)!;
   }
 
   Map<String, dynamic> toJson() {
@@ -363,26 +364,26 @@ class Detailassignment {
 }
 
 class Detail {
-  Record record;
-  Address address;
-  String payRate;
-  String overtimePayRate;
-  List<Shifts> shifts;
-  List<ProfilePic> profilePic;
+ late Record record;
+ late Address address;
+ late String payRate;
+ late String overtimePayRate;
+ late List<Shifts> shifts;
+ late List<ProfilePic> profilePic;
 
   Detail(
-      {this.record,
-      this.address,
-      this.payRate,
-      this.overtimePayRate,
-      this.shifts,
-      this.profilePic});
+      {required this.record,
+      required this.address,
+      required this.payRate,
+      required this.overtimePayRate,
+      required this.shifts,
+      required this.profilePic});
 
   Detail.fromJson(Map<String, dynamic> json) {
     record =
-        json['record'] != null ? new Record.fromJson(json['record']) : null;
+        (json['record'] != null ? new Record.fromJson(json['record']) : null)!;
     address =
-        json['address'] != null ? new Address.fromJson(json['address']) : null;
+        (json['address'] != null ? new Address.fromJson(json['address']) : null)!;
     payRate = json['pay_rate'];
     overtimePayRate = json['overtime_pay_rate'];
     if (json['shifts'] != null) {
@@ -420,82 +421,82 @@ class Detail {
 }
 
 class Record {
-  int id;
-  int number;
-  int organizationId;
-  int customerId;
-  int departmentId;
-  int worksiteId;
-  int jobPositionId;
-  int jobOrderId;
-  String payrollId;
-  String startDate;
-  String endDate;
-  String status;
-  String shiftNotes;
-  String dressCode;
-  String scheduleRepeat;
-  String scheduleTime;
-  String scheduleDays;
-  int noOfPosition;
-  String shiftTimings;
-  String customerPayRate;
-  String customerOvertimePayRate;
-  String cusStreetAdress1;
-  String cusStreetAdress2;
-  int cusZcode;
-  int cusCountry;
-  int cusState;
-  int cusCity;
-  String createdAt;
-  String updatedAt;
-  String rateUpdatedAt;
-  String experience;
-  int createdBy;
-  String customerName;
-  String departmentNames;
-  String positionName;
-  String totalPosition;
-  String positionCount;
+late int id;
+late int number;
+late int organizationId;
+late int customerId;
+late int departmentId;
+late int worksiteId;
+late int jobPositionId;
+late int jobOrderId;
+late String payrollId;
+late String startDate;
+late String endDate;
+late String status;
+late String shiftNotes;
+late String dressCode;
+late String scheduleRepeat;
+late String scheduleTime;
+late String scheduleDays;
+late int noOfPosition;
+late String shiftTimings;
+late String customerPayRate;
+late String customerOvertimePayRate;
+late String cusStreetAdress1;
+late String cusStreetAdress2;
+late int cusZcode;
+late int cusCountry;
+late int cusState;
+late int cusCity;
+late String createdAt;
+late String updatedAt;
+late String rateUpdatedAt;
+late String experience;
+late int createdBy;
+late String customerName;
+late String departmentNames;
+late String positionName;
+late String totalPosition;
+late String positionCount;
 
   Record(
-      {this.id,
-      this.number,
-      this.organizationId,
-      this.customerId,
-      this.departmentId,
-      this.worksiteId,
-      this.jobPositionId,
-      this.jobOrderId,
-      this.payrollId,
-      this.startDate,
-      this.endDate,
-      this.status,
-      this.shiftNotes,
-      this.dressCode,
-      this.scheduleRepeat,
-      this.scheduleTime,
-      this.scheduleDays,
-      this.noOfPosition,
-      this.shiftTimings,
-      this.customerPayRate,
-      this.customerOvertimePayRate,
-      this.cusStreetAdress1,
-      this.cusStreetAdress2,
-      this.cusZcode,
-      this.cusCountry,
-      this.cusState,
-      this.cusCity,
-      this.createdAt,
-      this.updatedAt,
-      this.rateUpdatedAt,
-      this.experience,
-      this.createdBy,
-      this.customerName,
-      this.departmentNames,
-      this.positionName,
-      this.totalPosition,
-      this.positionCount});
+      {required this.id,
+     required this.number,
+     required this.organizationId,
+     required this.customerId,
+      required this.departmentId,
+      required this.worksiteId,
+      required this.jobPositionId,
+      required this.jobOrderId,
+      required this.payrollId,
+      required this.startDate,
+      required this.endDate,
+      required this.status,
+      required this.shiftNotes,
+      required this.dressCode,
+      required this.scheduleRepeat,
+      required this.scheduleTime,
+      required this.scheduleDays,
+      required this.noOfPosition,
+      required this.shiftTimings,
+      required this.customerPayRate,
+      required this.customerOvertimePayRate,
+      required this.cusStreetAdress1,
+      required this.cusStreetAdress2,
+      required this.cusZcode,
+      required this.cusCountry,
+      required this.cusState,
+      required this.cusCity,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.rateUpdatedAt,
+      required this.experience,
+      required this.createdBy,
+      required this.customerName,
+      required this.departmentNames,
+      required this.positionName,
+      required this.totalPosition,
+      required this.positionCount});
 
   Record.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -581,10 +582,10 @@ class Record {
 }
 
 class Address {
-  String address;
-  int positionCount;
+late String address;
+late int positionCount;
 
-  Address({this.address, this.positionCount});
+  Address({required this.address, required this.positionCount});
 
   Address.fromJson(Map<String, dynamic> json) {
     address = json['address'];
@@ -600,32 +601,32 @@ class Address {
 }
 
 class Shifts {
-  int id;
-  int jobId;
-  int shiftId;
-  String timeFrom;
-  String timeTo;
-  int noOfPositions;
-  String days;
-  String dates;
-  String createdAt;
-  String updatedAt;
-  String name;
-  int assignedEmployeesToShift;
+late int id;
+late int jobId;
+late int shiftId;
+late String timeFrom;
+late String timeTo;
+late int noOfPositions;
+late String days;
+late String dates;
+late String createdAt;
+late String updatedAt;
+late String name;
+late int assignedEmployeesToShift;
 
   Shifts(
-      {this.id,
-      this.jobId,
-      this.shiftId,
-      this.timeFrom,
-      this.timeTo,
-      this.noOfPositions,
-      this.days,
-      this.dates,
-      this.createdAt,
-      this.updatedAt,
-      this.name,
-      this.assignedEmployeesToShift});
+      {required this.id,
+      required this.jobId,
+      required this.shiftId,
+      required this.timeFrom,
+      required this.timeTo,
+      required this.noOfPositions,
+      required this.days,
+      required this.dates,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.name,
+      required this.assignedEmployeesToShift});
 
   Shifts.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -661,20 +662,20 @@ class Shifts {
 }
 
 class ProfilePic {
-  String storage;
-  String name;
-  String url;
-  String size;
-  String type;
-  String originalName;
+late String storage;
+late String name;
+late String url;
+late String size;
+late String type;
+late String originalName;
 
   ProfilePic(
-      {this.storage,
-      this.name,
-      this.url,
-      this.size,
-      this.type,
-      this.originalName});
+      {required this.storage,
+      required this.name,
+      required this.url,
+      required this.size,
+      required this.type,
+      required this.originalName});
 
   ProfilePic.fromJson(Map<String, dynamic> json) {
     storage = json['storage'];

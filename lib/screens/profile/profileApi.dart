@@ -10,13 +10,13 @@ import '../../repositories/repositories.dart';
 
 Future<Profile> fetchprofile() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-  final String token = await storage.read(key: 'token');
+  final String? token = await storage.read(key: 'token');
   //final url = 'https://dev5.thestaffer.com/v1/admin/get-profile-data';
    UserRepository request = UserRepository();
  
   final url =request.mainUrl +'/v1/admin/get-profile-data';
   print('dddddddddddddddddddd$token');
-  String authorization = token;
+  String? authorization = token;
   print('sssssssssssssssssssss$authorization');
   final response = await http.get(Uri.parse(url), headers: {
     'Content-Type': 'application/json',
@@ -33,16 +33,18 @@ Future<Profile> fetchprofile() async {
 
     return Profile.fromJson(jsonDecode(response.body));
   } else {
-    print('vvvvvvvvvvvvvvvvvvv');
-  }
+    // Throw an exception or return a default Profile in case of an error
+    throw Exception('Failed to fetch profile: ${response.statusCode}');
+
+  } 
 }
 class Profile {
-  Data data;
+ late Data data;
 
-  Profile({this.data});
+  Profile({required this.data});
 
   Profile.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = (json['data'] != null ? new Data.fromJson(json['data']) : null)!;
   }
 
   Map<String, dynamic> toJson() {
@@ -55,24 +57,24 @@ class Profile {
 }
 
 class Data {
-  String employeeName;
-  String jobPosition;
-  String profilePic;
-  String phone;
-  String email;
-  String dob;
-  String ssn;
-  String location;
+  late String employeeName;
+  late String jobPosition;
+ late String profilePic;
+ late String phone;
+ late String email;
+ late String dob;
+ late String ssn;
+ late String location;
 
   Data(
-      {this.employeeName,
-      this.jobPosition,
-      this.profilePic,
-      this.phone,
-      this.email,
-      this.dob,
-      this.ssn,
-      this.location});
+      {required this.employeeName,
+      required this.jobPosition,
+     required this.profilePic,
+     required this.phone,
+     required this.email,
+     required this.dob,
+     required this.ssn,
+     required this.location});
 
   Data.fromJson(Map<String, dynamic> json) {
     employeeName = json['employee_name'];

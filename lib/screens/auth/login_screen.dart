@@ -4,13 +4,13 @@ import 'package:TheStafferEmployee/repositories/repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'login_form.dart';
-
+import 'dart:ffi';
 class LoginScreen extends StatelessWidget {
   final UserRepository userRepository;
 
-  LoginScreen({Key key, @required this.userRepository})
+  LoginScreen({required this.userRepository})
       : assert(userRepository != null),
-        super(key: key);
+        super(key: null);
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,5 @@
-import 'dart:async';
-import 'dart:math';
-
 import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
 import 'package:TheStafferEmployee/repositories/repositories.dart';
-import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
 part 'login_event.dart';
@@ -14,8 +10,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthenticationBloc authenticationBloc;
 
   LoginBloc({
-    @required this.userRepository,
-    @required this.authenticationBloc,
+    required this.userRepository,
+    required this.authenticationBloc,
   })  : assert(userRepository != null),
         assert(authenticationBloc != null),
         super(LoginInitial()) {
@@ -36,8 +32,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           print('qqqqq');
           emit (LoginFailure(error: 'error'));
         }
-
-/////////////
+//////////////
         /* try {
         final token = await userRepository.login(
           event.email,

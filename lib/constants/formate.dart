@@ -7,18 +7,17 @@ import 'dart:convert';
 
 ///import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
-
 import '../repositories/repositories.dart';
 
 Future<FormateApi> fetchformate() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-  final String token = await storage.read(key: 'token');
+  final String? token = await storage.read(key: 'token');
    UserRepository request = UserRepository();
  
   final url =request.mainUrl +'/v1/admin/get-general-setting-and-profile-data';
 //  final url = 'https://dev2.thestaffer.com/api/admin/get-general-setting-and-profile-data';
   print('dddddddddddddddddddd$token');
-  String authorization = token;
+  String? authorization = token;
   print('sssssssssssssssssssss$authorization');
   final response = await http.get(Uri.parse(url), headers: {
     'Content-Type': 'application/json',
@@ -26,23 +25,23 @@ Future<FormateApi> fetchformate() async {
     'Authorization': 'Bearer $authorization'
   });
   print('Token : ${authorization}');
-
   print('aaaaaaaaaaaaaaaaaaaaaaaaa${response.statusCode}');
-  if (response.statusCode == 200) {
-    print('cccccccccccccccccccccccccccccccc${response.body}');
 
+  if (response.statusCode == 200) {
+    print('ccccccccccccccccccc${response.body}');
     print('vvvvvvvvvvvvvvvvvvv${jsonDecode(response.body)}');
 
     return FormateApi.fromJson(jsonDecode(response.body));
   } else {
-    print('vvvvvvvvvvvvvvvvvvv');
+    // Throw an exception or return a default Profile in case of an error
+    throw Exception('Failed to fetch formate : ${response.statusCode}');
   }
 }
 
 class FormateApi {
-  List<Data> data;
+ late List<Data> data;
 
-  FormateApi({this.data});
+  FormateApi({required this.data});
 
   FormateApi.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
@@ -63,18 +62,17 @@ class FormateApi {
 }
 
 class Data {
-  String empName;
-  String empEmail;
-
-  String currentDateFormat;
-  String currencyformat;
+ late String empName;
+ late String empEmail;
+ late String currentDateFormat;
+ late String currencyformat;
 
   Data(
-      {this.empName,
-      this.empEmail,
+      {required this.empName,
+      required this.empEmail,
   
-      this.currentDateFormat,
-      this.currencyformat});
+      required this.currentDateFormat,
+      required this.currencyformat});
 
   Data.fromJson(Map<String, dynamic> json) {
     empName = json['emp_name'];

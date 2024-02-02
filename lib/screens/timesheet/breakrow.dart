@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'breakmodelclasss.dart';
 import 'addtimesheet.dart';
-
+import 'dart:ffi';
 class Contact extends StatefulWidget {
   Breaktimeing timer;
   Contact(this.timer);
@@ -12,8 +12,8 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
-  TimeOfDay _t;
-  TimeOfDay _pp;
+ late TimeOfDay _t;
+ late TimeOfDay _pp;
   String s = '00:00';
   String e = '00:00';
   bool selectstart = false;
@@ -88,8 +88,8 @@ class _ContactState extends State<Contact> {
     return Container(
       child: Stack(
         //  fit: StackFit.passthrough,
-        overflow: Overflow.visible,
-        children: <Widget>[
+        clipBehavior: Clip.none,
+         children: <Widget>[
           // Max Size
           Positioned(
             child: Padding(

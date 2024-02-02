@@ -9,7 +9,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 class IntroPage extends StatefulWidget {
   final UserRepository userRepository;
-  IntroPage({Key key, @required this.userRepository}) : super(key: key);
+  IntroPage({ required this.userRepository}) : super(key: null);
 
   @override
   _IntroPageState createState() => _IntroPageState(userRepository);

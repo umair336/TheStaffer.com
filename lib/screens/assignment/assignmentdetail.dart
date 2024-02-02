@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -18,14 +18,14 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 class Assignmentdetail extends StatefulWidget {
   int jobid;
-  Assignmentdetail({Key key, @required this.jobid}) : super(key: key);
+  Assignmentdetail({ required this.jobid}) : super(key: null);
   @override
   _AssignmentdetailState createState() => _AssignmentdetailState();
 }
 
 class _AssignmentdetailState extends State<Assignmentdetail> {
-  Future<Detailassignment> futureData;
-  Future<FormateApi> futureFormate;
+  late Future<Detailassignment> futureData;
+  late Future<FormateApi> futureFormate;
   bool timeount_false = false;
   bool in_out = true;
   bool break_start_end = true;
@@ -33,11 +33,11 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var workingOff;
   var breakstart;
   var breakoff;
-  TimeOfDay _t;
-  TimeOfDay _pp;
+  late TimeOfDay _t;
+  late TimeOfDay _pp;
   var time;
   var breaak;
-  Duration breaktime;
+  late Duration breaktime;
   var totaltime = [];
   var breaks;
   var Breaklist = [];
@@ -48,7 +48,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   var now = DateTime.now();
   var payrate;
   var otPayrate;
-  int jobid;
+  late int jobid;
   int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
@@ -277,10 +277,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             Text(
                                               // 'Job Title will come here',
 
-                                              snapshot.data.detail.record
+                                              snapshot.data!.detail.record
                                                           .positionName !=
                                                       null
-                                                  ? snapshot.data.detail.record
+                                                  ? snapshot.data!.detail.record
                                                       .positionName
                                                   : '',
                                               style: TextStyle(
@@ -295,10 +295,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             ),
                                             Text(
                                               //  'Department name will come here',
-                                              snapshot.data.detail.record
+                                              snapshot.data!.detail.record
                                                           .departmentNames !=
                                                       null
-                                                  ? snapshot.data.detail.record
+                                                  ? snapshot.data!.detail.record
                                                       .departmentNames
                                                   : '',
 
@@ -339,10 +339,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               width: 5,
                                             ),
                                             Text(
-                                              snapshot.data.detail.record
+                                              snapshot.data!.detail.record
                                                           .customerName !=
                                                       null
-                                                  ? snapshot.data.detail.record
+                                                  ? snapshot.data!.detail.record
                                                       .customerName
                                                   : ' ',
                                               //  'Customer Name Here',
@@ -374,10 +374,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                               child: Text(
                                                 //'New York, NY',
 
-                                                snapshot.data.detail.address
+                                                snapshot.data!.detail.address
                                                             .address !=
                                                         null
-                                                    ? snapshot.data.detail
+                                                    ? snapshot.data!.detail
                                                         .address.address
                                                     : ' ',
 
@@ -441,12 +441,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                               if (snapshoot
                                                                   .hasData) {
                                                                 return Text(
-                                                                  snapshot.data.detail.record
+                                                                  snapshot.data!.detail.record
                                                                               .startDate
                                                                               .toString() !=
                                                                           null
-                                                                      ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot
-                                                                          .data
+                                                                      ? DateFormat(snapshoot.data!.data[0].currentDateFormat).format(DateTime.parse(snapshot
+                                                                          .data!
                                                                           .detail
                                                                           .record
                                                                           .startDate))
@@ -499,10 +499,10 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 SizedBox(
                                                   height: 2,
                                                 ),
-                                                if (snapshot.data.detail.record
+                                                if (snapshot.data!.detail.record
                                                             .endDate ==
                                                         null ||
-                                                    snapshot.data.detail.record
+                                                    snapshot.data!.detail.record
                                                             .endDate ==
                                                         "")
                                                   Text('')
@@ -514,18 +514,18 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                         if (snapshoot.hasData) {
                                                           return Text(
                                                             snapshot
-                                                                        .data
+                                                                        .data!
                                                                         .detail
                                                                         .record
                                                                         .endDate
                                                                         .toString() !=
                                                                     null
                                                                 ? DateFormat(snapshoot
-                                                                        .data
+                                                                        .data!
                                                                         .data[0]
                                                                         .currentDateFormat)
                                                                     .format(DateTime.parse(snapshot
-                                                                        .data
+                                                                        .data!
                                                                         .detail
                                                                         .record
                                                                         .endDate))
@@ -587,13 +587,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                   height: 5,
                                                 ),
                                                 if (snapshot
-                                                        .data.detail.payRate !=
+                                                        .data!.detail.payRate !=
                                                     null)
                                                   Column(
                                                     children: [
                                                       Container(
                                                         child: _FunctionPayrate(
-                                                            snapshot.data.detail
+                                                            snapshot.data!.detail
                                                                 .payRate),
                                                       ),
                                                       Text(
@@ -653,14 +653,14 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 SizedBox(
                                                   height: 5,
                                                 ),
-                                                if (snapshot.data.detail
+                                                if (snapshot.data!.detail
                                                         .overtimePayRate !=
                                                     null)
                                                   Column(
                                                     children: [
                                                       Container(
                                                         child: _FunctionOtPayrate(
-                                                            snapshot.data.detail
+                                                            snapshot.data!.detail
                                                                 .overtimePayRate),
                                                       ),
                                                       Text(
@@ -810,19 +810,19 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 ),
 
                                                 child: Center(
-                                                  child: snapshot.data.detail
+                                                  child: snapshot.data!.detail
                                                               .record.status !=
                                                           null
                                                       ? Text(
                                                           snapshot
-                                                                      .data
+                                                                      .data!
                                                                       .detail
                                                                       .record
                                                                       .status ==
                                                                   "Completed"
                                                               ? "Finished"
                                                               : snapshot
-                                                                  .data
+                                                                  .data!
                                                                   .detail
                                                                   .record
                                                                   .status,
@@ -845,7 +845,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                           ],
                                         ),
                                       ),
-                                      if (snapshot.data.detail.record.status !=
+                                      if (snapshot.data!.detail.record.status !=
                                           'Upcoming')
                                         Padding(
                                           padding: EdgeInsets.only(right: 10),
@@ -887,7 +887,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                             ],
                                           ),
                                         ),
-                                      if (snapshot.data.detail.record.status !=
+                                      if (snapshot.data!.detail.record.status !=
                                           'Upcoming')
                                         Padding(
                                           padding: EdgeInsets.only(right: 30),
@@ -966,7 +966,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         now.second),
                                   ),
                                 ),*/
-                                if (snapshot.data.detail.record.status ==
+                                if (snapshot.data!.detail.record.status ==
                                     'Active')
                                   Column(children: [
                                     in_out
@@ -1016,7 +1016,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
 
                                                 setState(() {
                                                   jobid = snapshot
-                                                      .data.detail.shifts[0].jobId;
+                                                      .data!.detail.shifts[0].jobId;
                                                   print(
                                                       'eeeeeeeeeeeeeeeeeeeeeeeeeee$jobid');
                                                   DialogStarttime();
@@ -1258,7 +1258,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       height: 25,
                                     )
                                   ]),
-                                if (snapshot.data.detail.record.status !=
+                                if (snapshot.data!.detail.record.status !=
                                     'Upcoming')
                                   Padding(
                                     padding:
@@ -1454,12 +1454,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       ],
                                     ),
                                   ),
-                                if (snapshot.data.detail.record.status !=
+                                if (snapshot.data!.detail.record.status !=
                                     'Upcoming')
                                   SizedBox(
                                     height: 15,
                                   ),
-                                if (snapshot.data.detail.record.status !=
+                                if (snapshot.data!.detail.record.status !=
                                     'Upcoming')
                                   Padding(
                                     padding: const EdgeInsets.only(left: 20),
@@ -1488,12 +1488,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       ],
                                     ),
                                   ),
-                                if (snapshot.data.detail.record.status !=
+                                if (snapshot.data!.detail.record.status !=
                                     'Upcoming')
                                   SizedBox(
                                     height: 10,
                                   ),
-                                if (snapshot.data.detail.record.status !=
+                                if (snapshot.data!.detail.record.status !=
                                     'Upcoming')
                                   Padding(
                                     padding:
@@ -1709,18 +1709,18 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                       Text(Breaklist[i].toString())
                                   ],
                                 ),*/
-                                if (snapshot.data.detail.record.status !=
+                                if (snapshot.data!.detail.record.status !=
                                     'Upcoming')
                                   SizedBox(
                                     height: 10,
                                   ),
-                                if (snapshot.data.detail.record.status !=
+                                if (snapshot.data!.detail.record.status !=
                                     'Upcoming')
                                   new Divider(
                                     height: 5,
                                     color: Colors.grey,
                                   ),
-                                if (snapshot.data.detail.record.status !=
+                                if (snapshot.data!.detail.record.status !=
                                     'Upcoming')
                                   SizedBox(
                                     height: 10,
@@ -1785,7 +1785,7 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                 ListView.builder(
                                     shrinkWrap: true,
                                     itemCount:
-                                        snapshot.data.detail.shifts.length,
+                                        snapshot.data!.detail.shifts.length,
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return Padding(
@@ -1819,12 +1819,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 Text(
                                                   //'Morning',
                                                   snapshot
-                                                              .data
+                                                              .data!
                                                               .detail
                                                               .shifts[index]
                                                               .name !=
                                                           null
-                                                      ? snapshot.data.detail
+                                                      ? snapshot.data!.detail
                                                           .shifts[index].name
                                                       : ' ',
                                                   style: TextStyle(
@@ -1859,13 +1859,13 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 ),
                                                 Text(
                                                   snapshot
-                                                              .data
+                                                              .data!
                                                               .detail
                                                               .shifts[index]
                                                               .timeFrom !=
                                                           null
                                                       ? snapshot
-                                                          .data
+                                                          .data!
                                                           .detail
                                                           .shifts[index]
                                                           .timeFrom
@@ -1902,12 +1902,12 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                                 ),
                                                 Text(
                                                   snapshot
-                                                              .data
+                                                              .data!
                                                               .detail
                                                               .shifts[index]
                                                               .timeTo !=
                                                           null
-                                                      ? snapshot.data.detail
+                                                      ? snapshot.data!.detail
                                                           .shifts[index].timeTo
                                                       : ' ',
                                                   style: TextStyle(
@@ -1965,11 +1965,11 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
                                         padding:
                                             const EdgeInsets.only(bottom: 37),
                                         child: Text(
-                                          snapshot.data.detail.record
+                                          snapshot.data!.detail.record
                                                       .shiftNotes !=
                                                   ' '
                                               ? snapshot
-                                                  .data.detail.record.shiftNotes
+                                                  .data!.detail.record.shiftNotes
                                               : 'No Note',
                                           style: TextStyle(
                                             fontFamily: 'Nunito Sans',
@@ -2440,8 +2440,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
   _FunctionTotalCalculate() {
     int prevalue = 0;
     int prevaluebreak = 0;
-    Duration workhours;
-    Duration total_breaks;
+   late Duration workhours;
+   late Duration total_breaks;
     print('qqqqqqqqqqqqqq$totaltime');
     print('qqqqqqqqqqqqqq$Breaklist');
     for (int i = 0; i < totaltime.length; i++) {
@@ -2562,8 +2562,8 @@ class _AssignmentdetailState extends State<Assignmentdetail> {
     //   stime= DateFormat('kk:mm').format(stime);
     //       etime= DateFormat('kk:mm').format(etime);
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-    final String token = await storage.read(key: 'token');
-    String authorization = token;
+    final String? token = await storage.read(key: 'token');
+    String? authorization = token;
   //  var urll = 'https://dev5.thestaffer.com/v1/admin/employee/timesheet/create';
 UserRepository request = UserRepository();
  
@@ -2600,8 +2600,8 @@ UserRepository request = UserRepository();
     print(
         'ZZZZZZZZZZZZZZZZZZZ $BStime ZZZZZZZZZZZZZZZZZZZz $BEtime ZZZZZZZZZZZZZZZZZ $idjob');
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-    final String token = await storage.read(key: 'token');
-    String authorization = token;
+    final String? token = await storage.read(key: 'token');
+    String? authorization = token;
 
    // var urll = 'https://dev5.thestaffer.com/v1/admin/employee/timesheet/create';
    UserRepository request = UserRepository();

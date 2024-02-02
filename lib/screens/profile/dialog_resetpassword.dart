@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -327,8 +328,8 @@ class _MyDialogState extends State<MyDialog> {
   Future<http.Response> postRequest(
       String curentp, String newp, String confirmp) async {
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-    final String token = await storage.read(key: 'token');
-    String authorization = token;
+    final String? token = await storage.read(key: 'token');
+    String? authorization = token;
   //  var urll = 'https://dev5.thestaffer.com/v1/admin/reset-password';
      UserRepository request = UserRepository();
  

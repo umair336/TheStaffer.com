@@ -1,9 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:async';
+import 'dart:convert';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:async';
-import 'dart:convert';
 
 ///import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
@@ -12,15 +13,17 @@ import '../../repositories/repositories.dart';
 
 Future<Home> fetchhome() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-  final String token = await storage.read(key: 'token');
+  final String? token = await storage.read(key: 'token');
   // UserRepository UserRepository;
   UserRepository request = UserRepository();
   // final url = 'https://dev5.thestaffer.com/v1/dashboard';
   final url =request.mainUrl +'/v1/dashboard';
+//wes chashai nakoo?
+// run kizi na
 
   print('dddddddddddddddddddd$url');
   print('dddddddddddddddddddd$token');
-  String authorization = token;
+  String? authorization = token;
   print('sssssssssssssssssssss$url');
   final response = await http.get(Uri.parse(url), headers: {
     'Content-Type': 'application/json',
@@ -37,23 +40,29 @@ Future<Home> fetchhome() async {
 
     return Home.fromJson(jsonDecode(response.body));
   } else {
-    print('vvvvvvvvvvvvvvvvvvv');
+    // Throw an exception or return a default Profile in case of an error
+    throw Exception('Failed to fetch home: ${response.statusCode}');
   }
 }
 
 class Home {
-  var message;
-  var error;
-  int code;
-  Data data;
+ late var message;
+ late var error;
+ late int code;
+ late  Data data;
 
-  Home({this.message, this.error, this.code, this.data});
+  Home({
+    required this.message,
+    required this.error,
+    required this.code,
+    required this.data,
+  });
 
   Home.fromJson(Map<String, dynamic> json) {
     message = json['message'];
     error = json['error'];
     code = json['code'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = (json['data'] != null ? new Data.fromJson(json['data']) : null)!;
   }
 
   Map<String, dynamic> toJson() {
@@ -69,28 +78,28 @@ class Home {
 }
 
 class Data {
-  var totalWeeklyHours;
-  var prevWeeklyHours;
-  var employeeName;
-  var profilePic;
-  List<Assignments> assignments;
-  var earnings;
-  var prevEarnings;
-  var pendingBalance;
-  var totalShifts;
-  var startDate;
-  var endDate;
-  var prevWeekStart;
-  var prevWeekEnd;
-  var currentDateFormat;
-  var currencyFormat;
+ late var totalWeeklyHours;
+ late var prevWeeklyHours;
+ late var employeeName;
+ late var profilePic;
+ late List<Assignments> assignments;
+ late var earnings;
+ late var prevEarnings;
+ late var pendingBalance;
+ late var totalShifts;
+ late var startDate;
+ late var endDate;
+ late var prevWeekStart;
+ late var prevWeekEnd;
+ late var currentDateFormat;
+ late var currencyFormat;
 
   Data(
       {this.totalWeeklyHours,
       this.prevWeeklyHours,
       this.employeeName,
       this.profilePic,
-      this.assignments,
+      required this.assignments,
       this.earnings,
       this.prevEarnings,
       this.pendingBalance,
@@ -462,7 +471,7 @@ class Homeapi extends StatefulWidget {
 }
 
 class _HomeapiState extends State<Homeapi> {
-  Future<Home> futureData;
+  late Future<Home> futureData;
 
   @override
   void initState() {

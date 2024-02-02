@@ -1,5 +1,5 @@
 part of 'login_bloc.dart';
-
+// import 'dart:ffi';
 abstract class LoginState extends Equatable {
   const LoginState();
 
@@ -14,7 +14,7 @@ class LoginLoading extends LoginState {}
 class LoginFailure extends LoginState {
   final String error;
 
-  const LoginFailure({@required this.error});
+  const LoginFailure({required this.error});
 
   @override
   List<Object> get props => [error];
@@ -22,3 +22,10 @@ class LoginFailure extends LoginState {
   @override
   String toString() => 'LoginFailure { error: $error }';
 }
+// class LoginSuccess extends LoginState {
+//   @override
+//   List<Object> get props => [];
+  
+//   @override
+//   String toString() => 'LoginSuccess';
+// }

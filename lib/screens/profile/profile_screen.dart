@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'dart:ffi';
 import 'package:TheStafferEmployee/screens/home/home_screen.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:avatar_view/avatar_view.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
@@ -25,8 +26,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  Future<Profile> futureData;
-  Future<FormateApi> futureFormate;
+  late Future<Profile> futureData;
+  late Future<FormateApi> futureFormate;
   final password = TextEditingController();
   bool correct = false;
   int _selectedIndex = 3;
@@ -216,9 +217,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 avatarType: AvatarType.CIRCLE,
                                                 backgroundColor: Colors.red,
                                                 imagePath: snapshot
-                                                    .data.data.profilePic,
+                                                    .data!.data.profilePic,
                                                 placeHolder: Image.network(
-                                                  snapshot.data.data.profilePic,
+                                                  snapshot.data!.data.profilePic,
                                                   width: 50,
                                                   height: 50,
                                                   //fit: BoxFit.cover,
@@ -236,10 +237,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       TextBaseline.alphabetic,
                                                   children: [
                                                     Text(
-                                                      snapshot.data.data
+                                                      snapshot.data!.data
                                                                   .employeeName !=
                                                               null
-                                                          ? snapshot.data.data
+                                                          ? snapshot.data!.data
                                                               .employeeName
                                                           : '',
                                                       style: TextStyle(
@@ -256,10 +257,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       height: 5,
                                                     ),
                                                     Text(
-                                                      snapshot.data.data
+                                                      snapshot.data!.data
                                                                   .jobPosition !=
                                                               null
-                                                          ? snapshot.data.data
+                                                          ? snapshot.data!.data
                                                               .jobPosition
                                                           : '',
                                                       style: TextStyle(
@@ -334,11 +335,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     padding: EdgeInsets.only(
                                                         left: 19),
                                                     child: Text(
-                                                      snapshot.data.data
+                                                      snapshot.data!.data
                                                                   .phone !=
                                                               null
                                                           ? snapshot
-                                                              .data.data.phone
+                                                              .data!.data.phone
                                                           : '',
                                                       style: TextStyle(
                                                           fontSize: 12,
@@ -396,11 +397,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     padding: EdgeInsets.only(
                                                         left: 34),
                                                     child: Text(
-                                                      snapshot.data.data
+                                                      snapshot.data!.data
                                                                   .email !=
                                                               null
                                                           ? snapshot
-                                                              .data.data.email
+                                                              .data!.data.email
                                                           : '',
                                                       style: TextStyle(
                                                           fontSize: 12,
@@ -458,11 +459,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     padding: EdgeInsets.only(
                                                         left: 26),
                                                     child: Text(
-                                                      snapshot.data.data.dob
+                                                      snapshot.data!.data.dob
                                                                   .toString() !=
                                                               null
                                                           ? snapshot
-                                                              .data.data.dob
+                                                              .data!.data.dob
                                                               .toString()
                                                           : ' - - - ',
                                                       style: TextStyle(
@@ -666,7 +667,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                           password.clear();
                                                                                           // postRequestSSn(curentpassword);
                                                                                           final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-                                                                                          final String token = await storage.read(key: 'token');
+                                                                                          final String? token = await storage.read(key: 'token');
 
                                                                                           var urll = 'https://dev2.thestaffer.com/api/admin/get_employee_ssn';
 
@@ -711,7 +712,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                                           // print(response);
 
                                                                                           print("${response.body}");
-                                                                                          return response;
+                                                                                          return Future.value(response);
                                                                                         }
                                                                                         if (curentpassword == '') {
                                                                                           Flushbar(
@@ -791,10 +792,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                             20,
                                                                             0),
                                                                 child: Text(
-                                                                  snapshot.data.data
+                                                                  snapshot.data!.data
                                                                               .ssn !=
                                                                           null
-                                                                      ? '***_**_${snapshot.data.data.ssn}'
+                                                                      ? '***_**_${snapshot.data!.data.ssn}'
                                                                       : '',
                                                                   style: TextStyle(
                                                                       fontSize:
@@ -899,10 +900,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                             20,
                                                                             0),
                                                                 child: Text(
-                                                                  snapshot.data.data
+                                                                  snapshot.data!.data
                                                                               .ssn !=
                                                                           null
-                                                                      ? '${snapshot.data.data.ssn}'
+                                                                      ? '${snapshot.data!.data.ssn}'
                                                                       : '',
                                                                   style: TextStyle(
                                                                       fontSize:
@@ -985,10 +986,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     padding: EdgeInsets.only(
                                                         left: 24),
                                                     child: Text(
-                                                      snapshot.data.data
+                                                      snapshot.data!.data
                                                                   .location !=
                                                               null
-                                                          ? snapshot.data.data
+                                                          ? snapshot.data!.data
                                                               .location
                                                           : '',
                                                       style: TextStyle(
@@ -1307,8 +1308,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<http.Response> postRequestSSn(String curentp) async {
     print('ssssssssssssssssssssssssssss$curentp');
     final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-    final String token = await storage.read(key: 'token');
-    String authorization = token;
+    final String? token = await storage.read(key: 'token');
+    String? authorization = token;
     var urll = 'https://dev5.thestaffer.com/v1/admin/get_employee_ssn';
 
     Map data = {

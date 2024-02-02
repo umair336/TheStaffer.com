@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-
+import 'dart:ffi';
 ///import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
@@ -10,7 +10,7 @@ import '../../repositories/repositories.dart';
 
 Future<AssignmentApi> fetchassignment() async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-  final String token = await storage.read(key: 'token');
+  final String? token = await storage.read(key: 'token');
   // final url = 'https://dev2.thestaffer.com/api/admin/employees/assignments/list';
   
   //final url = 'https://dev5.thestaffer.com/v1/admin/employee/assignment/list';
@@ -18,7 +18,7 @@ Future<AssignmentApi> fetchassignment() async {
  
   final url =request.mainUrl +'/v1/admin/employee/assignment/list';
   print('dddddddddddddddddddd$token');
-  String authorization = token;
+  String? authorization = token;
   print('sssssssssssssssssssss$authorization');
   //http.get(Uri.parse(StringURL))
   final response = await http.post(Uri.parse(url), headers: {
@@ -36,14 +36,15 @@ Future<AssignmentApi> fetchassignment() async {
 
     return AssignmentApi.fromJson(jsonDecode(response.body));
   } else {
-    print('vvvvvvvvvvvvvvvvvvv');
+    // Throw an exception or return a default Profile in case of an error
+    throw Exception('Failed to fetch assignment: ${response.statusCode}');
   }
 }
 
 class AssignmentApi {
-  List<Data> data;
+ late List<Data> data;
 
-  AssignmentApi({this.data});
+  AssignmentApi({required this.data});
 
   AssignmentApi.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
@@ -64,50 +65,50 @@ class AssignmentApi {
 }
 
 class Data {
-  String epsEmployment;
-  String payType;
-  String payMethod;
-  int vendorId;
-  int epsId;
-  int employeePaySetupId;
-  String startDate;
-  String endDate;
-  int empJobId;
-  int jobId;
-  int employeeId;
-  String empStatus;
-  String jobEndDate;
-  int createdBy;
-  String customer;
-  String jobPosition;
-  String employee;
-  String department;
-  String payroll;
-  String vendorDeletedDate;
-  String branch;
+late String epsEmployment;
+late String payType;
+late String payMethod;
+late int vendorId;
+late int epsId;
+late int employeePaySetupId;
+late String startDate;
+late String endDate;
+late int empJobId;
+late int jobId;
+late int employeeId;
+late String empStatus;
+late String jobEndDate;
+late int createdBy;
+late String customer;
+late String jobPosition;
+late String employee;
+late String department;
+late String payroll;
+late String vendorDeletedDate;
+late String branch;
 
   Data(
-      {this.epsEmployment,
-      this.payType,
-      this.payMethod,
-      this.vendorId,
-      this.epsId,
-      this.employeePaySetupId,
-      this.startDate,
-      this.endDate,
-      this.empJobId,
-      this.jobId,
-      this.employeeId,
-      this.empStatus,
-      this.jobEndDate,
-      this.createdBy,
-      this.customer,
-      this.jobPosition,
-      this.employee,
-      this.department,
-      this.payroll,
-      this.vendorDeletedDate,
-      this.branch});
+      {required this.epsEmployment,
+    required this.payType,
+    required this.payMethod,
+    required this.vendorId,
+    required this.epsId,
+    required this.employeePaySetupId,
+    required this.startDate,
+    required this.endDate,
+    required this.empJobId,
+    required this.jobId,
+    required this.employeeId,
+    required this.empStatus,
+    required this.jobEndDate,
+    required this.createdBy,
+    required this.customer,
+    required this.jobPosition,
+    required this.employee,
+    required this.department,
+    required this.payroll,
+    required this.vendorDeletedDate,
+    required this.branch});
 
   Data.fromJson(Map<String, dynamic> json) {
     epsEmployment = json['eps_employment'];
@@ -166,7 +167,7 @@ class AssignmentApiis extends StatefulWidget {
 }
 
 class _AssignmentApiisState extends State<AssignmentApiis> {
-  Future<AssignmentApi> futureData;
+  late Future<AssignmentApi> futureData;
 
   @override
   void initState() {
@@ -186,7 +187,7 @@ class _AssignmentApiisState extends State<AssignmentApiis> {
                 return Column(
                   children: [
                     //
-                    Text(snapshot.data.data[0].startDate),
+                    Text(snapshot.data!.data[0].startDate),
                     //   Text( snapshot.data.data[0].assignments[0].jobId.toString())
                     /*   Text(snapshot.data.data.jobPosition),
                       Text(snapshot.data.data.phone),

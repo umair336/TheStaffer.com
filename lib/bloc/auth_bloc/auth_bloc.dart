@@ -5,15 +5,15 @@ import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'auth.dart';
 import 'package:TheStafferEmployee/repositories/auth.dart';
-
+import 'dart:ffi';
 import 'package:TheStafferEmployee/models/models.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final UserRepository userRepository;
-  final Auth auth;
+  final Auth? auth;
 
-  AuthenticationBloc({@required this.userRepository, @required this.auth})
+  AuthenticationBloc({required this.userRepository, required this.auth})
       : assert(userRepository != null),
         super(AuthenticationUninitialized()) {
     on<AppStarted>(_Appstrared);
@@ -33,7 +33,6 @@ class AuthenticationBloc
       }
     }
   }
-
   void _LoggedIn(event, Emitter<AuthenticationState> emit) async {
     if (event is LoggedIn) {
       emit(AuthenticationLoading());
@@ -41,7 +40,6 @@ class AuthenticationBloc
       emit(AuthenticationAuthenticated());
     }
   }
-
   void _LoggedOut(event, Emitter<AuthenticationState> emit) async {
     if (event is LoggedOut) {
       emit(AuthenticationLoading());
@@ -50,7 +48,6 @@ class AuthenticationBloc
       emit(AuthenticationUninitialized());
     }
   }
-
   void _FetchAssignmentEvent(event, Emitter<AuthenticationState> emit) async {
     if (event is FetchAssignmentEvent) {
       try {
@@ -62,7 +59,6 @@ class AuthenticationBloc
       }
     }
   }
-
   void _FetchHomeEvent(event, Emitter<AuthenticationState> emit) async {
     
     if (event is FetchHomeEvent) {
@@ -76,13 +72,11 @@ class AuthenticationBloc
       }
     }
   }
-
   void _FetchTimeSheetEvent(event, Emitter<AuthenticationState> emit) async {
     if (event is FetchTimeSheetEvent) {
       try {
         List timesheets =
             await userRepository.getTimesheets(event.url, event.data);
-
         print('---timesheet----');
         print(timesheets);
         emit(TimesheetLoadedState(timesheets: timesheets));
@@ -91,7 +85,6 @@ class AuthenticationBloc
       }
     }
   }
-
 /*
   @override
   AuthenticationState get initialState => AuthenticationUninitialized();

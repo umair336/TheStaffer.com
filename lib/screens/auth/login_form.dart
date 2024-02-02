@@ -1,5 +1,8 @@
+import 'dart:ffi';
+import 'package:TheStafferEmployee/bloc/auth_bloc/auth_event.dart';
 import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
 import 'package:TheStafferEmployee/repositories/repositories.dart';
+import 'package:TheStafferEmployee/screens/main_screen/main_screen.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +13,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as s;
 
 class LoginForm extends StatefulWidget {
   final UserRepository userRepository;
-  LoginForm({Key key, @required this.userRepository})
+  LoginForm({required this.userRepository})
       : assert(userRepository != null),
-        super(key: key);
+        super(key: null);
 
   @override
   State<LoginForm> createState() => _LoginFormState(userRepository);
@@ -23,29 +26,21 @@ class _LoginFormState extends State<LoginForm> {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
   Future<void> LoginMessageShow() async {
     valueexist = await storage.read(key: 'LoginError');
-    print('JJJJJJJJJJJJJJJ$valueexist');
-    //await storage.delete(key: 'LoginError');
-   print('###############################$valueexist');
-          Scaffold.of(context).showSnackBar(
+    print('JJJJJJJJJJJJJ$valueexist');
+   print('##############$valueexist');
+      ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(valueexist),
+              content: Text(valueexist,style: TextStyle(color: Colors.black),),
               backgroundColor: Colors.red.shade900,
             ),
           );
   }
-
   var userlogin = UserRepository();
   final UserRepository userRepository;
   _LoginFormState(this.userRepository);
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _showPassword = true;
-  @override
-  void initState() {
-    super.initState();
-
-    // checkFirstSeen();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,18 +52,22 @@ class _LoginFormState extends State<LoginForm> {
         ),
       );
     }
-
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
-        if (state is LoginFailure) {
+        if(state is LoggedIn) {
+      // Navigate to the main screen when login is successful
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => MainScreen(),
+        ),
+      );
+    } else if (state is LoginFailure) {
           LoginMessageShow();
-         
         }
       },
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
           var size = MediaQuery.of(context).size;
-
           return Scaffold(
             body: Container(
                 height: double.infinity,
@@ -216,7 +215,8 @@ class _LoginFormState extends State<LoginForm> {
                               children: <Widget>[
                                 SizedBox(
                                     height: 45,
-                                    child: state is LoginLoading
+                                    child: 
+                                    state is LoginLoading
                                         ? Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
@@ -245,23 +245,42 @@ class _LoginFormState extends State<LoginForm> {
                                               )),
                                             ],
                                           )
-                                        : RaisedButton(
-                                            color: Color.fromRGBO(39, 0, 64, 1),
-                                            disabledColor:
-                                                Style.Colors.mainColor,
-                                            disabledTextColor: Colors.white,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                              side: BorderSide(
-                                                  color: Colors.white),
-                                            ),
-                                            onPressed: _onLoginButtonPressed,
-                                            child: Text("LOG IN",
+                                        :
+                                        //  RaisedButton(
+                                        //     color: Color.fromRGBO(39, 0, 64, 1),
+                                        //     disabledColor:
+                                        //         Style.Colors.mainColor,
+                                        //     disabledTextColor: Colors.white,
+                                        //     shape: RoundedRectangleBorder(
+                                        //       borderRadius:
+                                        //           BorderRadius.circular(5.0),
+                                        //       side: BorderSide(
+                                        //           color: Colors.white),
+                                        //     ),
+                                        ElevatedButton(
+                                          onPressed:_onLoginButtonPressed,
+                                          // {
+                                          //   if(_onLoginButtonPressed()==true){
+                                          //     Navigator.push(context,
+                                          //      MaterialPageRoute(builder:(context) => MainScreen() ));
+                                          //   }
+                                          // },
+                                         child:Text("LOG IN",
                                                 style: new TextStyle(
                                                     fontSize: 12.0,
                                                     fontWeight: FontWeight.bold,
-                                                    color: Colors.white)))),
+                                                    color: Colors.black),
+                                                    ),
+                                                    ),
+                                          )
+                                            // onPressed: _onLoginButtonPressed,
+                                            // child: Text("LOG IN",
+                                            //     style: new TextStyle(
+                                            //         fontSize: 12.0,
+                                            //         fontWeight: FontWeight.bold,
+                                            //         color: Colors.white)),
+                                                    // ),
+                                                    // ),       
                               ],
                             ),
                           ),
@@ -286,4 +305,11 @@ class _LoginFormState extends State<LoginForm> {
     final String _url = 'https://dev2.thestaffer.com/login';
     if (!await launch(_url)) throw 'Could not launch $_url';
   }
+  
+  RaisedButton({required Color color,
+   required Color disabledColor,
+    required Color disabledTextColor,
+     required RoundedRectangleBorder shape,
+      required Null Function() onPressed,
+       required Text child}) {}
 }

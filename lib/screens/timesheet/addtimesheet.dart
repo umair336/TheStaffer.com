@@ -1,9 +1,7 @@
 import 'dart:math';
-
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:TheStafferEmployee/screens/main_screen/main_screen.dart';
-import './timesheet_screen.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
 import 'breakmodelclasss.dart';
@@ -42,13 +40,13 @@ class _AddtimesheetState extends State<Addtimesheet> {
 
   String start = "";
   String startDate = DateFormat('EEE d MMM, y ').format(DateTime.now());
-  TimeOfDay _t;
-  TimeOfDay _pp;
+  late TimeOfDay _t;
+  late TimeOfDay _pp;
 
   bool timeount_false = false;
   bool save = false;
 
-  String paidunpaid;
+  late String paidunpaid;
 
   String checkstart = "";
   String checkend = "";
@@ -692,7 +690,7 @@ class _AddtimesheetState extends State<Addtimesheet> {
                                             }).toList(),
                                             onChanged: (value) {
                                               setState(() {
-                                                _value = value;
+                                                _value = value!;
                                               });
                                             },
                                             hint: Text("Select item"),
@@ -980,16 +978,16 @@ class _AddtimesheetState extends State<Addtimesheet> {
       initialDate: DateTime.now(),
       firstDate: DateTime(1970),
       lastDate: DateTime(2025),
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.light().copyWith(
             primaryColor: const Color.fromRGBO(13, 91, 196, 1),
-            accentColor: const Color.fromRGBO(13, 91, 196, 1),
+            hintColor: const Color.fromRGBO(13, 91, 196, 1),
             colorScheme: ColorScheme.light(
               primary: const Color.fromRGBO(13, 91, 196, 1),
             ),
           ),
-          child: child,
+          child: widget,
         );
       },
     );

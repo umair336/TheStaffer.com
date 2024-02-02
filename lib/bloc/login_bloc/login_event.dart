@@ -9,8 +9,8 @@ class LoginButtonPressed extends LoginEvent {
   final String password;
 
   const LoginButtonPressed({
-    @required this.email,
-    @required this.password,
+    required this.email,
+    required this.password,
   });
 
   @override
@@ -20,3 +20,4 @@ class LoginButtonPressed extends LoginEvent {
   String toString() =>
       'LoginButtonPressed { email: $email, password: $password }';
 }
+ 

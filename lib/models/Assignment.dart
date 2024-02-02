@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
-
+import 'dart:ffi';
 class Assignment {
   final int jobId;
   final String startDate;
   final String endDate;
 
   const Assignment({
-     this.jobId,
-     this.startDate,
-     this.endDate,
+     required this.jobId,
+     required this.startDate,
+     required this.endDate,
   });
 
   factory Assignment.fromJson(Map<String, dynamic> json) {

@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../constants/formate.dart';
@@ -11,8 +12,8 @@ class Upcomingassignment extends StatefulWidget {
 }
 
 class _UpcomingassignmentState extends State<Upcomingassignment> {
-  Future<AssignmentApi> futureData;
-  Future<FormateApi> futureFormate;
+  late Future<AssignmentApi> futureData;
+  late Future<FormateApi> futureFormate;
   String valueexist = "";
 
   bool show = false;
@@ -186,23 +187,23 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                           112, 112, 112, 1)),),
                              ),*/
 
-                            if (snapshot.data.data.length >= 1)
+                            if (snapshot.data!.data.length >= 1)
                               for (int i = 0;
-                                  i < snapshot.data.data.length;
+                                  i < snapshot.data!.data.length;
                                   i++)
                                 Container(
                                   child: _checkexist(
-                                      snapshot.data.data[i].empStatus,
-                                      snapshot.data.data[i].jobId),
+                                      snapshot.data!.data[i].empStatus,
+                                      snapshot.data!.data[i].jobId),
                                 ),
                             ListView.builder(
                                 physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: snapshot.data.data.length,
+                                itemCount: snapshot.data!.data.length,
                                 itemBuilder: (context, index) {
                                   return Column(
                                     children: [
-                                      if (snapshot.data.data[index].empStatus ==
+                                      if (snapshot.data!.data[index].empStatus ==
                                           'Upcoming')
                                         Padding(
                                           // padding: const EdgeInsets.all(20.0),
@@ -216,7 +217,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                       builder: (context) =>
                                                           Assignmentdetail(
                                                             jobid: snapshot
-                                                                .data
+                                                                .data!
                                                                 .data[index]
                                                                 .jobId,
                                                           )));
@@ -253,13 +254,13 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                           child: Container(
                                                             child: Text(
                                                                 snapshot
-                                                                            .data
+                                                                            .data!
                                                                             .data[
                                                                                 index]
                                                                             .jobPosition !=
                                                                         null
                                                                     ? snapshot
-                                                                        .data
+                                                                        .data!
                                                                         .data[
                                                                             index]
                                                                         .jobPosition
@@ -314,13 +315,13 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                           Alignment.topLeft,
                                                       child: Text(
                                                           snapshot
-                                                                      .data
+                                                                      .data!
                                                                       .data[
                                                                           index]
                                                                       .customer !=
                                                                   null
                                                               ? snapshot
-                                                                  .data
+                                                                  .data!
                                                                   .data[index]
                                                                   .customer
                                                               : ' ',
@@ -387,7 +388,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                         if (snapshoot
                                                                             .hasData) {
                                                                           return Text(
-                                                                              snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
+                                                                              snapshot.data!.data[index].startDate.toString() != null ? DateFormat(snapshoot.data!.data[0].currentDateFormat).format(DateTime.parse(snapshot.data!.data[index].startDate)) : ' - - - ',
                                                                               style: TextStyle(
                                                                                   color: Color.fromRGBO(0, 0, 0, 1),
                                                                                   //fontWeight: FontWeight.w600,
@@ -425,7 +426,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                   height: 2,
                                                                 ),
                                                                 snapshot
-                                                                            .data
+                                                                            .data!
                                                                             .data[
                                                                                 index]
                                                                             .endDate !=
@@ -438,7 +439,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                             builder: (context,
                                                                                 snapshoot) {
                                                                               if (snapshoot.hasData) {
-                                                                                return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].endDate)),
+                                                                                return Text(DateFormat(snapshoot.data!.data[0].currentDateFormat).format(DateTime.parse(snapshot.data!.data[index].endDate)),
                                                                                     //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
                                                                                     style: TextStyle(
                                                                                         color: Color.fromRGBO(0, 0, 0, 1),
@@ -457,7 +458,7 @@ class _UpcomingassignmentState extends State<Upcomingassignment> {
                                                                             builder:
                                                                                 (context, snapshoot) {
                                                                               if (snapshoot.hasData) {
-                                                                                return Text(DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].jobEndDate)),
+                                                                                return Text(DateFormat(snapshoot.data!.data[0].currentDateFormat).format(DateTime.parse(snapshot.data!.data[index].jobEndDate)),
                                                                                     //snapshot.data.data[index].startDate.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.data[index].startDate)) : ' - - - ',
                                                                                     style: TextStyle(
                                                                                         color: Color.fromRGBO(0, 0, 0, 1),

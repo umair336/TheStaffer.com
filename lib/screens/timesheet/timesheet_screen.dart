@@ -1,6 +1,7 @@
 import 'package:TheStafferEmployee/constants/formate.dart';
 import 'package:TheStafferEmployee/screens/timesheet/timesheetApi.dart';
 import 'package:dio/dio.dart';
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:rounded_expansion_tile/rounded_expansion_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,8 +23,8 @@ class TimesheetScreen extends StatefulWidget {
 
 class _TimesheetScreenState extends State<TimesheetScreen> {
   /// Future<TimeSheetData> futureData;
-  Future<TimeSheetModel> showTimeSheetData;
-  Future<FormateApi> futureFormate;
+  late Future<TimeSheetModel> showTimeSheetData;
+  late Future<FormateApi> futureFormate;
   bool isExpanded = false;
   String start = "";
   String end = "";
@@ -40,10 +41,10 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
   int mg = 0;
 
   // static const duration = 0;
-  Duration totalweek;
-  Duration month_reg;
-  Duration month_over;
-  Duration month_toal;
+  late Duration totalweek;
+  late Duration month_reg;
+  late Duration month_over;
+  late Duration month_toal;
   bool val_month_reg = false;
   bool val_month_over = false;
   int _selectedIndex = 1;
@@ -174,7 +175,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                       case ConnectionState.active:
                         break;
                       case ConnectionState.done:
-                        if (snapshot.data.timesheet.isNotEmpty)
+                        if (snapshot.data!.timesheet.isNotEmpty)
                           return Column(
                             children: [
                               /* Text(
@@ -511,7 +512,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                     for (int i = 0;
                                                         i <
                                                             snapshot
-                                                                .data
+                                                                .data!
                                                                 .timesheet
                                                                 .length;
                                                         i++)
@@ -519,7 +520,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                         child:
                                                             Regulartotalfunction(
                                                                 snapshot
-                                                                    .data
+                                                                    .data!
                                                                     .timesheet[
                                                                         i]
                                                                     .regularHours
@@ -614,14 +615,14 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                     for (int i = 0;
                                                         i <
                                                             snapshot
-                                                                .data
+                                                                .data!
                                                                 .timesheet
                                                                 .length;
                                                         i++)
                                                       Container(
                                                         child: Overtotalfunction(
                                                             snapshot
-                                                                .data
+                                                                .data!
                                                                 .timesheet[i]
                                                                 .overtimeHours
                                                                 .toString()),
@@ -833,10 +834,10 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                           shrinkWrap: true,
                                           //       itemCount: state.timesheets.length,
                                           itemCount:
-                                              snapshot.data.timesheet.length,
+                                              snapshot.data!.timesheet.length,
                                           physics: ScrollPhysics(),
                                           itemBuilder: (context, index) {
-                                            week_end_date = snapshot.data
+                                            week_end_date = snapshot.data!
                                                 .timesheet[index].hoursForWeek
                                                 .toString();
                                             week_start_date =
@@ -889,7 +890,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                       child:
                                                                           Text(
                                                                         snapshot
-                                                                            .data
+                                                                            .data!
                                                                             .timesheet[index]
                                                                             .jobPosition
                                                                             .toString(),
@@ -916,7 +917,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                         .topLeft,
                                                                 child: Text(
                                                                   snapshot
-                                                                      .data
+                                                                      .data!
                                                                       .timesheet[
                                                                           index]
                                                                       .customerName
@@ -961,7 +962,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                                 if (snapshoot.hasData) {
                                                                                   return Text(
                                                                                     //  DateTime.parse(snapshot.data.timesheet[index].hoursForWeek.toString()).subtract(new Duration(days: 7)).toString(),
-                                                                                    snapshot.data.timesheet[index].hoursForWeek.toString() != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.timesheet[index].hoursForWeek.toString()).subtract(new Duration(days: 7))) : ' ',
+                                                                                    snapshot.data!.timesheet[index].hoursForWeek.toString() != null ? DateFormat(snapshoot.data!.data[0].currentDateFormat).format(DateTime.parse(snapshot.data!.timesheet[index].hoursForWeek.toString()).subtract(new Duration(days: 7))) : ' ',
                                                                                     style: TextStyle(
                                                                                       fontWeight: FontWeight.bold,
                                                                                       fontSize: 16.0,
@@ -1001,7 +1002,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                                   (context, snapshoot) {
                                                                                 if (snapshoot.hasData) {
                                                                                   return Text(
-                                                                                    snapshot.data.timesheet[index].hoursForWeek != null ? DateFormat(snapshoot.data.data[0].currentDateFormat).format(DateTime.parse(snapshot.data.timesheet[index].hoursForWeek)) : ' ',
+                                                                                    snapshot.data!.timesheet[index].hoursForWeek != null ? DateFormat(snapshoot.data!.data[0].currentDateFormat).format(DateTime.parse(snapshot.data!.timesheet[index].hoursForWeek)) : ' ',
                                                                                     style: TextStyle(
                                                                                       fontWeight: FontWeight.bold,
                                                                                       fontSize: 16.0,
@@ -1074,7 +1075,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                                 ),
                                                                               ),
                                                                               Text(
-                                                                                rugular = snapshot.data.timesheet[index].regularHours.toString(),
+                                                                                rugular = snapshot.data!.timesheet[index].regularHours.toString(),
                                                                                 style: TextStyle(
                                                                                   fontSize: 12.0,
                                                                                   fontFamily: 'Nunito Sans',
@@ -1109,7 +1110,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                                                                                 ),
                                                                               ),
                                                                               Text(
-                                                                                over = snapshot.data.timesheet[index].overtimeHours.toString(),
+                                                                                over = snapshot.data!.timesheet[index].overtimeHours.toString(),
                                                                                 style: TextStyle(
                                                                                   fontSize: 12.0,
                                                                                   fontFamily: 'Nunito Sans',
@@ -2077,6 +2078,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                           ]);
                         }
                     }
+                    return Container();
                   })),
         ));
   }
@@ -2087,15 +2089,15 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       initialDate: new DateFormat('MMMM d,yyyy').parse(startDate),
       firstDate: DateTime(1970),
       lastDate: DateTime(2025),
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.light().copyWith(
               primaryColor: const Color.fromRGBO(13, 91, 196, 1),
-              accentColor: const Color.fromRGBO(13, 91, 196, 1),
+              hintColor: const Color.fromRGBO(13, 91, 196, 1),
               colorScheme: ColorScheme.light(
                 primary: const Color.fromRGBO(13, 91, 196, 1),
               )),
-          child: child,
+          child: widget,
         );
       },
     );
@@ -2118,16 +2120,16 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
       initialDate: new DateFormat('MMMM d,yyyy').parse(endDate),
       firstDate: DateTime(2010),
       lastDate: DateTime(2025),
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.light().copyWith(
             primaryColor: const Color.fromRGBO(13, 91, 196, 1),
-            accentColor: const Color.fromRGBO(13, 91, 196, 1),
+            hintColor: const Color.fromRGBO(13, 91, 196, 1),
             colorScheme: ColorScheme.light(
               primary: const Color.fromRGBO(13, 91, 196, 1),
             ),
           ),
-          child: child,
+          child: widget,
         );
       },
     );

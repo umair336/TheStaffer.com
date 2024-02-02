@@ -1,13 +1,7 @@
-import 'package:TheStafferEmployee/bloc/auth_bloc/auth.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:TheStafferEmployee/style/theme.dart' as Style;
+
 import 'package:TheStafferEmployee/screens/home/home_screen.dart';
-import 'package:TheStafferEmployee/screens/assignment/assignment_screen.dart';
-import 'package:TheStafferEmployee/screens/profile/profile_screen.dart';
-import 'package:TheStafferEmployee/screens/timesheet/timesheet_screen.dart';
-import 'package:adobe_xd/pinned.dart';
+import 'package:flutter/material.dart';
+import 'dart:ffi';
 
 class MainScreen extends StatefulWidget {
   @override

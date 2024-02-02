@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ffi';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 ///import 'package:TheStafferEmployee/bloc/login_bloc/login_bloc.dart';
 ///
@@ -11,7 +13,7 @@ import '../../repositories/repositories.dart';
 
 Future<TimeSheetModel> timesheet(String dateStart, String dateEnd) async {
   final s.FlutterSecureStorage storage = new s.FlutterSecureStorage();
-  final String token = await storage.read(key: 'token');
+  final String? token = await storage.read(key: 'token');
    UserRepository request = UserRepository();
  
   final url =request.mainUrl +'/v1/admin/employee/timesheet/list?start_date=$dateStart&end_date=$dateEnd';
@@ -44,9 +46,11 @@ Future<TimeSheetModel> timesheet(String dateStart, String dateEnd) async {
 }
 
 class TimeSheetModel {
-  List<Timesheet> timesheet;
+  late List<Timesheet> timesheet;
 
-  TimeSheetModel({this.timesheet});
+  TimeSheetModel({
+    required this.timesheet,
+  });
 
   TimeSheetModel.fromJson(Map<String, dynamic> json) {
     if (json['timesheet'] != null) {
@@ -67,43 +71,41 @@ class TimeSheetModel {
 }
 
 class Timesheet {
-  int id;
-  int parentId;
-  int employeeJobId;
-  int customerId;
-  int departmentId;
-  int employeeId;
-  String hoursForWeek;
-  String createdAt;
-  String updatedAt;
+ late int id;
+ late int parentId;
+ late int employeeJobId;
+ late int customerId;
+ late int departmentId;
+ late int employeeId;
+ late String hoursForWeek;
+ late String createdAt;
+ late String updatedAt;
+ late int payrollStatus;
+ late String overtimeHours;
+ late String regularHours;
+ late String timesheetType;
+ late String customerName;
 
-  int payrollStatus;
-
-  String overtimeHours;
-  String regularHours;
-  String timesheetType;
-  String customerName;
-
-  int overRate;
-  String jobPosition;
+ late int overRate;
+ late String jobPosition;
 
   Timesheet(
-      {this.id,
-      this.parentId,
-      this.employeeJobId,
-      this.customerId,
-      this.departmentId,
-      this.employeeId,
-      this.hoursForWeek,
-      this.createdAt,
-      this.updatedAt,
-      this.payrollStatus,
-      this.overtimeHours,
-      this.regularHours,
-      this.timesheetType,
-      this.customerName,
-      this.overRate,
-      this.jobPosition});
+      {required this.id,
+     required this.parentId,
+     required this.employeeJobId,
+     required this.customerId,
+     required this.departmentId,
+     required this.employeeId,
+     required this.hoursForWeek,
+     required this.createdAt,
+     required this.updatedAt,
+     required this.payrollStatus,
+     required this.overtimeHours,
+     required this.regularHours,
+     required this.timesheetType,
+     required this.customerName,
+     required this.overRate,
+     required this.jobPosition});
 
   Timesheet.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -115,14 +117,11 @@ class Timesheet {
     hoursForWeek = json['hours_for_week'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-
     payrollStatus = json['payroll_status'];
-
     overtimeHours = json['overtime_hours'];
     regularHours = json['regular_hours'];
     timesheetType = json['timesheet_type'];
     customerName = json['customer_name'];
-
     // overRate = json['over_rate'];
     jobPosition = json['job_position'];
   }
